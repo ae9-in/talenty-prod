@@ -8,6 +8,7 @@ import {
   Building2,
   Download,
   Filter,
+  LogOut,
   Mail,
   Phone,
   Search,
@@ -123,6 +124,11 @@ export function AdminDashboard({ initialEnquiries, initialUsers }: DashboardProp
     if (selectedEnquiry?.id === id) setSelectedEnquiry(null)
   }
 
+  const handleLogout = async () => {
+    await fetch("/api/admin/logout", { method: "POST" })
+    window.location.href = "/admin"
+  }
+
   const exportCsv = () => {
     const header = ["ID", "Name", "Company Name", "Email", "Phone", "Requirement Type", "Industry", "Roles Required", "Employees Needed", "Message", "Status", "Date Submitted"]
     const rows = enquiries.map((item) => [item.id, item.fullName, item.companyName, item.email, item.phone, item.requirementType, item.industry, item.rolesRequired, item.employeesNeeded, item.message.replace(/\n/g, " "), item.status, new Date(item.createdAt).toLocaleString()])
@@ -143,7 +149,7 @@ export function AdminDashboard({ initialEnquiries, initialUsers }: DashboardProp
           <div className="mb-10">
             <div className="inline-flex rounded-2xl bg-gradient-to-br from-primary to-accent p-3"><Shield className="h-6 w-6 text-primary-foreground" /></div>
             <h1 className="mt-4 text-2xl font-bold">Talenty Admin</h1>
-            <p className="text-sm text-muted-foreground">Direct dashboard access at the <code>/admin</code> route.</p>
+            <p className="text-sm text-muted-foreground">Secure dashboard access.</p>
           </div>
 
           <nav className="space-y-2">
@@ -155,6 +161,10 @@ export function AdminDashboard({ initialEnquiries, initialUsers }: DashboardProp
 
           <Button asChild variant="outline" className="mt-6 w-full border-border/50">
             <a href="/">Back to Website</a>
+          </Button>
+          <Button variant="outline" className="mt-3 w-full border-border/50" onClick={handleLogout}>
+            <LogOut className="mr-2 h-4 w-4" />
+            Logout
           </Button>
         </aside>
 
@@ -355,4 +365,3 @@ export function AdminDashboard({ initialEnquiries, initialUsers }: DashboardProp
     </div>
   )
 }
-

@@ -16,7 +16,7 @@ export default function RegisterPage() {
           <div className="mx-auto max-w-3xl text-center">
             <p className="inline-flex rounded-full border border-primary/20 bg-primary/10 px-4 py-2 text-xs uppercase tracking-[0.28em] text-primary">Public Registration</p>
             <h1 className="mt-6 text-4xl md:text-5xl font-bold text-balance">Create Your Talenty Profile</h1>
-            <p className="mt-4 text-lg text-muted-foreground">Normal users can register here, and their details will automatically appear inside the admin dashboard under Registered Users.</p>
+            <p className="mt-4 text-lg text-muted-foreground">Create a profile so our consulting team can understand your interest areas and connect you with the right opportunities.</p>
           </div>
         </div>
       </section>
@@ -26,11 +26,11 @@ export default function RegisterPage() {
             <RegisterForm />
             <div className="space-y-6">
               <div className="rounded-3xl border border-border/40 bg-white/5 p-8 backdrop-blur-xl">
-                <h2 className="text-2xl font-bold text-foreground">What Registration Does</h2>
+                <h2 className="text-2xl font-bold text-foreground">Why Register</h2>
                 <div className="mt-5 space-y-4 text-sm text-muted-foreground">
-                  <div className="rounded-2xl border border-border/30 bg-secondary/20 p-4">Creates a public user profile for Talenty Consulting.</div>
-                  <div className="rounded-2xl border border-border/30 bg-secondary/20 p-4">Adds the user into the protected Registered Users section in the admin dashboard.</div>
-                  <div className="rounded-2xl border border-border/30 bg-secondary/20 p-4">Keeps public website actions and admin management clearly separated.</div>
+                  <div className="rounded-2xl border border-border/30 bg-secondary/20 p-4">Create a profile that captures your role and industry interests.</div>
+                  <div className="rounded-2xl border border-border/30 bg-secondary/20 p-4">Stay available for counseling, consulting, and hiring-related follow-up.</div>
+                  <div className="rounded-2xl border border-border/30 bg-secondary/20 p-4">Keep your business or role preferences ready for future discussions.</div>
                 </div>
               </div>
             </div>
@@ -41,4 +41,3 @@ export default function RegisterPage() {
     </main>
   )
 }
-

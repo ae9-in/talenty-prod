@@ -15,7 +15,7 @@ export default function ContactPage() {
           <div className="mx-auto max-w-3xl text-center">
             <p className="inline-flex rounded-full border border-primary/20 bg-primary/10 px-4 py-2 text-xs uppercase tracking-[0.28em] text-primary">Contact / Consultation</p>
             <h1 className="mt-6 text-4xl md:text-5xl font-bold text-balance">Book a Premium Counseling or Consulting Session</h1>
-            <p className="mt-4 text-lg text-muted-foreground">Tell us what you need to hire, train, or scale. The Talenty admin team will see it immediately in the backend dashboard.</p>
+            <p className="mt-4 text-lg text-muted-foreground">Tell us what you need to hire, train, or scale. Our team will review the requirement and respond with the best next step.</p>
           </div>
         </div>
       </section>
@@ -44,4 +44,3 @@ export default function ContactPage() {
     </main>
   )
 }
-

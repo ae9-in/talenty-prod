@@ -1,11 +1,9 @@
 ﻿"use client"
 
 import { useEffect, useState } from "react"
-import { Menu, Shield, Sparkles, X } from "lucide-react"
+import { Menu, Sparkles, X } from "lucide-react"
 import Link from "next/link"
 import { motion } from "framer-motion"
-
-import { Button } from "@/components/ui/button"
 
 const navLinks = [
   { name: "Home", href: "/" },
@@ -42,7 +40,7 @@ export function Navbar() {
           </div>
           <div>
             <div className="text-lg font-bold text-foreground">Talenty Consulting</div>
-            <div className="text-[11px] uppercase tracking-[0.24em] text-muted-foreground">Public + Admin Flow</div>
+            <div className="text-[11px] uppercase tracking-[0.24em] text-muted-foreground">Counseling and Consulting</div>
           </div>
         </Link>
 
@@ -52,12 +50,6 @@ export function Navbar() {
               {link.name}
             </Link>
           ))}
-          <Button asChild className="border-0 bg-gradient-to-r from-primary to-accent text-primary-foreground hover:opacity-90">
-            <Link href="/admin">
-              <Shield className="mr-2 h-4 w-4" />
-              Admin
-            </Link>
-          </Button>
         </div>
 
         <button className="lg:hidden text-foreground" onClick={() => setIsMobileMenuOpen((current) => !current)} aria-label="Toggle menu">
@@ -72,15 +64,8 @@ export function Navbar() {
               {link.name}
             </Link>
           ))}
-          <Button asChild className="w-full border-0 bg-gradient-to-r from-primary to-accent text-primary-foreground">
-            <Link href="/admin" onClick={() => setIsMobileMenuOpen(false)}>
-              <Shield className="mr-2 h-4 w-4" />
-              Admin
-            </Link>
-          </Button>
         </div>
       </motion.div>
     </motion.header>
   )
 }
-

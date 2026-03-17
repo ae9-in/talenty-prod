@@ -1,7 +1,7 @@
 ﻿"use client"
 
 import { motion } from "framer-motion"
-import { Sparkles, Mail, Phone, MapPin, Linkedin, Twitter, Facebook, Instagram, Shield } from "lucide-react"
+import { Sparkles, Mail, Phone, MapPin, Linkedin, Twitter, Facebook, Instagram } from "lucide-react"
 
 const footerLinks = {
   services: [
@@ -15,7 +15,6 @@ const footerLinks = {
     { name: "About Us", href: "/about" },
     { name: "Contact", href: "/contact" },
     { name: "Register", href: "/register" },
-    { name: "Admin", href: "/admin" },
   ],
 }
 
@@ -43,17 +42,16 @@ export function Footer() {
               </div>
               <div>
                 <div className="text-xl font-bold text-foreground">Talenty Consulting</div>
-                <div className="text-xs uppercase tracking-[0.24em] text-muted-foreground">Public + Admin Experience</div>
+                <div className="text-xs uppercase tracking-[0.24em] text-muted-foreground">Counseling and Consulting</div>
               </div>
             </motion.a>
             <motion.p initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }} className="mb-6 max-w-sm leading-relaxed text-muted-foreground">
-              A complete counseling, consulting, and recruitment website where public users submit requests and admins manage everything from the direct <code>/admin</code> dashboard route.
+              A premium consulting and recruitment website for companies that need counseling support, hiring guidance, and trained employee solutions.
             </motion.p>
             <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.2 }} className="space-y-3">
               <a href="mailto:connect@talentyconsulting.in" className="flex items-center gap-3 text-sm text-muted-foreground hover:text-foreground"><Mail className="h-4 w-4 text-primary" />connect@talentyconsulting.in</a>
               <a href="tel:+918431119696" className="flex items-center gap-3 text-sm text-muted-foreground hover:text-foreground"><Phone className="h-4 w-4 text-primary" />8431119696</a>
               <div className="flex items-center gap-3 text-sm text-muted-foreground"><MapPin className="h-4 w-4 text-primary" />Bhive Platinum, Church Street</div>
-              <a href="/admin" className="flex items-center gap-3 text-sm text-muted-foreground hover:text-foreground"><Shield className="h-4 w-4 text-primary" />Admin Dashboard</a>
             </motion.div>
           </div>
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.2 }}>
@@ -73,12 +71,12 @@ export function Footer() {
             </ul>
           </motion.div>
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.4 }}>
-            <h4 className="mb-4 font-semibold text-foreground">Flow Coverage</h4>
+            <h4 className="mb-4 font-semibold text-foreground">What We Offer</h4>
             <ul className="space-y-3 text-sm text-muted-foreground">
-              <li>Public landing page</li>
-              <li>Direct /admin access</li>
-              <li>Backend enquiry tracking</li>
-              <li>Registered users management</li>
+              <li>Counseling and consultation</li>
+              <li>Business hiring support</li>
+              <li>Requirement collection</li>
+              <li>Registered profile management</li>
             </ul>
           </motion.div>
         </div>
@@ -96,4 +94,3 @@ export function Footer() {
     </footer>
   )
 }
-

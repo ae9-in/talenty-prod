@@ -2,7 +2,7 @@
 
 import { useRef, useEffect, useState } from "react"
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion"
-import { ArrowRight, Shield, Users, Building2, CheckCircle, Zap } from "lucide-react"
+import { ArrowRight, Users, Building2, CheckCircle, Zap } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
 
@@ -55,16 +55,16 @@ export function Hero() {
           <motion.div initial={{ opacity: 0, x: -50 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.8 }} className="text-center lg:text-left">
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }} className="inline-flex items-center gap-2 rounded-full glass px-4 py-2 mb-6">
               <Zap className="h-4 w-4 text-primary" />
-              <span className="text-sm text-muted-foreground">Public Website + Direct Admin Access</span>
+              <span className="text-sm text-muted-foreground">Counseling, Consulting, and Hiring Support</span>
             </motion.div>
             <h1 className="mb-6 text-4xl font-bold leading-tight md:text-5xl lg:text-6xl">
               Premium counseling and hiring workflows for <span className="bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent">Talenty Consulting</span>
             </h1>
             <p className="mb-8 max-w-2xl text-lg leading-relaxed text-muted-foreground lg:mx-0">
-              Normal users can register or submit consulting enquiries from the main website, while admins can directly review every request at the <code>/admin</code> route.
+              Submit consulting enquiries, register profiles, and connect with a team built to support hiring, training, and workforce growth across industries.
             </p>
             <div className="mb-8 flex flex-wrap gap-3 justify-center lg:justify-start">
-              {["Public Website", "Direct Admin", "Live Dashboard", "Backend Data"].map((badge) => (
+              {["Consulting", "Counseling", "Hiring Support", "Trained Employees"].map((badge) => (
                 <span key={badge} className="rounded-full border border-primary/30 bg-gradient-to-r from-primary/20 to-accent/20 px-4 py-2 text-sm font-medium text-foreground">{badge}</span>
               ))}
             </div>
@@ -78,12 +78,6 @@ export function Hero() {
               <Button asChild size="lg" variant="outline" className="border-border/50 hover:bg-secondary/50">
                 <Link href="/register">Register</Link>
               </Button>
-              <Button asChild size="lg" variant="outline" className="border-border/50 hover:bg-secondary/50">
-                <Link href="/admin">
-                  <Shield className="mr-2 h-4 w-4" />
-                  Admin
-                </Link>
-              </Button>
             </div>
           </motion.div>
 
@@ -96,12 +90,12 @@ export function Hero() {
                       <Building2 className="h-5 w-5 text-primary-foreground" />
                     </div>
                     <div>
-                      <div className="font-semibold text-foreground">Talenty Admin Dashboard</div>
-                      <div className="text-xs text-muted-foreground">Enquiries, users, and status tracking</div>
+                      <div className="font-semibold text-foreground">Talenty Consulting</div>
+                      <div className="text-xs text-muted-foreground">Requirement capture and staffing support</div>
                     </div>
                   </div>
                   <div className="space-y-3">
-                    {[{ label: "Pending Enquiries", value: "18" }, { label: "Registered Users", value: "46" }, { label: "Completed Requests", value: "12" }].map((item) => (
+                    {[{ label: "Active Hiring Plans", value: "18" }, { label: "Industry Coverage", value: "All" }, { label: "Training Batches", value: "12" }].map((item) => (
                       <div key={item.label} className="flex items-center justify-between rounded-2xl bg-secondary/30 p-3">
                         <span className="text-sm text-muted-foreground">{item.label}</span>
                         <span className="font-semibold text-foreground">{item.value}</span>
@@ -125,10 +119,10 @@ export function Hero() {
               <FloatingCard mouseX={mouseX} mouseY={mouseY} delay={0.6} className="absolute bottom-16 left-4">
                 <div className="glass-card rounded-2xl p-4 shadow-xl animate-float-delayed">
                   <div className="flex items-center gap-3">
-                    <div className="flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-blue-400 to-indigo-500"><Shield className="h-6 w-6 text-foreground" /></div>
+                    <div className="flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-blue-400 to-indigo-500"><Building2 className="h-6 w-6 text-foreground" /></div>
                     <div>
-                      <div className="text-sm font-medium text-foreground">Direct Admin Route</div>
-                      <div className="text-xs text-muted-foreground">Type /admin to access the dashboard</div>
+                      <div className="text-sm font-medium text-foreground">Business Support</div>
+                      <div className="text-xs text-muted-foreground">From consultation to staffing execution</div>
                     </div>
                   </div>
                 </div>
@@ -140,4 +134,3 @@ export function Hero() {
     </section>
   )
 }
-

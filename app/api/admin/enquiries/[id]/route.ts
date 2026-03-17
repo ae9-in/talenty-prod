@@ -1,6 +1,8 @@
-﻿import { NextResponse } from "next/server"
+﻿import { cookies } from "next/headers"
+import { NextResponse } from "next/server"
 import { z } from "zod"
 
+import { ADMIN_SESSION_COOKIE, verifyAdminSessionToken } from "@/backend/auth"
 import { db, initializeDatabase } from "@/backend/db"
 
 const updateSchema = z.object({
@@ -8,7 +10,18 @@ const updateSchema = z.object({
   adminNotes: z.string().trim().optional(),
 })
 
+async function requireAdmin() {
+  const cookieStore = await cookies()
+  return verifyAdminSessionToken(cookieStore.get(ADMIN_SESSION_COOKIE)?.value)
+}
+
 export async function GET(_: Request, context: { params: Promise<{ id: string }> }) {
+  const session = await requireAdmin()
+
+  if (!session) {
+    return NextResponse.json({ success: false, message: "Unauthorized." }, { status: 401 })
+  }
+
   await initializeDatabase()
   const { id } = await context.params
 
@@ -44,6 +57,12 @@ export async function GET(_: Request, context: { params: Promise<{ id: string }>
 }
 
 export async function PATCH(request: Request, context: { params: Promise<{ id: string }> }) {
+  const session = await requireAdmin()
+
+  if (!session) {
+    return NextResponse.json({ success: false, message: "Unauthorized." }, { status: 401 })
+  }
+
   try {
     await initializeDatabase()
     const body = await request.json()
@@ -101,6 +120,12 @@ export async function PATCH(request: Request, context: { params: Promise<{ id: s
 }
 
 export async function DELETE(_: Request, context: { params: Promise<{ id: string }> }) {
+  const session = await requireAdmin()
+
+  if (!session) {
+    return NextResponse.json({ success: false, message: "Unauthorized." }, { status: 401 })
+  }
+
   await initializeDatabase()
   const { id } = await context.params
 
@@ -112,4 +137,3 @@ export async function DELETE(_: Request, context: { params: Promise<{ id: string
 
   return NextResponse.json({ success: true })
 }
-

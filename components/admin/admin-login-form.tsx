@@ -9,7 +9,7 @@ import { Input } from "@/components/ui/input"
 
 export function AdminLoginForm() {
   const router = useRouter()
-  const [email, setEmail] = useState("")
+  const [email, setEmail] = useState("connect@talentyconsulting.in")
   const [password, setPassword] = useState("")
   const [showPassword, setShowPassword] = useState(false)
   const [isSubmitting, setIsSubmitting] = useState(false)
@@ -33,7 +33,7 @@ export function AdminLoginForm() {
         throw new Error(result.message || "Invalid admin credentials.")
       }
 
-      router.push(result.redirectTo || "/admin/dashboard")
+      router.push(result.redirectTo || "/admin")
       router.refresh()
     } catch (error) {
       setErrorMessage(error instanceof Error ? error.message : "Something went wrong.")
@@ -50,7 +50,7 @@ export function AdminLoginForm() {
       <div>
         <h2 className="text-3xl font-bold text-foreground">Admin Login</h2>
         <p className="mt-2 text-sm text-muted-foreground">
-          Sign in to manage enquiries, counseling requests, registered users, and admin workflow updates.
+          Sign in to access the Talenty admin dashboard.
         </p>
       </div>
 
@@ -66,7 +66,7 @@ export function AdminLoginForm() {
         <label className="text-sm font-medium text-foreground">Password</label>
         <div className="relative">
           <Lock className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
-          <Input className="pl-10 pr-12 bg-secondary/40 border-border/50" type={showPassword ? "text" : "password"} value={password} onChange={(event) => setPassword(event.target.value)} required />
+          <Input className="pl-10 pr-12 bg-secondary/40 border-border/50" type={showPassword ? "text" : "password"} value={password} onChange={(event) => setPassword(event.target.value)} placeholder="password123" required />
           <button type="button" onClick={() => setShowPassword((current) => !current)} className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground">
             {showPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
           </button>
@@ -76,9 +76,8 @@ export function AdminLoginForm() {
       {errorMessage ? <p className="text-sm text-red-400">{errorMessage}</p> : null}
 
       <Button type="submit" disabled={isSubmitting} className="w-full bg-gradient-to-r from-primary to-accent text-primary-foreground border-0 hover:opacity-90">
-        {isSubmitting ? "Signing In..." : "Login to Dashboard"}
+        {isSubmitting ? "Signing In..." : "Login"}
       </Button>
     </form>
   )
 }
-

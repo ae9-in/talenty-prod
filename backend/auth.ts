@@ -74,4 +74,3 @@ export function verifyAdminSessionToken(token?: string | null) {
     return null
   }
 }
-

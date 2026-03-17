@@ -32,7 +32,7 @@ export async function POST(request: Request) {
     }
 
     const token = createAdminSessionToken({ email: admin.email, role: admin.role })
-    const response = NextResponse.json({ success: true, redirectTo: "/admin/dashboard" })
+    const response = NextResponse.json({ success: true, redirectTo: "/admin" })
 
     response.cookies.set({
       name: ADMIN_SESSION_COOKIE,
@@ -60,4 +60,3 @@ export async function POST(request: Request) {
     )
   }
 }
-

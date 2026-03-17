@@ -1,8 +1,17 @@
-﻿import { NextResponse } from "next/server"
+﻿import { cookies } from "next/headers"
+import { NextResponse } from "next/server"
 
+import { ADMIN_SESSION_COOKIE, verifyAdminSessionToken } from "@/backend/auth"
 import { db, initializeDatabase } from "@/backend/db"
 
 export async function GET() {
+  const cookieStore = await cookies()
+  const session = verifyAdminSessionToken(cookieStore.get(ADMIN_SESSION_COOKIE)?.value)
+
+  if (!session) {
+    return NextResponse.json({ success: false, message: "Unauthorized." }, { status: 401 })
+  }
+
   await initializeDatabase()
 
   const result = await db.query(
@@ -22,4 +31,3 @@ export async function GET() {
 
   return NextResponse.json({ success: true, users: result.rows })
 }
-

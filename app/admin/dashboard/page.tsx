@@ -3,4 +3,3 @@
 export default function AdminDashboardPage() {
   redirect("/admin")
 }
-

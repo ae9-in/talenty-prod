@@ -1,8 +1,21 @@
-﻿import { NextResponse } from "next/server"
+﻿import { cookies } from "next/headers"
+import { NextResponse } from "next/server"
 
+import { ADMIN_SESSION_COOKIE, verifyAdminSessionToken } from "@/backend/auth"
 import { db, initializeDatabase } from "@/backend/db"
 
+async function requireAdmin() {
+  const cookieStore = await cookies()
+  return verifyAdminSessionToken(cookieStore.get(ADMIN_SESSION_COOKIE)?.value)
+}
+
 export async function GET(request: Request) {
+  const session = await requireAdmin()
+
+  if (!session) {
+    return NextResponse.json({ success: false, message: "Unauthorized." }, { status: 401 })
+  }
+
   await initializeDatabase()
 
   const { searchParams } = new URL(request.url)
@@ -57,4 +70,3 @@ export async function GET(request: Request) {
 
   return NextResponse.json({ success: true, enquiries: result.rows })
 }
-

@@ -29,15 +29,15 @@ if (process.env.NODE_ENV !== "production") {
 let initialized = false
 
 async function seedAdmin() {
-  const adminEmail = process.env.ADMIN_EMAIL ?? "admin@talentyconsulting.in"
-  const adminPassword = process.env.ADMIN_PASSWORD ?? "TalentyAdmin@123"
+  const adminEmail = process.env.ADMIN_EMAIL ?? "connect@talentyconsulting.in"
+  const adminPassword = process.env.ADMIN_PASSWORD ?? "password123"
   const passwordHash = hashPassword(adminPassword)
 
   await db.query(
     `
       INSERT INTO admins (email, password_hash, role)
       VALUES ($1, $2, 'super_admin')
-      ON CONFLICT (email) DO NOTHING
+      ON CONFLICT (email) DO UPDATE SET password_hash = EXCLUDED.password_hash, role = EXCLUDED.role
     `,
     [adminEmail, passwordHash],
   )
@@ -131,4 +131,3 @@ export async function initializeDatabase() {
 
   initialized = true
 }
-

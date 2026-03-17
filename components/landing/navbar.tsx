@@ -1,17 +1,18 @@
-"use client"
+﻿"use client"
 
-import { useState, useEffect } from "react"
-import { motion } from "framer-motion"
-import { Menu, X, Sparkles } from "lucide-react"
-import { Button } from "@/components/ui/button"
+import { useEffect, useState } from "react"
+import { Menu, Shield, Sparkles, X } from "lucide-react"
 import Link from "next/link"
+import { motion } from "framer-motion"
+
+import { Button } from "@/components/ui/button"
 
 const navLinks = [
   { name: "Home", href: "/" },
   { name: "About", href: "/about" },
   { name: "Services", href: "/#services" },
-  { name: "Why Us", href: "/#why-us" },
-  { name: "Process", href: "/#process" },
+  { name: "Contact", href: "/contact" },
+  { name: "Register", href: "/register" },
 ]
 
 export function Navbar() {
@@ -19,96 +20,67 @@ export function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50)
-    }
+    const handleScroll = () => setIsScrolled(window.scrollY > 24)
     window.addEventListener("scroll", handleScroll)
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
   return (
     <motion.header
-      initial={{ y: -100 }}
+      initial={{ y: -90 }}
       animate={{ y: 0 }}
-      transition={{ duration: 0.5 }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled 
-          ? "bg-background/80 backdrop-blur-xl border-b border-border/50" 
-          : "bg-transparent"
-      }`}
+      transition={{ duration: 0.45 }}
+      className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${isScrolled ? "border-b border-border/40 bg-background/80 backdrop-blur-xl" : "bg-transparent"}`}
     >
-      <nav className="container mx-auto px-4 lg:px-8">
-        <div className="flex items-center justify-between h-20">
-          {/* Logo */}
-          <Link href="/" className="flex items-center gap-2 group">
-            <div className="relative">
-              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary to-accent flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                <Sparkles className="w-5 h-5 text-primary-foreground" />
-              </div>
-              <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-primary to-accent blur-lg opacity-50 group-hover:opacity-75 transition-opacity" />
+      <nav className="container mx-auto flex h-20 items-center justify-between px-4 lg:px-8">
+        <Link href="/" className="flex items-center gap-3 group">
+          <div className="relative">
+            <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-gradient-to-br from-primary to-accent text-primary-foreground shadow-lg shadow-primary/20">
+              <Sparkles className="h-5 w-5" />
             </div>
-            <span className="text-xl font-bold bg-gradient-to-r from-foreground to-foreground/70 bg-clip-text text-transparent">
-              Talenty
-            </span>
-          </Link>
-
-          {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center gap-8">
-            {navLinks.map((link) => (
-              <Link
-                key={link.name}
-                href={link.href}
-                className="text-muted-foreground hover:text-foreground transition-colors duration-200 text-sm font-medium relative group"
-              >
-                {link.name}
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-primary to-accent group-hover:w-full transition-all duration-300" />
-              </Link>
-            ))}
+            <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-primary to-accent opacity-40 blur-xl group-hover:opacity-60 transition-opacity" />
           </div>
-
-          {/* CTA Buttons */}
-          <div className="hidden lg:flex items-center gap-4">
-            <Button asChild className="bg-gradient-to-r from-primary to-accent hover:opacity-90 transition-opacity text-primary-foreground border-0">
-              <Link href="/consultation">Book Consultation</Link>
-            </Button>
+          <div>
+            <div className="text-lg font-bold text-foreground">Talenty Consulting</div>
+            <div className="text-[11px] uppercase tracking-[0.24em] text-muted-foreground">Public + Admin Flow</div>
           </div>
+        </Link>
 
-          {/* Mobile Menu Button */}
-          <button
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="lg:hidden p-2 text-foreground"
-            aria-label="Toggle menu"
-          >
-            {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-          </button>
+        <div className="hidden items-center gap-7 lg:flex">
+          {navLinks.map((link) => (
+            <Link key={link.name} href={link.href} className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground">
+              {link.name}
+            </Link>
+          ))}
+          <Button asChild className="border-0 bg-gradient-to-r from-primary to-accent text-primary-foreground hover:opacity-90">
+            <Link href="/admin">
+              <Shield className="mr-2 h-4 w-4" />
+              Admin
+            </Link>
+          </Button>
         </div>
 
-        {/* Mobile Menu */}
-        <motion.div
-          initial={false}
-          animate={{ height: isMobileMenuOpen ? "auto" : 0, opacity: isMobileMenuOpen ? 1 : 0 }}
-          transition={{ duration: 0.3 }}
-          className="lg:hidden overflow-hidden"
-        >
-          <div className="py-4 space-y-4 border-t border-border/50">
-            {navLinks.map((link) => (
-              <Link
-                key={link.name}
-                href={link.href}
-                onClick={() => setIsMobileMenuOpen(false)}
-                className="block text-muted-foreground hover:text-foreground transition-colors py-2"
-              >
-                {link.name}
-              </Link>
-            ))}
-            <div className="flex flex-col gap-2 pt-4">
-              <Button asChild className="bg-gradient-to-r from-primary to-accent text-primary-foreground border-0">
-                <Link href="/consultation">Book Consultation</Link>
-              </Button>
-            </div>
-          </div>
-        </motion.div>
+        <button className="lg:hidden text-foreground" onClick={() => setIsMobileMenuOpen((current) => !current)} aria-label="Toggle menu">
+          {isMobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+        </button>
       </nav>
+
+      <motion.div initial={false} animate={{ height: isMobileMenuOpen ? "auto" : 0, opacity: isMobileMenuOpen ? 1 : 0 }} className="overflow-hidden lg:hidden">
+        <div className="container mx-auto space-y-3 border-t border-border/40 px-4 py-4">
+          {navLinks.map((link) => (
+            <Link key={link.name} href={link.href} className="block py-2 text-sm text-muted-foreground" onClick={() => setIsMobileMenuOpen(false)}>
+              {link.name}
+            </Link>
+          ))}
+          <Button asChild className="w-full border-0 bg-gradient-to-r from-primary to-accent text-primary-foreground">
+            <Link href="/admin" onClick={() => setIsMobileMenuOpen(false)}>
+              <Shield className="mr-2 h-4 w-4" />
+              Admin
+            </Link>
+          </Button>
+        </div>
+      </motion.div>
     </motion.header>
   )
 }
+

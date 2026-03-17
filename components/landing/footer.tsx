@@ -1,28 +1,22 @@
-"use client"
+﻿"use client"
 
 import { motion } from "framer-motion"
-import { Sparkles, Mail, Phone, MapPin, Linkedin, Twitter, Facebook, Instagram } from "lucide-react"
+import { Sparkles, Mail, Phone, MapPin, Linkedin, Twitter, Facebook, Instagram, Shield } from "lucide-react"
 
 const footerLinks = {
   services: [
-    { name: "Trained Employee Placement", href: "#services" },
-    { name: "Recruitment Consulting", href: "#services" },
-    { name: "Talent Screening", href: "#services" },
-    { name: "Workforce Support", href: "#services" },
+    { name: "Recruitment Consulting", href: "/#services" },
+    { name: "Counseling Support", href: "/contact" },
+    { name: "Hiring Workflows", href: "/#process" },
+    { name: "Talent Screening", href: "/#services" },
   ],
   company: [
+    { name: "Home", href: "/" },
     { name: "About Us", href: "/about" },
-    { name: "Our Process", href: "/#process" },
-    { name: "Book Consultation", href: "/consultation" },
-    { name: "Bhive Platinum", href: "/consultation#bhive-platinum" },
+    { name: "Contact", href: "/contact" },
+    { name: "Register", href: "/register" },
+    { name: "Admin", href: "/admin" },
   ],
-  industries: [
-    { name: "IT & Software", href: "#" },
-    { name: "Banking & Finance", href: "#" },
-    { name: "Healthcare", href: "#" },
-    { name: "Manufacturing", href: "#" },
-    { name: "All Industries", href: "#" },
-  ]
 }
 
 const socialLinks = [
@@ -34,149 +28,66 @@ const socialLinks = [
 
 export function Footer() {
   return (
-    <footer className="relative pt-20 pb-8 overflow-hidden border-t border-border/30">
-      {/* Background */}
+    <footer className="relative overflow-hidden border-t border-border/30 pt-20 pb-8">
       <div className="absolute inset-0">
-        <div className="absolute bottom-0 left-1/4 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
-        <div className="absolute bottom-0 right-1/4 w-80 h-80 bg-accent/5 rounded-full blur-3xl" />
+        <div className="absolute bottom-0 left-1/4 h-96 w-96 rounded-full bg-primary/5 blur-3xl" />
+        <div className="absolute bottom-0 right-1/4 h-80 w-80 rounded-full bg-accent/5 blur-3xl" />
       </div>
-
-      <div className="container mx-auto px-4 lg:px-8 relative z-10">
-        <div className="grid lg:grid-cols-5 gap-12 mb-16">
-          {/* Brand Column */}
+      <div className="container relative z-10 mx-auto px-4 lg:px-8">
+        <div className="mb-16 grid gap-12 lg:grid-cols-5">
           <div className="lg:col-span-2">
-            <motion.a
-              href="#"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="inline-flex items-center gap-2 mb-6 group"
-            >
+            <motion.a href="/" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="group mb-6 inline-flex items-center gap-3">
               <div className="relative">
-                <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary to-accent flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                  <Sparkles className="w-5 h-5 text-primary-foreground" />
-                </div>
-                <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-primary to-accent blur-lg opacity-50" />
+                <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-gradient-to-br from-primary to-accent text-primary-foreground"><Sparkles className="h-5 w-5" /></div>
+                <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-primary to-accent opacity-40 blur-lg" />
               </div>
-              <span className="text-xl font-bold text-foreground">
-                Talenty Consulting
-              </span>
+              <div>
+                <div className="text-xl font-bold text-foreground">Talenty Consulting</div>
+                <div className="text-xs uppercase tracking-[0.24em] text-muted-foreground">Public + Admin Experience</div>
+              </div>
             </motion.a>
-
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.1 }}
-              className="text-muted-foreground mb-6 max-w-sm leading-relaxed"
-            >
-              Helping companies hire trained, job-ready employees. Your trusted partner in building exceptional teams.
+            <motion.p initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }} className="mb-6 max-w-sm leading-relaxed text-muted-foreground">
+              A complete counseling, consulting, and recruitment website where public users submit requests and admins manage everything from the direct <code>/admin</code> dashboard route.
             </motion.p>
-
-            {/* Contact Info */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.2 }}
-              className="space-y-3"
-            >
-              <a href="mailto:connect@talentyconsulting.in" className="flex items-center gap-3 text-sm text-muted-foreground hover:text-foreground transition-colors">
-                <Mail className="w-4 h-4 text-primary" />
-                connect@talentyconsulting.in
-              </a>
-              <a href="tel:+918431119696" className="flex items-center gap-3 text-sm text-muted-foreground hover:text-foreground transition-colors">
-                <Phone className="w-4 h-4 text-primary" />
-                8431119696
-              </a>
-              <div className="flex items-center gap-3 text-sm text-muted-foreground">
-                <MapPin className="w-4 h-4 text-primary flex-shrink-0" />
-                Bhive Platinum, Church Street
-              </div>
+            <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.2 }} className="space-y-3">
+              <a href="mailto:connect@talentyconsulting.in" className="flex items-center gap-3 text-sm text-muted-foreground hover:text-foreground"><Mail className="h-4 w-4 text-primary" />connect@talentyconsulting.in</a>
+              <a href="tel:+918431119696" className="flex items-center gap-3 text-sm text-muted-foreground hover:text-foreground"><Phone className="h-4 w-4 text-primary" />8431119696</a>
+              <div className="flex items-center gap-3 text-sm text-muted-foreground"><MapPin className="h-4 w-4 text-primary" />Bhive Platinum, Church Street</div>
+              <a href="/admin" className="flex items-center gap-3 text-sm text-muted-foreground hover:text-foreground"><Shield className="h-4 w-4 text-primary" />Admin Dashboard</a>
             </motion.div>
           </div>
-
-          {/* Links Columns */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.2 }}
-          >
-            <h4 className="font-semibold text-foreground mb-4">Services</h4>
+          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.2 }}>
+            <h4 className="mb-4 font-semibold text-foreground">Services</h4>
             <ul className="space-y-3">
               {footerLinks.services.map((link) => (
-                <li key={link.name}>
-                  <a href={link.href} className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-                    {link.name}
-                  </a>
-                </li>
+                <li key={link.name}><a href={link.href} className="text-sm text-muted-foreground hover:text-foreground">{link.name}</a></li>
               ))}
             </ul>
           </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.3 }}
-          >
-            <h4 className="font-semibold text-foreground mb-4">Company</h4>
+          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.3 }}>
+            <h4 className="mb-4 font-semibold text-foreground">Navigation</h4>
             <ul className="space-y-3">
               {footerLinks.company.map((link) => (
-                <li key={link.name}>
-                  <a href={link.href} className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-                    {link.name}
-                  </a>
-                </li>
+                <li key={link.name}><a href={link.href} className="text-sm text-muted-foreground hover:text-foreground">{link.name}</a></li>
               ))}
             </ul>
           </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.4 }}
-          >
-            <h4 className="font-semibold text-foreground mb-4">Industries We Serve</h4>
-            <ul className="space-y-3">
-              {footerLinks.industries.map((link) => (
-                <li key={link.name}>
-                  <a href={link.href} className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-                    {link.name}
-                  </a>
-                </li>
-              ))}
+          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.4 }}>
+            <h4 className="mb-4 font-semibold text-foreground">Flow Coverage</h4>
+            <ul className="space-y-3 text-sm text-muted-foreground">
+              <li>Public landing page</li>
+              <li>Direct /admin access</li>
+              <li>Backend enquiry tracking</li>
+              <li>Registered users management</li>
             </ul>
-            <p className="text-xs text-muted-foreground mt-4 italic">
-              We place candidates across all roles and industries
-            </p>
           </motion.div>
         </div>
-
-        {/* Bottom Bar */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.5 }}
-          className="pt-8 border-t border-border/30 flex flex-col md:flex-row items-center justify-between gap-4"
-        >
-          <p className="text-sm text-muted-foreground">
-            © {new Date().getFullYear()} Talenty Consulting. All rights reserved.
-          </p>
-
-          {/* Social Links */}
+        <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ delay: 0.5 }} className="flex flex-col items-center justify-between gap-4 border-t border-border/30 pt-8 md:flex-row">
+          <p className="text-sm text-muted-foreground">© {new Date().getFullYear()} Talenty Consulting. All rights reserved.</p>
           <div className="flex items-center gap-4">
             {socialLinks.map((social) => (
-              <a
-                key={social.label}
-                href={social.href}
-                aria-label={social.label}
-                className="w-10 h-10 rounded-full bg-secondary/50 flex items-center justify-center text-muted-foreground hover:text-foreground hover:bg-primary/20 transition-all duration-300"
-              >
-                <social.icon className="w-4 h-4" />
+              <a key={social.label} href={social.href} aria-label={social.label} className="flex h-10 w-10 items-center justify-center rounded-full bg-secondary/50 text-muted-foreground hover:bg-primary/20 hover:text-foreground">
+                <social.icon className="h-4 w-4" />
               </a>
             ))}
           </div>
@@ -185,3 +96,4 @@ export function Footer() {
     </footer>
   )
 }
+

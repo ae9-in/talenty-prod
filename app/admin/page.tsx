@@ -23,7 +23,7 @@ export default async function AdminPage() {
             <div className="mb-6 text-center">
               <p className="inline-flex rounded-full border border-primary/20 bg-primary/10 px-4 py-2 text-xs uppercase tracking-[0.28em] text-primary">Talenty Admin</p>
               <h1 className="mt-6 text-4xl font-bold text-balance">Login Required</h1>
-              <p className="mt-3 text-lg text-muted-foreground">Access to <code>/admin</code> requires admin login. Use the configured email and password to continue.</p>
+              <p className="mt-3 text-lg text-muted-foreground">Access to <code>/admin</code> requires admin login.</p>
             </div>
             <div className="rounded-[2rem] border border-border/40 bg-white/5 p-3 backdrop-blur-2xl">
               <AdminLoginForm />

@@ -9,7 +9,7 @@ import { Input } from "@/components/ui/input"
 
 export function AdminLoginForm() {
   const router = useRouter()
-  const [email, setEmail] = useState("connect@talentyconsulting.in")
+  const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   const [showPassword, setShowPassword] = useState(false)
   const [isSubmitting, setIsSubmitting] = useState(false)
@@ -66,7 +66,7 @@ export function AdminLoginForm() {
         <label className="text-sm font-medium text-foreground">Password</label>
         <div className="relative">
           <Lock className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
-          <Input className="pl-10 pr-12 bg-secondary/40 border-border/50" type={showPassword ? "text" : "password"} value={password} onChange={(event) => setPassword(event.target.value)} placeholder="password123" required />
+          <Input className="pl-10 pr-12 bg-secondary/40 border-border/50" type={showPassword ? "text" : "password"} value={password} onChange={(event) => setPassword(event.target.value)} required />
           <button type="button" onClick={() => setShowPassword((current) => !current)} className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground">
             {showPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
           </button>

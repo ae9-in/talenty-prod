@@ -2,7 +2,6 @@
 import { Hero } from "@/components/landing/hero"
 import { About } from "@/components/landing/about"
 import { Services } from "@/components/landing/services"
-import { WhyUs } from "@/components/landing/why-us"
 import { Process } from "@/components/landing/process"
 import { Footer } from "@/components/landing/footer"
 import { EnquiryForm } from "@/components/public/enquiry-form"
@@ -14,7 +13,6 @@ export default function Home() {
       <Hero />
       <About />
       <Services />
-      <WhyUs />
       <Process />
       <section id="contact" className="relative py-24 overflow-hidden">
         <div className="absolute inset-0">

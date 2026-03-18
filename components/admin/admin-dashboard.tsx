@@ -145,7 +145,7 @@ export function AdminDashboard({ initialEnquiries, initialUsers }: DashboardProp
   return (
     <div className="min-h-screen bg-background text-foreground">
       <div className="grid min-h-screen lg:grid-cols-[290px_1fr]">
-        <aside className="border-r border-border/40 bg-black/20 p-6 backdrop-blur-xl">
+        <aside className="border-r border-border/40 bg-white/70 p-6 backdrop-blur-xl">
           <div className="mb-10">
             <div className="inline-flex rounded-2xl bg-gradient-to-br from-primary to-accent p-3"><Shield className="h-6 w-6 text-primary-foreground" /></div>
             <h1 className="mt-4 text-2xl font-bold">Talenty Admin</h1>
@@ -301,7 +301,7 @@ export function AdminDashboard({ initialEnquiries, initialUsers }: DashboardProp
       </div>
 
       <Dialog open={Boolean(selectedEnquiry)} onOpenChange={(open) => !open && setSelectedEnquiry(null)}>
-        <DialogContent className="max-w-3xl border-border/40 bg-[#0d1020] text-foreground">
+        <DialogContent className="max-w-3xl border-border/40 bg-white text-foreground shadow-2xl">
           {selectedEnquiry ? (
             <>
               <DialogHeader>
@@ -365,3 +365,4 @@ export function AdminDashboard({ initialEnquiries, initialUsers }: DashboardProp
     </div>
   )
 }
+

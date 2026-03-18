@@ -5,24 +5,23 @@ import { Sparkles, Mail, Phone, MapPin, Linkedin, Twitter, Facebook, Instagram }
 
 const footerLinks = {
   services: [
-    { name: "Recruitment Consulting", href: "/#services" },
-    { name: "Counseling Support", href: "/contact" },
-    { name: "Hiring Workflows", href: "/#process" },
-    { name: "Talent Screening", href: "/#services" },
+    { name: 'Recruitment Consulting', href: '/#services' },
+    { name: 'Counseling Support', href: '/contact' },
+    { name: 'Hiring Workflows', href: '/#process' },
+    { name: 'Talent Screening', href: '/#services' },
   ],
   company: [
-    { name: "Home", href: "/" },
-    { name: "About Us", href: "/about" },
-    { name: "Contact", href: "/contact" },
-    { name: "Register", href: "/register" },
+    { name: 'Home', href: '/' },
+    { name: 'About Us', href: '/about' },
+    { name: 'Contact', href: '/contact' },
   ],
 }
 
 const socialLinks = [
-  { icon: Linkedin, href: "#", label: "LinkedIn" },
-  { icon: Twitter, href: "#", label: "Twitter" },
-  { icon: Facebook, href: "#", label: "Facebook" },
-  { icon: Instagram, href: "#", label: "Instagram" },
+  { icon: Linkedin, href: '#', label: 'LinkedIn' },
+  { icon: Twitter, href: '#', label: 'Twitter' },
+  { icon: Facebook, href: '#', label: 'Facebook' },
+  { icon: Instagram, href: '#', label: 'Instagram' },
 ]
 
 export function Footer() {
@@ -76,7 +75,7 @@ export function Footer() {
               <li>Counseling and consultation</li>
               <li>Business hiring support</li>
               <li>Requirement collection</li>
-              <li>Registered profile management</li>
+              <li>Trained employee solutions</li>
             </ul>
           </motion.div>
         </div>

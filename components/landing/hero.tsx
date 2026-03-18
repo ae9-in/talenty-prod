@@ -61,10 +61,10 @@ export function Hero() {
               Premium counseling and hiring workflows for <span className="bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent">Talenty Consulting</span>
             </h1>
             <p className="mb-8 max-w-2xl text-lg leading-relaxed text-muted-foreground lg:mx-0">
-              Submit consulting enquiries, register profiles, and connect with a team built to support hiring, training, and workforce growth across industries.
+              Submit consulting enquiries and connect with a team built to support hiring, training, and workforce growth across industries.
             </p>
             <div className="mb-8 flex flex-wrap gap-3 justify-center lg:justify-start">
-              {["Consulting", "Counseling", "Hiring Support", "Trained Employees"].map((badge) => (
+              {['Consulting', 'Counseling', 'Hiring Support', 'Trained Employees'].map((badge) => (
                 <span key={badge} className="rounded-full border border-primary/30 bg-gradient-to-r from-primary/20 to-accent/20 px-4 py-2 text-sm font-medium text-foreground">{badge}</span>
               ))}
             </div>
@@ -74,9 +74,6 @@ export function Hero() {
                   Book Consultation
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>
-              </Button>
-              <Button asChild size="lg" variant="outline" className="border-border/50 hover:bg-secondary/50">
-                <Link href="/register">Register</Link>
               </Button>
             </div>
           </motion.div>
@@ -95,7 +92,7 @@ export function Hero() {
                     </div>
                   </div>
                   <div className="space-y-3">
-                    {[{ label: "Active Hiring Plans", value: "18" }, { label: "Industry Coverage", value: "All" }, { label: "Training Batches", value: "12" }].map((item) => (
+                    {[{ label: 'Active Hiring Plans', value: '18' }, { label: 'Industry Coverage', value: 'All' }, { label: 'Training Batches', value: '12' }].map((item) => (
                       <div key={item.label} className="flex items-center justify-between rounded-2xl bg-secondary/30 p-3">
                         <span className="text-sm text-muted-foreground">{item.label}</span>
                         <span className="font-semibold text-foreground">{item.value}</span>

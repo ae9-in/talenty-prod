@@ -1,195 +1,165 @@
-"use client"
-
-import { motion } from "framer-motion"
+import Link from "next/link"
 import { Navbar } from "@/components/landing/navbar"
 import { Footer } from "@/components/landing/footer"
-import { EnquiryForm } from "@/components/public/enquiry-form"
-import { 
-  Building2, 
-  MapPin, 
-  CheckCircle, 
-  ArrowRight, 
-  Users, 
-  ShieldCheck, 
-  Zap, 
-  TrendingUp 
-} from "lucide-react"
-import Link from "next/link"
+import { BreadcrumbSchema, PageFAQSchema, PageServiceSchema } from "@/components/landing/json-ld"
+import {
+  BookCtaLink,
+  InternalHubLinks,
+  MoneyPageCta,
+  MoneyPageFaq,
+  ProofSignals,
+} from "@/components/seo/money-page-sections"
+import { SITE_URL, VERIFIED_FACTS } from "@/lib/seo"
 
-const stats = [
-  { value: "40%", label: "Faster Sourcing Timeline" },
-  { value: "500+", label: "Placements in Bengaluru" },
-  { value: "95%", label: "First-Round Acceptance" },
-  { value: "92%", label: "Candidate Retention Rate" },
+const pageUrl = `${SITE_URL}/recruitment-consulting-bangalore`
+
+const faqs = [
+  {
+    question: "Looking for a hiring agency in Bangalore?",
+    answer:
+      "Talenty Consulting operates as a Bengaluru hiring agency and recruitment consulting partner — combining staffing, multi-stage vetting, and trained employee placement so you receive job-ready shortlists rather than unfiltered job-portal resumes.",
+  },
+  {
+    question: "What is the best way to choose a recruitment consultant in Bengaluru?",
+    answer:
+      "Evaluate process clarity (sourcing, screening, placement support), local market understanding, and whether they optimize for job-ready fit versus resume volume. Compare models on our hiring-agency guides and book a consultation to map your role.",
+  },
+  {
+    question: "How quickly can Talenty fill a role?",
+    answer: `For critical or pre-screened staffing requirements, we can place candidates in as little as ${VERIFIED_FACTS.fastHireBusinessDays} business days.`,
+  },
+  {
+    question: "Do you only hire for IT?",
+    answer: `No. We support ${VERIFIED_FACTS.industries.join(", ")}.`,
+  },
 ]
 
 export default function RecruitmentConsultingBangalore() {
   return (
     <main className="min-h-screen bg-background">
+      <BreadcrumbSchema
+        paths={[
+          { name: "Home", url: SITE_URL },
+          { name: "Recruitment Consulting Bengaluru", url: pageUrl },
+        ]}
+      />
+      <PageServiceSchema
+        name="Recruitment Consulting & Staffing Agency in Bengaluru"
+        description="Talenty Consulting helps Bengaluru companies hire through recruitment consulting, staffing, and pre-vetted talent shortlists."
+        url={pageUrl}
+      />
+      <PageFAQSchema faqs={faqs} />
+
       <Navbar />
 
-      {/* Hero Section */}
-      <section className="relative pt-32 pb-20 overflow-hidden">
+      <header className="relative overflow-hidden pb-16 pt-32">
         <div className="absolute inset-0">
-          <div className="absolute top-1/4 -left-20 w-96 h-96 bg-primary/20 rounded-full blur-3xl opacity-60 animate-float" />
-          <div className="absolute bottom-1/4 -right-20 w-80 h-80 bg-accent/20 rounded-full blur-3xl opacity-50 animate-float-delayed" />
+          <div className="absolute -left-20 top-1/4 h-96 w-96 rounded-full bg-primary/20 opacity-60 blur-3xl" />
           <div className="absolute inset-0 grid-bg opacity-30" />
         </div>
-
         <div className="container relative z-10 mx-auto px-4 lg:px-8">
-          <div className="max-w-4xl mx-auto text-center">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass mb-6"
-            >
-              <MapPin className="w-4 h-4 text-primary" />
-              <span className="text-sm text-muted-foreground">Bengaluru Recruitment & Staffing Hub</span>
-            </motion.div>
-
-            <motion.h1
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.1 }}
-              className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-balance leading-tight"
-            >
+          <div className="mx-auto max-w-4xl text-center">
+            <p className="mb-6 inline-flex rounded-full glass px-4 py-2 text-sm text-muted-foreground">
+              Bengaluru recruitment consulting & hiring agency
+            </p>
+            <h1 className="mb-6 text-balance text-4xl font-bold leading-tight md:text-5xl lg:text-6xl">
               Recruitment Consulting & Staffing Agency in{" "}
               <span className="bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent">
                 Bengaluru
               </span>
-            </motion.h1>
+            </h1>
+            <p className="mx-auto mb-8 max-w-3xl text-pretty text-lg text-muted-foreground md:text-xl">
+              Talenty Consulting is a Bengaluru-based recruitment consulting and hiring agency that helps
+              startups, SMEs, and enterprises hire trained, job-ready talent through sourcing, multi-stage
+              screening, and placement support — not raw resume dumps from job portals.
+            </p>
+            <BookCtaLink href="#contact" label="Start Hiring in Bengaluru" />
+            <InternalHubLinks
+              links={[
+                { href: "/trained-employee-placement", label: "Trained Placement" },
+                { href: "/it-staffing-bangalore", label: "IT Staffing" },
+                { href: "/talent-screening-process", label: "Vetting Process" },
+                { href: "/blog/how-to-choose-hiring-agency-bangalore", label: "Hiring Agency Guide" },
+              ]}
+            />
+          </div>
+        </div>
+      </header>
 
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2 }}
-              className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed text-pretty mb-8"
-            >
-              Talenty Consulting is your premium recruitment partner in Bengaluru. Located on Church Street, we help startups, SMEs, and enterprises hire trained, job-ready talent across IT, Finance, Retail, and Operations.
-            </motion.p>
+      <ProofSignals />
 
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.3 }}
-              className="flex justify-center"
-            >
-              <Link
-                href="#contact"
-                className="inline-flex items-center justify-center rounded-xl bg-gradient-to-r from-primary to-accent px-6 py-3 font-semibold text-primary-foreground hover:opacity-90 transition-opacity gap-2"
-              >
-                Start Hiring in Bengaluru
-                <ArrowRight className="w-4 h-4" />
+      <section id="who" aria-labelledby="who-heading" className="py-20">
+        <div className="container mx-auto max-w-4xl px-4 lg:px-8">
+          <h2 id="who-heading" className="mb-6 text-3xl font-bold">
+            Who we help in Bengaluru
+          </h2>
+          <p className="text-muted-foreground leading-relaxed">
+            Founders, CHROs, and hiring managers who need a reliable staffing and recruitment partner in
+            Bangalore — including companies comparing a traditional hiring agency, an in-house HR team, or{" "}
+            <Link href="/trained-employee-placement" className="text-primary hover:underline">
+              trained employee placement
+            </Link>
+            .
+          </p>
+        </div>
+      </section>
+
+      <section id="process" aria-labelledby="process-heading" className="bg-secondary/10 py-20">
+        <div className="container mx-auto max-w-4xl px-4 lg:px-8">
+          <h2 id="process-heading" className="mb-6 text-3xl font-bold">
+            Our recruitment consulting process
+          </h2>
+          <ol className="list-decimal space-y-4 pl-6 text-muted-foreground">
+            <li>
+              <strong className="text-foreground">Understand the role</strong> — business context, skills,
+              and culture fit.
+            </li>
+            <li>
+              <strong className="text-foreground">Source</strong> — targeted outreach beyond job boards.
+            </li>
+            <li>
+              <strong className="text-foreground">Vet</strong> —{" "}
+              <Link href="/talent-screening-process" className="text-primary hover:underline">
+                multi-stage talent screening
               </Link>
-            </motion.div>
-          </div>
+              .
+            </li>
+            <li>
+              <strong className="text-foreground">Place</strong> — shortlist of job-ready candidates.
+            </li>
+            <li>
+              <strong className="text-foreground">Support</strong> — {VERIFIED_FACTS.supportWindowDays}-day
+              post-placement workforce support.
+            </li>
+          </ol>
         </div>
       </section>
 
-      {/* Stats Section */}
-      <section className="py-12 border-y border-border/30 bg-secondary/10">
-        <div className="container mx-auto px-4 lg:px-8">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
-            {stats.map((stat, i) => (
-              <div key={i} className="text-center p-4">
-                <div className="text-3xl md:text-4xl font-bold text-foreground mb-1">
-                  {stat.value}
-                </div>
-                <div className="text-sm text-muted-foreground">{stat.label}</div>
-              </div>
-            ))}
-          </div>
+      <section id="why" aria-labelledby="why-heading" className="py-20">
+        <div className="container mx-auto max-w-4xl px-4 lg:px-8">
+          <h2 id="why-heading" className="mb-6 text-3xl font-bold">
+            Why partner with Talenty as your Bengaluru hiring agency
+          </h2>
+          <ul className="list-disc space-y-3 pl-6 text-muted-foreground">
+            <li>Local Church Street presence with pan-India hiring support</li>
+            <li>Pre-screened shortlists instead of high-volume, low-signal portals</li>
+            <li>
+              Optional{" "}
+              <Link href="/it-staffing-bangalore" className="text-primary hover:underline">
+                IT staffing
+              </Link>{" "}
+              for tech teams in Whitefield, ORR, Koramangala, and Electronic City corridors
+            </li>
+            <li>Transparent next steps via consultation — custom proposals, no invented fee claims</li>
+          </ul>
         </div>
       </section>
 
-      {/* Key Sourcing Capabilities */}
-      <section className="py-20">
-        <div className="container mx-auto px-4 lg:px-8">
-          <div className="text-center max-w-2xl mx-auto mb-16">
-            <h2 className="text-3xl font-bold">Why Partner with Talenty in Bengaluru?</h2>
-            <p className="mt-4 text-muted-foreground">We understand the unique dynamics of the Bangalore hiring landscape and provide structured workflows to secure top performers.</p>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-8">
-            <div className="glass-card rounded-2xl p-8 border border-border/40 hover:border-primary/30 transition-all">
-              <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-6">
-                <Building2 className="w-6 h-6 text-primary" />
-              </div>
-              <h3 className="text-xl font-bold mb-3">Local Market Insights</h3>
-              <p className="text-muted-foreground text-sm leading-relaxed">
-                Our Bengaluru team is active in tech hubs, coworking spaces, and talent communities. We leverage real-time salary benchmarking and candidate demand trends.
-              </p>
-            </div>
-
-            <div className="glass-card rounded-2xl p-8 border border-border/40 hover:border-primary/30 transition-all">
-              <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-6">
-                <ShieldCheck className="w-6 h-6 text-primary" />
-              </div>
-              <h3 className="text-xl font-bold mb-3">Pre-Screened Talent</h3>
-              <p className="text-muted-foreground text-sm leading-relaxed">
-                Every candidate is evaluated through cognitive aptitude tests, specialized tech tasks, and in-depth HR interviews, matching your requirements.
-              </p>
-            </div>
-
-            <div className="glass-card rounded-2xl p-8 border border-border/40 hover:border-primary/30 transition-all">
-              <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-6">
-                <Zap className="w-6 h-6 text-primary" />
-              </div>
-              <h3 className="text-xl font-bold mb-3">Scalable Staffing</h3>
-              <p className="text-muted-foreground text-sm leading-relaxed">
-                Whether you need to scale up your tech team with 20 developers or hire a key HR Director, we provide flexible, project-based or permanent solutions.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Local Office Contact Flow */}
-      <section id="contact" className="py-20 border-t border-border/30 relative">
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-primary/5 to-transparent" />
-        <div className="container relative z-10 mx-auto px-4 lg:px-8">
-          <div className="grid gap-12 lg:grid-cols-[1.15fr_0.85fr]">
-            <div>
-              <h2 className="text-3xl font-bold mb-4">Book a Bengaluru Hiring Audit</h2>
-              <p className="text-muted-foreground mb-8">
-                Submit your hiring requirement or schedule an appointment to meet our team at Bhive Platinum, Church Street, Bengaluru.
-              </p>
-              <EnquiryForm buttonLabel="Submit Hiring Requirements" />
-            </div>
-
-            <div className="space-y-6">
-              <div className="rounded-3xl border border-border/40 bg-white/5 p-8 backdrop-blur-xl">
-                <h3 className="text-2xl font-bold mb-4">Talenty Bengaluru Office</h3>
-                <p className="text-muted-foreground mb-6">
-                  Bhive Platinum, Church Street, Bengaluru, Karnataka 560001
-                </p>
-                <div className="space-y-3 text-sm text-muted-foreground">
-                  <div className="flex items-center gap-2">
-                    <span className="font-semibold text-foreground">Phone:</span> +91-8431119696
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <span className="font-semibold text-foreground">Email:</span> connect@talentyconsulting.in
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <span className="font-semibold text-foreground">Office Hours:</span> Mon - Sat, 9:00 AM - 6:00 PM
-                  </div>
-                </div>
-              </div>
-
-              <div className="overflow-hidden rounded-3xl border border-border/40 bg-white/5 backdrop-blur-xl h-[300px]">
-                <iframe 
-                  title="Talenty Bengaluru Church Street Office Map" 
-                  src="https://www.google.com/maps?q=Bhive%20Platinum%20Church%20Street%20Bengaluru&z=15&output=embed" 
-                  className="h-full w-full border-0 pointer-events-none md:pointer-events-auto" 
-                  loading="lazy" 
-                  referrerPolicy="no-referrer-when-downgrade" 
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
+      <MoneyPageFaq faqs={faqs.map((f) => ({ question: f.question, answer: f.answer }))} />
+      <MoneyPageCta
+        heading="Book a Bengaluru hiring consultation"
+        description="Share your requirements. Our team will recommend recruitment consulting, IT staffing, or trained placement based on the role."
+      />
       <Footer />
     </main>
   )

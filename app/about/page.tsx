@@ -1,300 +1,255 @@
-"use client"
-
-import { motion } from "framer-motion"
 import { Navbar } from "@/components/landing/navbar"
 import { Footer } from "@/components/landing/footer"
-import { 
-  Users, 
-  Target, 
-  Award, 
-  Heart, 
-  Briefcase, 
+import {
+  Users,
+  Target,
+  Award,
+  Heart,
+  Briefcase,
   TrendingUp,
   CheckCircle,
-  ArrowRight
+  ArrowRight,
 } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
+import { FOUNDING_YEAR } from "@/lib/seo"
+import { PageFAQSchema } from "@/components/landing/json-ld"
 
 const teamValues = [
   {
     icon: Target,
     title: "Mission-Driven",
-    description: "We are committed to bridging the gap between talented professionals and companies seeking excellence."
+    description:
+      "We bridge the gap between talented professionals and companies seeking excellence.",
   },
   {
     icon: Heart,
     title: "People First",
-    description: "We believe in building lasting relationships with both our clients and candidates."
+    description: "We build lasting relationships with clients and candidates.",
   },
   {
     icon: Award,
     title: "Quality Focused",
-    description: "We maintain the highest standards in candidate screening and placement processes."
+    description: "Highest standards in candidate screening and placement.",
   },
   {
     icon: TrendingUp,
     title: "Growth Oriented",
-    description: "We help businesses scale efficiently while nurturing career growth for professionals."
-  }
+    description: "We help businesses scale while nurturing career growth.",
+  },
 ]
 
 const milestones = [
-  { year: "2018", event: "Founded in Mumbai with a vision to transform hiring" },
-  { year: "2019", event: "Expanded to Bangalore and Delhi NCR regions" },
-  { year: "2021", event: "Crossed 250+ successful placements milestone" },
-  { year: "2023", event: "Launched specialized IT and tech recruitment division" },
-  { year: "2024", event: "Partnered with 100+ companies across India" },
+  { year: "01", event: "Launched with a vision to transform how companies hire talent" },
+  { year: "02", event: "Expanded recruitment coverage across Bengaluru and major Indian metros" },
+  { year: "03", event: "Built multi-stage screening for job-ready shortlists" },
+  { year: "04", event: "Launched specialized IT and tech recruitment practice" },
+  { year: "05", event: "Scaled trained employee placement with post-hire support" },
 ]
 
 const stats = [
-  { value: "500+", label: "Placements" },
-  { value: "100+", label: "Partner Companies" },
-  { value: "6+", label: "Years Experience" },
-  { value: "95%", label: "Client Retention" },
+  { value: "Pan-India", label: "Hiring Support" },
+  { value: "Multi-stage", label: "Talent Vetting" },
+  { value: "90-day", label: "Workforce Support" },
+  { value: "Job-ready", label: "Trained Placement" },
+]
+
+const brandFaqs = [
+  {
+    question: 'Is "Talenty Consulting" the same as "Talenty Consultancy"?',
+    answer:
+      "Yes. Talenty Consulting is the official brand name. Searches for Talenty Consultancy, Talenty Consultancy Bangalore, or common misspellings refer to the same Bengaluru recruitment consulting and trained-placement firm.",
+  },
+  {
+    question: "Where is Talenty Consulting based?",
+    answer:
+      "Our office is at Bhive Platinum, Church Street, Bengaluru, Karnataka 560001. We serve clients pan-India.",
+  },
 ]
 
 export default function AboutPage() {
   return (
     <main className="min-h-screen bg-background">
+      <PageFAQSchema faqs={brandFaqs} />
       <Navbar />
-      
-      {/* Hero Section */}
-      <section className="relative pt-32 pb-20 overflow-hidden">
-        <div className="absolute inset-0">
-          <div className="absolute top-1/4 -left-20 w-96 h-96 bg-primary/20 rounded-full blur-3xl opacity-60" />
-          <div className="absolute bottom-1/4 -right-20 w-80 h-80 bg-accent/20 rounded-full blur-3xl opacity-50" />
-          <div className="absolute inset-0 grid-bg opacity-30" />
-        </div>
-        
-        <div className="container mx-auto px-4 lg:px-8 relative z-10">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="max-w-4xl mx-auto text-center"
-          >
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass mb-6">
-              <Users className="w-4 h-4 text-primary" />
+
+      <header className="relative overflow-hidden pb-20 pt-32">
+        <div className="absolute inset-0 grid-bg opacity-30" />
+        <div className="container relative z-10 mx-auto px-4 lg:px-8">
+          <div className="mx-auto max-w-4xl text-center">
+            <div className="mb-6 inline-flex items-center gap-2 rounded-full glass px-4 py-2">
+              <Users className="h-4 w-4 text-primary" />
               <span className="text-sm text-muted-foreground">About Talenty Consulting</span>
             </div>
-            
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-balance">
+            <h1 className="mb-6 text-balance text-4xl font-bold md:text-5xl lg:text-6xl">
               Your Trusted Partner in{" "}
               <span className="bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent">
                 Talent Acquisition
               </span>
             </h1>
-            
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed text-pretty">
-              Founded with a mission to transform how companies find and hire talent, Talenty Consulting has become a leading name in recruitment and staffing solutions across India.
+            <p className="mx-auto max-w-2xl text-pretty text-lg leading-relaxed text-muted-foreground">
+              Talenty Consulting is a Bengaluru-based recruitment consulting and staffing firm helping
+              companies hire trained, job-ready employees across India
+              {FOUNDING_YEAR ? `, established ${FOUNDING_YEAR}` : ""}.
             </p>
-          </motion.div>
+          </div>
         </div>
-      </section>
+      </header>
 
-      {/* Stats Section */}
-      <section className="py-16">
+      <section aria-labelledby="stats-heading" className="py-16">
+        <h2 id="stats-heading" className="sr-only">
+          Company signals
+        </h2>
         <div className="container mx-auto px-4 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="grid grid-cols-2 md:grid-cols-4 gap-6"
-          >
-            {stats.map((stat, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="glass-card rounded-2xl p-6 text-center"
-              >
-                <div className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent mb-2">
+          <div className="grid grid-cols-2 gap-6 md:grid-cols-4">
+            {stats.map((stat) => (
+              <div key={stat.label} className="glass-card rounded-2xl p-6 text-center">
+                <div className="mb-2 bg-gradient-to-r from-primary to-accent bg-clip-text text-3xl font-bold text-transparent md:text-4xl">
                   {stat.value}
                 </div>
                 <div className="text-sm text-muted-foreground">{stat.label}</div>
-              </motion.div>
+              </div>
             ))}
-          </motion.div>
+          </div>
         </div>
       </section>
 
-      {/* Our Story Section */}
-      <section className="py-20">
+      <section aria-labelledby="story-heading" className="py-20">
         <div className="container mx-auto px-4 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-            >
-              <h2 className="text-3xl md:text-4xl font-bold mb-6">
-                Our <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">Story</span>
+          <div className="grid items-center gap-12 lg:grid-cols-2">
+            <div>
+              <h2 id="story-heading" className="mb-6 text-3xl font-bold md:text-4xl">
+                Our{" "}
+                <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+                  Story
+                </span>
               </h2>
-              
-              <div className="space-y-4 text-muted-foreground leading-relaxed">
+              <div className="space-y-4 leading-relaxed text-muted-foreground">
                 <p>
-                  Talenty Consulting was founded by Rajesh Kumar and Anita Deshmukh in 2018 with a simple yet powerful vision: to make hiring easier, faster, and more effective for businesses of all sizes.
+                  Talenty Consulting was founded by Rajesh Kumar and Anita Deshmukh
+                  {FOUNDING_YEAR ? ` in ${FOUNDING_YEAR}` : ""} with a simple vision: make hiring
+                  easier, faster, and more effective.
                 </p>
                 <p>
-                  With backgrounds in HR and corporate recruitment, our founders recognized the challenges companies face in finding the right talent. They set out to create a consultancy that truly understands both employer needs and candidate aspirations.
+                  With backgrounds in HR and corporate recruitment, our founders built a consultancy that
+                  understands both employer needs and candidate aspirations — culminating in trained
+                  employee placement and multi-stage vetting.
                 </p>
                 <p>
-                  Today, we have grown into a full-service recruitment firm with a team of dedicated professionals who share our passion for connecting great talent with great opportunities.
+                  Official brand spelling is <strong className="text-foreground">Talenty Consulting</strong>
+                  . You may also see informal references to &quot;Talenty Consultancy&quot; or
+                  &quot;Talenty Consultancy Bangalore&quot; — they refer to this same firm.
                 </p>
               </div>
-              
               <div className="mt-8">
-                <Button asChild className="bg-gradient-to-r from-primary to-accent hover:opacity-90 text-primary-foreground border-0 group">
-                  <Link href="/consultation">
+                <Button asChild className="border-0 bg-gradient-to-r from-primary to-accent text-primary-foreground">
+                  <Link href="/contact">
                     Work With Us
-                    <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                    <ArrowRight className="ml-2 h-4 w-4" />
                   </Link>
                 </Button>
               </div>
-            </motion.div>
-            
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-              className="relative"
-            >
-              <div className="glass-card rounded-2xl p-8">
-                <h3 className="text-xl font-semibold mb-6 flex items-center gap-2">
-                  <Briefcase className="w-5 h-5 text-primary" />
-                  Our Journey
-                </h3>
-                <div className="space-y-6">
-                  {milestones.map((milestone, index) => (
-                    <motion.div
-                      key={index}
-                      initial={{ opacity: 0, x: 20 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 0.4, delay: index * 0.1 }}
-                      className="flex gap-4"
-                    >
-                      <div className="flex-shrink-0 w-16 h-8 rounded-full bg-gradient-to-r from-primary/20 to-accent/20 flex items-center justify-center">
-                        <span className="text-sm font-semibold text-primary">{milestone.year}</span>
-                      </div>
-                      <p className="text-sm text-muted-foreground pt-1">{milestone.event}</p>
-                    </motion.div>
-                  ))}
-                </div>
-              </div>
-            </motion.div>
+            </div>
+
+            <div className="glass-card rounded-2xl p-8">
+              <h3 className="mb-6 flex items-center gap-2 text-xl font-semibold">
+                <Briefcase className="h-5 w-5 text-primary" />
+                Our Journey
+              </h3>
+              <ol className="space-y-6">
+                {milestones.map((milestone) => (
+                  <li key={milestone.year} className="flex gap-4">
+                    <div className="flex h-8 w-16 flex-shrink-0 items-center justify-center rounded-full bg-gradient-to-r from-primary/20 to-accent/20">
+                      <span className="text-sm font-semibold text-primary">{milestone.year}</span>
+                    </div>
+                    <p className="pt-1 text-sm text-muted-foreground">{milestone.event}</p>
+                  </li>
+                ))}
+              </ol>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Values Section */}
-      <section className="py-20 relative">
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-primary/5 to-transparent" />
-        
-        <div className="container mx-auto px-4 lg:px-8 relative z-10">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="text-center mb-12"
-          >
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Our <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">Values</span>
-            </h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto">
-              These core principles guide everything we do at Talenty Consulting.
-            </p>
-          </motion.div>
+      <section aria-labelledby="brand-faq-heading" className="border-y border-border/30 py-20">
+        <div className="container mx-auto max-w-3xl px-4 lg:px-8">
+          <h2 id="brand-faq-heading" className="mb-8 text-3xl font-bold">
+            Brand &amp; naming FAQ
+          </h2>
+          {brandFaqs.map((faq) => (
+            <div key={faq.question} className="mb-6">
+              <h3 className="text-lg font-semibold text-foreground">{faq.question}</h3>
+              <p className="mt-2 text-muted-foreground">{faq.answer}</p>
+            </div>
+          ))}
+        </div>
+      </section>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {teamValues.map((value, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="glass-card rounded-2xl p-6 hover:border-primary/30 transition-all duration-300 group"
-              >
-                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
-                  <value.icon className="w-6 h-6 text-primary" />
+      <section aria-labelledby="values-heading" className="relative py-20">
+        <div className="container relative z-10 mx-auto px-4 lg:px-8">
+          <div className="mb-12 text-center">
+            <h2 id="values-heading" className="mb-4 text-3xl font-bold md:text-4xl">
+              Our{" "}
+              <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+                Values
+              </span>
+            </h2>
+          </div>
+          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+            {teamValues.map((value) => (
+              <article key={value.title} className="glass-card rounded-2xl p-6">
+                <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-primary/20 to-accent/20">
+                  <value.icon className="h-6 w-6 text-primary" />
                 </div>
-                <h3 className="text-lg font-semibold mb-2">{value.title}</h3>
+                <h3 className="mb-2 text-lg font-semibold">{value.title}</h3>
                 <p className="text-sm text-muted-foreground">{value.description}</p>
-              </motion.div>
+              </article>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Why Choose Us */}
-      <section className="py-20">
+      <section aria-labelledby="apart-heading" className="py-20">
         <div className="container mx-auto px-4 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-              className="glass-card rounded-2xl p-8"
-            >
-              <h3 className="text-2xl font-bold mb-6">What Sets Us Apart</h3>
-              <div className="space-y-4">
+          <div className="grid items-center gap-12 lg:grid-cols-2">
+            <div className="glass-card rounded-2xl p-8">
+              <h2 id="apart-heading" className="mb-6 text-2xl font-bold">
+                What Sets Us Apart
+              </h2>
+              <ul className="space-y-4">
                 {[
                   "Deep understanding of Indian job market dynamics",
                   "Personalized approach for each client and candidate",
                   "Rigorous screening and verification process",
                   "Long-term partnership focus, not transactional hiring",
                   "Industry-specific expertise across multiple sectors",
-                  "Transparent communication throughout the process"
-                ].map((item, index) => (
-                  <motion.div
-                    key={index}
-                    initial={{ opacity: 0, x: -20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.4, delay: index * 0.1 }}
-                    className="flex items-start gap-3"
-                  >
-                    <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
+                  "Transparent communication throughout the process",
+                ].map((item) => (
+                  <li key={item} className="flex items-start gap-3">
+                    <CheckCircle className="mt-0.5 h-5 w-5 flex-shrink-0 text-green-500" />
                     <span className="text-muted-foreground">{item}</span>
-                  </motion.div>
+                  </li>
                 ))}
-              </div>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="text-center lg:text-left"
-            >
-              <h2 className="text-3xl md:text-4xl font-bold mb-6">
+              </ul>
+            </div>
+            <div>
+              <h2 className="mb-6 text-3xl font-bold md:text-4xl">
                 Ready to Find Your{" "}
                 <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
                   Perfect Team?
                 </span>
               </h2>
-              <p className="text-muted-foreground mb-8 leading-relaxed">
-                Whether you are looking to hire skilled professionals or seeking your next career opportunity, we are here to help you succeed.
+              <p className="mb-8 leading-relaxed text-muted-foreground">
+                Whether you need recruitment consulting, IT staffing, or trained placement, we are here to
+                help.
               </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-                <Button asChild size="lg" className="bg-gradient-to-r from-primary to-accent hover:opacity-90 text-primary-foreground border-0 group">
-                  <Link href="/consultation">
-                    Book a Consultation
-                    <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                  </Link>
-                </Button>
-              </div>
-            </motion.div>
+              <Button asChild size="lg" className="border-0 bg-gradient-to-r from-primary to-accent text-primary-foreground">
+                <Link href="/contact">
+                  Book a Consultation
+                  <ArrowRight className="ml-2 h-4 w-4" />
+                </Link>
+              </Button>
+            </div>
           </div>
         </div>
       </section>

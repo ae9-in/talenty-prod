@@ -2,11 +2,26 @@ import type { Metadata } from "next"
 
 import { PersonSchema, BreadcrumbSchema } from "@/components/landing/json-ld"
 
+const title = "About Talenty Consulting — Bengaluru's Staffing & Recruitment Partner"
+const description =
+  "Learn how Talenty Consulting bridges the gap between exceptional talent and forward-thinking companies. Bengaluru-based recruitment experts serving all industries across India."
+const url = "https://www.talentyconsulting.in/about"
+
 export const metadata: Metadata = {
-  title: "About Talenty Consulting — Bengaluru's Staffing & Recruitment Partner",
-  description: "Learn how Talenty Consulting bridges the gap between exceptional talent and forward-thinking companies. Bengaluru-based recruitment experts serving all industries across India.",
-  alternates: {
-    canonical: "https://www.talentyconsulting.in/about",
+  title,
+  description,
+  alternates: { canonical: url },
+  openGraph: {
+    title,
+    description,
+    url,
+    type: "website",
+    siteName: "Talenty Consulting",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title,
+    description,
   },
 }
 

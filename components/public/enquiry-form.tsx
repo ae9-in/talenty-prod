@@ -5,6 +5,7 @@ import { Briefcase, Building2, CheckCircle, Mail, MessageSquare, Phone, User, Us
 
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
+import { trackEvent } from "@/lib/analytics"
 
 const requirementOptions = ["Counseling", "Consulting", "Hiring Support", "Staffing", "Training"]
 const industryOptions = ["IT & Software", "Banking & Finance", "Healthcare", "Manufacturing", "Retail", "Education", "Hospitality", "Other"]
@@ -59,6 +60,14 @@ export function EnquiryForm({ buttonLabel = "Submit Enquiry" }: { buttonLabel?: 
       if (!response.ok) {
         throw new Error(result.message || "Unable to submit enquiry.")
       }
+
+      trackEvent({
+        name: "generate_lead",
+        params: {
+          requirement_type: formData.requirementType,
+          industry: formData.industry,
+        },
+      })
 
       setIsSubmitted(true)
       setFormData({

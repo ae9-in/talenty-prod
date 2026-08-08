@@ -1,0 +1,88 @@
+export const BLOG_POSTS = [
+  {
+    title: "What Is Trained Employee Placement?",
+    slug: "what-is-trained-employee-placement",
+    excerpt:
+      "GEO definition: source, train, vet, place, and 90-day support — vs job-portal hiring.",
+    date: "August 07, 2026",
+    readTime: "7 min read",
+  },
+  {
+    title: "Job-Ready Hires vs Job-Portal Resumes",
+    slug: "job-ready-hires-vs-job-portal-resumes",
+    excerpt: "Why job-ready signal beats resume volume for Bengaluru startups and SMEs.",
+    date: "August 08, 2026",
+    readTime: "6 min read",
+  },
+  {
+    title: "How Long to Hire a Trained Employee in India",
+    slug: "how-long-to-hire-trained-employee-india",
+    excerpt: "Fast-path 3–10 business days vs custom train-and-vet pipelines.",
+    date: "August 08, 2026",
+    readTime: "5 min read",
+  },
+  {
+    title: "Hire-Train-Deploy Explained for Startups and SMEs",
+    slug: "hire-train-deploy-india-startups-smes",
+    excerpt: "HTD in plain language and when SMEs should use trained placement.",
+    date: "August 08, 2026",
+    readTime: "6 min read",
+  },
+  {
+    title: "90-Day Workforce Support Explained",
+    slug: "90-day-workforce-support-explained",
+    excerpt: "What Talenty’s post-placement support window actually covers.",
+    date: "August 08, 2026",
+    readTime: "5 min read",
+  },
+  {
+    title: "Startup Hiring: Trained Placement vs In-House",
+    slug: "startup-hiring-playbook-trained-vs-inhouse",
+    excerpt: "Playbook for choosing trained placement, consulting, or in-house recruiting.",
+    date: "August 08, 2026",
+    readTime: "7 min read",
+  },
+  {
+    title: "How to Choose a Hiring Agency in Bangalore",
+    slug: "how-to-choose-hiring-agency-bangalore",
+    excerpt: "Founder checklist for hiring agencies and recruitment consultants — no fake #1 claims.",
+    date: "August 08, 2026",
+    readTime: "7 min read",
+  },
+  {
+    title: "Hiring Agency vs Consultant vs Staffing Firm",
+    slug: "hiring-agency-vs-recruitment-consultant-vs-staffing",
+    excerpt: "Clear definitions so commercial searches map to the right Talenty service.",
+    date: "August 08, 2026",
+    readTime: "6 min read",
+  },
+  {
+    title: "Best Way to Hire in Bangalore for Startups",
+    slug: "best-way-to-hire-in-bangalore-for-startups",
+    excerpt: "Process-first playbook for Bangalore startup hiring.",
+    date: "August 08, 2026",
+    readTime: "7 min read",
+  },
+  {
+    title: "Cognitive, Skill & Behavioral Screening Explained",
+    slug: "cognitive-skill-behavioral-screening-explained",
+    excerpt: "How multi-stage screening works before a Talenty shortlist.",
+    date: "August 08, 2026",
+    readTime: "6 min read",
+  },
+  {
+    title: "Trained Placement Process Notes (Proof Framework)",
+    slug: "trained-placement-process-case-notes",
+    excerpt:
+      "Anonymized process case framework using verified methodology — ready for client metrics when available.",
+    date: "August 08, 2026",
+    readTime: "5 min read",
+  },
+  {
+    title: "How to Hire Trained Employees in India (2026 Guide)",
+    slug: "how-to-hire-trained-employees-india",
+    excerpt: "Complete blueprint for sourcing, training, and deploying job-ready talent in India.",
+    date: "June 01, 2026",
+    readTime: "8 min read",
+  },
+] as const

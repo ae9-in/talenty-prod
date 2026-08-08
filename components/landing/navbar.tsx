@@ -8,8 +8,10 @@ import { motion } from "framer-motion"
 const navLinks = [
   { name: "Home", href: "/" },
   { name: "About", href: "/about" },
+  { name: "Recruitment", href: "/recruitment-consulting-bangalore" },
+  { name: "IT Staffing", href: "/it-staffing-bangalore" },
   { name: "Trained Placement", href: "/trained-employee-placement" },
-  { name: "Vetting Process", href: "/talent-screening-process" },
+  { name: "Vetting", href: "/talent-screening-process" },
   { name: "Blog", href: "/blog" },
   { name: "Contact", href: "/contact" },
 ]
@@ -45,9 +47,9 @@ export function Navbar() {
           </div>
         </Link>
 
-        <div className="hidden items-center gap-7 lg:flex">
+        <div className="hidden items-center gap-5 xl:gap-7 lg:flex">
           {navLinks.map((link) => (
-            <Link key={link.name} href={link.href} className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground">
+            <Link key={link.name} href={link.href} className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground whitespace-nowrap">
               {link.name}
             </Link>
           ))}

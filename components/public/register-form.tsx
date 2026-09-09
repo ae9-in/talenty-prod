@@ -1,10 +1,8 @@
-﻿"use client"
+"use client"
 
-import { useState } from "react"
-import { Briefcase, Building2, CheckCircle, Lock, Mail, Phone, User } from "lucide-react"
-
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
+import { useState, useEffect } from "react"
+import Link from "next/link"
+import { CheckCircle2 } from "lucide-react"
 
 export function RegisterForm() {
   const [formData, setFormData] = useState({
@@ -16,17 +14,62 @@ export function RegisterForm() {
     password: "",
     confirmPassword: "",
   })
+  const [tosChecked, setTosChecked] = useState(false)
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSubmitted, setIsSubmitted] = useState(false)
   const [errorMessage, setErrorMessage] = useState("")
+  const [pwStrength, setPwStrength] = useState({ score: 0, label: "—", colorClass: "" })
 
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setFormData((current) => ({ ...current, [event.target.name]: event.target.value }))
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target
+    setFormData(prev => ({ ...prev, [name]: value }))
   }
 
-  const handleSubmit = async (event: React.FormEvent) => {
-    event.preventDefault()
+  // Password strength check
+  useEffect(() => {
+    const pw = formData.password
+    if (!pw) {
+      setPwStrength({ score: 0, label: "—", colorClass: "" })
+      return
+    }
+
+    let score = 0
+    if (pw.length >= 6) score += 1
+    if (/[a-z]/.test(pw) && /[A-Z]/.test(pw)) score += 1
+    if (/\d/.test(pw)) score += 1
+    if (/[!@#$%^&*(),.?":{}|<>]/.test(pw)) score += 1
+
+    let label = "Weak"
+    let colorClass = "bg-[#C18A18]/40"
+
+    if (score === 2) {
+      label = "Fair"
+      colorClass = "bg-[#C18A18]/70"
+    } else if (score === 3) {
+      label = "Good"
+      colorClass = "bg-[#C18A18]"
+    } else if (score >= 4) {
+      label = "Strong"
+      colorClass = "bg-[#0D2D42]"
+    }
+
+    setPwStrength({ score, label, colorClass })
+  }, [formData.password])
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
     setErrorMessage("")
+
+    if (formData.password !== formData.confirmPassword) {
+      setErrorMessage("Passwords do not match.")
+      return
+    }
+
+    if (!tosChecked) {
+      setErrorMessage("You must agree to the Terms of Service.")
+      return
+    }
+
     setIsSubmitting(true)
 
     try {
@@ -43,15 +86,6 @@ export function RegisterForm() {
       }
 
       setIsSubmitted(true)
-      setFormData({
-        fullName: "",
-        email: "",
-        phone: "",
-        interestedRole: "",
-        companyName: "",
-        password: "",
-        confirmPassword: "",
-      })
     } catch (error) {
       setErrorMessage(error instanceof Error ? error.message : "Something went wrong.")
     } finally {
@@ -61,95 +95,249 @@ export function RegisterForm() {
 
   if (isSubmitted) {
     return (
-      <div className="rounded-3xl glass-card p-8 text-center">
-        <div className="mx-auto mb-5 flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-br from-green-400 to-emerald-500">
-          <CheckCircle className="h-8 w-8 text-white" />
+      <div className="text-center max-w-[420px] mx-auto py-8 space-y-8 animate-fade-in">
+        {/* Success Icon */}
+        <div className="w-28 h-28 rounded-3xl bg-[#F0E9D5] shadow-lg flex items-center justify-center mx-auto border border-[#0D2D42]/10 relative overflow-hidden group">
+          <div className="absolute inset-0 bg-gradient-to-br from-[#C18A18]/10 to-[#7C601D]/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+          <CheckCircle2 className="w-14 h-14 text-[#C18A18] relative z-10" />
         </div>
-        <h3 className="mb-3 text-2xl font-bold text-foreground">Registration Complete</h3>
-        <p className="mb-6 text-muted-foreground">
-          Your details have been saved. The Talenty team can now review your profile from the admin panel.
-        </p>
-        <Button variant="outline" className="border-border/50" onClick={() => setIsSubmitted(false)}>
-          Register Another User
-        </Button>
+
+        <div className="space-y-3">
+          <div className="font-mono text-[10px] text-[#C18A18] uppercase tracking-widest font-semibold">
+            · Account Created
+          </div>
+          <h1 className="text-3xl md:text-4xl font-serif font-semibold tracking-tight text-[#0D2D42]">
+            You're <span className="text-[#C18A18] italic font-normal">in.</span>
+          </h1>
+          <p className="text-[14.5px] leading-relaxed text-[#3A5570] max-w-[36ch] mx-auto">
+            We sent a verification link to <b className="text-[#0D2D42]">{formData.email}</b>. Open it and we'll take you into your fresh workspace.
+          </p>
+        </div>
+
+        <Link
+          href="/"
+          className="inline-flex justify-center items-center gap-2 w-full max-w-[280px] py-3.5 bg-[#C18A18] hover:bg-[#7C601D] text-[#0D2D42] hover:text-[#F7F2E4] font-bold text-sm tracking-wide rounded-2xl border border-[#0D2D42]/10 transition-all shadow-sm"
+        >
+          Go to dashboard
+        </Link>
       </div>
     )
   }
 
   return (
-    <form onSubmit={handleSubmit} className="rounded-3xl glass-card p-6 md:p-8 space-y-5">
-      <div>
-        <h3 className="text-2xl font-bold text-foreground">Register with Talenty Consulting</h3>
-        <p className="mt-2 text-sm text-muted-foreground">
-          Create a profile so our consulting team can track your role interests and connect you with the right opportunities.
-        </p>
+    <form onSubmit={handleSubmit} className="space-y-5">
+      {/* Name */}
+      <div className="relative border border-[#0D2D42]/18 bg-[#F7F2E4] rounded-xl px-3.5 pt-5 pb-1.5 focus-within:ring-2 focus-within:ring-[#0D2D42] transition-all">
+        <input
+          type="text"
+          id="fullName"
+          name="fullName"
+          required
+          value={formData.fullName}
+          onChange={handleChange}
+          className="w-full bg-transparent border-0 outline-none text-sm text-[#0D2D42]"
+        />
+        <label
+          htmlFor="fullName"
+          className={`absolute left-3.5 top-3.5 text-xs text-[#3A5570] font-sans transition-all pointer-events-none origin-left ${
+            formData.fullName ? "-translate-y-2 scale-75" : ""
+          } focus-within:-translate-y-2 focus-within:scale-75`}
+        >
+          Full name
+        </label>
       </div>
 
-      <div className="grid gap-4 md:grid-cols-2">
-        <div className="space-y-2">
-          <label className="text-sm font-medium text-foreground">Full Name</label>
-          <div className="relative">
-            <User className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
-            <Input className="pl-10 bg-secondary/40 border-border/50" name="fullName" value={formData.fullName} onChange={handleChange} required />
-          </div>
-        </div>
-        <div className="space-y-2">
-          <label className="text-sm font-medium text-foreground">Email</label>
-          <div className="relative">
-            <Mail className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
-            <Input className="pl-10 bg-secondary/40 border-border/50" name="email" type="email" value={formData.email} onChange={handleChange} required />
-          </div>
-        </div>
+      {/* Email */}
+      <div className="relative border border-[#0D2D42]/18 bg-[#F7F2E4] rounded-xl px-3.5 pt-5 pb-1.5 focus-within:ring-2 focus-within:ring-[#0D2D42] transition-all">
+        <input
+          type="email"
+          id="email"
+          name="email"
+          required
+          value={formData.email}
+          onChange={handleChange}
+          className="w-full bg-transparent border-0 outline-none text-sm text-[#0D2D42]"
+        />
+        <label
+          htmlFor="email"
+          className={`absolute left-3.5 top-3.5 text-xs text-[#3A5570] font-sans transition-all pointer-events-none origin-left ${
+            formData.email ? "-translate-y-2 scale-75" : ""
+          } focus-within:-translate-y-2 focus-within:scale-75`}
+        >
+          Work email
+        </label>
       </div>
 
-      <div className="grid gap-4 md:grid-cols-2">
-        <div className="space-y-2">
-          <label className="text-sm font-medium text-foreground">Phone Number</label>
-          <div className="relative">
-            <Phone className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
-            <Input className="pl-10 bg-secondary/40 border-border/50" name="phone" value={formData.phone} onChange={handleChange} required />
-          </div>
-        </div>
-        <div className="space-y-2">
-          <label className="text-sm font-medium text-foreground">Role / Industry Interested</label>
-          <div className="relative">
-            <Briefcase className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
-            <Input className="pl-10 bg-secondary/40 border-border/50" name="interestedRole" value={formData.interestedRole} onChange={handleChange} required />
-          </div>
-        </div>
+      {/* Phone */}
+      <div className="relative border border-[#0D2D42]/18 bg-[#F7F2E4] rounded-xl px-3.5 pt-5 pb-1.5 focus-within:ring-2 focus-within:ring-[#0D2D42] transition-all">
+        <input
+          type="tel"
+          id="phone"
+          name="phone"
+          required
+          value={formData.phone}
+          onChange={handleChange}
+          className="w-full bg-transparent border-0 outline-none text-sm text-[#0D2D42]"
+        />
+        <label
+          htmlFor="phone"
+          className={`absolute left-3.5 top-3.5 text-xs text-[#3A5570] font-sans transition-all pointer-events-none origin-left ${
+            formData.phone ? "-translate-y-2 scale-75" : ""
+          } focus-within:-translate-y-2 focus-within:scale-75`}
+        >
+          Work phone number
+        </label>
       </div>
 
-      <div className="space-y-2">
-        <label className="text-sm font-medium text-foreground">Company Name</label>
-        <div className="relative">
-          <Building2 className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
-          <Input className="pl-10 bg-secondary/40 border-border/50" name="companyName" value={formData.companyName} onChange={handleChange} />
-        </div>
+      {/* Role Interest */}
+      <div className="relative border border-[#0D2D42]/18 bg-[#F7F2E4] rounded-xl px-3.5 pt-5 pb-1.5 focus-within:ring-2 focus-within:ring-[#0D2D42] transition-all">
+        <input
+          type="text"
+          id="interestedRole"
+          name="interestedRole"
+          required
+          value={formData.interestedRole}
+          onChange={handleChange}
+          className="w-full bg-transparent border-0 outline-none text-sm text-[#0D2D42]"
+        />
+        <label
+          htmlFor="interestedRole"
+          className={`absolute left-3.5 top-3.5 text-xs text-[#3A5570] font-sans transition-all pointer-events-none origin-left ${
+            formData.interestedRole ? "-translate-y-2 scale-75" : ""
+          } focus-within:-translate-y-2 focus-within:scale-75`}
+        >
+          Interested role / Hiring domain
+        </label>
       </div>
 
-      <div className="grid gap-4 md:grid-cols-2">
-        <div className="space-y-2">
-          <label className="text-sm font-medium text-foreground">Password</label>
-          <div className="relative">
-            <Lock className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
-            <Input className="pl-10 bg-secondary/40 border-border/50" name="password" type="password" value={formData.password} onChange={handleChange} required />
-          </div>
-        </div>
-        <div className="space-y-2">
-          <label className="text-sm font-medium text-foreground">Confirm Password</label>
-          <div className="relative">
-            <Lock className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
-            <Input className="pl-10 bg-secondary/40 border-border/50" name="confirmPassword" type="password" value={formData.confirmPassword} onChange={handleChange} required />
-          </div>
-        </div>
+      {/* Company Name */}
+      <div className="relative border border-[#0D2D42]/18 bg-[#F7F2E4] rounded-xl px-3.5 pt-5 pb-1.5 focus-within:ring-2 focus-within:ring-[#0D2D42] transition-all">
+        <input
+          type="text"
+          id="companyName"
+          name="companyName"
+          value={formData.companyName}
+          onChange={handleChange}
+          className="w-full bg-transparent border-0 outline-none text-sm text-[#0D2D42]"
+        />
+        <label
+          htmlFor="companyName"
+          className={`absolute left-3.5 top-3.5 text-xs text-[#3A5570] font-sans transition-all pointer-events-none origin-left ${
+            formData.companyName ? "-translate-y-2 scale-75" : ""
+          } focus-within:-translate-y-2 focus-within:scale-75`}
+        >
+          Company name (optional)
+        </label>
       </div>
 
-      {errorMessage ? <p className="text-sm text-red-400">{errorMessage}</p> : null}
+      {/* Password */}
+      <div className="relative border border-[#0D2D42]/18 bg-[#F7F2E4] rounded-xl px-3.5 pt-5 pb-1.5 focus-within:ring-2 focus-within:ring-[#0D2D42] transition-all">
+        <input
+          type="password"
+          id="password"
+          name="password"
+          required
+          value={formData.password}
+          onChange={handleChange}
+          className="w-full bg-transparent border-0 outline-none text-sm text-[#0D2D42]"
+        />
+        <label
+          htmlFor="password"
+          className={`absolute left-3.5 top-3.5 text-xs text-[#3A5570] font-sans transition-all pointer-events-none origin-left ${
+            formData.password ? "-translate-y-2 scale-75" : ""
+          } focus-within:-translate-y-2 focus-within:scale-75`}
+        >
+          Password
+        </label>
+      </div>
 
-      <Button type="submit" disabled={isSubmitting} className="w-full bg-gradient-to-r from-primary to-accent text-primary-foreground border-0 hover:opacity-90">
-        {isSubmitting ? "Registering..." : "Register"}
-      </Button>
+      {/* Password Strength Meter */}
+      {formData.password && (
+        <div className="space-y-1.5 px-1">
+          <div className="grid grid-cols-4 gap-1">
+            {[1, 2, 3, 4].map((barIndex) => (
+              <div
+                key={barIndex}
+                className={`h-[3px] rounded-full transition-all duration-300 ${
+                  barIndex <= pwStrength.score
+                    ? pwStrength.colorClass
+                    : "bg-[#0D2D42]/10"
+                }`}
+              />
+            ))}
+          </div>
+          <div className="flex justify-between items-center font-mono text-[10px] text-[#3A5570]">
+            <span>Password strength</span>
+            <span className="font-bold text-[#0D2D42] uppercase tracking-wider">{pwStrength.label}</span>
+          </div>
+        </div>
+      )}
+
+      {/* Confirm Password */}
+      <div className="relative border border-[#0D2D42]/18 bg-[#F7F2E4] rounded-xl px-3.5 pt-5 pb-1.5 focus-within:ring-2 focus-within:ring-[#0D2D42] transition-all">
+        <input
+          type="password"
+          id="confirmPassword"
+          name="confirmPassword"
+          required
+          value={formData.confirmPassword}
+          onChange={handleChange}
+          className="w-full bg-transparent border-0 outline-none text-sm text-[#0D2D42]"
+        />
+        <label
+          htmlFor="confirmPassword"
+          className={`absolute left-3.5 top-3.5 text-xs text-[#3A5570] font-sans transition-all pointer-events-none origin-left ${
+            formData.confirmPassword ? "-translate-y-2 scale-75" : ""
+          } focus-within:-translate-y-2 focus-within:scale-75`}
+        >
+          Confirm password
+        </label>
+      </div>
+
+      {/* TOS Checklist */}
+      <label className="flex items-start gap-2.5 font-mono text-[11px] text-[#3A5570] leading-relaxed cursor-pointer py-1 select-none">
+        <input
+          type="checkbox"
+          checked={tosChecked}
+          onChange={(e) => setTosChecked(e.target.checked)}
+          className="mt-0.5 border-2 border-[#0D2D42]/18 rounded-md bg-[#F7F2E4] text-[#C18A18] focus:ring-0 focus:ring-offset-0 focus:outline-none"
+        />
+        <span>
+          I agree to Talenty's{" "}
+          <a href="#" className="underline underline-offset-2 text-[#0D2D42] font-semibold">
+            Terms of Service
+          </a>{" "}
+          and{" "}
+          <a href="#" className="underline underline-offset-2 text-[#0D2D42] font-semibold">
+            Privacy Policy
+          </a>
+          .
+        </span>
+      </label>
+
+      {errorMessage && (
+        <div className="text-xs font-mono text-[#C18A18] bg-[#C18A18]/10 border border-[#C18A18]/30 px-3.5 py-2.5 rounded-xl">
+          {errorMessage}
+        </div>
+      )}
+
+      {/* Submit Button */}
+      <button
+        type="submit"
+        disabled={isSubmitting}
+        className="w-full py-4 bg-[#C18A18] hover:bg-[#7C601D] text-[#0D2D42] hover:text-[#F7F2E4] font-bold text-sm tracking-wide rounded-2xl border border-[#0D2D42]/10 transition-all flex items-center justify-center gap-2 shadow-sm"
+      >
+        {isSubmitting ? (
+          <>
+            <span className="w-4 h-4 border-2 border-[#0D2D42]/30 border-t-[#0D2D42] rounded-full animate-spin" />
+            <span>Creating account...</span>
+          </>
+        ) : (
+          <>
+            <span>Create account</span>
+          </>
+        )}
+      </button>
     </form>
   )
 }
-

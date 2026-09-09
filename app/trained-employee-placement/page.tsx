@@ -1,145 +1,217 @@
+"use client"
+
+import { BookOpen, Settings, Sparkles, X, Check, Terminal, Shield, Layers, CheckCircle2 } from "lucide-react"
 import Link from "next/link"
 import { Navbar } from "@/components/landing/navbar"
 import { Footer } from "@/components/landing/footer"
-import { BreadcrumbSchema, PageFAQSchema, PageServiceSchema } from "@/components/landing/json-ld"
-import {
-  BookCtaLink,
-  InternalHubLinks,
-  MoneyPageCta,
-  MoneyPageFaq,
-  ProofSignals,
-} from "@/components/seo/money-page-sections"
-import { SITE_URL, VERIFIED_FACTS } from "@/lib/seo"
+import { RollingHeadline } from "@/components/landing/rolling-headline"
+import { EnquiryForm } from "@/components/public/enquiry-form"
+import { Reveal, RevealGroup } from "@/components/landing/scroll-reveal"
 
-const pageUrl = `${SITE_URL}/trained-employee-placement`
+const trainingModules = [
+  {
+    icon: Terminal,
+    title: "Stack-Specific Engineering Upskilling",
+    desc: "We calibrate candidates directly on your production environment—framework versions, API paradigms, containerization, and automated test fixtures."
+  },
+  {
+    icon: Settings,
+    title: "Custom Workflow Alignment",
+    desc: "Candidates train on your exact standard operating procedures, CI/CD pipelines, Git conventions, and documentation standards before deployment."
+  },
+  {
+    icon: Shield,
+    title: "Domain & Compliance Readiness",
+    desc: "Rigorous domain preparation covering data privacy, financial security standards, healthcare workflows, or enterprise compliance requirements."
+  }
+]
 
-const faqs = [
+const stepsToRequest = [
   {
-    question: "What is trained employee placement?",
-    answer:
-      "Trained employee placement is a hiring model where candidates are sourced, trained on role-specific skills, multi-stage vetted, and placed as job-ready employees — with post-placement support.",
+    step: "01",
+    title: "Define your technical stack & role brief",
+    desc: "Specify your exact framework requirements, architectural patterns, and internal tooling during our initial alignment call."
   },
   {
-    question: "How long is post-placement support?",
-    answer: `Talenty Consulting provides ${VERIFIED_FACTS.supportWindowDays}-day workforce support after placement.`,
+    step: "02",
+    title: "Candidate selection & skill calibration",
+    desc: "We source candidates with strong computer science fundamentals and run targeted pre-placement technical training tailored to your specifications."
   },
   {
-    question: "Is this the same as hire-train-deploy?",
-    answer:
-      "Yes — hire-train-deploy (HTD) describes the same underlying model. Talenty applies it at a scale suited to startups and SMEs. Read our definition guide for details.",
-  },
+    step: "03",
+    title: "Day-one deployment & ongoing check-in",
+    desc: "Candidates join your team with zero onboarding lag, ready to contribute to active codebases and sprint tickets immediately."
+  }
+]
+
+const traditional = [
+  "Weeks lost to basic onboarding and toolchain setup",
+  "Heavy drain on senior engineers' mentoring bandwidth",
+  "High risk of candidate mismatch on practical workflows",
+  "Delayed sprint velocity and productivity lag"
+]
+
+const trained = [
+  "Day-one productive output on your specific tech stack",
+  "Tailored pre-deployment training on internal frameworks",
+  "Comprehensive technical vetting pre-completed",
+  "Full placement replacement protection standard"
 ]
 
 export default function TrainedEmployeePlacement() {
   return (
-    <main className="min-h-screen bg-background">
-      <BreadcrumbSchema
-        paths={[
-          { name: "Home", url: SITE_URL },
-          { name: "Trained Employee Placement", url: pageUrl },
-        ]}
-      />
-      <PageServiceSchema
-        name="Trained Employee Placement"
-        description="Hire pre-trained, job-ready employees in India with sourcing, training, multi-stage vetting, placement, and 90-day support."
-        url={pageUrl}
-      />
-      <PageFAQSchema faqs={faqs} />
-
+    <main className="min-h-screen bg-[#F7F2E4] text-[#0D2D42] font-sans selection:bg-[#C18A18] selection:text-[#0D2D42]">
       <Navbar />
 
-      <header className="relative overflow-hidden pb-16 pt-32">
-        <div className="absolute inset-0 grid-bg opacity-30" />
-        <div className="container relative z-10 mx-auto px-4 lg:px-8">
-          <div className="mx-auto max-w-4xl text-center">
-            <p className="mb-6 inline-flex rounded-full glass px-4 py-2 text-sm text-muted-foreground">
-              Pre-trained staffing model
-            </p>
-            <h1 className="mb-6 text-balance text-4xl font-bold leading-tight md:text-5xl lg:text-6xl">
-              Hire Pre-Trained,{" "}
-              <span className="bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent">
-                Job-Ready Employees
-              </span>
-            </h1>
-            <p className="mx-auto mb-4 max-w-3xl text-lg text-muted-foreground">
-              Stop wasting weeks on onboarding. Talenty Consulting sources, trains, and vets candidates to
-              match your workflows before they join — then supports the placement for{" "}
-              {VERIFIED_FACTS.supportWindowDays} days.
-            </p>
-            <p className="mb-8 text-sm text-muted-foreground">
-              New to the model? Read{" "}
-              <Link href="/blog/what-is-trained-employee-placement" className="text-primary hover:underline">
-                what trained employee placement is
-              </Link>{" "}
-              or compare{" "}
-              <Link
-                href="/blog/job-ready-hires-vs-job-portal-resumes"
-                className="text-primary hover:underline"
-              >
-                job-ready hires vs job-portal resumes
-              </Link>
-              .
-            </p>
-            <BookCtaLink href="#contact" label="Discuss Trained Placement" />
-            <InternalHubLinks
-              links={[
-                { href: "/talent-screening-process", label: "Vetting Process" },
-                { href: "/recruitment-consulting-bangalore", label: "Recruitment Consulting" },
-                { href: "/it-staffing-bangalore", label: "IT Staffing" },
-              ]}
+      {/* Hero Section */}
+      <section className="relative pt-32 pb-20 overflow-hidden">
+        <div className="absolute top-0 inset-x-0 h-[420px] bg-gradient-to-b from-[#C18A18]/10 via-transparent to-transparent pointer-events-none" />
+        <div className="absolute top-24 left-1/4 w-[380px] h-[380px] bg-[#C18A18]/10 rounded-full blur-3xl opacity-50 pointer-events-none" />
+        <div className="absolute inset-0 bg-grid-bg opacity-15 pointer-events-none" />
+
+        <div className="max-w-[1440px] mx-auto px-6 lg:px-10 relative z-10">
+          <div className="max-w-3xl mx-auto text-center">
+            <span className="font-mono text-[11px] text-[#8A6420] font-semibold block mb-4">
+              Trained placement
+            </span>
+            
+            <RollingHeadline
+              line1="Not just sourced."
+              accent="Trained."
+              line2="Ready on day one."
+              className="text-4xl sm:text-5xl md:text-6xl font-serif font-semibold tracking-tight leading-[1.02] text-[#141110]"
+              accentClassName="italic font-normal text-[#141110]"
             />
+
+            <p className="mt-5 text-lg md:text-xl text-[#3A5570] max-w-2xl mx-auto leading-relaxed">
+              We eliminate the onboarding bottleneck. Talenty Consulting sources high-aptitude talent, trains them on your exact tech stack and operational workflows, and deploys engineers who ship code from day one.
+            </p>
           </div>
         </div>
-      </header>
+      </section>
 
-      <ProofSignals />
+      {/* Sourcing vs Trained Placement Comparison */}
+      <section className="py-20 bg-[#F0E9D5]/40 border-y border-[#0D2D42]/10">
+        <div className="max-w-5xl mx-auto px-6 lg:px-10">
+          <div className="text-center max-w-2xl mx-auto mb-12">
+            <span className="font-mono text-[11px] uppercase tracking-widest text-[#C18A18] font-semibold block mb-2">
+              · OPERATIONAL COMPARISON
+            </span>
+            <h2 className="text-3xl font-serif font-semibold text-[#0D2D42]">
+              Why traditional staffing causes onboarding lag
+            </h2>
+          </div>
 
-      <section id="process" aria-labelledby="tep-process" className="py-20">
-        <div className="container mx-auto max-w-4xl px-4 lg:px-8">
-          <h2 id="tep-process" className="mb-6 text-3xl font-bold">
-            Source → Train → Vet → Place → Support
-          </h2>
-          <ol className="list-decimal space-y-4 pl-6 text-muted-foreground">
-            {VERIFIED_FACTS.processSteps.map((step) => (
-              <li key={step}>
-                <strong className="text-foreground">{step}.</strong>{" "}
-                {step === "Vet" ? (
-                  <>
-                    Multi-stage screening — see the{" "}
-                    <Link href="/talent-screening-process" className="text-primary hover:underline">
-                      talent screening process
-                    </Link>
-                    .
-                  </>
-                ) : step === "Support" ? (
-                  <>{VERIFIED_FACTS.supportWindowDays}-day post-placement workforce support.</>
-                ) : (
-                  <>Role-aligned {step.toLowerCase()} for job-ready outcomes.</>
-                )}
-              </li>
-            ))}
-          </ol>
+          <RevealGroup className="grid md:grid-cols-2 gap-8">
+            <div className="border border-[#0D2D42]/10 bg-[#F7F2E4] rounded-3xl p-8 shadow-xs">
+              <h3 className="text-2xl font-serif font-bold text-[#3A5570] mb-6">Traditional Agency Staffing</h3>
+              <ul className="space-y-4 text-[#3A5570] text-sm">
+                {traditional.map((item) => (
+                  <li key={item} className="flex items-start gap-3">
+                    <X className="w-4 h-4 text-[#7C601D] flex-shrink-0 mt-0.5" />
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div className="border-2 border-[#0D2D42] bg-[#F7F2E4] rounded-3xl p-8 relative shadow-[6px_6px_0px_0px_rgba(13,45,66,1)]">
+              <span className="absolute -top-3 left-8 bg-[#C18A18] text-[#0D2D42] border border-[#0D2D42]/10 px-3 py-1 rounded-full font-mono text-[10px] uppercase tracking-widest font-bold">
+                Talenty Trained Model
+              </span>
+              <h3 className="text-2xl font-serif font-bold text-[#0D2D42] mb-6">Calibrated Placement</h3>
+              <ul className="space-y-4 text-[#0D2D42] text-sm font-medium">
+                {trained.map((item) => (
+                  <li key={item} className="flex items-start gap-3">
+                    <Check className="w-4 h-4 text-[#C18A18] flex-shrink-0 mt-0.5" />
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </RevealGroup>
         </div>
       </section>
 
-      <section id="who" aria-labelledby="tep-who" className="bg-secondary/10 py-20">
-        <div className="container mx-auto max-w-4xl px-4 lg:px-8">
-          <h2 id="tep-who" className="mb-6 text-3xl font-bold">
-            Best fit for
-          </h2>
-          <ul className="list-disc space-y-2 pl-6 text-muted-foreground">
-            <li>Startups and SMEs in Bengaluru that need faster time-to-productivity</li>
-            <li>Teams hiring for a specific skill gap or stack</li>
-            <li>Companies replacing low-signal job-portal pipelines</li>
-          </ul>
+      {/* Practical Curriculum & Pre-Training Modules */}
+      <section className="py-24 max-w-[1440px] mx-auto px-6 lg:px-10">
+        <div className="max-w-5xl mx-auto">
+          <div className="max-w-2xl mb-14">
+            <span className="font-mono text-[11px] uppercase tracking-widest text-[#C18A18] font-semibold block mb-2">
+              · WHAT TRAINING MEANS IN PRACTICE
+            </span>
+            <h2 className="text-3xl sm:text-4xl font-serif font-semibold text-[#0D2D42]">
+              Pre-deployment upskilling built for your stack
+            </h2>
+            <p className="mt-3 text-sm sm:text-base text-[#3A5570]">
+              We do not teach generic theory. Candidates work on simulated production tickets, resolving real-world issues using your specific architectural patterns.
+            </p>
+          </div>
+
+          <RevealGroup className="grid md:grid-cols-3 gap-6">
+            {trainingModules.map((module) => {
+              const Icon = module.icon
+              return (
+                <div
+                  key={module.title}
+                  className="border border-[#0D2D42]/10 bg-[#F7F2E4] rounded-3xl p-7 hover:border-[#0D2D42]/30 transition-all flex flex-col justify-between shadow-xs"
+                >
+                  <div className="w-12 h-12 rounded-2xl bg-[#0D2D42] text-[#F7E9A7] flex items-center justify-center mb-5 shadow-xs">
+                    <Icon className="w-5 h-5" />
+                  </div>
+                  <h3 className="text-xl font-serif font-bold text-[#0D2D42] mb-2">
+                    {module.title}
+                  </h3>
+                  <p className="text-sm text-[#3A5570] leading-relaxed">
+                    {module.desc}
+                  </p>
+                </div>
+              )
+            })}
+          </RevealGroup>
         </div>
       </section>
 
-      <MoneyPageFaq faqs={faqs} />
-      <MoneyPageCta
-        heading="Hire job-ready talent"
-        description="Book a consultation to see whether trained placement or traditional recruitment consulting fits your role."
-      />
+      {/* How To Request Trained Placement + Form */}
+      <section className="py-24 bg-[#F0E9D5]/40 border-t border-[#0D2D42]/10">
+        <div className="max-w-[1440px] mx-auto px-6 lg:px-10">
+          <div className="grid lg:grid-cols-[1fr_1fr] gap-12 items-start max-w-5xl mx-auto">
+            <div className="space-y-8">
+              <div>
+                <span className="font-mono text-[11px] uppercase tracking-widest text-[#C18A18] font-semibold block mb-2">
+                  · HOW IT WORKS
+                </span>
+                <h2 className="text-3xl sm:text-4xl font-serif font-semibold text-[#0D2D42]">
+                  How to request trained talent
+                </h2>
+              </div>
+
+              <div className="space-y-6">
+                {stepsToRequest.map((s) => (
+                  <div key={s.step} className="flex gap-4 items-start">
+                    <span className="font-mono text-sm font-bold text-[#0D2D42] bg-[#C18A18]/20 border border-[#C18A18]/30 px-2.5 py-1 rounded-lg flex-shrink-0">
+                      {s.step}
+                    </span>
+                    <div>
+                      <h4 className="font-serif font-bold text-base text-[#0D2D42]">
+                        {s.title}
+                      </h4>
+                      <p className="text-xs sm:text-sm text-[#3A5570] mt-1 leading-relaxed">
+                        {s.desc}
+                      </p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="bg-[#F7F2E4] border-2 border-[#0D2D42] rounded-3xl p-2 sm:p-4 shadow-[8px_8px_0px_0px_rgba(13,45,66,1)]">
+              <EnquiryForm buttonLabel="Request trained candidate cohort" />
+            </div>
+          </div>
+        </div>
+      </section>
+
       <Footer />
     </main>
   )

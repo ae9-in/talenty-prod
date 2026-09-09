@@ -9,7 +9,9 @@ __v0_jsx-dev-runtime.ts
 next.user-config.*
 
 # Environment variables
+.env
 .env*.local
+.env.production
 
 # Common ignores
 node_modules/
@@ -17,6 +19,11 @@ node_modules/
 .next-dev.log
 .next-dev.err
 .DS_Store
+*.zip
+tsconfig.tsbuildinfo
+.claude/
+.vscode/
+.antigravity/
 
 # Local database fallback
 database.json

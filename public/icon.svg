@@ -1,14 +1,30 @@
-<svg width="180" height="180" viewBox="0 0 180 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
   <defs>
-    <linearGradient id="logo-grad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#3b82f6" />
-      <stop offset="100%" stop-color="#0ea5e9" />
+    <linearGradient id="tileBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stopColor="#1C1816" />
+      <stop offset="100%" stopColor="#0F0D0C" />
+    </linearGradient>
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stopColor="#F5D07A" />
+      <stop offset="35%" stopColor="#CD9534" />
+      <stop offset="70%" stopColor="#E5A93C" />
+      <stop offset="100%" stopColor="#9B6F1E" />
     </linearGradient>
   </defs>
-  <rect width="180" height="180" rx="36" fill="url(#logo-grad)" />
-  <g transform="translate(36, 36) scale(4.5)">
-    <path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275Z" fill="white"/>
-    <path d="m5 3 1 2.5L8.5 6 6 7 5 9.5 4 7 1.5 6 4 5Z" fill="white"/>
-    <path d="m19 17 1 2.5 2.5.5-2.5 1-1 2.5-1-2.5-2.5-1 2.5-1Z" fill="white"/>
+
+  <!-- High-contrast dark tile with rounded corners -->
+  <rect width="512" height="512" rx="120" fill="url(#tileBg)" />
+  <rect x="16" y="16" width="480" height="480" rx="104" stroke="url(#goldGrad)" stroke-width="14" stroke-opacity="0.6" />
+
+  <!-- Bold, High-Clarity TC Monogram -->
+  <g fill="url(#goldGrad)">
+    <!-- 'T' Top Bar -->
+    <rect x="110" y="118" width="292" height="48" rx="12" />
+    
+    <!-- 'T' Stem -->
+    <rect x="232" y="148" width="48" height="246" rx="10" />
+    
+    <!-- 'C' Outer Curve Intersecting Elegantly -->
+    <path d="M 330 200 C 270 170, 160 210, 160 300 C 160 390, 270 430, 336 400 C 352 392, 360 376, 350 362 C 340 348, 324 348, 312 356 C 265 382, 206 352, 206 300 C 206 248, 265 218, 312 244 C 324 252, 340 252, 350 238 C 360 224, 350 210, 330 200 Z" />
   </g>
 </svg>

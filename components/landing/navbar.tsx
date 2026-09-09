@@ -1,17 +1,16 @@
 "use client"
 
 import { useEffect, useState } from "react"
-import { Menu, Sparkles, X } from "lucide-react"
+import { Menu, X } from "lucide-react"
 import Link from "next/link"
-import { motion } from "framer-motion"
+import { motion, AnimatePresence } from "framer-motion"
+import { LogoBrand } from "@/components/landing/logo-brand"
 
 const navLinks = [
   { name: "Home", href: "/" },
   { name: "About", href: "/about" },
-  { name: "Recruitment", href: "/recruitment-consulting-bangalore" },
-  { name: "IT Staffing", href: "/it-staffing-bangalore" },
+  { name: "Vetting Process", href: "/talent-screening-process" },
   { name: "Trained Placement", href: "/trained-employee-placement" },
-  { name: "Vetting", href: "/talent-screening-process" },
   { name: "Blog", href: "/blog" },
   { name: "Contact", href: "/contact" },
 ]
@@ -21,8 +20,8 @@ export function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
 
   useEffect(() => {
-    const handleScroll = () => setIsScrolled(window.scrollY > 24)
-    window.addEventListener("scroll", handleScroll)
+    const handleScroll = () => setIsScrolled(window.scrollY > 40)
+    window.addEventListener("scroll", handleScroll, { passive: true })
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
@@ -30,45 +29,85 @@ export function Navbar() {
     <motion.header
       initial={{ y: -90 }}
       animate={{ y: 0 }}
-      transition={{ duration: 0.45 }}
-      className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${isScrolled || isMobileMenuOpen ? "border-b border-border/40 bg-background/95 backdrop-blur-xl shadow-lg shadow-background/5" : "bg-transparent"}`}
+      transition={{ duration: 0.45, ease: "easeOut" }}
+      className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
+        isScrolled || isMobileMenuOpen
+          ? "border-b border-[#0D2D42]/10 bg-[#F7F2E4]/90 backdrop-blur-xl shadow-xs"
+          : "bg-transparent"
+      }`}
     >
-      <nav className="container mx-auto flex h-20 items-center justify-between px-4 lg:px-8">
-        <Link href="/" className="flex items-center gap-3 group">
-          <div className="relative">
-            <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-gradient-to-br from-primary to-accent text-primary-foreground shadow-lg shadow-primary/20">
-              <Sparkles className="h-5 w-5" />
-            </div>
-            <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-primary to-accent opacity-40 blur-xl group-hover:opacity-60 transition-opacity" />
-          </div>
-          <div>
-            <div className="text-lg font-bold text-foreground">Talenty Consulting</div>
-            <div className="text-[11px] uppercase tracking-[0.24em] text-muted-foreground">Counseling and Consulting</div>
-          </div>
-        </Link>
+      <nav className="max-w-[1440px] mx-auto flex h-18 items-center justify-between px-6 lg:px-10">
+        {/* Brand Lockup */}
+        <LogoBrand />
 
-        <div className="hidden items-center gap-5 xl:gap-7 lg:flex">
+        {/* Desktop Links */}
+        <div className="hidden lg:flex items-center gap-7">
           {navLinks.map((link) => (
-            <Link key={link.name} href={link.href} className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground whitespace-nowrap">
+            <Link
+              key={link.name}
+              href={link.href}
+              className="text-[13.5px] font-medium text-[#3A5570] transition-all hover:text-[#0D2D42] relative py-1 group"
+            >
               {link.name}
+              <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-[#C18A18] scale-0 group-hover:scale-100 transition-transform duration-300 ease-out" />
             </Link>
           ))}
         </div>
 
-        <button className="lg:hidden text-foreground" onClick={() => setIsMobileMenuOpen((current) => !current)} aria-label="Toggle menu">
+        {/* Desktop CTAs */}
+        <div className="hidden lg:flex items-center gap-4">
+          <Link
+            href="/register"
+            className="bg-[#C18A18] hover:bg-[#F7E9A7] text-[#0D2D42] font-bold text-xs px-5 py-2.5 rounded-full border border-[#7C601D]/40 transition-all shadow-xs hover:shadow-md active:scale-95"
+          >
+            Registration
+          </Link>
+        </div>
+
+        {/* Mobile menu trigger */}
+        <button
+          className="lg:hidden text-[#0D2D42] focus:outline-none cursor-pointer"
+          onClick={() => setIsMobileMenuOpen((current) => !current)}
+          aria-label="Toggle menu"
+        >
           {isMobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
         </button>
       </nav>
 
-      <motion.div initial={false} animate={{ height: isMobileMenuOpen ? "auto" : 0, opacity: isMobileMenuOpen ? 1 : 0 }} className="overflow-hidden lg:hidden">
-        <div className="container mx-auto space-y-3 border-t border-border/40 px-4 py-4">
-          {navLinks.map((link) => (
-            <Link key={link.name} href={link.href} className="block py-2 text-sm text-muted-foreground" onClick={() => setIsMobileMenuOpen(false)}>
-              {link.name}
-            </Link>
-          ))}
-        </div>
-      </motion.div>
+      {/* Mobile Menu Panel */}
+      <AnimatePresence>
+        {isMobileMenuOpen && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            className="overflow-hidden lg:hidden border-t border-[#0D2D42]/10 bg-[#F7F2E4] shadow-inner"
+          >
+            <div className="px-6 py-6 space-y-4">
+              {navLinks.map((link) => (
+                <Link
+                  key={link.name}
+                  href={link.href}
+                  className="block text-sm font-semibold text-[#3A5570] hover:text-[#0D2D42]"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  {link.name}
+                </Link>
+              ))}
+              
+              <div className="pt-4 border-t border-[#0D2D42]/10 flex flex-col gap-3">
+                <Link
+                  href="/register"
+                  className="text-center bg-[#C18A18] hover:bg-[#F7E9A7] text-[#0D2D42] py-3 rounded-full font-bold text-sm border border-[#7C601D]/40 shadow-xs"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  Registration
+                </Link>
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </motion.header>
   )
 }

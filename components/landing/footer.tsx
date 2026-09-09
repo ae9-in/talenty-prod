@@ -1,116 +1,181 @@
 "use client"
 
-import { Sparkles, Mail, Phone, MapPin, Linkedin } from "lucide-react"
+import { useEffect, useState } from "react"
 import Link from "next/link"
-import { LINKEDIN_URL, SITE_EMAIL, SITE_HOURS_LABEL, SITE_PHONE } from "@/lib/seo"
-import { TrackedMailtoLink, TrackedTelLink } from "@/components/seo/tracked-links"
+import { motion } from "framer-motion"
+import { LogoBrand } from "@/components/landing/logo-brand"
+import { MapPin, Mail, Phone, Globe } from "lucide-react"
 
 const footerLinks = {
-  services: [
-    { name: "Trained Employee Placement", href: "/trained-employee-placement" },
-    { name: "Recruitment Consulting", href: "/recruitment-consulting-bangalore" },
-    { name: "IT Staffing Bengaluru", href: "/it-staffing-bangalore" },
-    { name: "Talent Screening Process", href: "/talent-screening-process" },
+  solutions: [
+    { name: 'Vetting Process', href: '/talent-screening-process' },
+    { name: 'Trained Placement', href: '/trained-employee-placement' },
+    { name: 'IT Staffing Bangalore', href: '/it-staffing-bangalore' },
+    { name: 'Recruitment Consulting', href: '/recruitment-consulting-bangalore' },
   ],
   company: [
-    { name: "Home", href: "/" },
-    { name: "About Us", href: "/about" },
-    { name: "Blog & Insights", href: "/blog" },
-    { name: "Contact", href: "/contact" },
+    { name: 'Home', href: '/' },
+    { name: 'About Talenty Consulting', href: '/about' },
+    { name: 'Field Notes & Blog', href: '/blog' },
+    { name: 'Hiring Consultation', href: '/contact' },
   ],
   legal: [
-    { name: "Privacy Policy", href: "/privacy" },
-    { name: "Terms of Service", href: "/terms" },
-  ],
+    { name: 'Privacy Policy', href: '/about' },
+    { name: 'Terms of Engagement', href: '/about' },
+    { name: 'Replacement Guarantee', href: '/about' },
+    { name: 'Candidate Portal', href: '/register' },
+  ]
 }
 
 export function Footer() {
+  const [newsletterPlaceholder, setNewsletterPlaceholder] = useState("you@company.com")
+  const [isSubscribed, setIsSubscribed] = useState(false)
+
+  // Typewriter effect for newsletter placeholder
+  useEffect(() => {
+    const phrases = ['you@company.com', 'priya@northwind.co', 'talent@kestrel.io']
+    let phraseIndex = 0
+    let charIndex = 0
+    let isDeleting = false
+    let timer: NodeJS.Timeout
+
+    const tick = () => {
+      const currentPhrase = phrases[phraseIndex]
+      
+      if (!isDeleting) {
+        charIndex++
+        setNewsletterPlaceholder(currentPhrase.slice(0, charIndex))
+        if (charIndex >= currentPhrase.length) {
+          isDeleting = true
+          timer = setTimeout(tick, 1400)
+          return
+        }
+      } else {
+        charIndex--
+        setNewsletterPlaceholder(currentPhrase.slice(0, charIndex))
+        if (charIndex <= 0) {
+          isDeleting = false
+          phraseIndex = (phraseIndex + 1) % phrases.length
+        }
+      }
+
+      timer = setTimeout(tick, isDeleting ? 40 : 70)
+    }
+
+    tick()
+    return () => clearTimeout(timer)
+  }, [])
+
   return (
-    <footer className="relative overflow-hidden border-t border-border/30 pb-8 pt-20">
-      <div className="container relative z-10 mx-auto px-4 lg:px-8">
-        <div className="mb-16 grid gap-12 lg:grid-cols-5">
-          <div className="lg:col-span-2">
-            <Link href="/" className="mb-6 inline-flex items-center gap-3">
-              <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-gradient-to-br from-primary to-accent text-primary-foreground">
-                <Sparkles className="h-5 w-5" />
-              </div>
-              <div>
-                <div className="text-xl font-bold text-foreground">Talenty Consulting</div>
-                <div className="text-xs uppercase tracking-[0.24em] text-muted-foreground">
-                  Counseling and Consulting
-                </div>
-              </div>
-            </Link>
-            <p className="mb-6 max-w-sm leading-relaxed text-muted-foreground">
-              Bengaluru recruitment consulting, IT staffing, and trained employee placement for companies
-              that need job-ready talent.
-            </p>
-            <div className="space-y-3">
-              <div className="flex items-center gap-3 text-sm text-muted-foreground">
-                <Mail className="h-4 w-4 text-primary" />
-                <TrackedMailtoLink email={SITE_EMAIL} />
-              </div>
-              <div className="flex items-center gap-3 text-sm text-muted-foreground">
-                <Phone className="h-4 w-4 text-primary" />
-                <TrackedTelLink phone={SITE_PHONE} />
-              </div>
-              <div className="flex items-center gap-3 text-sm text-muted-foreground">
-                <MapPin className="h-4 w-4 text-primary" />
-                Bhive Platinum, Church Street
-              </div>
-              <div className="pl-7 text-sm text-muted-foreground">{SITE_HOURS_LABEL}</div>
+    <footer className="bg-[#0D2D42] text-[#F7F2E4] pt-24 pb-12 border-t-2 border-[#C18A18]/30 relative overflow-hidden">
+      <div className="max-w-[1440px] mx-auto px-6 lg:px-10 relative z-10">
+        
+        {/* Main Grid */}
+        <div className="grid gap-12 lg:grid-cols-5 border-b border-white/10 pb-16">
+          
+          {/* Brand & Newsletter Column */}
+          <div className="lg:col-span-2 space-y-8">
+            <div className="space-y-4">
+              <LogoBrand lightMode={true} />
+              <p className="text-sm text-[#94AEC6] max-w-sm leading-relaxed">
+                Talenty Consulting delivers trained employee placement, recruitment consulting, and calibrated technical staffing across India.
+              </p>
+            </div>
+            
+            <div className="space-y-3 max-w-md">
+              <h5 className="font-mono text-[11px] uppercase tracking-widest text-[#F7E9A7]">
+                Get quarterly talent benchmarks
+              </h5>
+              <form 
+                onSubmit={(e: React.FormEvent) => { e.preventDefault(); setIsSubscribed(true) }}
+                className="flex border border-white/15 bg-[#143852] rounded-full overflow-hidden shadow-sm focus-within:ring-1 focus-within:ring-[#C18A18] focus-within:border-[#C18A18]"
+              >
+                <input 
+                  type="email" 
+                  placeholder={newsletterPlaceholder} 
+                  required
+                  className="flex-1 bg-transparent border-0 px-4 py-2.5 text-sm outline-none text-[#F7F2E4] placeholder-white/40"
+                />
+                <button 
+                  type="submit" 
+                  className="bg-[#C18A18] hover:bg-[#F7E9A7] text-[#0D2D42] font-bold text-xs uppercase px-5 py-2.5 tracking-wider transition-colors cursor-pointer"
+                >
+                  {isSubscribed ? "Sent ✓" : "Subscribe"}
+                </button>
+              </form>
             </div>
           </div>
+
+          {/* Link Columns */}
           <div>
-            <h4 className="mb-4 font-semibold text-foreground">Services</h4>
+            <h5 className="font-mono text-[11px] uppercase tracking-widest text-[#F7E9A7] mb-5">
+              Solutions
+            </h5>
             <ul className="space-y-3">
-              {footerLinks.services.map((link) => (
+              {footerLinks.solutions.map((link) => (
                 <li key={link.name}>
-                  <Link href={link.href} className="text-sm text-muted-foreground hover:text-foreground">
+                  <Link href={link.href} className="text-[13.5px] text-[#94AEC6] hover:text-[#F7E9A7] transition-colors">
                     {link.name}
                   </Link>
                 </li>
               ))}
             </ul>
           </div>
+
           <div>
-            <h4 className="mb-4 font-semibold text-foreground">Navigation</h4>
+            <h5 className="font-mono text-[11px] uppercase tracking-widest text-[#F7E9A7] mb-5">
+              Company
+            </h5>
             <ul className="space-y-3">
               {footerLinks.company.map((link) => (
                 <li key={link.name}>
-                  <Link href={link.href} className="text-sm text-muted-foreground hover:text-foreground">
+                  <Link href={link.href} className="text-[13.5px] text-[#94AEC6] hover:text-[#F7E9A7] transition-colors">
                     {link.name}
                   </Link>
                 </li>
               ))}
             </ul>
           </div>
+
+          {/* Confirmed NAP / Contact Column */}
           <div>
-            <h4 className="mb-4 font-semibold text-foreground">Legal</h4>
-            <ul className="space-y-3">
-              {footerLinks.legal.map((link) => (
-                <li key={link.name}>
-                  <Link href={link.href} className="text-sm text-muted-foreground hover:text-foreground">
-                    {link.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
+            <h5 className="font-mono text-[11px] uppercase tracking-widest text-[#F7E9A7] mb-5">
+              Bengaluru Hub
+            </h5>
+            <div className="space-y-3.5 text-xs text-[#94AEC6] font-sans">
+              <div className="flex items-start gap-2.5">
+                <MapPin className="w-4 h-4 text-[#C18A18] flex-shrink-0 mt-0.5" />
+                <span>BHIVE Platinum, Church Street, Bengaluru, Karnataka</span>
+              </div>
+              <div className="flex items-center gap-2.5">
+                <Mail className="w-4 h-4 text-[#C18A18] flex-shrink-0" />
+                <a href="mailto:connect@talentyconsulting.in" className="hover:text-[#F7E9A7] transition-colors">
+                  connect@talentyconsulting.in
+                </a>
+              </div>
+              <div className="flex items-center gap-2.5">
+                <Phone className="w-4 h-4 text-[#C18A18] flex-shrink-0" />
+                <a href="tel:8431119696" className="hover:text-[#F7E9A7] transition-colors font-mono">
+                  8431119696
+                </a>
+              </div>
+              <div className="flex items-center gap-2.5">
+                <Globe className="w-4 h-4 text-[#C18A18] flex-shrink-0" />
+                <span className="font-mono">talentyconsulting.in</span>
+              </div>
+            </div>
           </div>
         </div>
-        <div className="flex flex-col items-center justify-between gap-4 border-t border-border/30 pt-8 md:flex-row">
-          <p className="text-sm text-muted-foreground">
+
+        {/* Footer Bottom Bar */}
+        <div className="pt-8 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-[#94AEC6] font-mono">
+          <div>
             © {new Date().getFullYear()} Talenty Consulting. All rights reserved.
-          </p>
-          <a
-            href={LINKEDIN_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Talenty Consulting on LinkedIn"
-            className="flex h-10 w-10 items-center justify-center rounded-full bg-secondary/50 text-muted-foreground hover:bg-primary/20 hover:text-foreground"
-          >
-            <Linkedin className="h-4 w-4" />
-          </a>
+          </div>
+          <div className="flex gap-6">
+            <span>BHIVE Platinum · Church Street</span>
+            <span className="text-[#C18A18]">Bengaluru Hub · Pan-India Sourcing</span>
+          </div>
         </div>
       </div>
     </footer>

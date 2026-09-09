@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react"
 import Link from "next/link"
+import { ArrowRight, Building2, Code2, GraduationCap, ShieldCheck, MapPin, CheckCircle2 } from "lucide-react"
 
 import {
   Navbar,
@@ -16,31 +17,59 @@ import {
 } from "@/components/landing"
 import { EnquiryForm } from "@/components/public/enquiry-form"
 
-// Day in Talenty Steps
-const DAY_STEPS = [
+// Core Service Offerings (What Talenty Does)
+const CORE_SERVICES = [
   {
-    time: "08:30 GMT",
-    title: "AI Sourcing & Enrichment",
-    desc: "41 passive candidates matching your 'Sr. iOS Engineer' role are auto-enriched from GitHub and LinkedIn. Vetted, clean data ready for review.",
-    stat: "41 enriched"
+    icon: Building2,
+    title: "Recruitment Consulting Services",
+    href: "/recruitment-consulting-bangalore",
+    desc: "End-to-end recruitment consulting for startups and SMEs in Bangalore—hiring strategy, RPO, and volume hiring support.",
+    badge: "Consulting & Strategy"
   },
   {
-    time: "12:00 GMT",
-    title: "Explainable Match Scores",
-    desc: "Talenty screens candidates based on your specific team requirements. Review exact calibrated weights for Priya's score—no black boxes.",
-    stat: "94% Match"
+    icon: Code2,
+    title: "IT Staffing & Tech Recruitment",
+    href: "/it-staffing-bangalore",
+    desc: "Hire Java, Python, React, DevOps, and full-stack developers in Bangalore through contract and permanent IT staffing.",
+    badge: "Engineering Staffing"
   },
   {
-    time: "15:00 GMT",
-    title: "Collaborative Vetting Panel",
-    desc: "Live interview coordination. Shared scorecards, notes, and direct feedback sync with Slack and your calendar automatically.",
-    stat: "Panel of 4"
+    icon: GraduationCap,
+    title: "Trained Employee Placement",
+    href: "/trained-employee-placement",
+    desc: "Deploy pre-trained, job-ready candidates calibrated on your specific tech stack for zero-lag day-one productivity.",
+    badge: "Day-One Productive"
   },
   {
-    time: "18:00 GMT",
-    title: "Offer & Auto-Close",
-    desc: "Two job offers are accepted. The candidate status updates in real-time on the ATS, and onboarding document sequences queue up.",
-    stat: "2 Hires"
+    icon: ShieldCheck,
+    title: "Candidate Screening & Vetting",
+    href: "/talent-screening-process",
+    desc: "Multi-stage candidate screening and assessment—technical, cognitive, and behavioural—before any CV reaches your inbox.",
+    badge: "Multi-Stage Vetting"
+  }
+]
+
+// Bangalore Areas & Coverage
+const BANGALORE_AREAS = [
+  {
+    area: "Church Street & CBD",
+    detail: "Headquarters at BHIVE Platinum, Church St. Central recruitment advisory and leadership desk."
+  },
+  {
+    area: "Indiranagar & Koramangala",
+    detail: "Dedicated recruitment support for venture-backed startups, product scaleups, and early-stage founding teams."
+  },
+  {
+    area: "Whitefield & Electronic City",
+    detail: "Staffing pipelines for enterprise technology corridors, large engineering centers, and IT hubs."
+  },
+  {
+    area: "Outer Ring Road & Bellandur",
+    detail: "High-volume IT staffing and specialized talent acquisition across major tech parks and GCCs."
+  },
+  {
+    area: "Pan-India Placement Network",
+    detail: "Active candidate placement across Chennai, Pune, Hyderabad, Mumbai, and Kochi."
   }
 ]
 
@@ -55,16 +84,63 @@ export default function Home() {
       {/* 2. VERIFIED CLIENT CONVERSIONS SECTION */}
       <TrustedClients />
 
-      {/* 3. OPERATIONAL SIGNALS & BENCHMARKS (High-Impact Navy Band) */}
+      {/* 3. CORE SERVICES OVERVIEW (What Talenty Does) */}
+      <section className="py-24 max-w-[1440px] mx-auto px-6 lg:px-10" id="services">
+        <div className="max-w-3xl mb-16 space-y-4">
+          <span className="font-mono text-[11px] uppercase tracking-widest text-[#8A6420] font-semibold block">
+            · PRACTICE AREAS & SOLUTIONS
+          </span>
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-semibold text-[#141110] tracking-tight">
+            Recruitment & Staffing Services for Growing Businesses
+          </h2>
+          <p className="text-sm sm:text-base text-[#5C5449] leading-relaxed">
+            Talenty Consulting provides structured recruitment solutions tailored to Bangalore&apos;s tech ecosystem and enterprises across India.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {CORE_SERVICES.map((srv) => (
+            <Link
+              key={srv.title}
+              href={srv.href}
+              className="border border-[#141110]/12 bg-[#F0E9D5]/40 rounded-3xl p-8 hover:border-[#141110]/40 transition-all group flex flex-col justify-between"
+            >
+              <div>
+                <div className="flex items-center justify-between mb-6">
+                  <div className="w-12 h-12 rounded-2xl bg-[#0D2D42] text-[#F7E9A7] flex items-center justify-center shadow-xs">
+                    <srv.icon className="w-5 h-5" />
+                  </div>
+                  <span className="font-mono text-[10px] uppercase tracking-wider px-2.5 py-1 rounded-md bg-[#CD9534]/20 text-[#8A6420] font-semibold">
+                    {srv.badge}
+                  </span>
+                </div>
+                <h3 className="text-2xl font-serif font-bold text-[#141110] group-hover:text-[#8A6420] transition-colors mb-3">
+                  {srv.title}
+                </h3>
+                <p className="text-sm text-[#5C5449] leading-relaxed mb-6">
+                  {srv.desc}
+                </p>
+              </div>
+
+              <div className="flex items-center gap-2 text-xs font-mono font-semibold text-[#141110] group-hover:text-[#8A6420] transition-colors pt-4 border-t border-[#141110]/10">
+                <span>Explore service details</span>
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              </div>
+            </Link>
+          ))}
+        </div>
+      </section>
+
+      {/* 4. OPERATIONAL SIGNALS & BENCHMARKS (High-Impact Navy Band) */}
       <section className="py-16 bg-[#0D2D42] text-[#F7F2E4] relative overflow-hidden border-b-2 border-[#C18A18]/30">
         <div className="max-w-[1440px] mx-auto px-6 lg:px-10">
           <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center border-b border-white/10 pb-6 mb-12">
             <div className="font-mono text-[11px] uppercase tracking-widest text-[#F7F2E4]/60">
               · TALENT EXECUTION & RELIABILITY
             </div>
-            <h3 className="font-serif font-bold text-lg text-[#F7F2E4] mt-2 sm:mt-0">
-              CALIBRATED RECRUITMENT BENCHMARKS
-            </h3>
+            <h2 className="font-serif font-bold text-lg text-[#F7F2E4] mt-2 sm:mt-0">
+              Why Trained, Pre-Vetted, and Fast Hiring Matters
+            </h2>
             <div className="font-mono text-[11px] text-[#F7E9A7] uppercase tracking-widest mt-2 sm:mt-0 font-bold">
               Active Pan-India Operations
             </div>
@@ -75,9 +151,9 @@ export default function Home() {
               <div className="font-mono text-[10px] text-[#F7E9A7] uppercase tracking-widest font-bold">
                 CONTINUOUS SOURCING
               </div>
-              <h4 className="text-xl sm:text-2xl font-serif font-bold tracking-tight text-[#F7F2E4]">
+              <h3 className="text-xl sm:text-2xl font-serif font-bold tracking-tight text-[#F7F2E4]">
                 Live Signal Indexing
-              </h4>
+              </h3>
               <p className="text-xs text-[#F7F2E4]/70 leading-relaxed">
                 Passive engineering candidates indexed across verified code repositories and professional registries.
               </p>
@@ -87,9 +163,9 @@ export default function Home() {
               <div className="font-mono text-[10px] text-[#F7E9A7] uppercase tracking-widest font-bold">
                 CALIBRATED VETTING
               </div>
-              <h4 className="text-xl sm:text-2xl font-serif font-bold tracking-tight text-[#F7F2E4]">
+              <h3 className="text-xl sm:text-2xl font-serif font-bold tracking-tight text-[#F7F2E4]">
                 Zero Black Boxes
-              </h4>
+              </h3>
               <p className="text-xs text-[#F7F2E4]/70 leading-relaxed">
                 Role-specific technical benchmarks and system design rubrics with transparent signal weighting.
               </p>
@@ -99,9 +175,9 @@ export default function Home() {
               <div className="font-mono text-[10px] text-[#F7E9A7] uppercase tracking-widest font-bold">
                 TURNAROUND VELOCITY
               </div>
-              <h4 className="text-xl sm:text-2xl font-serif font-bold tracking-tight text-[#F7F2E4]">
+              <h3 className="text-xl sm:text-2xl font-serif font-bold tracking-tight text-[#F7F2E4]">
                 Structured Sprints
-              </h4>
+              </h3>
               <p className="text-xs text-[#F7F2E4]/70 leading-relaxed">
                 Coordinated candidate screening, panel feedback synchronization, and offer extension workflows.
               </p>
@@ -111,18 +187,18 @@ export default function Home() {
               <div className="font-mono text-[10px] text-[#F7E9A7] uppercase tracking-widest font-bold">
                 GEOGRAPHIC REACH
               </div>
-              <h4 className="text-xl sm:text-2xl font-serif font-bold tracking-tight text-[#F7F2E4]">
+              <h3 className="text-xl sm:text-2xl font-serif font-bold tracking-tight text-[#F7F2E4]">
                 Pan-India Network
-              </h4>
+              </h3>
               <p className="text-xs text-[#F7F2E4]/70 leading-relaxed">
-                Hub offices in Bengaluru (BHIVE Church St) and Kochi with active sourcing coverage across all major hubs.
+                Hub office at BHIVE Platinum on Church St, Bengaluru, with verified placement reach across Chennai and Pune.
               </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* 4. FEATURE BENTO GRID */}
+      {/* 5. FEATURE BENTO GRID */}
       <section className="py-24 max-w-[1440px] mx-auto px-6 lg:px-10" id="product">
         <div className="grid gap-12 lg:grid-cols-[1fr_1.8fr] border-b border-[#15120F]/10 pb-16 items-end">
           <div className="space-y-4">
@@ -131,7 +207,7 @@ export default function Home() {
             </span>
             <h2 className="text-4xl sm:text-5xl font-serif font-semibold tracking-tight text-[#141110] leading-[1.05]">
               Everything you need. <br />
-              <span className="text-[#CD9534] italic font-normal">Nothing</span> you don't.
+              <span className="text-[#CD9534] italic font-normal">Nothing</span> you don&apos;t.
             </h2>
           </div>
           <p className="text-[15.5px] leading-relaxed text-[#5C5449] max-w-2xl">
@@ -168,7 +244,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 5. THE FIVE GATES: VETTING STAGES */}
+      {/* 6. THE FIVE GATES: VETTING STAGES */}
       <section className="py-24 bg-[#F0E9D5]/40 border-t border-[#15120F]/10" id="vetting">
         <div className="max-w-6xl mx-auto px-6 lg:px-10">
           <div className="mb-12 max-w-2xl space-y-3">
@@ -179,7 +255,7 @@ export default function Home() {
               Every candidate clears these stages before you see a CV.
             </h2>
             <p className="text-sm text-[#5C5449] leading-relaxed">
-              We replace resume spam with calibrated technical challenges, production architecture walkthroughs, and verified background signals.
+              We replace resume spam with calibrated technical challenges, production architecture walkthroughs, and verified candidate evaluations.
             </p>
           </div>
 
@@ -187,18 +263,58 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 6. TESTIMONIAL SLIDER */}
+      {/* 7. AREAS WE SERVE IN BANGALORE & ACROSS INDIA (Cluster 8) */}
+      <section className="py-24 bg-[#F7F2E4] border-t border-[#15120F]/10">
+        <div className="max-w-[1440px] mx-auto px-6 lg:px-10">
+          <div className="max-w-3xl mb-14 space-y-3">
+            <span className="font-mono text-[11px] uppercase tracking-widest text-[#8A6420] font-semibold block">
+              · GEOGRAPHIC HUBS & SERVICE COVERAGE
+            </span>
+            <h2 className="text-3xl sm:text-4xl font-serif font-semibold text-[#141110]">
+              Areas We Serve in Bangalore & Tech Corridors Across India
+            </h2>
+            <p className="text-sm text-[#5C5449] leading-relaxed">
+              From our physical consulting office on Church Street to active hiring pipelines across Karnataka, Tamil Nadu, and Maharashtra, we support scaling teams in key business districts.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {BANGALORE_AREAS.map((item) => (
+              <div
+                key={item.area}
+                className="border border-[#15120F]/10 bg-[#F0E9D5]/40 rounded-2xl p-6 flex flex-col justify-between hover:border-[#8A6420]/40 transition-colors"
+              >
+                <div>
+                  <div className="flex items-center gap-2 mb-3">
+                    <MapPin className="w-4 h-4 text-[#8A6420]" />
+                    <h3 className="font-serif font-bold text-lg text-[#141110]">
+                      {item.area}
+                    </h3>
+                  </div>
+                  <p className="text-xs sm:text-sm text-[#5C5449] leading-relaxed">
+                    {item.detail}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 8. TESTIMONIAL SLIDER */}
       <section className="py-20 max-w-[1440px] mx-auto px-6 lg:px-10" id="customers">
         <TestimonialSlider />
       </section>
 
-      {/* 8. FAQ ACCORDION */}
-      <section className="py-24 bg-[#F7F2E4] max-w-[1440px] mx-auto px-6 lg:px-10" id="faq">
-        <FAQAccordion />
+      {/* 9. FAQ ACCORDION */}
+      <section className="py-24 bg-[#F0E9D5]/40 border-t border-[#15120F]/10" id="faq">
+        <div className="max-w-[1440px] mx-auto px-6 lg:px-10">
+          <FAQAccordion />
+        </div>
       </section>
 
-      {/* 9. LEAD-GEN CONSULTATION SECTION */}
-      <section id="contact" className="relative py-24 overflow-hidden bg-[#F0E9D5]/30 border-t border-[#15120F]/10">
+      {/* 10. LEAD-GEN CONSULTATION SECTION */}
+      <section id="contact" className="relative py-24 overflow-hidden bg-[#F7F2E4] border-t border-[#15120F]/10">
         <div className="absolute inset-0">
           <div className="absolute left-1/2 top-0 h-[420px] w-[420px] -translate-x-1/2 rounded-full bg-[#CD9534]/10 blur-3xl" />
           <div className="absolute inset-0 grid-bg opacity-15" />

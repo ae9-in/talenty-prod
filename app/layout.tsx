@@ -1,11 +1,12 @@
 import type { Metadata } from 'next'
 import { Analytics } from '@vercel/analytics/next'
+import { OrganizationSchema, WebSiteSchema } from '@/components/landing/json-ld'
 import './globals.css'
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.talentyconsulting.in'),
-  title: 'Recruitment Consulting & Staffing in Bengaluru | Talenty Consulting',
-  description: 'Talenty Consulting helps Bengaluru companies hire trained, job-ready employees fast. Recruitment consulting, talent screening & staffing — book your free consultation today.',
+  title: 'B2B Recruitment & Staffing Agency in Bangalore | Talenty Consulting',
+  description: 'Talenty Consulting is a Bangalore-based recruitment and staffing agency placing trained, job-ready, pre-vetted talent for companies across India.',
   alternates: {
     canonical: 'https://www.talentyconsulting.in',
   },
@@ -34,6 +35,8 @@ export default function RootLayout({
         <link rel="apple-touch-icon" href="/icon.svg" />
       </head>
       <body className="font-sans antialiased">
+        <OrganizationSchema />
+        <WebSiteSchema />
         <SiteLoader />
         {children}
         <Analytics />

@@ -211,8 +211,12 @@ export function HeroCarousel() {
                 {currentSlide.pillar}
               </div>
 
+              {/* Semantic H1 for SEO */}
+              <h1 className="sr-only">Recruitment & Staffing Solutions for Growing Businesses in Bangalore</h1>
+
               {/* Rolling Headline */}
               <RollingHeadline
+                as="h2"
                 line1={currentSlide.headlineLine1}
                 accent={currentSlide.headlineAccent}
                 line2={currentSlide.headlineLine2}

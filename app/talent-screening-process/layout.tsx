@@ -1,32 +1,33 @@
 import type { Metadata } from "next"
-
-const title = "Candidate Screening & Talent Vetting Process"
-const description =
-  "Learn how Talenty Consulting screens candidates. Our rigorous vetting includes cognitive, coding, and behavioral evaluations for high retention staffing."
-const url = "https://www.talentyconsulting.in/talent-screening-process"
+import { BreadcrumbSchema, PageServiceSchema } from "@/components/landing/json-ld"
 
 export const metadata: Metadata = {
-  title,
-  description,
-  alternates: { canonical: url },
-  openGraph: {
-    title,
-    description,
-    url,
-    type: "website",
-    siteName: "Talenty Consulting",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title,
-    description,
+  title: "Candidate Screening & Vetting Services in Bangalore | Talenty",
+  description: "Multi-stage candidate screening and assessment — technical, cognitive and behavioural — before any candidate reaches your inbox.",
+  alternates: {
+    canonical: "https://www.talentyconsulting.in/talent-screening-process",
   },
 }
 
-export default function VettingLayout({
+export default function TalentScreeningLayout({
   children,
 }: {
   children: React.ReactNode
 }) {
-  return <>{children}</>
+  return (
+    <>
+      <BreadcrumbSchema
+        paths={[
+          { name: "Home", url: "https://www.talentyconsulting.in" },
+          { name: "Talent Screening Process", url: "https://www.talentyconsulting.in/talent-screening-process" },
+        ]}
+      />
+      <PageServiceSchema
+        name="Candidate Screening & Vetting Services in Bangalore"
+        description="Multi-stage candidate screening and assessment — technical, cognitive and behavioural — before any candidate reaches your inbox."
+        url="https://www.talentyconsulting.in/talent-screening-process"
+      />
+      {children}
+    </>
+  )
 }

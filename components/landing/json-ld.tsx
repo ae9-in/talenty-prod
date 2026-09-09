@@ -14,7 +14,7 @@ import {
 export function OrganizationSchema() {
   const schema: Record<string, unknown> = {
     "@context": "https://schema.org",
-    "@type": ["Organization", "LocalBusiness"],
+    "@type": ["Organization", "LocalBusiness", "ProfessionalService"],
     name: "Talenty Consulting",
     alternateName: ["Talenty", "Talenty Consultancy"],
     url: SITE_URL,

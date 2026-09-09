@@ -1,25 +1,11 @@
 import type { Metadata } from "next"
-
-const title = "IT Staffing & Tech Recruitment Agency in Bengaluru"
-const description =
-  "Accelerate your tech team scaling. Talenty Consulting provides specialized IT staffing and tech recruitment in Bengaluru for developers, QA, and PMs."
-const url = "https://www.talentyconsulting.in/it-staffing-bangalore"
+import { BreadcrumbSchema, PageServiceSchema } from "@/components/landing/json-ld"
 
 export const metadata: Metadata = {
-  title,
-  description,
-  alternates: { canonical: url },
-  openGraph: {
-    title,
-    description,
-    url,
-    type: "website",
-    siteName: "Talenty Consulting",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title,
-    description,
+  title: "IT Staffing & Tech Recruitment Agency in Bangalore | Talenty",
+  description: "Hire Java, Python, React, DevOps and full-stack developers in Bangalore through Talenty's contract and permanent IT staffing services.",
+  alternates: {
+    canonical: "https://www.talentyconsulting.in/it-staffing-bangalore",
   },
 }
 
@@ -28,5 +14,20 @@ export default function ItStaffingLayout({
 }: {
   children: React.ReactNode
 }) {
-  return <>{children}</>
+  return (
+    <>
+      <BreadcrumbSchema
+        paths={[
+          { name: "Home", url: "https://www.talentyconsulting.in" },
+          { name: "IT Staffing", url: "https://www.talentyconsulting.in/it-staffing-bangalore" },
+        ]}
+      />
+      <PageServiceSchema
+        name="IT Staffing & Tech Recruitment Agency in Bangalore"
+        description="Hire Java, Python, React, DevOps and full-stack developers in Bangalore through Talenty's contract and permanent IT staffing services."
+        url="https://www.talentyconsulting.in/it-staffing-bangalore"
+      />
+      {children}
+    </>
+  )
 }

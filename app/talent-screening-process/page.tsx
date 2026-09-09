@@ -4,15 +4,33 @@ import { Navbar } from "@/components/landing/navbar"
 import { Footer } from "@/components/landing/footer"
 import { RollingHeadline } from "@/components/landing/rolling-headline"
 import { EnquiryForm } from "@/components/public/enquiry-form"
-import { Reveal } from "@/components/landing/scroll-reveal"
+import { Reveal, RevealGroup } from "@/components/landing/scroll-reveal"
 import { ProcessTimeline } from "@/components/landing/process-timeline"
-import { CheckCircle2 } from "lucide-react"
+import { CheckCircle2, Terminal, Brain, MessageSquare, ShieldCheck } from "lucide-react"
+
+const screeningStages = [
+  {
+    icon: Terminal,
+    title: "Multi-Stage Technical Assessment",
+    desc: "Every engineering candidate completes sandboxed programming challenges, algorithmic problem-solving tests, and practical system design evaluations calibrated to role seniority."
+  },
+  {
+    icon: Brain,
+    title: "Cognitive Aptitude & Problem Solving",
+    desc: "We assess analytical reasoning, numerical problem solving, and logical structure to ensure candidates learn quickly and adapt to changing codebase requirements."
+  },
+  {
+    icon: MessageSquare,
+    title: "Behavioral & Cross-Functional Screening",
+    desc: "In-depth structured interviews evaluate stakeholder communication, agile team collaboration, engineering ownership, and professional alignment."
+  }
+]
 
 const operatingStandards = [
   "Zero resume forwarding without verified technical scorecard",
-  "Engineering panel time reduced by eliminating uncalibrated interviews",
-  "Detailed explanation of candidate strengths and signal weights",
-  "Full replacement assurance on all completed placements"
+  "Engineering panel time reduced by eliminating uncalibrated first-round interviews",
+  "Transparent evaluation summaries explaining candidate strengths and signal weights",
+  "Full placement replacement assurance window standard across all completed hires"
 ]
 
 export default function TalentScreeningProcess() {
@@ -28,22 +46,61 @@ export default function TalentScreeningProcess() {
 
         <div className="max-w-[1440px] mx-auto px-6 lg:px-10 relative z-10">
           <div className="max-w-3xl mx-auto text-center">
-            <span className="font-mono text-[11px] uppercase tracking-widest text-[#CD9534] font-semibold block mb-4">
+            <span className="font-mono text-[11px] uppercase tracking-widest text-[#8A6420] font-semibold block mb-4">
               · CALIBRATED VETTING INFRASTRUCTURE
             </span>
             
+            <h1 className="sr-only">How Talenty Screens and Vets Every Candidate</h1>
+
             <RollingHeadline
-              line1="How we screen talent"
-              accent="before you interview."
-              line2="Structured, explainable evaluation."
+              as="h2"
+              line1="How Talenty Screens and"
+              accent="vets every candidate."
+              line2="Structured, Multi-Stage Evaluation."
               className="text-4xl sm:text-5xl md:text-6xl font-serif font-semibold tracking-tight leading-[1.02] text-[#141110]"
             />
 
             <p className="mt-5 text-lg md:text-xl text-[#5C5449] max-w-2xl mx-auto leading-relaxed font-sans">
-              We do not forward unvetted resumes. Every candidate profile you receive from Talenty Consulting has been benchmarked on production code, architecture fundamentals, and verified employment history.
+              We do not forward unvetted resumes. Every candidate profile you receive from Talenty Consulting has cleared rigorous technical assessments, cognitive problem solving, and behavioral interviews.
             </p>
           </div>
         </div>
+      </section>
+
+      {/* Multi-Stage Assessment Pillars */}
+      <section className="py-24 max-w-[1440px] mx-auto px-6 lg:px-10">
+        <Reveal className="text-center max-w-2xl mx-auto mb-16">
+          <span className="font-mono text-[11px] uppercase tracking-widest text-[#8A6420] font-semibold block mb-2">
+            · VETTING GATES
+          </span>
+          <h2 className="text-3xl sm:text-4xl font-serif font-semibold text-[#141110]">
+            Three-Dimensional Candidate Assessment
+          </h2>
+          <p className="text-sm sm:text-base text-[#5C5449] mt-3">
+            Multi-stage screening and assessment—technical, cognitive, and behavioural—before any candidate reaches your inbox.
+          </p>
+        </Reveal>
+
+        <RevealGroup className="grid md:grid-cols-3 gap-8">
+          {screeningStages.map((stage) => (
+            <div
+              key={stage.title}
+              className="border border-[#141110]/10 bg-[#F0E9D5]/40 rounded-3xl p-8 hover:border-[#141110]/30 transition-all flex flex-col justify-between"
+            >
+              <div>
+                <div className="w-12 h-12 rounded-2xl bg-[#0D2D42] text-[#F7E9A7] flex items-center justify-center mb-6 shadow-xs">
+                  <stage.icon className="w-5 h-5" />
+                </div>
+                <h3 className="text-xl font-serif font-bold text-[#141110] mb-3">
+                  {stage.title}
+                </h3>
+                <p className="text-sm text-[#5C5449] leading-relaxed">
+                  {stage.desc}
+                </p>
+              </div>
+            </div>
+          ))}
+        </RevealGroup>
       </section>
 
       {/* Chronological Screening Flow — Vertical Timeline */}
@@ -57,7 +114,7 @@ export default function TalentScreeningProcess() {
               A day in <span className="text-[#CD9534] italic font-normal">Talenty.</span>
             </h2>
             <p className="text-sm text-[#5C5449] leading-relaxed">
-              How our integrated automation and consulting loop transforms daily recruiting overhead into structured outcomes.
+              How our integrated automation and consulting loop transforms daily recruiting overhead into structured candidate outcomes.
             </p>
           </div>
 
@@ -65,35 +122,40 @@ export default function TalentScreeningProcess() {
         </div>
       </section>
 
-      {/* Core Vetting Standards & Consultation Form */}
+      {/* Operating Commitments */}
       <section className="py-24 max-w-[1440px] mx-auto px-6 lg:px-10">
-        <div className="grid lg:grid-cols-[0.95fr_1.05fr] gap-12 items-start max-w-5xl mx-auto">
-          <Reveal className="space-y-6">
-            <span className="font-mono text-[11px] uppercase tracking-widest text-[#CD9534] font-semibold block">
-              · OPERATIONAL STANDARDS
-            </span>
-            <h2 className="text-3xl sm:text-4xl font-serif font-semibold text-[#141110] leading-tight">
-              A hiring loop engineered to protect your time.
+        <Reveal className="max-w-3xl mx-auto bg-[#F0E9D5]/60 border border-[#141110]/10 rounded-3xl p-8 md:p-12">
+          <span className="font-mono text-[11px] uppercase tracking-widest text-[#8A6420] font-semibold block mb-2">
+            · OPERATING COMMITMENTS
+          </span>
+          <h2 className="text-2xl sm:text-3xl font-serif font-bold text-[#141110] mb-6">
+            Our Quality Assurances to Hiring Managers
+          </h2>
+          <div className="space-y-4">
+            {operatingStandards.map((std, idx) => (
+              <div key={idx} className="flex items-start gap-3">
+                <CheckCircle2 className="w-5 h-5 text-[#8A6420] flex-shrink-0 mt-0.5" />
+                <span className="text-sm sm:text-base text-[#141110] font-medium">{std}</span>
+              </div>
+            ))}
+          </div>
+        </Reveal>
+      </section>
+
+      {/* Contact Section */}
+      <section id="contact" className="py-24 bg-[#F0E9D5]/40 border-t border-[#141110]/10">
+        <div className="max-w-3xl mx-auto px-6 lg:px-10">
+          <div className="text-center mb-10">
+            <h2 className="text-3xl font-serif font-semibold text-[#141110]">
+              Set up a candidate screening pipeline
             </h2>
-            <p className="text-sm sm:text-base text-[#5C5449] leading-relaxed">
-              Your engineering and hiring panels should evaluate finalists, not filter out basic mismatches. Our screening pipeline ensures that every candidate who reaches your calendar is already verified as a production-level match.
+            <p className="text-sm text-[#5C5449] mt-2">
+              Tell us your open roles and technical benchmark criteria. We will construct a customized evaluation sieve.
             </p>
-
-            <div className="space-y-3.5 pt-4">
-              {operatingStandards.map((item) => (
-                <div key={item} className="flex items-start gap-3">
-                  <CheckCircle2 className="w-5 h-5 text-[#CD9534] flex-shrink-0 mt-0.5" />
-                  <span className="text-sm text-[#141110] font-medium">{item}</span>
-                </div>
-              ))}
-            </div>
-          </Reveal>
-
-          <Reveal delay={0.1}>
-            <div className="bg-[#F7F2E4] border-2 border-[#15120F] rounded-3xl p-2 sm:p-4 shadow-[8px_8px_0px_0px_rgba(21,18,15,1)]">
-              <EnquiryForm buttonLabel="Request screened candidate shortlist" />
-            </div>
-          </Reveal>
+          </div>
+          <div className="bg-[#F7F2E4] border-2 border-[#141110]/20 rounded-3xl p-2 sm:p-4 shadow-[8px_8px_0px_0px_rgba(21,18,15,0.06)]">
+            <EnquiryForm buttonLabel="Inquire about candidate screening" />
+          </div>
         </div>
       </section>
 

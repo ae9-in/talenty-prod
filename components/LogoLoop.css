@@ -1,9 +1,8 @@
 .logoloop {
   position: relative;
-
   --logoloop-gap: 32px;
   --logoloop-logoHeight: 28px;
-  --logoloop-fadeColorAuto: var(--cream, #FBF8F2);
+  --logoloop-fadeColorAuto: #F7F2E4;
 }
 
 .logoloop--vertical {
@@ -108,21 +107,17 @@
   outline-offset: 2px;
 }
 
-.logoloop {
-  position: relative;
-
-  --logoloop-gap: 32px;
-  --logoloop-logoHeight: 28px;
-  --logoloop-fadeColorAuto: #F7F2E4;
-}
-
+/* Fade edge overlays — transparent end stop uses the cream hex at alpha:0
+   so the browser interpolates within the same RGB values, no white flash. */
 .logoloop--fade::before,
 .logoloop--fade::after {
   content: '';
   position: absolute;
   top: 0;
   bottom: 0;
-  width: clamp(32px, 6%, 96px);
+  /* Width matches the section's horizontal padding so the fade
+     starts exactly where the padded container edge is */
+  width: var(--logoloop-fade-width, 40px);
   pointer-events: none;
   z-index: 10;
 }
@@ -132,7 +127,7 @@
   background: linear-gradient(
     to right,
     var(--logoloop-fadeColor, var(--logoloop-fadeColorAuto)) 0%,
-    color-mix(in srgb, var(--logoloop-fadeColor, var(--logoloop-fadeColorAuto)) 0%, transparent) 100%
+    var(--logoloop-fadeColorTransparent, rgba(247, 242, 228, 0)) 100%
   );
 }
 
@@ -141,7 +136,7 @@
   background: linear-gradient(
     to left,
     var(--logoloop-fadeColor, var(--logoloop-fadeColorAuto)) 0%,
-    color-mix(in srgb, var(--logoloop-fadeColor, var(--logoloop-fadeColorAuto)) 0%, transparent) 100%
+    var(--logoloop-fadeColorTransparent, rgba(247, 242, 228, 0)) 100%
   );
 }
 
@@ -159,7 +154,7 @@
   background: linear-gradient(
     to bottom,
     var(--logoloop-fadeColor, var(--logoloop-fadeColorAuto)) 0%,
-    rgba(0, 0, 0, 0) 100%
+    var(--logoloop-fadeColorTransparent, rgba(247, 242, 228, 0)) 100%
   );
 }
 
@@ -169,7 +164,7 @@
   background: linear-gradient(
     to top,
     var(--logoloop-fadeColor, var(--logoloop-fadeColorAuto)) 0%,
-    rgba(0, 0, 0, 0) 100%
+    var(--logoloop-fadeColorTransparent, rgba(247, 242, 228, 0)) 100%
   );
 }
 
@@ -183,6 +178,8 @@
     transition: none !important;
   }
 }
+
+/* ── Client Section Wordmark Styles ─────────────────────────── */
 
 .client-wordmark {
   font-family: var(--font-fraunces, 'Fraunces', serif);
@@ -204,6 +201,7 @@
   font-size: 1.75rem;
   color: var(--black, #15120F);
 }
+
 .client-anchor__tag,
 .client-anchor__category {
   font-size: 0.85rem;
@@ -215,9 +213,13 @@
   font-size: 1.05rem;
 }
 
+/* City label — inherits left edge from the .client-row container */
 .client-row__city {
   font-size: 0.85rem;
   color: var(--gold-text, #8A6420);
   margin-bottom: 0.5rem;
   display: block;
+  /* Explicitly no padding/margin that would offset from container edge */
+  padding-left: 0;
+  margin-left: 0;
 }

@@ -90,7 +90,7 @@ export function TrustedClients() {
               gap={56}
               pauseOnHover
               fadeOut
-              fadeOutColor="var(--cream, #F7F2E4)"
+              fadeOutColor="#F7F2E4"
               ariaLabel="Bengaluru clients"
             />
           </div>
@@ -107,7 +107,7 @@ export function TrustedClients() {
               gap={56}
               pauseOnHover
               fadeOut
-              fadeOutColor="var(--cream, #F7F7E4)"
+              fadeOutColor="#F7F2E4"
               ariaLabel="Chennai clients"
             />
           </div>
@@ -124,7 +124,7 @@ export function TrustedClients() {
               gap={56}
               pauseOnHover
               fadeOut
-              fadeOutColor="var(--cream, #F7F2E4)"
+              fadeOutColor="#F7F2E4"
               ariaLabel="Pune clients"
             />
           </div>

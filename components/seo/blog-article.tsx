@@ -44,7 +44,7 @@ export function BlogArticle({
     publisher: {
       "@type": "Organization",
       name: "Talenty Consulting",
-      logo: { "@type": "ImageObject", url: `${SITE_URL}/logo.png` },
+      logo: { "@type": "ImageObject", url: `${SITE_URL}/images/talenty-logo-full.png` },
     },
     mainEntityOfPage: url,
   }

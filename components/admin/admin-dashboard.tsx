@@ -43,7 +43,8 @@ function getStatusBadge(status: EnquiryRecord["status"]) {
 
 export function AdminDashboard({ initialEnquiries, initialUsers }: DashboardProps) {
   const [enquiries, setEnquiries] = useState(initialEnquiries)
-  const [users] = useState(initialUsers)
+  const [users, setUsers] = useState(initialUsers)
+  const [activeTab, setActiveTab] = useState<"enquiries" | "users">("enquiries")
   const [search, setSearch] = useState("")
   const [statusFilter, setStatusFilter] = useState("all")
   const [industryFilter, setIndustryFilter] = useState("all")
@@ -68,6 +69,20 @@ export function AdminDashboard({ initialEnquiries, initialUsers }: DashboardProp
 
   const recentActivity = useMemo(() => enquiries.slice(0, 5), [enquiries])
 
+  // Filtered enquiries & users based on search
+  const filteredUsers = useMemo(() => {
+    if (!search.trim()) return users
+    const query = search.toLowerCase().trim()
+    return users.filter(
+      (u) =>
+        u.fullName.toLowerCase().includes(query) ||
+        u.email.toLowerCase().includes(query) ||
+        (u.companyName && u.companyName.toLowerCase().includes(query)) ||
+        u.interestedRole.toLowerCase().includes(query)
+    )
+  }, [users, search])
+
+  // Initial and Filter-triggered fetch for enquiries
   useEffect(() => {
     const controller = new AbortController()
     const timer = window.setTimeout(() => {
@@ -95,6 +110,42 @@ export function AdminDashboard({ initialEnquiries, initialUsers }: DashboardProp
       controller.abort()
       window.clearTimeout(timer)
     }
+  }, [industryFilter, search, statusFilter])
+
+  // Real-time background sync interval (every 5 seconds) for live dynamic updates
+  useEffect(() => {
+    const fetchLatestData = async () => {
+      try {
+        const params = new URLSearchParams()
+        if (search.trim()) params.set("search", search.trim())
+        if (statusFilter !== "all") params.set("status", statusFilter)
+        if (industryFilter !== "all") params.set("industry", industryFilter)
+
+        const [enqRes, usersRes] = await Promise.all([
+          fetch(`/api/admin/enquiries?${params.toString()}`),
+          fetch(`/api/admin/users`),
+        ])
+
+        if (enqRes.ok) {
+          const enqData = await enqRes.json()
+          if (enqData.success && Array.isArray(enqData.enquiries)) {
+            setEnquiries(enqData.enquiries)
+          }
+        }
+
+        if (usersRes.ok) {
+          const usersData = await usersRes.json()
+          if (usersData.success && Array.isArray(usersData.users)) {
+            setUsers(usersData.users)
+          }
+        }
+      } catch (error) {
+        console.error("Real-time sync check encountered an issue:", error)
+      }
+    }
+
+    const intervalId = setInterval(fetchLatestData, 5000)
+    return () => clearInterval(intervalId)
   }, [industryFilter, search, statusFilter])
 
   const openDetail = (enquiry: EnquiryRecord) => {
@@ -153,9 +204,27 @@ export function AdminDashboard({ initialEnquiries, initialUsers }: DashboardProp
           </div>
 
           <nav className="space-y-2">
-            <button className="flex w-full items-center gap-3 rounded-2xl bg-gradient-to-r from-primary/20 to-accent/20 px-4 py-3 text-left text-foreground transition">
+            <button
+              className={`flex w-full items-center gap-3 rounded-2xl px-4 py-3 text-left transition ${
+                activeTab === "enquiries"
+                  ? "bg-gradient-to-r from-primary/20 to-accent/20 text-foreground font-semibold"
+                  : "text-muted-foreground hover:bg-secondary/20"
+              }`}
+              onClick={() => setActiveTab("enquiries")}
+            >
               <Activity className="h-4 w-4" />
-              Dashboard
+              Enquiries & Leads ({enquiries.length})
+            </button>
+            <button
+              className={`flex w-full items-center gap-3 rounded-2xl px-4 py-3 text-left transition ${
+                activeTab === "users"
+                  ? "bg-gradient-to-r from-primary/20 to-accent/20 text-foreground font-semibold"
+                  : "text-muted-foreground hover:bg-secondary/20"
+              }`}
+              onClick={() => setActiveTab("users")}
+            >
+              <Users className="h-4 w-4" />
+              Registered Users ({users.length})
             </button>
           </nav>
 
@@ -173,9 +242,14 @@ export function AdminDashboard({ initialEnquiries, initialUsers }: DashboardProp
             <div>
               <p className="text-xs uppercase tracking-[0.28em] text-muted-foreground">Admin Dashboard</p>
               <h2 className="mt-2 text-3xl font-bold">Counseling and Consulting Control Center</h2>
-              <p className="mt-2 text-sm text-muted-foreground">Monitor live enquiries, review registrations, and keep every request moving through your process.</p>
+              <p className="mt-2 text-sm text-muted-foreground">
+                Monitor live enquiries, review user registrations, and track all requests in real time via Neon PostgreSQL.
+              </p>
             </div>
-            <div className="flex items-center gap-3 text-sm text-muted-foreground"><Filter className="h-4 w-4 text-primary" /><span>{summary.pendingRequests} pending items need attention</span></div>
+            <div className="flex items-center gap-3 text-sm text-muted-foreground">
+              <Filter className="h-4 w-4 text-primary" />
+              <span>{summary.pendingRequests} pending items need attention</span>
+            </div>
           </div>
 
           <div className="space-y-6">
@@ -191,7 +265,10 @@ export function AdminDashboard({ initialEnquiries, initialUsers }: DashboardProp
                 <div key={item.label} className="rounded-3xl border border-border/50 bg-white/5 p-5 backdrop-blur-xl">
                   <div className="mb-4 flex items-center justify-between">
                     <div className="rounded-2xl bg-gradient-to-br from-primary/20 to-accent/20 p-3 text-primary"><item.icon className="h-5 w-5" /></div>
-                    <span className="text-xs uppercase tracking-[0.25em] text-muted-foreground">{isPending ? "Syncing" : "Live"}</span>
+                    <span className="text-xs uppercase tracking-[0.25em] text-emerald-400 font-semibold flex items-center gap-1.5">
+                      <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+                      Live Sync (5s)
+                    </span>
                   </div>
                   <div className="text-3xl font-bold text-foreground">{item.value}</div>
                   <div className="mt-2 text-sm text-muted-foreground">{item.label}</div>
@@ -200,71 +277,111 @@ export function AdminDashboard({ initialEnquiries, initialUsers }: DashboardProp
             </div>
 
             <div className="grid gap-6 xl:grid-cols-[1.35fr_0.85fr]">
-              <div className="rounded-3xl border border-border/50 bg-white/5 p-5 backdrop-blur-xl">
-                <div className="mb-5 flex flex-col gap-4 xl:flex-row xl:items-center xl:justify-between">
-                  <div>
-                    <h2 className="text-2xl font-bold text-foreground">Enquiry Details</h2>
-                    <p className="text-sm text-muted-foreground">Search, filter, export, and manage counseling and consulting leads.</p>
-                  </div>
-                  <div className="flex flex-col gap-3 md:flex-row">
-                    <div className="relative min-w-[220px]">
-                      <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
-                      <Input className="pl-10 bg-secondary/40 border-border/50" placeholder="Search by name or company" value={search} onChange={(event) => setSearch(event.target.value)} />
+              {activeTab === "enquiries" ? (
+                <div className="rounded-3xl border border-border/50 bg-white/5 p-5 backdrop-blur-xl">
+                  <div className="mb-5 flex flex-col gap-4 xl:flex-row xl:items-center xl:justify-between">
+                    <div>
+                      <h2 className="text-2xl font-bold text-foreground">Enquiry Details</h2>
+                      <p className="text-sm text-muted-foreground">Search, filter, export, and manage counseling and consulting leads.</p>
                     </div>
-                    <select className="h-10 rounded-md border border-border/50 bg-secondary/40 px-3 text-sm text-foreground" value={statusFilter} onChange={(event) => setStatusFilter(event.target.value)}>
-                      <option value="all">All Statuses</option>
-                      <option value="pending">Pending</option>
-                      <option value="contacted">Contacted</option>
-                      <option value="completed">Completed</option>
-                    </select>
-                    <select className="h-10 rounded-md border border-border/50 bg-secondary/40 px-3 text-sm text-foreground" value={industryFilter} onChange={(event) => setIndustryFilter(event.target.value)}>
-                      <option value="all">All Industries</option>
-                      {industries.map((industry) => <option key={industry} value={industry}>{industry}</option>)}
-                    </select>
-                    <Button variant="outline" className="border-border/50" onClick={exportCsv}><Download className="mr-2 h-4 w-4" />Export CSV</Button>
+                    <div className="flex flex-col gap-3 md:flex-row">
+                      <div className="relative min-w-[220px]">
+                        <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
+                        <Input className="pl-10 bg-secondary/40 border-border/50" placeholder="Search by name or company" value={search} onChange={(event) => setSearch(event.target.value)} />
+                      </div>
+                      <select className="h-10 rounded-md border border-border/50 bg-secondary/40 px-3 text-sm text-foreground" value={statusFilter} onChange={(event) => setStatusFilter(event.target.value)}>
+                        <option value="all">All Statuses</option>
+                        <option value="pending">Pending</option>
+                        <option value="contacted">Contacted</option>
+                        <option value="completed">Completed</option>
+                      </select>
+                      <select className="h-10 rounded-md border border-border/50 bg-secondary/40 px-3 text-sm text-foreground" value={industryFilter} onChange={(event) => setIndustryFilter(event.target.value)}>
+                        <option value="all">All Industries</option>
+                        {industries.map((industry) => <option key={industry} value={industry}>{industry}</option>)}
+                      </select>
+                      <Button variant="outline" className="border-border/50" onClick={exportCsv}><Download className="mr-2 h-4 w-4" />Export CSV</Button>
+                    </div>
                   </div>
-                </div>
 
-                {errorMessage ? <p className="mb-4 text-sm text-red-400">{errorMessage}</p> : null}
+                  {errorMessage ? <p className="mb-4 text-sm text-red-400">{errorMessage}</p> : null}
 
-                <div className="overflow-x-auto">
-                  <table className="min-w-full text-sm">
-                    <thead>
-                      <tr className="border-b border-border/40 text-left text-muted-foreground">
-                        {["ID", "Name", "Company", "Email", "Phone", "Requirement", "Industry", "Roles", "Employees", "Date Submitted", "Status", "Actions"].map((header) => <th key={header} className="px-3 py-3 font-medium">{header}</th>)}
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {enquiries.map((item) => (
-                        <tr key={item.id} className="border-b border-border/20 align-top text-foreground">
-                          <td className="px-3 py-4">#{item.id}</td>
-                          <td className="px-3 py-4">{item.fullName}</td>
-                          <td className="px-3 py-4">{item.companyName}</td>
-                          <td className="px-3 py-4">{item.email}</td>
-                          <td className="px-3 py-4">{item.phone}</td>
-                          <td className="px-3 py-4">{item.requirementType}</td>
-                          <td className="px-3 py-4">{item.industry}</td>
-                          <td className="px-3 py-4">{item.rolesRequired}</td>
-                          <td className="px-3 py-4">{item.employeesNeeded}</td>
-                          <td className="px-3 py-4 text-muted-foreground">{new Date(item.createdAt).toLocaleString()}</td>
-                          <td className="px-3 py-4"><Badge className={getStatusBadge(item.status)}>{item.status}</Badge></td>
-                          <td className="px-3 py-4">
-                            <div className="flex flex-wrap gap-2">
-                              <Button size="sm" variant="outline" className="border-border/50" onClick={() => openDetail(item)}>View</Button>
-                              <Button size="sm" variant="outline" className="border-border/50" onClick={() => updateEnquiry(item.id, { status: "pending" })}>Pending</Button>
-                              <Button size="sm" variant="outline" className="border-border/50" onClick={() => updateEnquiry(item.id, { status: "contacted" })}>Contacted</Button>
-                              <Button size="sm" variant="outline" className="border-border/50" onClick={() => updateEnquiry(item.id, { status: "completed" })}>Completed</Button>
-                              <Button size="sm" variant="outline" className="border-red-500/40 text-red-300 hover:bg-red-500/10" onClick={() => deleteEnquiry(item.id)}>Delete</Button>
-                            </div>
-                          </td>
+                  <div className="overflow-x-auto">
+                    <table className="min-w-full text-sm">
+                      <thead>
+                        <tr className="border-b border-border/40 text-left text-muted-foreground">
+                          {["ID", "Name", "Company", "Email", "Phone", "Requirement", "Industry", "Roles", "Employees", "Date Submitted", "Status", "Actions"].map((header) => <th key={header} className="px-3 py-3 font-medium">{header}</th>)}
                         </tr>
-                      ))}
-                    </tbody>
-                  </table>
-                </div>
+                      </thead>
+                      <tbody>
+                        {enquiries.map((item) => (
+                          <tr key={item.id} className="border-b border-border/20 align-top text-foreground">
+                            <td className="px-3 py-4">#{item.id}</td>
+                            <td className="px-3 py-4">{item.fullName}</td>
+                            <td className="px-3 py-4">{item.companyName}</td>
+                            <td className="px-3 py-4">{item.email}</td>
+                            <td className="px-3 py-4">{item.phone}</td>
+                            <td className="px-3 py-4">{item.requirementType}</td>
+                            <td className="px-3 py-4">{item.industry}</td>
+                            <td className="px-3 py-4">{item.rolesRequired}</td>
+                            <td className="px-3 py-4">{item.employeesNeeded}</td>
+                            <td className="px-3 py-4 text-muted-foreground">{new Date(item.createdAt).toLocaleString()}</td>
+                            <td className="px-3 py-4"><Badge className={getStatusBadge(item.status)}>{item.status}</Badge></td>
+                            <td className="px-3 py-4">
+                              <div className="flex flex-wrap gap-2">
+                                <Button size="sm" variant="outline" className="border-border/50" onClick={() => openDetail(item)}>View</Button>
+                                <Button size="sm" variant="outline" className="border-border/50" onClick={() => updateEnquiry(item.id, { status: "pending" })}>Pending</Button>
+                                <Button size="sm" variant="outline" className="border-border/50" onClick={() => updateEnquiry(item.id, { status: "contacted" })}>Contacted</Button>
+                                <Button size="sm" variant="outline" className="border-border/50" onClick={() => updateEnquiry(item.id, { status: "completed" })}>Completed</Button>
+                                <Button size="sm" variant="outline" className="border-red-500/40 text-red-300 hover:bg-red-500/10" onClick={() => deleteEnquiry(item.id)}>Delete</Button>
+                              </div>
+                            </td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
 
-                {enquiries.length === 0 ? <div className="py-10 text-center text-sm text-muted-foreground">No enquiries match the current filters.</div> : null}
-              </div>
+                  {enquiries.length === 0 ? <div className="py-10 text-center text-sm text-muted-foreground">No enquiries match the current filters.</div> : null}
+                </div>
+              ) : (
+                <div className="rounded-3xl border border-border/50 bg-white/5 p-5 backdrop-blur-xl">
+                  <div className="mb-5 flex flex-col gap-4 xl:flex-row xl:items-center xl:justify-between">
+                    <div>
+                      <h2 className="text-2xl font-bold text-foreground">Registered Users</h2>
+                      <p className="text-sm text-muted-foreground">Live accounts registered on Talenty via Neon PostgreSQL.</p>
+                    </div>
+                    <div className="relative min-w-[240px]">
+                      <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
+                      <Input className="pl-10 bg-secondary/40 border-border/50" placeholder="Search by name, email, or company" value={search} onChange={(event) => setSearch(event.target.value)} />
+                    </div>
+                  </div>
+
+                  <div className="overflow-x-auto">
+                    <table className="min-w-full text-sm">
+                      <thead>
+                        <tr className="border-b border-border/40 text-left text-muted-foreground">
+                          {["ID", "Full Name", "Email", "Phone", "Interested Role / Industry", "Company Name", "Registered Date"].map((header) => <th key={header} className="px-3 py-3 font-medium">{header}</th>)}
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {filteredUsers.map((user) => (
+                          <tr key={user.id} className="border-b border-border/20 align-top text-foreground">
+                            <td className="px-3 py-4">#{user.id}</td>
+                            <td className="px-3 py-4 font-medium">{user.fullName}</td>
+                            <td className="px-3 py-4">{user.email}</td>
+                            <td className="px-3 py-4">{user.phone}</td>
+                            <td className="px-3 py-4">{user.interestedRole}</td>
+                            <td className="px-3 py-4">{user.companyName || "N/A"}</td>
+                            <td className="px-3 py-4 text-muted-foreground">{new Date(user.createdAt).toLocaleString()}</td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+
+                  {filteredUsers.length === 0 ? <div className="py-10 text-center text-sm text-muted-foreground">No registered users found.</div> : null}
+                </div>
+              )}
 
               <div className="space-y-6">
                 <div className="rounded-3xl border border-border/50 bg-white/5 p-5 backdrop-blur-xl">

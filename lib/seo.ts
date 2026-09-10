@@ -23,7 +23,7 @@ export const FOUNDING_YEAR = process.env.NEXT_PUBLIC_FOUNDING_YEAR?.trim() || ""
 export const GBP_URL = process.env.NEXT_PUBLIC_GBP_URL?.trim() || ""
 
 export const DEFAULT_DESCRIPTION =
-  "Talenty Consulting helps Bengaluru companies hire trained, job-ready employees fast. Recruitment consulting, talent screening & staffing — book your free consultation today."
+  "Talenty Consulting is a Bengaluru-based HR and recruitment consultancy providing recruitment, staffing, talent screening and workforce solutions."
 
 /** Facts already published on-site — safe for content & schema */
 export const VERIFIED_FACTS = {

@@ -16,17 +16,17 @@ export function OrganizationSchema() {
     "@context": "https://schema.org",
     "@type": ["Organization", "LocalBusiness", "ProfessionalService"],
     name: "Talenty Consulting",
-    alternateName: ["Talenty", "Talenty Consultancy"],
+    alternateName: "Talenty HR Consultancy",
     url: SITE_URL,
     logo: {
       "@type": "ImageObject",
-      url: `${SITE_URL}/logo.png`,
+      url: `${SITE_URL}/images/talenty-logo-full.png`,
       width: 512,
       height: 512,
     },
     image: `${SITE_URL}/og-image.png`,
     description:
-      "Talenty Consulting is a recruitment and staffing partner helping companies hire trained, job-ready employees through talent sourcing, screening, and consulting support tailored to modern business needs.",
+      "Talenty Consulting is a Bengaluru-based HR and recruitment consultancy providing recruitment, staffing, talent screening and workforce solutions.",
     telephone: SITE_PHONE,
     email: SITE_EMAIL,
     address: {

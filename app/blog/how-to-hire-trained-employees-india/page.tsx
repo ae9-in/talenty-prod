@@ -21,7 +21,7 @@ const blogSchema = {
     "name": "Talenty Consulting",
     "logo": {
       "@type": "ImageObject",
-      "url": "https://www.talentyconsulting.in/logo.png"
+      "url": "https://www.talentyconsulting.in/images/talenty-logo-full.png"
     }
   },
   "mainEntityOfPage": "https://www.talentyconsulting.in/blog/how-to-hire-trained-employees-india"

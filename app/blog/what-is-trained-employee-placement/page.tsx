@@ -25,7 +25,7 @@ const articleSchema = {
     name: "Talenty Consulting",
     logo: {
       "@type": "ImageObject",
-      url: `${SITE_URL}/logo.png`,
+      url: `${SITE_URL}/images/talenty-logo-full.png`,
     },
   },
   mainEntityOfPage: articleUrl,

@@ -5,8 +5,8 @@ import './globals.css'
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.talentyconsulting.in'),
-  title: 'B2B Recruitment & Staffing Agency in Bangalore | Talenty Consulting',
-  description: 'Talenty Consulting is a Bangalore-based recruitment and staffing agency placing trained, job-ready, pre-vetted talent for companies across India.',
+  title: 'Talenty Consulting | HR & Recruitment Consultancy in Bengaluru',
+  description: 'Talenty Consulting is a Bengaluru-based HR and recruitment consultancy providing recruitment, staffing, talent screening and workforce solutions.',
   alternates: {
     canonical: 'https://www.talentyconsulting.in',
   },

@@ -212,7 +212,7 @@ export function HeroCarousel() {
               </div>
 
               {/* Semantic H1 for SEO */}
-              <h1 className="sr-only">Recruitment & Staffing Solutions for Growing Businesses in Bangalore</h1>
+              <h1 className="sr-only">Talenty Consulting — HR & Recruitment Consultancy, Bengaluru</h1>
 
               {/* Rolling Headline */}
               <RollingHeadline

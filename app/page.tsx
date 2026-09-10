@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react"
 import Link from "next/link"
-import { ArrowRight, Building2, Code2, GraduationCap, ShieldCheck, MapPin, CheckCircle2 } from "lucide-react"
+import { MapPin, CheckCircle2 } from "lucide-react"
 
 import {
   Navbar,
@@ -17,37 +17,7 @@ import {
 } from "@/components/landing"
 import { EnquiryForm } from "@/components/public/enquiry-form"
 
-// Core Service Offerings (What Talenty Does)
-const CORE_SERVICES = [
-  {
-    icon: Building2,
-    title: "Recruitment Consulting Services",
-    href: "/recruitment-consulting-bangalore",
-    desc: "End-to-end recruitment consulting for startups and SMEs in Bangalore—hiring strategy, RPO, and volume hiring support.",
-    badge: "Consulting & Strategy"
-  },
-  {
-    icon: Code2,
-    title: "IT Staffing & Tech Recruitment",
-    href: "/it-staffing-bangalore",
-    desc: "Hire Java, Python, React, DevOps, and full-stack developers in Bangalore through contract and permanent IT staffing.",
-    badge: "Engineering Staffing"
-  },
-  {
-    icon: GraduationCap,
-    title: "Trained Employee Placement",
-    href: "/trained-employee-placement",
-    desc: "Deploy pre-trained, job-ready candidates calibrated on your specific tech stack for zero-lag day-one productivity.",
-    badge: "Day-One Productive"
-  },
-  {
-    icon: ShieldCheck,
-    title: "Candidate Screening & Vetting",
-    href: "/talent-screening-process",
-    desc: "Multi-stage candidate screening and assessment—technical, cognitive, and behavioural—before any CV reaches your inbox.",
-    badge: "Multi-Stage Vetting"
-  }
-]
+
 
 // Bangalore Areas & Coverage
 const BANGALORE_AREAS = [
@@ -84,52 +54,6 @@ export default function Home() {
       {/* 2. VERIFIED CLIENT CONVERSIONS SECTION */}
       <TrustedClients />
 
-      {/* 3. CORE SERVICES OVERVIEW (What Talenty Does) */}
-      <section className="py-24 max-w-[1440px] mx-auto px-6 lg:px-10" id="services">
-        <div className="max-w-3xl mb-16 space-y-4">
-          <span className="font-mono text-[11px] uppercase tracking-widest text-[#8A6420] font-semibold block">
-            · PRACTICE AREAS & SOLUTIONS
-          </span>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-semibold text-[#141110] tracking-tight">
-            Recruitment & Staffing Services for Growing Businesses
-          </h2>
-          <p className="text-sm sm:text-base text-[#5C5449] leading-relaxed">
-            Talenty Consulting provides structured recruitment solutions tailored to Bangalore&apos;s tech ecosystem and enterprises across India.
-          </p>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {CORE_SERVICES.map((srv) => (
-            <Link
-              key={srv.title}
-              href={srv.href}
-              className="border border-[#141110]/12 bg-[#F0E9D5]/40 rounded-3xl p-8 hover:border-[#141110]/40 transition-all group flex flex-col justify-between"
-            >
-              <div>
-                <div className="flex items-center justify-between mb-6">
-                  <div className="w-12 h-12 rounded-2xl bg-[#0D2D42] text-[#F7E9A7] flex items-center justify-center shadow-xs">
-                    <srv.icon className="w-5 h-5" />
-                  </div>
-                  <span className="font-mono text-[10px] uppercase tracking-wider px-2.5 py-1 rounded-md bg-[#CD9534]/20 text-[#8A6420] font-semibold">
-                    {srv.badge}
-                  </span>
-                </div>
-                <h3 className="text-2xl font-serif font-bold text-[#141110] group-hover:text-[#8A6420] transition-colors mb-3">
-                  {srv.title}
-                </h3>
-                <p className="text-sm text-[#5C5449] leading-relaxed mb-6">
-                  {srv.desc}
-                </p>
-              </div>
-
-              <div className="flex items-center gap-2 text-xs font-mono font-semibold text-[#141110] group-hover:text-[#8A6420] transition-colors pt-4 border-t border-[#141110]/10">
-                <span>Explore service details</span>
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-              </div>
-            </Link>
-          ))}
-        </div>
-      </section>
 
       {/* 4. OPERATIONAL SIGNALS & BENCHMARKS (High-Impact Navy Band) */}
       <section className="py-16 bg-[#0D2D42] text-[#F7F2E4] relative overflow-hidden border-b-2 border-[#C18A18]/30">

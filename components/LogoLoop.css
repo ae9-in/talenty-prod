@@ -191,9 +191,6 @@
   color: var(--black, #15120F);
 }
 
-.client-anchor {
-  /* distinct from loop rows by size/placement alone */
-}
 .client-anchor__name {
   font-family: var(--font-fraunces, 'Fraunces', serif);
   font-size: 1.75rem;

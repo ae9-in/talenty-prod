@@ -1,11 +1,54 @@
-import { useCallback, useEffect, useMemo, useRef, useState, memo } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState, memo, ReactNode, CSSProperties } from 'react';
 import './LogoLoop.css';
 
 const ANIMATION_CONFIG = { SMOOTH_TAU: 0.25, MIN_COPIES: 2, COPY_HEADROOM: 2 };
 
-const toCssLength = value => (typeof value === 'number' ? `${value}px` : (value ?? undefined));
+export interface LogoItemNode {
+  node: ReactNode;
+  title?: string;
+  href?: string;
+  ariaLabel?: string;
+}
 
-const useResizeObserver = (callback, elements, dependencies) => {
+export interface LogoItemSrc {
+  src: string;
+  srcSet?: string;
+  sizes?: string;
+  width?: number | string;
+  height?: number | string;
+  alt?: string;
+  title?: string;
+  href?: string;
+}
+
+export type LogoItem = LogoItemNode | LogoItemSrc;
+
+export interface LogoLoopProps {
+  logos: LogoItem[];
+  speed?: number;
+  direction?: 'left' | 'right' | 'up' | 'down';
+  width?: number | string;
+  logoHeight?: number;
+  gap?: number;
+  pauseOnHover?: boolean;
+  hoverSpeed?: number;
+  fadeOut?: boolean;
+  fadeOutColor?: string;
+  scaleOnHover?: boolean;
+  renderItem?: (item: LogoItem, key: string | number) => ReactNode;
+  ariaLabel?: string;
+  className?: string;
+  style?: CSSProperties;
+}
+
+const toCssLength = (value: number | string | undefined): string | undefined =>
+  typeof value === 'number' ? `${value}px` : (value ?? undefined);
+
+const useResizeObserver = (
+  callback: () => void,
+  elements: React.RefObject<HTMLElement | null>[],
+  dependencies: any[]
+) => {
   useEffect(() => {
     if (!window.ResizeObserver) {
       const handleResize = () => callback();
@@ -23,10 +66,14 @@ const useResizeObserver = (callback, elements, dependencies) => {
     return () => {
       observers.forEach(observer => observer?.disconnect());
     };
-  }, [callback, elements, dependencies]);
+  }, [callback, elements, ...dependencies]);
 };
 
-const useImageLoader = (seqRef, onLoad, dependencies) => {
+const useImageLoader = (
+  seqRef: React.RefObject<HTMLElement | null>,
+  onLoad: () => void,
+  dependencies: any[]
+) => {
   useEffect(() => {
     const images = seqRef.current?.querySelectorAll('img') ?? [];
     if (images.length === 0) {
@@ -39,7 +86,7 @@ const useImageLoader = (seqRef, onLoad, dependencies) => {
       if (remainingImages === 0) onLoad();
     };
     images.forEach(img => {
-      const htmlImg = img;
+      const htmlImg = img as HTMLImageElement;
       if (htmlImg.complete) {
         handleImageLoad();
       } else {
@@ -53,14 +100,22 @@ const useImageLoader = (seqRef, onLoad, dependencies) => {
         img.removeEventListener('error', handleImageLoad);
       });
     };
-  }, [onLoad, seqRef, dependencies]);
+  }, [onLoad, seqRef, ...dependencies]);
 };
 
-const useAnimationLoop = (trackRef, targetVelocity, seqWidth, seqHeight, isHovered, hoverSpeed, isVertical) => {
-  const rafRef = useRef(null);
-  const lastTimestampRef = useRef(null);
-  const offsetRef = useRef(0);
-  const velocityRef = useRef(0);
+const useAnimationLoop = (
+  trackRef: React.RefObject<HTMLElement | null>,
+  targetVelocity: number,
+  seqWidth: number,
+  seqHeight: number,
+  isHovered: boolean,
+  hoverSpeed: number | undefined,
+  isVertical: boolean
+) => {
+  const rafRef = useRef<number | null>(null);
+  const lastTimestampRef = useRef<number | null>(null);
+  const offsetRef = useRef<number>(0);
+  const velocityRef = useRef<number>(0);
 
   useEffect(() => {
     const track = trackRef.current;
@@ -76,7 +131,7 @@ const useAnimationLoop = (trackRef, targetVelocity, seqWidth, seqHeight, isHover
       track.style.transform = transformValue;
     }
 
-    const animate = timestamp => {
+    const animate = (timestamp: number) => {
       if (lastTimestampRef.current === null) {
         lastTimestampRef.current = timestamp;
       }
@@ -132,10 +187,10 @@ export const LogoLoop = memo(
     ariaLabel = 'Partner logos',
     className,
     style
-  }) => {
-    const containerRef = useRef(null);
-    const trackRef = useRef(null);
-    const seqRef = useRef(null);
+  }: LogoLoopProps) => {
+    const containerRef = useRef<HTMLDivElement>(null);
+    const trackRef = useRef<HTMLDivElement>(null);
+    const seqRef = useRef<HTMLUListElement>(null);
 
     const [seqWidth, setSeqWidth] = useState(0);
     const [seqHeight, setSeqHeight] = useState(0);
@@ -153,7 +208,7 @@ export const LogoLoop = memo(
 
     const targetVelocity = useMemo(() => {
       const magnitude = Math.abs(speed);
-      let directionMultiplier;
+      let directionMultiplier: number;
       if (isVertical) {
         directionMultiplier = direction === 'up' ? 1 : -1;
       } else {
@@ -199,7 +254,7 @@ export const LogoLoop = memo(
         '--logoloop-gap': `${gap}px`,
         '--logoloop-logoHeight': `${logoHeight}px`,
         ...(fadeOutColor && { '--logoloop-fadeColor': fadeOutColor })
-      }),
+      } as Record<string, string>),
       [gap, logoHeight, fadeOutColor]
     );
 
@@ -225,7 +280,7 @@ export const LogoLoop = memo(
     }, [effectiveHoverSpeed]);
 
     const renderLogoItem = useCallback(
-      (item, key) => {
+      (item: LogoItem, key: string) => {
         if (renderItem) {
           return (
             <li className="logoloop__item" key={key} role="listitem">
@@ -236,23 +291,25 @@ export const LogoLoop = memo(
         const isNodeItem = 'node' in item;
         const content = isNodeItem ? (
           <span className="logoloop__node" aria-hidden={!!item.href && !item.ariaLabel}>
-            {item.node}
+            {(item as LogoItemNode).node}
           </span>
         ) : (
           <img
-            src={item.src}
-            srcSet={item.srcSet}
-            sizes={item.sizes}
-            width={item.width}
-            height={item.height}
-            alt={item.alt ?? ''}
-            title={item.title}
+            src={(item as LogoItemSrc).src}
+            srcSet={(item as LogoItemSrc).srcSet}
+            sizes={(item as LogoItemSrc).sizes}
+            width={(item as LogoItemSrc).width}
+            height={(item as LogoItemSrc).height}
+            alt={(item as LogoItemSrc).alt ?? ''}
+            title={(item as LogoItemSrc).title}
             loading="lazy"
             decoding="async"
             draggable={false}
           />
         );
-        const itemAriaLabel = isNodeItem ? (item.ariaLabel ?? item.title) : (item.alt ?? item.title);
+        const itemAriaLabel = isNodeItem
+          ? ((item as LogoItemNode).ariaLabel ?? (item as LogoItemNode).title)
+          : ((item as LogoItemSrc).alt ?? (item as LogoItemSrc).title);
         const itemContent = item.href ? (
           <a
             className="logoloop__link"

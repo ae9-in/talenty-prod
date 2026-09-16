@@ -78,6 +78,14 @@ export function ProcessTimeline() {
     if (prefersReducedMotion) return
     if (!sectionRef.current || !trackFillRef.current || !markerRef.current || !trackBaseRef.current) return
 
+    if (typeof window !== "undefined" && typeof ScrollTrigger.normalizeScroll === "function") {
+      try {
+        ScrollTrigger.normalizeScroll({ allowNestedScroll: true })
+      } catch {
+        // Fallback gracefully
+      }
+    }
+
     const fill = trackFillRef.current
     const marker = markerRef.current
 

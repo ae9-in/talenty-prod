@@ -20,7 +20,7 @@ const blogPosts = [
 
 export default function BlogIndex() {
   return (
-    <main className="min-h-screen bg-[#F7F2E4] text-[#0D2D42] font-sans selection:bg-[#C18A18] selection:text-[#0D2D42]">
+    <main className="min-h-screen min-h-dvh bg-[#F7F2E4] text-[#0D2D42] font-sans selection:bg-[#C18A18] selection:text-[#0D2D42]">
       <Navbar />
 
       {/* Hero Header */}

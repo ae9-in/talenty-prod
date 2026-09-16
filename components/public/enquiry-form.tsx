@@ -118,7 +118,7 @@ export function EnquiryForm({ buttonLabel = "Request consultation call" }: { but
         <div className="space-y-1.5">
           <label className="font-mono text-[11px] font-semibold text-[#5C5449] block">Full name</label>
           <input
-            className="w-full h-11 rounded-xl border border-[#15120F]/15 bg-[#FFFFFF] px-3.5 text-sm text-[#141110] outline-none focus:border-[#CD9534] focus:ring-2 focus:ring-[#CD9534]/20 transition-all placeholder:text-[#5C5449]/40"
+            className="w-full h-12 rounded-xl border border-[#15120F]/15 bg-[#FFFFFF] px-3.5 text-base sm:text-sm text-[#141110] outline-none focus:border-[#CD9534] focus:ring-2 focus:ring-[#CD9534]/20 transition-all placeholder:text-[#5C5449]/40"
             name="fullName"
             value={formData.fullName}
             onChange={handleChange}
@@ -129,7 +129,7 @@ export function EnquiryForm({ buttonLabel = "Request consultation call" }: { but
         <div className="space-y-1.5">
           <label className="font-mono text-[11px] font-semibold text-[#5C5449] block">Company name</label>
           <input
-            className="w-full h-11 rounded-xl border border-[#15120F]/15 bg-[#FFFFFF] px-3.5 text-sm text-[#141110] outline-none focus:border-[#CD9534] focus:ring-2 focus:ring-[#CD9534]/20 transition-all placeholder:text-[#5C5449]/40"
+            className="w-full h-12 rounded-xl border border-[#15120F]/15 bg-[#FFFFFF] px-3.5 text-base sm:text-sm text-[#141110] outline-none focus:border-[#CD9534] focus:ring-2 focus:ring-[#CD9534]/20 transition-all placeholder:text-[#5C5449]/40"
             name="companyName"
             value={formData.companyName}
             onChange={handleChange}
@@ -144,7 +144,7 @@ export function EnquiryForm({ buttonLabel = "Request consultation call" }: { but
         <div className="space-y-1.5">
           <label className="font-mono text-[11px] font-semibold text-[#5C5449] block">Email address</label>
           <input
-            className="w-full h-11 rounded-xl border border-[#15120F]/15 bg-[#FFFFFF] px-3.5 text-sm text-[#141110] outline-none focus:border-[#CD9534] focus:ring-2 focus:ring-[#CD9534]/20 transition-all placeholder:text-[#5C5449]/40"
+            className="w-full h-12 rounded-xl border border-[#15120F]/15 bg-[#FFFFFF] px-3.5 text-base sm:text-sm text-[#141110] outline-none focus:border-[#CD9534] focus:ring-2 focus:ring-[#CD9534]/20 transition-all placeholder:text-[#5C5449]/40"
             name="email"
             type="email"
             inputMode="email"
@@ -158,7 +158,7 @@ export function EnquiryForm({ buttonLabel = "Request consultation call" }: { but
         <div className="space-y-1.5">
           <label className="font-mono text-[11px] font-semibold text-[#5C5449] block">Phone number</label>
           <input
-            className="w-full h-11 rounded-xl border border-[#15120F]/15 bg-[#FFFFFF] px-3.5 text-sm text-[#141110] outline-none focus:border-[#CD9534] focus:ring-2 focus:ring-[#CD9534]/20 transition-all placeholder:text-[#5C5449]/40"
+            className="w-full h-12 rounded-xl border border-[#15120F]/15 bg-[#FFFFFF] px-3.5 text-base sm:text-sm text-[#141110] outline-none focus:border-[#CD9534] focus:ring-2 focus:ring-[#CD9534]/20 transition-all placeholder:text-[#5C5449]/40"
             name="phone"
             type="tel"
             inputMode="tel"
@@ -179,7 +179,7 @@ export function EnquiryForm({ buttonLabel = "Request consultation call" }: { but
             name="requirementType"
             value={formData.requirementType}
             onChange={handleChange}
-            className="w-full h-11 rounded-xl border border-[#15120F]/15 bg-[#FFFFFF] px-3.5 text-sm text-[#141110] outline-none focus:border-[#CD9534] focus:ring-2 focus:ring-[#CD9534]/20 transition-all cursor-pointer"
+            className="w-full h-12 rounded-xl border border-[#15120F]/15 bg-[#FFFFFF] px-3.5 text-base sm:text-sm text-[#141110] outline-none focus:border-[#CD9534] focus:ring-2 focus:ring-[#CD9534]/20 transition-all cursor-pointer"
           >
             {requirementOptions.map((option) => (
               <option key={option} value={option}>{option}</option>
@@ -192,7 +192,7 @@ export function EnquiryForm({ buttonLabel = "Request consultation call" }: { but
             name="industry"
             value={formData.industry}
             onChange={handleChange}
-            className="w-full h-11 rounded-xl border border-[#15120F]/15 bg-[#FFFFFF] px-3.5 text-sm text-[#141110] outline-none focus:border-[#CD9534] focus:ring-2 focus:ring-[#CD9534]/20 transition-all cursor-pointer"
+            className="w-full h-12 rounded-xl border border-[#15120F]/15 bg-[#FFFFFF] px-3.5 text-base sm:text-sm text-[#141110] outline-none focus:border-[#CD9534] focus:ring-2 focus:ring-[#CD9534]/20 transition-all cursor-pointer"
           >
             {industryOptions.map((option) => (
               <option key={option} value={option}>{option}</option>
@@ -206,7 +206,7 @@ export function EnquiryForm({ buttonLabel = "Request consultation call" }: { but
         <div className="space-y-1.5">
           <label className="font-mono text-[11px] font-semibold text-[#5C5449] block">Roles required</label>
           <input
-            className="w-full h-11 rounded-xl border border-[#15120F]/15 bg-[#FFFFFF] px-3.5 text-sm text-[#141110] outline-none focus:border-[#CD9534] focus:ring-2 focus:ring-[#CD9534]/20 transition-all placeholder:text-[#5C5449]/40"
+            className="w-full h-12 rounded-xl border border-[#15120F]/15 bg-[#FFFFFF] px-3.5 text-base sm:text-sm text-[#141110] outline-none focus:border-[#CD9534] focus:ring-2 focus:ring-[#CD9534]/20 transition-all placeholder:text-[#5C5449]/40"
             name="rolesRequired"
             value={formData.rolesRequired}
             onChange={handleChange}
@@ -217,7 +217,7 @@ export function EnquiryForm({ buttonLabel = "Request consultation call" }: { but
         <div className="space-y-1.5">
           <label className="font-mono text-[11px] font-semibold text-[#5C5449] block">Headcount</label>
           <input
-            className="w-full h-11 rounded-xl border border-[#15120F]/15 bg-[#FFFFFF] px-3.5 text-sm text-[#141110] outline-none focus:border-[#CD9534] focus:ring-2 focus:ring-[#CD9534]/20 transition-all placeholder:text-[#5C5449]/40"
+            className="w-full h-12 rounded-xl border border-[#15120F]/15 bg-[#FFFFFF] px-3.5 text-base sm:text-sm text-[#141110] outline-none focus:border-[#CD9534] focus:ring-2 focus:ring-[#CD9534]/20 transition-all placeholder:text-[#5C5449]/40"
             name="employeesNeeded"
             type="number"
             inputMode="numeric"
@@ -237,7 +237,7 @@ export function EnquiryForm({ buttonLabel = "Request consultation call" }: { but
           value={formData.message}
           onChange={handleChange}
           rows={3}
-          className="w-full rounded-xl border border-[#15120F]/15 bg-[#FFFFFF] p-3.5 text-sm text-[#141110] outline-none focus:border-[#CD9534] focus:ring-2 focus:ring-[#CD9534]/20 transition-all placeholder:text-[#5C5449]/40 resize-none"
+          className="w-full rounded-xl border border-[#15120F]/15 bg-[#FFFFFF] p-3.5 text-base sm:text-sm text-[#141110] outline-none focus:border-[#CD9534] focus:ring-2 focus:ring-[#CD9534]/20 transition-all placeholder:text-[#5C5449]/40 resize-none"
           placeholder="Describe target technology stack, timeline constraints, and experience expectations..."
           required
         />
@@ -257,7 +257,7 @@ export function EnquiryForm({ buttonLabel = "Request consultation call" }: { but
       <button
         type="submit"
         disabled={isSubmitting}
-        className="w-full py-3.5 bg-[#CD9534] hover:bg-[#B37F26] text-[#15120F] font-bold text-sm tracking-wide rounded-2xl shadow-[4px_4px_0px_0px_rgba(21,18,15,0.9)] hover:translate-x-[1px] hover:translate-y-[1px] hover:shadow-[2px_2px_0px_0px_rgba(21,18,15,0.9)] transition-all flex items-center justify-center gap-2 cursor-pointer"
+        className="w-full py-3.5 min-h-[48px] bg-[#CD9534] hover:bg-[#B37F26] text-[#15120F] font-bold text-sm tracking-wide rounded-2xl shadow-[4px_4px_0px_0px_rgba(21,18,15,0.9)] hover:translate-x-[1px] hover:translate-y-[1px] hover:shadow-[2px_2px_0px_0px_rgba(21,18,15,0.9)] transition-all flex items-center justify-center gap-2 cursor-pointer"
       >
         {isSubmitting ? (
           <>

@@ -1,8 +1,15 @@
-import type { Metadata } from 'next'
+import type { Metadata, Viewport } from 'next'
 import { Analytics } from '@vercel/analytics/next'
 import { OrganizationSchema, WebSiteSchema } from '@/components/landing/json-ld'
 import './globals.css'
 import { SiteLoader } from '@/components/landing/site-loader'
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 5,
+  themeColor: '#F7F2E4',
+}
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.talentyconsulting.in'),

@@ -93,6 +93,16 @@ export function VettingStages() {
   // Desktop ScrollTrigger pinning & measured scroll detection (>= 1024px)
   useGSAP(() => {
     if (prefersReducedMotion) return
+
+    // GSAP official utility for mobile scroll normalization across dynamic address bar changes
+    if (typeof window !== "undefined" && typeof ScrollTrigger.normalizeScroll === "function") {
+      try {
+        ScrollTrigger.normalizeScroll({ allowNestedScroll: true })
+      } catch {
+        // Fallback gracefully if already initialized
+      }
+    }
+
     const mm = gsap.matchMedia()
 
     mm.add("(min-width: 1024px)", () => {

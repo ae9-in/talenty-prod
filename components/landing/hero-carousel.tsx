@@ -221,25 +221,25 @@ export function HeroCarousel() {
                 accent={currentSlide.headlineAccent}
                 line2={currentSlide.headlineLine2}
                 accentClassName="italic font-normal"
-                className="text-6xl sm:text-7xl lg:text-8xl xl:text-[88px] font-serif font-semibold tracking-tight text-[#141110] leading-[0.92]"
+                className="text-4xl sm:text-6xl lg:text-7xl xl:text-8xl font-serif font-semibold tracking-tight text-[#141110] leading-[0.98] sm:leading-[0.92] break-words"
               />
 
               {/* Subcopy */}
-              <p className="text-xl sm:text-2xl leading-relaxed text-[#5C5449] max-w-2xl font-sans">
+              <p className="text-base sm:text-xl lg:text-2xl leading-relaxed text-[#5C5449] max-w-2xl font-sans">
                 {currentSlide.subcopy}
               </p>
 
               {/* Action Buttons — Primary: Gold Fill with Black Text (7.06:1), Secondary: Black Outline */}
-              <div className="flex flex-wrap items-center gap-4 pt-2">
+              <div className="flex flex-col sm:flex-row sm:items-center gap-3.5 sm:gap-4 pt-2">
                 <Link
                   href="/contact"
-                  className="inline-flex items-center gap-2 bg-[#CD9534] hover:bg-[#E0A83F] text-[#15120F] font-bold text-sm sm:text-base px-7 py-4 rounded-full border border-[#8A6420]/40 transition-all shadow-[0_4px_14px_rgba(205,149,52,0.35)] group cursor-pointer active:scale-95"
+                  className="inline-flex items-center justify-center gap-2 bg-[#CD9534] hover:bg-[#E0A83F] text-[#15120F] font-bold text-sm sm:text-base px-7 py-3.5 sm:py-4 min-h-[48px] rounded-full border border-[#8A6420]/40 transition-all shadow-[0_4px_14px_rgba(205,149,52,0.35)] group cursor-pointer active:scale-95 text-center"
                 >
                   Request a consultation
                 </Link>
                 <Link
                   href="/talent-screening-process"
-                  className="inline-flex items-center gap-2 bg-[#FFFFFF] hover:bg-[#F0E9D5] text-[#15120F] font-bold text-sm sm:text-base px-7 py-4 rounded-full border-2 border-[#15120F] transition-all shadow-xs cursor-pointer active:scale-95"
+                  className="inline-flex items-center justify-center gap-2 bg-[#FFFFFF] hover:bg-[#F0E9D5] text-[#15120F] font-bold text-sm sm:text-base px-7 py-3.5 sm:py-4 min-h-[48px] rounded-full border-2 border-[#15120F] transition-all shadow-xs cursor-pointer active:scale-95 text-center"
                 >
                   Explore Vetting Process
                 </Link>
@@ -249,17 +249,17 @@ export function HeroCarousel() {
         </div>
 
         {/* 5. CAROUSEL CONTROLS & ACTIVE PILLAR PILLS */}
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 mt-16 pt-8 border-t border-[#15120F]/10">
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 mt-12 sm:mt-16 pt-8 border-t border-[#15120F]/10">
           
           {/* Left: Interactive Pillar Pills with Single Gold Line Indicator */}
-          <div className="flex items-center gap-2 overflow-x-auto scrollbar-none max-w-full">
+          <div className="flex items-center gap-2 overflow-x-auto scrollbar-none max-w-full pb-1">
             {HERO_SLIDES.map((slide, idx) => {
               const isActive = idx === activeIndex
               return (
                 <button
                   key={slide.id}
                   onClick={() => selectTab(idx)}
-                  className={`px-4 py-2.5 rounded-full font-mono text-[11px] font-medium transition-all flex items-center gap-2.5 min-h-[40px] cursor-pointer relative overflow-hidden ${
+                  className={`px-4 py-2.5 rounded-full font-mono text-[11px] font-medium transition-all flex items-center gap-2.5 min-h-[44px] cursor-pointer relative overflow-hidden flex-shrink-0 ${
                     isActive
                       ? "bg-[#15120F] text-[#F7EEDC] shadow-sm"
                       : "bg-[#FFFFFF] border border-[#15120F]/10 text-[#5C5449] hover:text-[#15120F] hover:bg-[#F0E9D5]"
@@ -279,17 +279,17 @@ export function HeroCarousel() {
           </div>
 
           {/* Right: Prev/Next Arrows & Low-Profile WCAG Pause Control */}
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2.5">
             <button
               onClick={prevSlide}
-              className="w-10 h-10 rounded-full border border-[#15120F]/20 bg-[#FFFFFF] hover:bg-[#F0E9D5] text-[#15120F] flex items-center justify-center transition-all cursor-pointer active:scale-95 shadow-xs"
+              className="w-11 h-11 min-w-[44px] min-h-[44px] rounded-full border border-[#15120F]/20 bg-[#FFFFFF] hover:bg-[#F0E9D5] text-[#15120F] flex items-center justify-center transition-all cursor-pointer active:scale-95 shadow-xs"
               aria-label="Previous slide"
             >
               <ChevronLeft className="w-4 h-4" />
             </button>
             <button
               onClick={nextSlide}
-              className="w-10 h-10 rounded-full border border-[#8A6420] bg-[#15120F] hover:bg-[#2A2521] text-[#F7EEDC] flex items-center justify-center transition-all cursor-pointer active:scale-95 shadow-xs"
+              className="w-11 h-11 min-w-[44px] min-h-[44px] rounded-full border border-[#8A6420] bg-[#15120F] hover:bg-[#2A2521] text-[#F7EEDC] flex items-center justify-center transition-all cursor-pointer active:scale-95 shadow-xs"
               aria-label="Next slide"
             >
               <ChevronRight className="w-4 h-4" />
@@ -298,7 +298,7 @@ export function HeroCarousel() {
             {/* Low-profile WCAG 2.2.2 Pause/Play button */}
             <button
               onClick={togglePause}
-              className="w-10 h-10 rounded-full border border-[#15120F]/20 bg-[#FFFFFF] hover:bg-[#F0E9D5] text-[#15120F] flex items-center justify-center transition-all cursor-pointer active:scale-95 shadow-xs"
+              className="w-11 h-11 min-w-[44px] min-h-[44px] rounded-full border border-[#15120F]/20 bg-[#FFFFFF] hover:bg-[#F0E9D5] text-[#15120F] flex items-center justify-center transition-all cursor-pointer active:scale-95 shadow-xs"
               aria-label={isUserPaused ? "Resume autoplay (or press K)" : "Pause autoplay (or press K)"}
               title={isUserPaused ? "Resume autoplay (K)" : "Pause autoplay (K)"}
             >

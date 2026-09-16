@@ -135,7 +135,7 @@ export function RegisterForm() {
           required
           value={formData.fullName}
           onChange={handleChange}
-          className="w-full bg-transparent border-0 outline-none text-sm text-[#0D2D42]"
+          className="w-full bg-transparent border-0 outline-none text-base sm:text-sm text-[#0D2D42]"
         />
         <label
           htmlFor="fullName"
@@ -156,7 +156,7 @@ export function RegisterForm() {
           required
           value={formData.email}
           onChange={handleChange}
-          className="w-full bg-transparent border-0 outline-none text-sm text-[#0D2D42]"
+          className="w-full bg-transparent border-0 outline-none text-base sm:text-sm text-[#0D2D42]"
         />
         <label
           htmlFor="email"
@@ -177,7 +177,7 @@ export function RegisterForm() {
           required
           value={formData.phone}
           onChange={handleChange}
-          className="w-full bg-transparent border-0 outline-none text-sm text-[#0D2D42]"
+          className="w-full bg-transparent border-0 outline-none text-base sm:text-sm text-[#0D2D42]"
         />
         <label
           htmlFor="phone"
@@ -198,7 +198,7 @@ export function RegisterForm() {
           required
           value={formData.interestedRole}
           onChange={handleChange}
-          className="w-full bg-transparent border-0 outline-none text-sm text-[#0D2D42]"
+          className="w-full bg-transparent border-0 outline-none text-base sm:text-sm text-[#0D2D42]"
         />
         <label
           htmlFor="interestedRole"
@@ -218,7 +218,7 @@ export function RegisterForm() {
           name="companyName"
           value={formData.companyName}
           onChange={handleChange}
-          className="w-full bg-transparent border-0 outline-none text-sm text-[#0D2D42]"
+          className="w-full bg-transparent border-0 outline-none text-base sm:text-sm text-[#0D2D42]"
         />
         <label
           htmlFor="companyName"
@@ -239,7 +239,7 @@ export function RegisterForm() {
           required
           value={formData.password}
           onChange={handleChange}
-          className="w-full bg-transparent border-0 outline-none text-sm text-[#0D2D42]"
+          className="w-full bg-transparent border-0 outline-none text-base sm:text-sm text-[#0D2D42]"
         />
         <label
           htmlFor="password"
@@ -282,7 +282,7 @@ export function RegisterForm() {
           required
           value={formData.confirmPassword}
           onChange={handleChange}
-          className="w-full bg-transparent border-0 outline-none text-sm text-[#0D2D42]"
+          className="w-full bg-transparent border-0 outline-none text-base sm:text-sm text-[#0D2D42]"
         />
         <label
           htmlFor="confirmPassword"

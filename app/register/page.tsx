@@ -6,8 +6,8 @@ import { LogoBrand } from "@/components/landing/logo-brand"
 
 export default function RegisterPage() {
   return (
-    <main className="min-h-screen bg-[#F7F2E4] text-[#0D2D42] font-sans flex items-stretch">
-      <div className="w-full grid lg:grid-cols-[1.1fr_0.9fr] items-stretch min-h-screen">
+    <main className="min-h-screen min-h-dvh bg-[#F7F2E4] text-[#0D2D42] font-sans flex items-stretch">
+      <div className="w-full grid lg:grid-cols-[1.1fr_0.9fr] items-stretch min-h-screen min-h-dvh">
         
         {/* Left Side: Testimonials & Stats Banner */}
         <section className="hidden lg:flex flex-col justify-between p-12 bg-gradient-to-br from-[#F0E9D5] to-[#F7F2E4] border-r border-[#0D2D42]/10 relative overflow-hidden">

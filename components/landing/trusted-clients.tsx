@@ -97,10 +97,10 @@ export function TrustedClients() {
               padding so that readable text starts at the same x-position as the
               city label above it, making them visually aligned.
       ── */}
-      <div className="pt-12 space-y-10">
+      <div className="pt-12 space-y-10 w-full overflow-hidden">
 
         {/* ── Bengaluru row ── */}
-        <div>
+        <div className="w-full overflow-hidden">
           {/* Label is inside padded container — left edge matches px-6/lg:px-10 */}
           <div className="max-w-[1440px] mx-auto px-6 lg:px-10 mb-3">
             <span className="client-row__city text-xs font-mono font-semibold uppercase tracking-widest text-[#8A6420]">
@@ -111,7 +111,7 @@ export function TrustedClients() {
               so the first readable character aligns with the label above */}
           <LogoLoop
             logos={bengaluru}
-            speed={40}
+            speed={38}
             direction="left"
             logoHeight={22}
             gap={56}
@@ -127,7 +127,7 @@ export function TrustedClients() {
         </div>
 
         {/* ── Chennai row ── */}
-        <div>
+        <div className="w-full overflow-hidden">
           <div className="max-w-[1440px] mx-auto px-6 lg:px-10 mb-3">
             <span className="client-row__city text-xs font-mono font-semibold uppercase tracking-widest text-[#8A6420]">
               Chennai
@@ -135,7 +135,7 @@ export function TrustedClients() {
           </div>
           <LogoLoop
             logos={chennai}
-            speed={40}
+            speed={38}
             direction="right"
             logoHeight={22}
             gap={56}
@@ -151,7 +151,7 @@ export function TrustedClients() {
         </div>
 
         {/* ── Pune row ── */}
-        <div>
+        <div className="w-full overflow-hidden">
           <div className="max-w-[1440px] mx-auto px-6 lg:px-10 mb-3">
             <span className="client-row__city text-xs font-mono font-semibold uppercase tracking-widest text-[#8A6420]">
               Pune
@@ -159,7 +159,7 @@ export function TrustedClients() {
           </div>
           <LogoLoop
             logos={pune}
-            speed={40}
+            speed={38}
             direction="left"
             logoHeight={22}
             gap={56}

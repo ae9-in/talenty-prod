@@ -45,7 +45,7 @@ const BANGALORE_AREAS = [
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-[#F7F2E4] text-[#141110] font-sans selection:bg-[#CD9534] selection:text-[#141110] overflow-x-hidden">
+    <main className="min-h-screen min-h-dvh bg-[#F7F2E4] text-[#141110] font-sans selection:bg-[#CD9534] selection:text-[#141110]">
       <Navbar />
 
       {/* 1. HERO CAROUSEL SECTION */}

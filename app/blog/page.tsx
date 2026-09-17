@@ -6,6 +6,7 @@ import { Navbar } from "@/components/landing/navbar"
 import { Footer } from "@/components/landing/footer"
 import { RollingHeadline } from "@/components/landing/rolling-headline"
 import { Reveal, RevealGroup } from "@/components/landing/scroll-reveal"
+import { Eyebrow } from "@/components/ui/eyebrow"
 
 const blogPosts = [
   {
@@ -20,19 +21,19 @@ const blogPosts = [
 
 export default function BlogIndex() {
   return (
-    <main className="min-h-screen min-h-dvh bg-[#F7F2E4] text-[#0D2D42] font-sans selection:bg-[#C18A18] selection:text-[#0D2D42]">
+    <main className="min-h-screen min-h-dvh bg-[#F7F2E4] text-[#0D2D42] font-sans selection:bg-[#1D3F91] selection:text-[#FFFFFF]">
       <Navbar />
 
       {/* Hero Header */}
       <section className="relative pt-32 pb-16 overflow-hidden">
-        <div className="absolute top-0 inset-x-0 h-[380px] bg-gradient-to-b from-[#C18A18]/10 via-transparent to-transparent pointer-events-none" />
+        <div className="absolute top-0 inset-x-0 h-[380px] bg-gradient-to-b from-[#1D3F91]/10 via-transparent to-transparent pointer-events-none" />
         <div className="absolute inset-0 bg-grid-bg opacity-15 pointer-events-none" />
 
         <div className="max-w-[1440px] mx-auto px-6 lg:px-10 relative z-10">
           <div className="max-w-3xl mx-auto text-center">
-            <span className="font-mono text-[11px] uppercase tracking-widest text-[#C18A18] font-semibold block mb-4">
-              · OPERATIONAL INSIGHTS & BENCHMARKS
-            </span>
+            <Eyebrow prefixDot as="span" className="block mb-4">
+              OPERATIONAL INSIGHTS & BENCHMARKS
+            </Eyebrow>
             
             <RollingHeadline
               line1="Recruitment &"
@@ -54,25 +55,25 @@ export default function BlogIndex() {
           {blogPosts.map((post) => (
             <article
               key={post.slug}
-              className="border border-[#0D2D42]/10 bg-[#F7F2E4] rounded-3xl p-8 hover:border-[#0D2D42]/30 transition-all flex flex-col md:flex-row gap-8 items-start shadow-xs"
+              className="border border-[#0D2D42]/10 bg-[#F7F2E4] rounded-3xl p-8 hover:border-[#1D3F91]/30 transition-all flex flex-col md:flex-row gap-8 items-start shadow-xs"
             >
               <div className="flex-1 space-y-4">
                 <div className="flex flex-wrap items-center gap-4 font-mono text-[11px] text-[#3A5570] uppercase tracking-wider">
                   <span className="flex items-center gap-1.5">
-                    <Calendar className="w-3.5 h-3.5 text-[#C18A18]" />
+                    <Calendar className="w-3.5 h-3.5 text-[#1D3F91]" />
                     {post.date}
                   </span>
                   <span className="flex items-center gap-1.5">
-                    <User className="w-3.5 h-3.5 text-[#C18A18]" />
+                    <User className="w-3.5 h-3.5 text-[#1D3F91]" />
                     {post.author}
                   </span>
-                  <span className="bg-[#C18A18]/20 text-[#0D2D42] px-2.5 py-0.5 rounded-full font-semibold border border-[#C18A18]/30">
+                  <span className="bg-[#1D3F91]/10 text-[#1D3F91] px-2.5 py-0.5 rounded-full font-semibold border border-[#1D3F91]/20">
                     {post.readTime}
                   </span>
                 </div>
 
                 <h2 className="text-2xl md:text-3xl font-serif font-bold text-[#0D2D42]">
-                  <Link href={`/blog/${post.slug}`} className="hover:text-[#C18A18] transition-colors">
+                  <Link href={`/blog/${post.slug}`} className="hover:text-[#1D3F91] transition-colors">
                     {post.title}
                   </Link>
                 </h2>
@@ -83,7 +84,7 @@ export default function BlogIndex() {
 
                 <Link
                   href={`/blog/${post.slug}`}
-                  className="inline-flex items-center gap-2 text-[#0D2D42] font-bold text-sm hover:text-[#C18A18] transition-colors group pt-2"
+                  className="inline-flex items-center gap-2 text-[#0D2D42] font-bold text-sm hover:text-[#1D3F91] transition-colors group pt-2"
                 >
                   Read full article
                 </Link>

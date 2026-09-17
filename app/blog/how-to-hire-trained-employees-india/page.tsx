@@ -29,7 +29,7 @@ const blogSchema = {
 
 export default function HowToHireTrainedEmployeesIndia() {
   return (
-    <main className="min-h-screen bg-[#F7F2E4] text-[#0D2D42] font-sans selection:bg-[#C18A18] selection:text-[#0D2D42]">
+    <main className="min-h-screen bg-[#F7F2E4] text-[#0D2D42] font-sans selection:bg-[#1D3F91] selection:text-[#FFFFFF]">
       <Navbar />
 
       <script
@@ -40,8 +40,8 @@ export default function HowToHireTrainedEmployeesIndia() {
       <article className="relative pt-32 pb-24 overflow-hidden">
         {/* Background elements */}
         <div className="absolute inset-0">
-          <div className="absolute top-0 right-1/4 w-96 h-96 bg-[#C18A18]/5 rounded-full blur-3xl" />
-          <div className="absolute top-1/2 left-1/4 w-80 h-80 bg-[#C18A18]/5 rounded-full blur-3xl" />
+          <div className="absolute top-0 right-1/4 w-96 h-96 bg-[#1D3F91]/5 rounded-full blur-3xl" />
+          <div className="absolute top-1/2 left-1/4 w-80 h-80 bg-[#1D3F91]/5 rounded-full blur-3xl" />
           <div className="absolute inset-0 grid-bg opacity-15" />
         </div>
 
@@ -65,15 +65,15 @@ export default function HowToHireTrainedEmployeesIndia() {
 
             <div className="flex flex-wrap items-center gap-6 font-mono text-xs uppercase tracking-wider text-[#3A5570] border-b border-[#0D2D42]/10 pb-6">
               <span className="flex items-center gap-1.5">
-                <Calendar className="w-4 h-4 text-[#C18A18]" />
+                <Calendar className="w-4 h-4 text-[#1D3F91]" />
                 June 01, 2026
               </span>
               <span className="flex items-center gap-1.5">
-                <User className="w-4 h-4 text-[#C18A18]" />
+                <User className="w-4 h-4 text-[#1D3F91]" />
                 By Anita Deshmukh
               </span>
               <span className="flex items-center gap-1.5">
-                <Clock className="w-4 h-4 text-[#C18A18]" />
+                <Clock className="w-4 h-4 text-[#1D3F91]" />
                 12 min read
               </span>
             </div>
@@ -81,7 +81,7 @@ export default function HowToHireTrainedEmployeesIndia() {
 
           {/* Article Content */}
           <div className="max-w-none text-[#3A5570] leading-relaxed space-y-8">
-            <p className="text-lg text-[#0D2D42] font-medium leading-relaxed first-letter:text-5xl first-letter:font-serif first-letter:font-bold first-letter:text-[#C18A18] first-letter:mr-3 first-letter:float-left">
+            <p className="text-lg text-[#0D2D42] font-medium leading-relaxed first-letter:text-5xl first-letter:font-serif first-letter:font-bold first-letter:text-[#1D3F91] first-letter:mr-3 first-letter:float-left">
               Hiring trained employees in India is the fastest way to accelerate business productivity. In a highly competitive economic landscape, companies can no longer afford to spend months upskilling new hires. By deploying pre-trained professionals who understand your technical stacks and workflows from day one, you save time, reduce candidate attrition, and optimize recruitment spend.
             </p>
 
@@ -91,7 +91,7 @@ export default function HowToHireTrainedEmployeesIndia() {
             <p>
               India produces hundreds of thousands of graduates every year, yet companies constantly struggle with a paradox: high applicant volume combined with extremely low job-readiness. The academic curriculum in many institutions remains theoretical and lacks alignment with modern production workflows, tools, and best practices.
             </p>
-            <blockquote className="border-l-4 border-[#C18A18] pl-6 italic my-6 text-[#0D2D42] bg-[#F0E9D5]/60 py-4 pr-4 rounded-r-xl">
+            <blockquote className="border-l-4 border-[#1D3F91] pl-6 italic my-6 text-[#0D2D42] bg-[#F0E9D5]/60 py-4 pr-4 rounded-r-xl">
               Employability studies from industry bodies like NASSCOM and Aspiring Minds have repeatedly found that a majority of Indian engineering graduates need direct, hands-on intervention before they're ready for standard software development roles straight out of college.
             </blockquote>
             <p>
@@ -118,7 +118,7 @@ export default function HowToHireTrainedEmployeesIndia() {
               Step 1: Audit and Define the Technical Stack
             </h3>
             <p>
-              Before sourcing, you must document the specific tools, libraries, and frameworks your team uses daily. If you are hiring frontend developers, specify if they need fluency in React with TypeScript, Next.js page routers, or Tailwind CSS. Aligning on these requirements ensures the training curriculum matches your codebase. For details on local requirements, see our <Link href="/recruitment-consulting-bangalore" className="text-[#C18A18] hover:underline font-semibold">recruitment consulting services in Bengaluru</Link>.
+              Before sourcing, you must document the specific tools, libraries, and frameworks your team uses daily. If you are hiring frontend developers, specify if they need fluency in React with TypeScript, Next.js page routers, or Tailwind CSS. Aligning on these requirements ensures the training curriculum matches your codebase. For details on local requirements, see our <Link href="/recruitment-consulting-bangalore" className="text-[#1D3F91] hover:underline font-semibold">recruitment consulting services in Bengaluru</Link>.
             </p>
 
             <h3 className="text-xl font-serif font-bold text-[#0D2D42] mt-8">
@@ -132,7 +132,7 @@ export default function HowToHireTrainedEmployeesIndia() {
               Step 3: Implement Multi-Stage Screening
             </h3>
             <p>
-              To maintain candidate quality, enforce strict screening stages. This includes a cognitive aptitude exam, practical tests where candidates solve real-world problems in sandboxed environments, and behavioral HR rounds to check cultural fit. Read our in-depth breakdown of the <Link href="/talent-screening-process" className="text-[#C18A18] hover:underline font-semibold">talent screening process</Link>.
+              To maintain candidate quality, enforce strict screening stages. This includes a cognitive aptitude exam, practical tests where candidates solve real-world problems in sandboxed environments, and behavioral HR rounds to check cultural fit. Read our in-depth breakdown of the <Link href="/talent-screening-process" className="text-[#1D3F91] hover:underline font-semibold">talent screening process</Link>.
             </p>
 
             <h3 className="text-xl font-serif font-bold text-[#0D2D42] mt-8">
@@ -158,22 +158,22 @@ export default function HowToHireTrainedEmployeesIndia() {
                   <tr className="border-b border-[#0D2D42]/10">
                     <td className="p-4 font-semibold text-[#0D2D42]">Time to Productivity</td>
                     <td className="p-4">30 to 90 Days (due to internal training)</td>
-                    <td className="p-4 text-[#C18A18] font-semibold">1 to 3 Days (Day-one productive)</td>
+                    <td className="p-4 text-[#1D3F91] font-semibold">1 to 3 Days (Day-one productive)</td>
                   </tr>
                   <tr className="border-b border-[#0D2D42]/10">
                     <td className="p-4 font-semibold text-[#0D2D42]">Onboarding Attrition Risk</td>
                     <td className="p-4">High (candidates drop out during training)</td>
-                    <td className="p-4 text-[#C18A18] font-semibold">Low (pre-aligned expectations)</td>
+                    <td className="p-4 text-[#1D3F91] font-semibold">Low (pre-aligned expectations)</td>
                   </tr>
                   <tr className="border-b border-[#0D2D42]/10">
                     <td className="p-4 font-semibold text-[#0D2D42]">Senior Engineering Mentorship</td>
                     <td className="p-4">High (2-4 hours/day per hire)</td>
-                    <td className="p-4 text-[#C18A18] font-semibold">Minimal (onboarding focus only)</td>
+                    <td className="p-4 text-[#1D3F91] font-semibold">Minimal (onboarding focus only)</td>
                   </tr>
                   <tr>
                     <td className="p-4 font-semibold text-[#0D2D42]">Candidate Quality Assurance</td>
                     <td className="p-4">Self-reported on CVs</td>
-                    <td className="p-4 text-[#C18A18] font-semibold">Verified through practical bootcamps</td>
+                    <td className="p-4 text-[#1D3F91] font-semibold">Verified through practical bootcamps</td>
                   </tr>
                 </tbody>
               </table>
@@ -191,7 +191,7 @@ export default function HowToHireTrainedEmployeesIndia() {
               <li><strong>Training Bonds & Placement Terms:</strong> If you fund customized bootcamps, draft compliant training-and-employment term sheets that are legally enforceable in Indian courts.</li>
             </ul>
             <p>
-              Partnering with a compliant agency like Talenty Consulting ensures all statutory requirements are handled on your behalf, shielding your company from legal liabilities. To understand custom setups, explore our <Link href="/trained-employee-placement" className="text-[#C18A18] hover:underline font-semibold">trained employee placement workflows</Link>.
+              Partnering with a compliant agency like Talenty Consulting ensures all statutory requirements are handled on your behalf, shielding your company from legal liabilities. To understand custom setups, explore our <Link href="/trained-employee-placement" className="text-[#1D3F91] hover:underline font-semibold">trained employee placement workflows</Link>.
             </p>
 
             <h2 className="text-2xl font-serif font-bold text-[#0D2D42] mt-12">
@@ -226,7 +226,7 @@ export default function HowToHireTrainedEmployeesIndia() {
 
             {/* Author Bio */}
             <div className="mt-16 border-t border-[#0D2D42]/10 pt-8 flex items-center gap-6">
-              <div className="w-16 h-16 rounded-full bg-[#0D2D42] text-[#F7E9A7] flex items-center justify-center font-serif font-bold text-xl flex-shrink-0 shadow-xs">
+              <div className="w-16 h-16 rounded-full bg-[#0D2D42] text-[#FFFFFF] flex items-center justify-center font-serif font-bold text-xl flex-shrink-0 shadow-xs">
                 AD
               </div>
               <div>
@@ -245,14 +245,14 @@ export default function HowToHireTrainedEmployeesIndia() {
       <section className="py-20 border-t border-[#0D2D42]/10 bg-[#F0E9D5]/40 relative">
         <div className="max-w-4xl mx-auto px-6 lg:px-10 text-center relative z-10">
           <h2 className="text-3xl font-serif font-semibold mb-4 text-[#0D2D42]">
-            Ready to build your <span className="text-[#C18A18] italic font-normal">pre-trained team?</span>
+            Ready to build your <span className="text-[#1D3F91] italic font-normal">pre-trained team?</span>
           </h2>
           <p className="text-[#3A5570] mb-8 max-w-2xl mx-auto leading-relaxed">
             Tell us your tech stack, hiring timeline, and training goals — we&apos;ll tell you honestly what&apos;s realistic.
           </p>
           <Link
             href="/contact"
-            className="inline-flex items-center gap-2 bg-[#C18A18] hover:bg-[#7C601D] text-[#0D2D42] hover:text-[#F7F2E4] font-bold text-sm px-6 py-3.5 rounded-2xl border border-[#0D2D42]/10 transition-all shadow-sm group"
+            className="inline-flex items-center gap-2 bg-[#1D3F91] hover:bg-[#3358B8] text-[#FFFFFF] font-bold text-sm px-6 py-3.5 rounded-2xl border border-[#0D2D42]/10 transition-all shadow-sm group"
           >
             Get a free consultation
             <Send className="w-4 h-4 group-hover:translate-x-1 transition-transform" />

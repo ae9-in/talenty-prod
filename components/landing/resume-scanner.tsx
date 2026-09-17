@@ -4,6 +4,7 @@ import { useState, useEffect, useRef } from "react"
 import { gsap } from "gsap"
 import { useGSAP } from "@gsap/react"
 import { CheckCircle2, FileText, UserCheck, ShieldCheck } from "lucide-react"
+import { Eyebrow } from "@/components/ui/eyebrow"
 
 gsap.registerPlugin(useGSAP)
 
@@ -317,7 +318,7 @@ export function ResumeScanner() {
       {/* ─── Hidden Accessible Pause Control (WCAG 2.2.2 compliance) ─── */}
       <button
         onClick={togglePause}
-        className="sr-only focus:not-sr-only focus:absolute focus:z-50 focus:top-2 focus:left-2 focus:px-3 focus:py-1.5 focus:bg-[#15120F] focus:text-[#F7F2E4] focus:rounded-xl focus:border focus:border-[#CD9534] font-mono text-xs cursor-pointer"
+        className="sr-only focus:not-sr-only focus:absolute focus:z-50 focus:top-2 focus:left-2 focus:px-3 focus:py-1.5 focus:bg-[#15120F] focus:text-[#F7F2E4] focus:rounded-xl focus:border focus:border-[#1D3F91] font-mono text-xs cursor-pointer"
         aria-label={isUserPaused ? "Resume candidate scorecard rotation" : "Pause candidate scorecard rotation"}
       >
         {isUserPaused ? "Play rotation" : "Pause rotation"}
@@ -336,13 +337,13 @@ export function ResumeScanner() {
                 onClick={() => selectCandidate(idx)}
                 className={`px-3.5 py-1.5 rounded-xl font-mono text-[11px] font-medium transition-all whitespace-nowrap cursor-pointer flex items-center gap-1.5 ${
                   isSelected
-                    ? "bg-[#15120F] text-[#CD9534] shadow-xs"
+                    ? "bg-[#1D3F91] text-[#FFFFFF] shadow-xs"
                     : "text-[#5C5449] hover:text-[#15120F] hover:bg-[#F7F2E4]"
                 }`}
               >
                 <span
                   className={`w-1.5 h-1.5 rounded-full ${
-                    isSelected ? "bg-[#CD9534]" : "bg-[#15120F]/30"
+                    isSelected ? "bg-[#FFFFFF]" : "bg-[#15120F]/30"
                   }`}
                 />
                 <span>{cand.name.split(" ")[0]}</span>
@@ -351,7 +352,7 @@ export function ResumeScanner() {
           })}
         </div>
 
-        <span className="font-mono text-[10px] text-[#8A6420] font-semibold px-2">
+        <span className="font-mono text-[10px] text-[#1D3F91] font-semibold px-2">
           Illustrative Recruiter Review
         </span>
       </div>
@@ -367,7 +368,7 @@ export function ResumeScanner() {
           <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-3 pb-3 border-b border-[#15120F]/10">
             <div>
               <div className="flex items-center gap-2">
-                <FileText className="w-4 h-4 text-[#8A6420]" />
+                <FileText className="w-4 h-4 text-[#1D3F91]" />
                 <h4 className="font-serif font-bold text-base sm:text-lg text-[#141110]">
                   {activeCand.name}
                 </h4>
@@ -375,15 +376,15 @@ export function ResumeScanner() {
                   Example Case
                 </span>
               </div>
-              <p className="font-mono text-[11px] text-[#8A6420] font-medium mt-0.5">
+              <p className="font-mono text-[11px] text-[#1D3F91] font-medium mt-0.5">
                 {activeCand.role}
               </p>
             </div>
 
             {/* Categorical Verdict Badge */}
             <div className="verdict-badge flex-shrink-0 self-start sm:self-auto">
-              <div className="bg-[#CD9534] text-[#15120F] font-mono font-bold text-xs px-3 py-1.5 rounded-xl shadow-xs flex items-center gap-1.5">
-                <ShieldCheck className="w-3.5 h-3.5 text-[#15120F]" />
+              <div className="bg-[#1D3F91] text-[#FFFFFF] font-mono font-bold text-xs px-3 py-1.5 rounded-xl shadow-xs flex items-center gap-1.5">
+                <ShieldCheck className="w-3.5 h-3.5 text-[#FFFFFF]" />
                 <span>{activeCand.verdict}</span>
               </div>
             </div>
@@ -391,15 +392,15 @@ export function ResumeScanner() {
 
           {/* 2. Keyword-Pill Sequential Tick Tier */}
           <div className="flex flex-wrap items-center gap-1.5 pt-0.5">
-            <span className="font-mono text-[9.5px] uppercase tracking-wider text-[#8A6420] font-bold mr-1">
+            <Eyebrow className="mr-1 text-[10px]">
               Verified Stack:
-            </span>
+            </Eyebrow>
             {activeCand.keywords.map((word, kIdx) => (
               <span
                 key={word}
-                className={`keyword-pill pill-${kIdx} bg-[#2A2521] text-[#F7F2E4] rounded-lg px-2.5 py-0.5 text-[11px] font-mono inline-flex items-center gap-1.5 border border-[#15120F]/20 opacity-0`}
+                className={`keyword-pill pill-${kIdx} bg-[#101F45] text-[#FFFFFF] rounded-lg px-2.5 py-0.5 text-[11px] font-mono inline-flex items-center gap-1.5 border border-[#1D3F91]/30 opacity-0`}
               >
-                <CheckCircle2 className="tick w-3 h-3 text-[#E5A93C] opacity-0 flex-shrink-0" />
+                <CheckCircle2 className="tick w-3 h-3 text-[#93B4F8] opacity-0 flex-shrink-0" />
                 <span>{word}</span>
               </span>
             ))}
@@ -411,9 +412,9 @@ export function ResumeScanner() {
             {/* Left: Document Panel with Scan Sweep */}
             <div className="doc-panel relative rounded-2xl bg-[#F0E9D5]/50 border border-[#15120F]/10 p-3.5 overflow-hidden flex flex-col justify-between min-h-[160px]">
               
-              {/* Gold Scan Line */}
+              {/* Royal Blue Scan Line */}
               <div
-                className="scan-line absolute left-0 right-0 h-[2px] bg-[#CD9534] shadow-[0_0_8px_1px_rgba(205,149,52,0.4)] z-20 pointer-events-none opacity-0"
+                className="scan-line absolute left-0 right-0 h-[2px] bg-[#1D3F91] shadow-[0_0_8px_1px_rgba(29,63,145,0.4)] z-20 pointer-events-none opacity-0"
               />
 
               {/* Document Excerpt Content Revealed by Clip-Path */}
@@ -425,7 +426,7 @@ export function ResumeScanner() {
                   <span className="font-mono text-[9.5px] uppercase tracking-wider text-[#5C5449] font-bold">
                     Primary Technical Records
                   </span>
-                  <span className="font-mono text-[9px] text-[#8A6420] font-semibold">
+                  <span className="font-mono text-[9px] text-[#1D3F91] font-semibold">
                     {activeCand.documentExcerpt.experience}
                   </span>
                 </div>
@@ -443,7 +444,7 @@ export function ResumeScanner() {
 
             {/* Right: Sequential Tick-Off Evidence Cards */}
             <div className="space-y-2 flex flex-col justify-center">
-              <span className="font-mono text-[9.5px] uppercase tracking-wider text-[#8A6420] font-bold block">
+              <span className="font-mono text-[9.5px] uppercase tracking-wider text-[#1D3F91] font-bold block">
                 Extracted & Verified Evidence:
               </span>
 
@@ -453,13 +454,13 @@ export function ResumeScanner() {
                   className={`chip-item chip-item-${cIdx} flex items-start gap-2 p-2 rounded-xl bg-[#F7F2E4] border border-[#15120F]/10`}
                 >
                   <div className="check-icon flex-shrink-0 mt-0.5 opacity-0">
-                    <CheckCircle2 className="w-3.5 h-3.5 text-[#8A6420]" />
+                    <CheckCircle2 className="w-3.5 h-3.5 text-[#1D3F91]" />
                   </div>
                   <div className="evidence-text min-w-0 opacity-0">
                     <p className="text-xs font-medium text-[#141110] truncate">
                       {chip.text}
                     </p>
-                    <p className="text-[10px] text-[#8A6420] font-mono truncate">
+                    <p className="text-[10px] text-[#5C5449] font-mono truncate">
                       {chip.detail}
                     </p>
                   </div>
@@ -472,9 +473,9 @@ export function ResumeScanner() {
           <div
             className="recruiter-note pt-3.5 border-t border-[#15120F]/10 flex items-start gap-2.5 opacity-0 bg-[#F0E9D5]/40 p-3 rounded-2xl"
           >
-            <UserCheck className="w-4 h-4 text-[#8A6420] flex-shrink-0 mt-0.5" />
+            <UserCheck className="w-4 h-4 text-[#1D3F91] flex-shrink-0 mt-0.5" />
             <div className="space-y-0.5">
-              <span className="font-mono text-[10px] text-[#8A6420] uppercase tracking-wider font-bold block">
+              <span className="font-mono text-[10px] text-[#1D3F91] uppercase tracking-wider font-bold block">
                 Recruiter notes
               </span>
               <p className="text-xs text-[#141110] leading-relaxed font-sans">

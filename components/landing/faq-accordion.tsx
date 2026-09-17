@@ -52,10 +52,10 @@ export function FAQAccordion() {
     <div className="grid gap-12 lg:grid-cols-[1fr_1.6fr] items-start max-w-5xl mx-auto py-8">
       {/* Left side context (sticky on desktop) */}
       <div className="lg:sticky lg:top-24 space-y-6">
-        <h2 className="text-3xl md:text-4xl font-serif font-semibold tracking-tight text-[#0D2D42]">
-          Questions, <span className="text-[#C18A18] italic font-normal">answered.</span>
+        <h2 className="text-3xl md:text-4xl font-serif font-semibold tracking-tight text-[#141110]">
+          Questions, <span className="text-[#1D3F91]">answered.</span>
         </h2>
-        <div className="hidden lg:block font-mono text-[11px] uppercase tracking-widest text-[#3A5570]">
+        <div className="hidden lg:block font-mono text-[11px] uppercase tracking-widest text-[#5C5449]">
           Active Category:
           <AnimatePresence mode="wait">
             <motion.span
@@ -64,7 +64,7 @@ export function FAQAccordion() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -5 }}
               transition={{ duration: 0.2 }}
-              className="block mt-2 text-[#0D2D42] font-bold text-xs"
+              className="block mt-2 text-[#141110] font-bold text-xs"
             >
               · {activeCtx}
             </motion.span>
@@ -73,7 +73,7 @@ export function FAQAccordion() {
       </div>
 
       {/* Right side accordion */}
-      <div className="border-t border-[#0D2D42]/10 divide-y divide-[#0D2D42]/10">
+      <div className="border-t border-[#141110]/10 divide-y divide-[#141110]/10">
         {FAQS.map((item) => {
           const isOpen = activeId === item.id
           return (
@@ -83,15 +83,15 @@ export function FAQAccordion() {
                 className="w-full text-left flex items-start justify-between gap-6 group cursor-pointer"
               >
                 <div className="flex gap-4 items-baseline">
-                  <span className="font-mono text-[11px] text-[#3A5570] tracking-wider">
+                  <span className="font-mono text-[11px] text-[#5C5449] tracking-wider">
                     0{item.id}
                   </span>
-                  <span className="text-base md:text-lg font-serif font-bold text-[#0D2D42] group-hover:text-[#C18A18] transition-colors leading-snug">
+                  <span className="text-base md:text-lg font-serif font-bold text-[#141110] group-hover:text-[#1D3F91] transition-colors leading-snug">
                     {item.q}
                   </span>
                 </div>
                 <span 
-                  className={`text-xl font-serif font-normal text-[#C18A18] transition-transform duration-300 select-none ${
+                  className={`text-xl font-serif font-normal text-[#1D3F91] transition-transform duration-300 select-none ${
                     isOpen ? "rotate-45" : "rotate-0"
                   }`}
                 >
@@ -108,7 +108,7 @@ export function FAQAccordion() {
                     transition={{ duration: 0.35, ease: "easeInOut" }}
                     className="overflow-hidden"
                   >
-                    <p className="mt-4 pl-8 pr-12 text-[14px] leading-relaxed text-[#3A5570]">
+                    <p className="mt-4 pl-8 pr-12 text-[14px] leading-relaxed text-[#5C5449]">
                       {item.a}
                     </p>
                   </motion.div>

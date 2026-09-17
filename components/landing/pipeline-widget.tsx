@@ -181,34 +181,34 @@ export function PipelineWidget() {
   }
 
   return (
-    <div className="relative w-full rounded-3xl border-2 border-[#0D2D42] bg-[#F7F2E4] p-5 sm:p-6 shadow-[8px_8px_0px_0px_rgba(13,45,66,1)] overflow-hidden flex flex-col justify-between">
+    <div className="relative w-full rounded-3xl border-2 border-[#15120F] bg-[#FFFFFF] p-5 sm:p-6 shadow-[8px_8px_0px_0px_rgba(21,18,15,1)] overflow-hidden flex flex-col justify-between">
       {/* Background subtle noise & accent */}
-      <div className="absolute top-0 right-0 w-64 h-64 bg-[#C18A18]/10 rounded-full blur-3xl pointer-events-none -z-10" />
+      <div className="absolute top-0 right-0 w-64 h-64 bg-[#1D3F91]/10 rounded-full blur-3xl pointer-events-none -z-10" />
 
       {/* Top Header bar */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-5 border-b border-[#0D2D42]/10">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-5 border-b border-[#15120F]/10">
         <div className="flex items-center gap-3">
           <span className="relative flex h-3 w-3">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#C18A18] opacity-75" />
-            <span className="relative inline-flex rounded-full h-3 w-3 bg-[#C18A18]" />
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#1D3F91] opacity-75" />
+            <span className="relative inline-flex rounded-full h-3 w-3 bg-[#1D3F91]" />
           </span>
           <div>
             <div className="flex items-center gap-2">
-              <span className="font-serif font-bold text-base text-[#0D2D42]">
+              <span className="font-serif font-bold text-base text-[#141110]">
                 Talenty Live ATS
               </span>
-              <span className="bg-[#C18A18] border border-[#0D2D42] px-2 py-0.5 rounded-full font-mono text-[9px] font-bold uppercase tracking-wider text-[#0D2D42]">
+              <span className="bg-[#1D3F91] border border-[#1D3F91] px-2 py-0.5 rounded-full font-mono text-[9px] font-bold uppercase tracking-wider text-[#FFFFFF]">
                 Active Loop
               </span>
             </div>
-            <p className="font-mono text-[10px] text-[#3A5570]">
+            <p className="font-mono text-[10px] text-[#5C5449]">
               Real-time sourcing & calibrated vetting
             </p>
           </div>
         </div>
 
         {/* Role Selector Tabs */}
-        <div className="flex bg-[#F0E9D5] p-1 rounded-2xl border border-[#0D2D42]/10 gap-1 overflow-x-auto scrollbar-none">
+        <div className="flex bg-[#F4EFE5] p-1 rounded-2xl border border-[#15120F]/10 gap-1 overflow-x-auto scrollbar-none">
           {ROLES.map((role) => {
             const isActive = activeRole === role.id
             return (
@@ -217,8 +217,8 @@ export function PipelineWidget() {
                 onClick={() => handleRoleChange(role.id)}
                 className={`px-3 py-1.5 rounded-xl font-mono text-[10.5px] font-medium transition-all whitespace-nowrap cursor-pointer ${
                   isActive
-                    ? "bg-[#0D2D42] text-[#F7F2E4] shadow-xs"
-                    : "text-[#3A5570] hover:text-[#0D2D42] hover:bg-[#F7F2E4]"
+                    ? "bg-[#1D3F91] text-[#FFFFFF] shadow-xs"
+                    : "text-[#5C5449] hover:text-[#141110] hover:bg-[#FFFFFF]"
                 }`}
               >
                 {role.label}
@@ -238,14 +238,14 @@ export function PipelineWidget() {
               key={stage}
               className={`p-2.5 rounded-xl border text-center transition-all ${
                 isLatest
-                  ? "bg-[#C18A18]/15 border-[#C18A18]/40"
-                  : "bg-[#F0E9D5]/60 border-[#0D2D42]/5"
+                  ? "bg-[#1D3F91]/15 border-[#1D3F91]/40"
+                  : "bg-[#F4EFE5]/60 border-[#15120F]/5"
               }`}
             >
-              <div className="font-mono text-[9px] uppercase tracking-wider text-[#3A5570] truncate">
+              <div className="font-mono text-[9px] uppercase tracking-wider text-[#5C5449] truncate">
                 {stage}
               </div>
-              <div className="font-serif font-bold text-sm sm:text-base text-[#0D2D42] mt-0.5">
+              <div className="font-serif font-bold text-sm sm:text-base text-[#141110] mt-0.5">
                 {count}
               </div>
             </div>
@@ -263,24 +263,24 @@ export function PipelineWidget() {
               onClick={() => setSelectedCandidate(c)}
               className={`p-3.5 sm:p-4 rounded-2xl border-2 transition-all cursor-pointer flex flex-col sm:flex-row sm:items-center justify-between gap-3 ${
                 isSelected
-                  ? "border-[#0D2D42] bg-[#F7F2E4] shadow-[4px_4px_0px_0px_rgba(13,45,66,0.9)]"
-                  : "border-[#0D2D42]/10 bg-[#F0E9D5]/40 hover:border-[#0D2D42]/30 hover:bg-[#F0E9D5]/80"
+                  ? "border-[#15120F] bg-[#FFFFFF] shadow-[4px_4px_0px_0px_rgba(21,18,15,0.9)]"
+                  : "border-[#15120F]/10 bg-[#F4EFE5]/40 hover:border-[#15120F]/30 hover:bg-[#F4EFE5]/80"
               }`}
             >
               <div className="flex items-center gap-3.5 min-w-0">
-                <div className="w-10 h-10 rounded-xl bg-[#0D2D42] text-[#F7E9A7] font-mono font-bold text-xs flex items-center justify-center flex-shrink-0 shadow-xs">
+                <div className="w-10 h-10 rounded-xl bg-[#1D3F91] text-[#FFFFFF] font-mono font-bold text-xs flex items-center justify-center flex-shrink-0 shadow-xs">
                   {c.avatar}
                 </div>
                 <div className="min-w-0">
                   <div className="flex items-center gap-2">
-                    <h4 className="font-serif font-bold text-sm sm:text-base text-[#0D2D42] truncate">
+                    <h4 className="font-serif font-bold text-sm sm:text-base text-[#141110] truncate">
                       {c.name}
                     </h4>
-                    <span className="bg-[#C18A18]/15 text-[#0D2D42] font-mono text-[9.5px] font-semibold px-2 py-0.5 rounded-md flex-shrink-0">
+                    <span className="bg-[#1D3F91]/15 text-[#1D3F91] font-mono text-[9.5px] font-semibold px-2 py-0.5 rounded-md flex-shrink-0">
                       {c.stage}
                     </span>
                   </div>
-                  <p className="text-xs text-[#3A5570] truncate mt-0.5">
+                  <p className="text-xs text-[#5C5449] truncate mt-0.5">
                     {c.role}
                   </p>
                 </div>
@@ -292,14 +292,14 @@ export function PipelineWidget() {
                   {c.skills.slice(0, 2).map((sk) => (
                     <span
                       key={sk}
-                      className="font-mono text-[9px] bg-[#F0E9D5] border border-[#0D2D42]/10 px-2 py-0.5 rounded-md text-[#3A5570]"
+                      className="font-mono text-[9px] bg-[#F4EFE5] border border-[#15120F]/10 px-2 py-0.5 rounded-md text-[#5C5449]"
                     >
                       {sk}
                     </span>
                   ))}
                 </div>
 
-                <div className="flex items-center bg-[#C18A18] text-[#0D2D42] font-mono font-bold text-xs px-2.5 py-1 rounded-xl border border-[#0D2D42]">
+                <div className="flex items-center bg-[#1D3F91] text-[#FFFFFF] font-mono font-bold text-xs px-2.5 py-1 rounded-xl border border-[#1D3F91]">
                   <span>{c.matchScore}%</span>
                 </div>
               </div>
@@ -316,37 +316,37 @@ export function PipelineWidget() {
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -8 }}
           transition={{ duration: 0.2 }}
-          className="mt-3 p-4 rounded-2xl bg-[#0D2D42] text-[#F7F2E4] border border-[#C18A18]/30 shadow-md"
+          className="mt-3 p-4 rounded-2xl bg-[#101F45] text-[#FBF8F2] border border-[#1D3F91]/30 shadow-md"
         >
           <div className="flex items-start justify-between gap-2 mb-2.5">
             <div className="flex items-center gap-2">
-              <ShieldCheck className="w-4 h-4 text-[#C18A18]" />
-              <span className="font-mono text-[10px] uppercase tracking-wider text-[#F7E9A7] font-bold">
+              <ShieldCheck className="w-4 h-4 text-[#93B4F8]" />
+              <span className="font-mono text-[10px] uppercase tracking-wider text-[#93B4F8] font-bold">
                 Calibrated Vetting Breakdown
               </span>
             </div>
-            <span className="font-mono text-[9.5px] text-[#F7F2E4]/60 flex items-center gap-1">
+            <span className="font-mono text-[9.5px] text-[#FBF8F2]/60 flex items-center gap-1">
               <Clock className="w-3 h-3" />
               {selectedCandidate.timeAgo}
             </span>
           </div>
 
-          <p className="text-xs text-[#F7F2E4]/90 leading-relaxed mb-3">
+          <p className="text-xs text-[#FBF8F2]/90 leading-relaxed mb-3">
             {selectedCandidate.details.summary}
           </p>
 
           <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 pt-2 border-t border-white/10 font-mono text-[10px]">
             <div>
-              <span className="text-[#F7F2E4]/50 block">Code / Tech:</span>
-              <span className="text-[#F7F2E4] font-medium">{selectedCandidate.details.codeScore}</span>
+              <span className="text-[#FBF8F2]/50 block">Code / Tech:</span>
+              <span className="text-[#FBF8F2] font-medium">{selectedCandidate.details.codeScore}</span>
             </div>
             <div>
-              <span className="text-[#F7F2E4]/50 block">Experience:</span>
-              <span className="text-[#F7F2E4] font-medium">{selectedCandidate.details.experience}</span>
+              <span className="text-[#FBF8F2]/50 block">Experience:</span>
+              <span className="text-[#FBF8F2] font-medium">{selectedCandidate.details.experience}</span>
             </div>
             <div className="col-span-2 sm:col-span-1 flex items-center sm:justify-end">
-              <span className="inline-flex items-center gap-1 text-[#F7E9A7] font-bold">
-                <CheckCircle2 className="w-3.5 h-3.5 text-[#C18A18]" />
+              <span className="inline-flex items-center gap-1 text-[#93B4F8] font-bold">
+                <CheckCircle2 className="w-3.5 h-3.5 text-[#93B4F8]" />
                 Verified Fit
               </span>
             </div>

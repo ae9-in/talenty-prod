@@ -65,10 +65,10 @@ export function SiteLoader() {
           transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
           className="fixed inset-0 z-[99999] flex flex-col items-center justify-center bg-[#F7F2E4] select-none"
         >
-          {/* Subtle ambient luxury gold radiance in background */}
-          <div className="absolute w-80 h-80 rounded-full bg-[#C18A18]/12 blur-3xl pointer-events-none" />
+          {/* Subtle ambient royal blue radiance in background */}
+          <div className="absolute w-80 h-80 rounded-full bg-[#1D3F91]/12 blur-3xl pointer-events-none" />
 
-          {/* Centered 3D Gold Monogram / Lockup */}
+          {/* Centered 3D Monogram / Lockup */}
           <motion.div
             initial={prefersReducedMotion ? false : { scale: 0.92, opacity: 0 }}
             animate={
@@ -93,8 +93,8 @@ export function SiteLoader() {
             }
             className="relative flex flex-col items-center justify-center px-4"
           >
-            {/* Real 3D Gold Lockup Image */}
-            <div className="relative w-44 sm:w-56 h-auto drop-shadow-[0_8px_20px_rgba(124,96,29,0.25)]">
+            {/* Real 3D Lockup Image */}
+            <div className="relative w-44 sm:w-56 h-auto drop-shadow-[0_8px_20px_rgba(16,31,69,0.25)]">
               <Image
                 src="/images/talenty-logo-full.png"
                 alt="Talenty Consulting"
@@ -104,7 +104,7 @@ export function SiteLoader() {
                 className="w-full h-auto object-contain"
               />
 
-              {/* Shimmer Sheen Sweep Across the Gold Metallic Surface */}
+              {/* Shimmer Sheen Sweep Across the Surface */}
               {!prefersReducedMotion && (
                 <motion.div
                   initial={{ x: "-120%", opacity: 0 }}
@@ -115,7 +115,7 @@ export function SiteLoader() {
                     duration: 1.3,
                     ease: "easeInOut",
                   }}
-                  className="absolute inset-0 bg-gradient-to-r from-transparent via-[#F7E9A7]/45 to-transparent pointer-events-none transform -skew-x-12"
+                  className="absolute inset-0 bg-gradient-to-r from-transparent via-[#FFFFFF]/50 to-transparent pointer-events-none transform -skew-x-12"
                 />
               )}
             </div>

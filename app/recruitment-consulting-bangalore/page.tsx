@@ -1,59 +1,60 @@
 "use client"
 
-import { Building2, ShieldCheck, Zap, CheckCircle2, Users, Rocket, Clock, Layers } from "lucide-react"
+import { Building2, ShieldCheck, Zap, CheckCircle2, Users, Rocket, Clock, Layers, TrendingUp } from "lucide-react"
 import Link from "next/link"
 import { Navbar } from "@/components/landing/navbar"
 import { Footer } from "@/components/landing/footer"
 import { RollingHeadline } from "@/components/landing/rolling-headline"
 import { EnquiryForm } from "@/components/public/enquiry-form"
 import { Reveal, RevealGroup } from "@/components/landing/scroll-reveal"
+import { Eyebrow } from "@/components/ui/eyebrow"
 
 const qualitativePillars = [
-  { label: "CONSULTING EXPERTISE", title: "Dedicated Lead Desk", desc: "One senior recruitment lead coordinates candidate sourcing, pipeline evaluations, and offer extension." },
-  { label: "VETTING CALIBER", title: "Pre-Screened Codebases", desc: "Every technical candidate completes sandboxed problem-solving tasks before client interviews." },
-  { label: "GEOGRAPHIC COVERAGE", title: "Hub-Anchored Sourcing", desc: "Church Street headquarters with active recruitment pipelines across Bangalore, Chennai, and Pune." },
-  { label: "PLACEMENT ASSURANCE", title: "Replacement Guarantee", desc: "Full replacement assurance window standard on all permanent client placements." },
+  { label: "HEADQUARTERS", title: "Church Street, Bengaluru", desc: "Physical offices at BHIVE Platinum, providing local network access across Koramangala, Indiranagar, and Whitefield." },
+  { label: "VETTING RIGOR", title: "Calibrated Code Checks", desc: "Zero automated resume forwarding. Every profile includes production-grade code evaluation." },
+  { label: "DAY-ONE OUTPUT", title: "Trained Placement Track", desc: "Pre-placement stack upskilling ensures engineers commit code to production in their first week." },
+  { label: "ACCOUNTABILITY", title: "Full Replacement Guarantee", desc: "Comprehensive placement protection on all permanent engineering and business appointments." },
 ]
 
 const servicePillars = [
   {
-    icon: Rocket,
-    title: "Hiring Strategy Consulting for Startups & Scaleups",
-    desc: "We analyze your quarterly growth goals, design competency rubrics, calibrate market compensation benchmarks, and construct repeatable hiring funnels tailored to Bangalore's competitive tech talent market.",
+    icon: Building2,
+    title: "1. Talent Acquisition & Hiring Strategy",
+    desc: "We analyze talent supply dynamics across Bangalore, calibrate market-rate compensation benchmarks, and design end-to-end sourcing pipelines for engineering, product, data, and go-to-market teams.",
   },
   {
     icon: Users,
-    title: "RPO (Recruitment Process Outsourcing) Services",
-    desc: "Embed dedicated talent acquisition specialists into your organization. We handle end-to-end sourcing, candidate engagement, screening workflows, panel coordination, and offer closing with full pipeline visibility.",
+    title: "2. Recruitment Process Outsourcing (RPO)",
+    desc: "Seamlessly embed specialized recruiters within your internal talent team. We manage applicant screening, interviewer coordination, and candidate nurture while preserving your brand identity.",
   },
   {
-    icon: Layers,
-    title: "Bulk & Volume Hiring Solutions",
-    desc: "Rapidly scale engineering cohorts, sales development teams, or operational hubs. Structured batch assessments and calibrated screening ensure high volume without compromising candidate quality.",
+    icon: Zap,
+    title: "3. Fast Hiring Solutions (3-10 Day Sprints)",
+    desc: "For urgent technical backfills or rapid scaleup expansion, our pre-screened talent inventory allows 72-hour candidate shortlists and offer closure in 3 to 10 business days.",
   },
   {
-    icon: Building2,
-    title: "Recruitment for Startups & SMEs in Bangalore",
-    desc: "Early-stage startups and mid-market SMEs require high-impact generalists and specialized engineers who deliver immediately. We identify talent aligned with fast-paced startup cultures.",
+    icon: TrendingUp,
+    title: "4. Executive & Leadership Search",
+    desc: "High-touch, confidential executive recruitment for VP, Director, and C-Suite engineering and operational appointments across Bangalore tech ecosystems.",
   },
 ]
 
 export default function RecruitmentConsultingBangalore() {
   return (
-    <main className="min-h-screen min-h-dvh bg-[#F7F2E4] text-[#141110] font-sans selection:bg-[#CD9534] selection:text-[#141110]">
+    <main className="min-h-screen min-h-dvh bg-[#FBF8F2] text-[#141110] font-sans selection:bg-[#1D3F91] selection:text-[#FFFFFF]">
       <Navbar />
 
       {/* Hero Section */}
       <section className="relative pt-32 pb-20 overflow-hidden">
-        <div className="absolute top-0 inset-x-0 h-[420px] bg-gradient-to-b from-[#CD9534]/10 via-transparent to-transparent pointer-events-none" />
-        <div className="absolute top-24 left-1/4 w-[380px] h-[380px] bg-[#CD9534]/10 rounded-full blur-3xl opacity-50 pointer-events-none" />
+        <div className="absolute top-0 inset-x-0 h-[420px] bg-gradient-to-b from-[#1D3F91]/10 via-transparent to-transparent pointer-events-none" />
+        <div className="absolute top-24 left-1/4 w-[380px] h-[380px] bg-[#1D3F91]/10 rounded-full blur-3xl opacity-50 pointer-events-none" />
         <div className="absolute inset-0 bg-grid-bg opacity-15 pointer-events-none" />
 
         <div className="max-w-[1440px] mx-auto px-6 lg:px-10 relative z-10">
           <div className="max-w-3xl mx-auto text-center">
-            <span className="font-mono text-[11px] uppercase tracking-widest text-[#8A6420] font-semibold block mb-4">
-              · BENGALURU RECRUITMENT & STAFFING HEADQUARTERS
-            </span>
+            <Eyebrow prefixDot className="block mb-4">
+              BENGALURU RECRUITMENT & STAFFING HEADQUARTERS
+            </Eyebrow>
             
             <h1 className="sr-only">Recruitment Consulting Services in Bangalore</h1>
 
@@ -70,7 +71,7 @@ export default function RecruitmentConsultingBangalore() {
             </p>
             <Link
               href="#contact"
-              className="mt-8 inline-flex items-center justify-center gap-2 bg-[#CD9534] hover:bg-[#8A6420] text-[#141110] hover:text-[#F7F2E4] font-bold text-sm px-6 py-3.5 rounded-2xl border border-[#141110]/10 transition-all shadow-sm group"
+              className="mt-8 inline-flex items-center justify-center gap-2 bg-[#1D3F91] hover:bg-[#3358B8] text-[#FFFFFF] font-bold text-sm px-6 py-3.5 rounded-2xl border border-[#1D3F91] transition-all shadow-[4px_4px_0px_0px_rgba(16,31,69,0.9)] group cursor-pointer"
             >
               Schedule hiring consultation
             </Link>
@@ -79,18 +80,18 @@ export default function RecruitmentConsultingBangalore() {
       </section>
 
       {/* Qualitative Commitments — Dark Slab */}
-      <section className="py-16 bg-[#0D2D42] text-[#F7F2E4] border-y-2 border-[#C18A18]/30">
+      <section className="py-16 bg-[#101F45] text-[#FBF8F2] border-y-2 border-[#1D3F91]/30">
         <div className="max-w-[1440px] mx-auto px-6 lg:px-10">
           <RevealGroup className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4 divide-y sm:divide-y-0 sm:divide-x divide-white/10">
             {qualitativePillars.map((p) => (
               <div key={p.title} className="pt-6 sm:pt-0 sm:pl-6 space-y-2">
-                <span className="font-mono text-[9.5px] uppercase tracking-widest text-[#F7E9A7] block font-bold">
+                <Eyebrow variant="on-dark" className="block">
                   {p.label}
-                </span>
-                <h3 className="text-xl font-serif font-bold text-[#F7F2E4]">
+                </Eyebrow>
+                <h3 className="text-xl font-serif font-bold text-[#FBF8F2]">
                   {p.title}
                 </h3>
-                <p className="text-xs text-[#F7F2E4]/70 leading-relaxed">
+                <p className="text-xs text-[#FBF8F2]/70 leading-relaxed">
                   {p.desc}
                 </p>
               </div>
@@ -102,9 +103,9 @@ export default function RecruitmentConsultingBangalore() {
       {/* Core Recruitment Consulting Pillars */}
       <section className="py-24 max-w-[1440px] mx-auto px-6 lg:px-10">
         <Reveal className="text-center max-w-2xl mx-auto mb-16">
-          <span className="font-mono text-[11px] uppercase tracking-widest text-[#8A6420] font-semibold block mb-2">
-            · PRACTICE AREAS
-          </span>
+          <Eyebrow prefixDot className="block mb-2">
+            PRACTICE AREAS
+          </Eyebrow>
           <h2 className="text-3xl sm:text-4xl font-serif font-semibold text-[#141110]">
             Strategic Recruitment Consulting Capabilities
           </h2>
@@ -114,10 +115,10 @@ export default function RecruitmentConsultingBangalore() {
           {servicePillars.map((pillar) => (
             <div
               key={pillar.title}
-              className="border border-[#141110]/10 bg-[#F0E9D5]/40 rounded-3xl p-8 hover:border-[#141110]/30 transition-all flex flex-col justify-between"
+              className="border border-[#141110]/10 bg-[#F4EFE5]/40 rounded-3xl p-8 hover:border-[#141110]/30 transition-all flex flex-col justify-between"
             >
               <div>
-                <div className="w-12 h-12 rounded-2xl bg-[#0D2D42] text-[#F7E9A7] flex items-center justify-center mb-6 shadow-xs">
+                <div className="w-12 h-12 rounded-2xl bg-[#1D3F91] text-[#FFFFFF] flex items-center justify-center mb-6 shadow-xs">
                   <pillar.icon className="w-5 h-5" />
                 </div>
                 <h2 className="text-2xl font-serif font-bold text-[#141110] mb-3">
@@ -133,14 +134,14 @@ export default function RecruitmentConsultingBangalore() {
       </section>
 
       {/* Cluster 6: Fast Hiring Solutions Section */}
-      <section className="py-20 bg-[#F7F2E4] border-t border-[#141110]/10">
+      <section className="py-20 bg-[#FBF8F2] border-t border-[#141110]/10">
         <div className="max-w-[1440px] mx-auto px-6 lg:px-10">
-          <div className="border border-[#8A6420]/30 bg-[#F0E9D5]/70 rounded-3xl p-8 lg:p-12">
+          <div className="border border-[#1D3F91]/25 bg-[#F4EFE5]/70 rounded-3xl p-8 lg:p-12">
             <div className="grid lg:grid-cols-[1.2fr_0.8fr] gap-8 items-center">
               <div className="space-y-4">
-                <span className="font-mono text-[10.5px] uppercase tracking-widest px-3 py-1 rounded-md bg-[#CD9534]/20 text-[#8A6420] font-semibold inline-block">
-                  · CLUSTER 6: FAST HIRING SPRINT
-                </span>
+                <Eyebrow variant="badge" className="inline-block">
+                  CLUSTER 6: FAST HIRING SPRINT
+                </Eyebrow>
                 <h2 className="text-3xl sm:text-4xl font-serif font-bold text-[#141110]">
                   Fast Hiring Solutions: 3 to 10 Business Day Turnaround
                 </h2>
@@ -155,21 +156,21 @@ export default function RecruitmentConsultingBangalore() {
                     "Full placement replacement protection window standard"
                   ].map((item, idx) => (
                     <div key={idx} className="flex items-start gap-2.5 text-xs text-[#141110]">
-                      <CheckCircle2 className="w-4 h-4 text-[#8A6420] flex-shrink-0 mt-0.5" />
+                      <CheckCircle2 className="w-4 h-4 text-[#1D3F91] flex-shrink-0 mt-0.5" />
                       <span>{item}</span>
                     </div>
                   ))}
                 </div>
               </div>
               <div className="bg-[#FFFFFF] border border-[#141110]/10 rounded-2xl p-6 text-center space-y-4 shadow-sm">
-                <Clock className="w-10 h-10 text-[#8A6420] mx-auto" />
+                <Clock className="w-10 h-10 text-[#1D3F91] mx-auto" />
                 <h3 className="font-serif font-bold text-xl text-[#141110]">Need urgent hiring in Bangalore?</h3>
                 <p className="text-xs text-[#5C5449]">
                   Talk directly with our Church Street recruitment team to lock in a dedicated hiring sprint.
                 </p>
                 <Link
                   href="#contact"
-                  className="inline-block w-full py-3 px-4 bg-[#141110] text-[#F7F2E4] hover:bg-[#8A6420] transition-colors rounded-xl text-xs font-mono font-medium"
+                  className="inline-block w-full py-3 px-4 bg-[#1D3F91] hover:bg-[#3358B8] text-[#FFFFFF] transition-colors rounded-xl text-xs font-mono font-medium"
                 >
                   Initiate Fast Hiring Sprint
                 </Link>
@@ -180,7 +181,7 @@ export default function RecruitmentConsultingBangalore() {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="py-24 bg-[#F0E9D5]/40 border-t border-[#141110]/10">
+      <section id="contact" className="py-24 bg-[#F4EFE5]/40 border-t border-[#141110]/10">
         <div className="max-w-3xl mx-auto px-6 lg:px-10">
           <div className="text-center mb-10">
             <h2 className="text-3xl font-serif font-semibold text-[#141110]">

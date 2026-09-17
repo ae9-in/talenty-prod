@@ -150,12 +150,12 @@ export function ProcessTimeline() {
         ref={trackBaseRef}
         className="hidden lg:block absolute left-1/2 -translate-x-1/2 top-4 bottom-4 w-1 bg-[#15120F]/10 rounded-full overflow-hidden"
       >
-        {/* Active gold fill — scaleY animated by GSAP */}
+        {/* Active royal fill — scaleY animated by GSAP */}
         <div
           ref={trackFillRef}
           className="absolute inset-0 rounded-full"
           style={{
-            background: "linear-gradient(to bottom, #8A6420, #CD9534, #F0E9D5, #CD9534)",
+            background: "linear-gradient(to bottom, #101F45, #1D3F91, #F4EFE5, #1D3F91)",
             transformOrigin: "top center",
             scaleY: prefersReducedMotion ? 1 : 0,
           } as React.CSSProperties}
@@ -168,8 +168,8 @@ export function ProcessTimeline() {
             className="absolute left-1/2 -translate-x-1/2 top-0 w-3 h-3 flex items-center justify-center z-10"
             style={{ opacity: 0 }}
           >
-            <div className="absolute w-3 h-3 rounded-full border-2 border-[#CD9534] bg-[#CD9534]/30 shadow-[0_0_8px_rgba(205,149,52,0.6)]" />
-            <div className="w-1.5 h-1.5 rounded-full bg-[#CD9534]" />
+            <div className="absolute w-3 h-3 rounded-full border-2 border-[#1D3F91] bg-[#1D3F91]/30 shadow-[0_0_8px_rgba(29,63,145,0.6)]" />
+            <div className="w-1.5 h-1.5 rounded-full bg-[#1D3F91]" />
           </div>
         )}
       </div>
@@ -187,19 +187,19 @@ export function ProcessTimeline() {
                 isEven ? "lg:text-left" : "lg:grid-flow-dense"
               }`}
             >
-              {/* ─── Stage Dot (Desktop) — flips gold when active ─── */}
+              {/* ─── Stage Dot (Desktop) — flips royal when active ─── */}
               <div className="hidden lg:flex absolute left-1/2 -translate-x-1/2 items-center justify-center w-8 h-8 rounded-full z-10"
                 style={{
-                  border: isActive ? "2px solid #CD9534" : "2px solid rgba(21,18,15,0.2)",
-                  background: isActive ? "#CD9534" : "#F7F2E4",
-                  boxShadow: isActive ? "0 0 12px rgba(205,149,52,0.5)" : "none",
+                  border: isActive ? "2px solid #1D3F91" : "2px solid rgba(21,18,15,0.2)",
+                  background: isActive ? "#1D3F91" : "#FBF8F2",
+                  boxShadow: isActive ? "0 0 12px rgba(29,63,145,0.4)" : "none",
                   transition: "all 0.35s ease"
                 }}
               >
                 <span
                   className="w-2.5 h-2.5 rounded-full"
                   style={{
-                    background: isActive ? "#15120F" : "rgba(21,18,15,0.35)",
+                    background: isActive ? "#FFFFFF" : "rgba(21,18,15,0.35)",
                     transition: "background 0.35s ease"
                   }}
                 />
@@ -242,7 +242,7 @@ export function ProcessTimeline() {
                         key={dIdx}
                         className="flex items-center gap-2 text-xs font-medium text-[#141110]"
                       >
-                        <CheckCircle2 className="w-3.5 h-3.5 text-[#8A6420] flex-shrink-0" />
+                        <CheckCircle2 className="w-3.5 h-3.5 text-[#1D3F91] flex-shrink-0" />
                         <span className="truncate">{detail}</span>
                       </div>
                     ))}

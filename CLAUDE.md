@@ -30,26 +30,22 @@ one-line-platitude value-prop grids ("Mission-Driven", "People First"),
 `bg-white/5 backdrop-blur-xl` cards, and generic CTA copy ("Ready to Find
 Your Perfect Team?"). None of that belongs here anymore.
 
-## Color system — 60/30/10
+## Color system V4 — 65% Cream / 35% Royal Blue (Gold Retired Sitewide)
 
-The brand palette is sampled directly from the physical business card artwork:
+- **65% — Cream base** (`--cream` `#FBF8F2`, `--cream-deep` `#F4EFE5`, `--cream-line` `#E7DFD0`). The dominant surface of every page, all card backgrounds, and body text containers.
+- **35% — Royal Blue family** (`--royal` `#1D3F91`, `--royal-bright` `#3358B8`, `--royal-deep` `#101F45`). The authoritative brand accent and structural layer. Used for all primary CTA button fills, eyebrow/kicker labels sitewide, verification checkmarks, active stage nodes, badges, dark section slabs (e.g. operational signals band and footer in `--royal-deep`), and interactive hover states.
+- **Gold Retired Sitewide (0%)**: Gold has been completely retired from the persistent site UI on every page. All checkmarks, badges, borders, and buttons are royal blue or neutral line tones. (The original trademark bitmap assets `/images/talenty-logo-full.png` and `talenty-monogram.png` remain pristine).
 
-- **60% — Cream neutrals** (`--color-cream` `#F7F2E4`, `--color-cream-alt` `#F0E9D5`). This is the dominant surface of every page. Most sections sit on `#F7F2E4`; alternate sections use `#F0E9D5` at partial opacity to separate rhythm without introducing a new hue.
-- **30% — Royal Navy** (`--color-navy` `#0D2D42` for headings, `--color-navy-muted` `#3A5570` for body copy). The footer and one structural section per page (e.g. the benchmarks band) invert to a full `#0D2D42` background — that's the sanctioned "dark slab" moment per page.
-- **10% — Gold accent** (`--color-gold` `#C18A18` for CTA buttons, active pills, indicators, small highlight marks, and metallic gradient `--color-gold-gradient` `#7C601D` → `#F7E9A7` for the 3D logo monogram). Gold is strictly an accent, never a large background fill.
+Gradients and colored italic words inside headlines are strictly prohibited.
 
-Gradients (`bg-gradient-to-r from-primary to-accent bg-clip-text`) are banned for headline text. If a word needs emphasis, make it `italic font-normal text-[#C18A18]` inside a `font-serif` heading — that's the house style.
+## Typography & Eyebrow Architecture
 
-## Typography
-
-- **Fraunces** (`font-serif`) — all headlines. Semibold, tight tracking,
-  large sizes (`text-4xl` mobile up to `text-7xl`/`text-8xl` for hero-level
-  statements). One word per headline in italic + olive as the emphasis
-  device.
+- **Fraunces** (`font-serif`) — all headlines. Semibold, tight tracking, large sizes (`text-4xl` up to `text-7xl`/`text-8xl`).
 - **Inter** (`font-sans`) — body copy, buttons, nav.
-- **JetBrains Mono** (`font-mono`) — eyebrows/labels only, always
-  `uppercase tracking-widest text-[10.5–11px]`, often prefixed with `· `.
-  Also used for stat captions and eyebrow badges.
+- **JetBrains Mono** (`font-mono`) — eyebrows/labels only, always standardized using the shared `<Eyebrow>` component from `components/ui/eyebrow.tsx`.
+  - On cream surfaces: renders in `--royal` (`#1D3F91`, 9.12:1 AAA).
+  - On dark surfaces: `<Eyebrow variant="on-dark">` renders in light royal (`#93B4F8`).
+  - Badge variant: `<Eyebrow variant="badge">` for pill kickers.
 
 ## Layout conventions
 

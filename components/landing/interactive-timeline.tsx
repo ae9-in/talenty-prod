@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { CheckCircle2, UserCheck, ShieldCheck } from "lucide-react"
+import { Eyebrow } from "@/components/ui/eyebrow"
 
 interface WorkflowStage {
   id: number
@@ -98,7 +99,7 @@ function SlopedConnector({ fillProgress, stepIdx }: { fillProgress: number; step
       </svg>
       <svg width="20" height="20" viewBox="0 0 20 20" fill="none" className="absolute bottom-0"
         style={{ clipPath: `inset(0 ${(1 - localProgress) * 100}% 0 0)` }}>
-        <line x1="0" y1="18" x2="20" y2="2" stroke="#CD9534" strokeWidth="2" strokeLinecap="round" />
+        <line x1="0" y1="18" x2="20" y2="2" stroke="#1D3F91" strokeWidth="2" strokeLinecap="round" />
       </svg>
     </div>
   )
@@ -166,10 +167,10 @@ export function InteractiveTimeline() {
                 transition={{ duration: 0.3, ease: "easeOut" }}
                 className={`p-2.5 sm:p-3 rounded-2xl border text-left transition-colors cursor-pointer flex flex-col justify-between relative overflow-hidden ${
                   isActive
-                    ? "bg-[#15120F] text-[#F7F2E4] border-[#15120F] shadow-[3px_3px_0px_0px_rgba(21,18,15,0.9)]"
+                    ? "bg-[#1D3F91] text-[#FFFFFF] border-[#1D3F91] shadow-[3px_3px_0px_0px_rgba(16,31,69,0.9)]"
                     : isReached
-                    ? "bg-[#CD9534]/10 border-[#CD9534]/30 text-[#141110]"
-                    : "bg-[#FFFFFF] border-[#15120F]/10 text-[#141110] hover:border-[#15120F]/30 hover:bg-[#F0E9D5]"
+                    ? "bg-[#1D3F91]/10 border-[#1D3F91]/30 text-[#141110]"
+                    : "bg-[#FFFFFF] border-[#15120F]/10 text-[#141110] hover:border-[#1D3F91]/30 hover:bg-[#F4EFE5]"
                 }`}
               >
                 {/* Auto-progress filling line for active tab */}
@@ -179,28 +180,28 @@ export function InteractiveTimeline() {
                     initial={{ width: "0%" }}
                     animate={{ width: "100%" }}
                     transition={{ duration: 4.5, ease: "linear" }}
-                    className="absolute bottom-0 left-0 h-[3px] bg-[#CD9534]"
+                    className="absolute bottom-0 left-0 h-[3px] bg-[#93B4F8]"
                   />
                 )}
 
                 <div className="flex items-center justify-between mb-1.5">
                   <span
                     className={`font-mono text-[10px] font-bold ${
-                      isActive ? "text-[#CD9534]" : "text-[#8A6420]"
+                      isActive ? "text-[#FFFFFF]" : "text-[#1D3F91]"
                     }`}
                   >
                     {stage.stepNumber}
                   </span>
                   <span
                     className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                      isActive ? "bg-[#CD9534]" : isReached ? "bg-[#CD9534]/60" : "bg-[#15120F]/20"
+                      isActive ? "bg-[#93B4F8]" : isReached ? "bg-[#1D3F91]/60" : "bg-[#15120F]/20"
                     }`}
                   />
                 </div>
 
                 <div
                   className={`font-serif font-bold text-xs sm:text-[12px] leading-snug line-clamp-2 ${
-                    isActive ? "text-[#F7F2E4]" : "text-[#141110]"
+                    isActive ? "text-[#FFFFFF]" : "text-[#141110]"
                   }`}
                 >
                   {stage.title}
@@ -220,7 +221,7 @@ export function InteractiveTimeline() {
               <div key={idx} className="flex items-center flex-1 min-w-0">
                 <div className="relative h-[2px] flex-1 bg-[#15120F]/12 overflow-hidden rounded-full">
                   <motion.div
-                    className="absolute inset-y-0 left-0 rounded-full bg-[#CD9534]"
+                    className="absolute inset-y-0 left-0 rounded-full bg-[#1D3F91]"
                     animate={{ width: prefersReducedMotion ? (isReached ? "100%" : "0%") : `${fillFrac * 100}%` }}
                     transition={{ duration: 0.35, ease: "easeOut" }}
                   />
@@ -248,7 +249,7 @@ export function InteractiveTimeline() {
           {/* Top Bar */}
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3.5 border-b border-[#15120F]/10">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-2xl bg-[#15120F] text-[#CD9534] font-mono font-bold text-xs flex items-center justify-center flex-shrink-0 shadow-xs">
+              <div className="w-10 h-10 rounded-2xl bg-[#1D3F91] text-[#FFFFFF] font-mono font-bold text-xs flex items-center justify-center flex-shrink-0 shadow-xs">
                 {currentStage.candidateAvatar}
               </div>
               <div>
@@ -256,7 +257,7 @@ export function InteractiveTimeline() {
                   <h4 className="font-serif font-bold text-base text-[#141110]">
                     {currentStage.candidateName}
                   </h4>
-                  <span className="font-mono text-[9.5px] font-bold uppercase tracking-wider bg-[#F0E9D5] border border-[#CD9534]/40 text-[#141110] px-2.5 py-0.5 rounded-full">
+                  <span className="font-mono text-[9.5px] font-bold uppercase tracking-wider bg-[#F4EFE5] border border-[#1D3F91]/30 text-[#141110] px-2.5 py-0.5 rounded-full">
                     {currentStage.statusLabel}
                   </span>
                 </div>
@@ -266,17 +267,17 @@ export function InteractiveTimeline() {
               </div>
             </div>
 
-            <div className="flex items-center self-start sm:self-auto bg-[#F0E9D5] px-3.5 py-1 rounded-full font-mono text-[10.5px] font-bold text-[#8A6420] border border-[#15120F]/10">
-              <ShieldCheck className="w-3.5 h-3.5 mr-1 text-[#8A6420]" />
+            <div className="flex items-center self-start sm:self-auto bg-[#F4EFE5] px-3.5 py-1 rounded-full font-mono text-[10.5px] font-bold text-[#1D3F91] border border-[#15120F]/10">
+              <ShieldCheck className="w-3.5 h-3.5 mr-1 text-[#1D3F91]" />
               <span>{currentStage.statMetric}</span>
             </div>
           </div>
 
           {/* Verification Checks */}
           <div className="space-y-2">
-            <span className="font-mono text-[10px] uppercase tracking-wider text-[#8A6420] font-bold block">
+            <Eyebrow as="span" className="text-[10px] block mb-1">
               Stage Milestone Criteria:
-            </span>
+            </Eyebrow>
             {currentStage.checks.map((check, cIdx) => (
               <motion.div
                 key={cIdx}
@@ -285,7 +286,7 @@ export function InteractiveTimeline() {
                 transition={{ duration: 0.25, delay: cIdx * 0.06 }}
                 className="flex items-start gap-2.5 text-xs sm:text-[13px] text-[#141110] font-medium"
               >
-                <CheckCircle2 className="w-4 h-4 text-[#8A6420] flex-shrink-0 mt-0.5" />
+                <CheckCircle2 className="w-4 h-4 text-[#1D3F91] flex-shrink-0 mt-0.5" />
                 <span className="leading-snug">{check}</span>
               </motion.div>
             ))}
@@ -293,9 +294,9 @@ export function InteractiveTimeline() {
 
           {/* Recruiter Evaluation Sentence */}
           <div className="rounded-2xl bg-[#F0E9D5]/60 text-[#141110] p-3.5 font-sans text-xs border border-[#15120F]/10 flex items-start gap-2.5">
-            <UserCheck className="w-4 h-4 text-[#8A6420] flex-shrink-0 mt-0.5" />
+            <UserCheck className="w-4 h-4 text-[#1D3F91] flex-shrink-0 mt-0.5" />
             <div className="space-y-0.5 min-w-0">
-              <span className="font-mono text-[9.5px] text-[#8A6420] uppercase tracking-wider font-bold block">
+              <span className="font-mono text-[9.5px] text-[#1D3F91] uppercase tracking-wider font-bold block">
                 Evaluator Verification Note:
               </span>
               <p className="text-xs text-[#141110] leading-relaxed">

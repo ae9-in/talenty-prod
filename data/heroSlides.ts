@@ -55,8 +55,8 @@ export const HERO_SLIDES: HeroSlide[] = [
           candidates: [
             {
               initials: "AM",
-              avatarBg: "bg-[#0D2D42]",
-              avatarText: "text-[#F7E9A7]",
+              avatarBg: "bg-[#101F45]",
+              avatarText: "text-[#FFFFFF]",
               name: "Aarav Mehta",
               role: "Go / Kubernetes",
               city: "Bengaluru",
@@ -64,8 +64,8 @@ export const HERO_SLIDES: HeroSlide[] = [
             },
             {
               initials: "VN",
-              avatarBg: "bg-[#C18A18]",
-              avatarText: "text-[#0D2D42]",
+              avatarBg: "bg-[#1D3F91]",
+              avatarText: "text-[#FFFFFF]",
               name: "Vikram Nambiar",
               role: "Kafka / Redis",
               city: "Hyderabad",
@@ -79,8 +79,8 @@ export const HERO_SLIDES: HeroSlide[] = [
           candidates: [
             {
               initials: "SR",
-              avatarBg: "bg-[#3A5570]",
-              avatarText: "text-[#F7F2E4]",
+              avatarBg: "bg-[#3358B8]",
+              avatarText: "text-[#FFFFFF]",
               name: "Siddharth Rao",
               role: "Postgres / AWS",
               city: "Pune",
@@ -88,8 +88,8 @@ export const HERO_SLIDES: HeroSlide[] = [
             },
             {
               initials: "TK",
-              avatarBg: "bg-[#C18A18]",
-              avatarText: "text-[#0D2D42]",
+              avatarBg: "bg-[#1D3F91]",
+              avatarText: "text-[#FFFFFF]",
               name: "Tarun Kapoor",
               role: "Rust / Microservices",
               city: "Chennai",
@@ -103,8 +103,8 @@ export const HERO_SLIDES: HeroSlide[] = [
           candidates: [
             {
               initials: "NM",
-              avatarBg: "bg-[#0D2D42]",
-              avatarText: "text-[#F7F2E4]",
+              avatarBg: "bg-[#101F45]",
+              avatarText: "text-[#FFFFFF]",
               name: "Nikhil Menon",
               role: "System Architecture",
               city: "Kochi",
@@ -118,8 +118,8 @@ export const HERO_SLIDES: HeroSlide[] = [
           candidates: [
             {
               initials: "PS",
-              avatarBg: "bg-[#C18A18]",
-              avatarText: "text-[#0D2D42]",
+              avatarBg: "bg-[#1D3F91]",
+              avatarText: "text-[#FFFFFF]",
               name: "Priya Sharma",
               role: "Lead Concurrency",
               city: "Bengaluru",
@@ -151,8 +151,8 @@ export const HERO_SLIDES: HeroSlide[] = [
           candidates: [
             {
               initials: "RD",
-              avatarBg: "bg-[#C18A18]",
-              avatarText: "text-[#0D2D42]",
+              avatarBg: "bg-[#1D3F91]",
+              avatarText: "text-[#FFFFFF]",
               name: "Rohan Deshmukh",
               role: "Next.js / Node",
               city: "Pune",
@@ -162,8 +162,8 @@ export const HERO_SLIDES: HeroSlide[] = [
             },
             {
               initials: "AG",
-              avatarBg: "bg-[#0D2D42]",
-              avatarText: "text-[#F7E9A7]",
+              avatarBg: "bg-[#101F45]",
+              avatarText: "text-[#FFFFFF]",
               name: "Ananya Gupta",
               role: "TypeScript / Cloud",
               city: "Noida",
@@ -179,8 +179,8 @@ export const HERO_SLIDES: HeroSlide[] = [
           candidates: [
             {
               initials: "KM",
-              avatarBg: "bg-[#C18A18]",
-              avatarText: "text-[#0D2D42]",
+              avatarBg: "bg-[#1D3F91]",
+              avatarText: "text-[#FFFFFF]",
               name: "Karan Mathur",
               role: "AWS Serverless",
               city: "Bengaluru",
@@ -196,8 +196,8 @@ export const HERO_SLIDES: HeroSlide[] = [
           candidates: [
             {
               initials: "VJ",
-              avatarBg: "bg-[#3A5570]",
-              avatarText: "text-[#F7F2E4]",
+              avatarBg: "bg-[#3358B8]",
+              avatarText: "text-[#FFFFFF]",
               name: "Varun Joshi",
               role: "React & Microservices",
               city: "Hyderabad",
@@ -211,8 +211,8 @@ export const HERO_SLIDES: HeroSlide[] = [
           candidates: [
             {
               initials: "SB",
-              avatarBg: "bg-[#C18A18]",
-              avatarText: "text-[#0D2D42]",
+              avatarBg: "bg-[#1D3F91]",
+              avatarText: "text-[#FFFFFF]",
               name: "Shreya Balan",
               role: "Full-Stack Engineer",
               city: "Kochi",
@@ -244,8 +244,8 @@ export const HERO_SLIDES: HeroSlide[] = [
           candidates: [
             {
               initials: "AK",
-              avatarBg: "bg-[#0D2D42]",
-              avatarText: "text-[#F7F2E4]",
+              avatarBg: "bg-[#101F45]",
+              avatarText: "text-[#FFFFFF]",
               name: "Aditya Kumar",
               role: "Terraform / AWS",
               city: "Gurugram",
@@ -253,8 +253,8 @@ export const HERO_SLIDES: HeroSlide[] = [
             },
             {
               initials: "DS",
-              avatarBg: "bg-[#C18A18]",
-              avatarText: "text-[#0D2D42]",
+              avatarBg: "bg-[#1D3F91]",
+              avatarText: "text-[#FFFFFF]",
               name: "Deepak Somani",
               role: "Kubernetes / CI/CD",
               city: "Jaipur",
@@ -268,8 +268,8 @@ export const HERO_SLIDES: HeroSlide[] = [
           candidates: [
             {
               initials: "RN",
-              avatarBg: "bg-[#F7E9A7]",
-              avatarText: "text-[#0D2D42]",
+              avatarBg: "bg-[#3358B8]",
+              avatarText: "text-[#FFFFFF]",
               name: "Ritu Nair",
               role: "Observability / GCP",
               city: "Kochi",
@@ -283,8 +283,8 @@ export const HERO_SLIDES: HeroSlide[] = [
           candidates: [
             {
               initials: "MP",
-              avatarBg: "bg-[#3A5570]",
-              avatarText: "text-[#F7F2E4]",
+              avatarBg: "bg-[#3358B8]",
+              avatarText: "text-[#FFFFFF]",
               name: "Manish Pillai",
               role: "Multi-Cloud SRE",
               city: "Chennai",
@@ -298,8 +298,8 @@ export const HERO_SLIDES: HeroSlide[] = [
           candidates: [
             {
               initials: "SB",
-              avatarBg: "bg-[#C18A18]",
-              avatarText: "text-[#0D2D42]",
+              avatarBg: "bg-[#1D3F91]",
+              avatarText: "text-[#FFFFFF]",
               name: "Sameer Bhat",
               role: "Lead Platform Engineer",
               city: "Bengaluru",
@@ -331,8 +331,8 @@ export const HERO_SLIDES: HeroSlide[] = [
           candidates: [
             {
               initials: "AS",
-              avatarBg: "bg-[#0D2D42]",
-              avatarText: "text-[#F7E9A7]",
+              avatarBg: "bg-[#101F45]",
+              avatarText: "text-[#FFFFFF]",
               name: "Dr. Ananya Sen",
               role: "PyTorch / CUDA",
               city: "Bengaluru",
@@ -348,8 +348,8 @@ export const HERO_SLIDES: HeroSlide[] = [
           candidates: [
             {
               initials: "KJ",
-              avatarBg: "bg-[#C18A18]",
-              avatarText: "text-[#0D2D42]",
+              avatarBg: "bg-[#1D3F91]",
+              avatarText: "text-[#FFFFFF]",
               name: "Karan Johar",
               role: "LLM Serving & Triton",
               city: "Hyderabad",
@@ -365,8 +365,8 @@ export const HERO_SLIDES: HeroSlide[] = [
           candidates: [
             {
               initials: "RP",
-              avatarBg: "bg-[#3A5570]",
-              avatarText: "text-[#F7F2E4]",
+              avatarBg: "bg-[#3358B8]",
+              avatarText: "text-[#FFFFFF]",
               name: "Rishi Parikh",
               role: "Quantization / Ray",
               city: "Mumbai",
@@ -382,8 +382,8 @@ export const HERO_SLIDES: HeroSlide[] = [
           candidates: [
             {
               initials: "VL",
-              avatarBg: "bg-[#C18A18]",
-              avatarText: "text-[#0D2D42]",
+              avatarBg: "bg-[#1D3F91]",
+              avatarText: "text-[#FFFFFF]",
               name: "Vidya Lakshmi",
               role: "Staff AI Systems",
               city: "Bengaluru",

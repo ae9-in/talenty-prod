@@ -40,17 +40,17 @@ export function RegisterForm() {
     if (/[!@#$%^&*(),.?":{}|<>]/.test(pw)) score += 1
 
     let label = "Weak"
-    let colorClass = "bg-[#C18A18]/40"
+    let colorClass = "bg-[#1D3F91]/40"
 
     if (score === 2) {
       label = "Fair"
-      colorClass = "bg-[#C18A18]/70"
+      colorClass = "bg-[#1D3F91]/70"
     } else if (score === 3) {
       label = "Good"
-      colorClass = "bg-[#C18A18]"
+      colorClass = "bg-[#1D3F91]"
     } else if (score >= 4) {
       label = "Strong"
-      colorClass = "bg-[#0D2D42]"
+      colorClass = "bg-[#101F45]"
     }
 
     setPwStrength({ score, label, colorClass })
@@ -97,26 +97,26 @@ export function RegisterForm() {
     return (
       <div className="text-center max-w-[420px] mx-auto py-8 space-y-8 animate-fade-in">
         {/* Success Icon */}
-        <div className="w-28 h-28 rounded-3xl bg-[#F0E9D5] shadow-lg flex items-center justify-center mx-auto border border-[#0D2D42]/10 relative overflow-hidden group">
-          <div className="absolute inset-0 bg-gradient-to-br from-[#C18A18]/10 to-[#7C601D]/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-          <CheckCircle2 className="w-14 h-14 text-[#C18A18] relative z-10" />
+        <div className="w-28 h-28 rounded-3xl bg-[#F4EFE5] shadow-lg flex items-center justify-center mx-auto border border-[#15120F]/10 relative overflow-hidden group">
+          <div className="absolute inset-0 bg-gradient-to-br from-[#1D3F91]/10 to-[#101F45]/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+          <CheckCircle2 className="w-14 h-14 text-[#1D3F91] relative z-10" />
         </div>
 
         <div className="space-y-3">
-          <div className="font-mono text-[10px] text-[#C18A18] uppercase tracking-widest font-semibold">
+          <div className="font-mono text-[10px] text-[#1D3F91] uppercase tracking-widest font-semibold">
             · Account Created
           </div>
-          <h1 className="text-3xl md:text-4xl font-serif font-semibold tracking-tight text-[#0D2D42]">
-            You're <span className="text-[#C18A18] italic font-normal">in.</span>
+          <h1 className="text-3xl md:text-4xl font-serif font-semibold tracking-tight text-[#141110]">
+            You're <span className="text-[#1D3F91]">in.</span>
           </h1>
-          <p className="text-[14.5px] leading-relaxed text-[#3A5570] max-w-[36ch] mx-auto">
-            We sent a verification link to <b className="text-[#0D2D42]">{formData.email}</b>. Open it and we'll take you into your fresh workspace.
+          <p className="text-[14.5px] leading-relaxed text-[#5C5449] max-w-[36ch] mx-auto">
+            We sent a verification link to <b className="text-[#141110]">{formData.email}</b>. Open it and we'll take you into your fresh workspace.
           </p>
         </div>
 
         <Link
           href="/"
-          className="inline-flex justify-center items-center gap-2 w-full max-w-[280px] py-3.5 bg-[#C18A18] hover:bg-[#7C601D] text-[#0D2D42] hover:text-[#F7F2E4] font-bold text-sm tracking-wide rounded-2xl border border-[#0D2D42]/10 transition-all shadow-sm"
+          className="inline-flex justify-center items-center gap-2 w-full max-w-[280px] py-3.5 bg-[#1D3F91] hover:bg-[#3358B8] text-[#FFFFFF] font-bold text-sm tracking-wide rounded-2xl border border-[#1D3F91] transition-all shadow-sm"
         >
           Go to dashboard
         </Link>
@@ -295,20 +295,20 @@ export function RegisterForm() {
       </div>
 
       {/* TOS Checklist */}
-      <label className="flex items-start gap-2.5 font-mono text-[11px] text-[#3A5570] leading-relaxed cursor-pointer py-1 select-none">
+      <label className="flex items-start gap-2.5 font-mono text-[11px] text-[#5C5449] leading-relaxed cursor-pointer py-1 select-none">
         <input
           type="checkbox"
           checked={tosChecked}
           onChange={(e) => setTosChecked(e.target.checked)}
-          className="mt-0.5 border-2 border-[#0D2D42]/18 rounded-md bg-[#F7F2E4] text-[#C18A18] focus:ring-0 focus:ring-offset-0 focus:outline-none"
+          className="mt-0.5 border-2 border-[#15120F]/18 rounded-md bg-[#FFFFFF] text-[#1D3F91] focus:ring-0 focus:ring-offset-0 focus:outline-none"
         />
         <span>
           I agree to Talenty's{" "}
-          <a href="#" className="underline underline-offset-2 text-[#0D2D42] font-semibold">
+          <a href="#" className="underline underline-offset-2 text-[#141110] font-semibold">
             Terms of Service
           </a>{" "}
           and{" "}
-          <a href="#" className="underline underline-offset-2 text-[#0D2D42] font-semibold">
+          <a href="#" className="underline underline-offset-2 text-[#141110] font-semibold">
             Privacy Policy
           </a>
           .
@@ -316,7 +316,7 @@ export function RegisterForm() {
       </label>
 
       {errorMessage && (
-        <div className="text-xs font-mono text-[#C18A18] bg-[#C18A18]/10 border border-[#C18A18]/30 px-3.5 py-2.5 rounded-xl">
+        <div className="text-xs font-mono text-[#1D3F91] bg-[#1D3F91]/10 border border-[#1D3F91]/30 px-3.5 py-2.5 rounded-xl">
           {errorMessage}
         </div>
       )}
@@ -325,11 +325,11 @@ export function RegisterForm() {
       <button
         type="submit"
         disabled={isSubmitting}
-        className="w-full py-4 bg-[#C18A18] hover:bg-[#7C601D] text-[#0D2D42] hover:text-[#F7F2E4] font-bold text-sm tracking-wide rounded-2xl border border-[#0D2D42]/10 transition-all flex items-center justify-center gap-2 shadow-sm"
+        className="w-full py-4 bg-[#1D3F91] hover:bg-[#3358B8] text-[#FFFFFF] font-bold text-sm tracking-wide rounded-2xl border border-[#1D3F91] transition-all flex items-center justify-center gap-2 shadow-sm cursor-pointer"
       >
         {isSubmitting ? (
           <>
-            <span className="w-4 h-4 border-2 border-[#0D2D42]/30 border-t-[#0D2D42] rounded-full animate-spin" />
+            <span className="w-4 h-4 border-2 border-[#FFFFFF]/30 border-t-[#FFFFFF] rounded-full animate-spin" />
             <span>Creating account...</span>
           </>
         ) : (

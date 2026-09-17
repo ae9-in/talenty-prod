@@ -100,12 +100,12 @@ export function RollingHeadline({
               className={`inline-block text-[#141110] relative ${accentClassName}`}
             >
               {accent}
-              {/* Thin gold rule revealed beneath the italic word */}
+              {/* Thin royal blue rule revealed beneath the italic word */}
               <motion.span
                 initial={{ scaleX: 0 }}
                 animate={{ scaleX: 1 }}
                 transition={{ duration: 0.6, delay: delay + 0.3, ease: [0.22, 1, 0.36, 1] }}
-                className="absolute left-0 bottom-0.5 right-0 h-[2.5px] bg-gradient-to-r from-[#8A6420] via-[#E0A83F] to-[#CD9534] origin-left rounded-full"
+                className="absolute left-0 bottom-0.5 right-0 h-[2.5px] bg-gradient-to-r from-[#101F45] via-[#1D3F91] to-[#3358B8] origin-left rounded-full"
               />
             </motion.span>
           </span>

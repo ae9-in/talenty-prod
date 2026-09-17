@@ -26,7 +26,7 @@ export function TopLoader() {
             initial={{ width: "0%" }}
             animate={{ width: "100%" }}
             transition={{ duration: 0.65, ease: [0.16, 1, 0.3, 1] }}
-            className="h-full bg-gradient-to-r from-[#7C601D] via-[#F7E9A7] to-[#C18A18] shadow-[0_0_12px_rgba(193,138,24,0.8)]"
+            className="h-full bg-gradient-to-r from-[#101F45] via-[#1D3F91] to-[#3358B8] shadow-[0_0_12px_rgba(29,63,145,0.8)]"
           />
         </motion.div>
       )}

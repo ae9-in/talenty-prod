@@ -194,26 +194,30 @@
 
 .client-wordmark {
   font-family: var(--font-fraunces, 'Fraunces', serif);
-  font-size: var(--logoloop-logoHeight, 22px);
+  font-size: var(--logoloop-logoHeight, 26px);
   color: var(--ink-soft, #5C5449);
   white-space: nowrap;
-  letter-spacing: normal;
+  letter-spacing: -0.01em;
   text-transform: none;
-  font-weight: 500;
-  transition: color 0.2s ease;
+  font-weight: 550;
+  transition: color 0.25s ease;
 }
 
 .client-wordmark:hover {
-  color: var(--black, #15120F);
+  color: var(--royal, #1D3F91);
 }
 
 .client-anchor__name {
   font-family: var(--font-fraunces, 'Fraunces', serif);
   font-size: 1.75rem;
-  color: var(--black, #15120F);
+  color: var(--ink, #141110);
 }
 
-.client-anchor__tag,
+.client-anchor__tag {
+  font-size: 0.85rem;
+  color: var(--royal, #1D3F91);
+}
+
 .client-anchor__category {
   font-size: 0.85rem;
   color: var(--ink-soft, #5C5449);
@@ -227,7 +231,7 @@
 /* City label — inherits left edge from the .client-row container */
 .client-row__city {
   font-size: 0.85rem;
-  color: var(--gold-text, #8A6420);
+  color: var(--royal, #1D3F91);
   margin-bottom: 0.5rem;
   display: block;
   /* Explicitly no padding/margin that would offset from container edge */

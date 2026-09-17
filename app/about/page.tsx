@@ -7,6 +7,7 @@ import { Navbar } from "@/components/landing/navbar"
 import { Footer } from "@/components/landing/footer"
 import { RollingHeadline } from "@/components/landing/rolling-headline"
 import { Reveal, RevealGroup } from "@/components/landing/scroll-reveal"
+import { Eyebrow } from "@/components/ui/eyebrow"
 
 const pillars = [
   {
@@ -58,11 +59,11 @@ const practices = [
 
 export default function AboutPage() {
   return (
-    <main className="min-h-screen min-h-dvh bg-[#F7F2E4] text-[#141110] font-sans selection:bg-[#CD9534] selection:text-[#141110]">
+    <main className="min-h-screen min-h-dvh bg-[#FBF8F2] text-[#141110] font-sans selection:bg-[#1D3F91] selection:text-[#FFFFFF]">
       <Navbar />
 
       {/* Hero with Editorial Photo Background & Seamless Overlays */}
-      <section className="relative pt-32 pb-20 lg:pt-40 lg:pb-28 overflow-hidden bg-[#F7F2E4] border-b border-[#15120F]/10">
+      <section className="relative pt-32 pb-20 lg:pt-40 lg:pb-28 overflow-hidden bg-[#FBF8F2] border-b border-[#15120F]/10">
         {/* Background photo */}
         <div className="absolute inset-0 z-0">
           <Image
@@ -74,15 +75,15 @@ export default function AboutPage() {
             sizes="100vw"
           />
           {/* Multi-layer editorial gradient overlay for AAA contrast */}
-          <div className="absolute inset-0 bg-gradient-to-r from-[#F7F2E4] via-[#F7F2E4]/90 to-[#F7F2E4]/40 sm:from-[#F7F2E4] sm:via-[#F7F2E4]/92 sm:to-[#F7F2E4]/30" />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#F7F2E4] via-transparent to-[#F7F2E4]/40" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#FBF8F2] via-[#FBF8F2]/90 to-[#FBF8F2]/40 sm:from-[#FBF8F2] sm:via-[#FBF8F2]/92 sm:to-[#FBF8F2]/30" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#FBF8F2] via-transparent to-[#FBF8F2]/40" />
         </div>
 
         <div className="max-w-[1440px] mx-auto px-6 lg:px-10 relative z-10">
           <div className="max-w-3xl">
-            <span className="font-mono text-[11px] uppercase tracking-widest text-[#8A6420] font-bold block mb-4">
-              · TALENTY CONSULTING · PAN-INDIA RECRUITMENT & PLACEMENT
-            </span>
+            <Eyebrow prefixDot className="block mb-4">
+              TALENTY CONSULTING · PAN-INDIA RECRUITMENT & PLACEMENT
+            </Eyebrow>
             
             <RollingHeadline
               line1="We build the hiring pipeline"
@@ -99,13 +100,13 @@ export default function AboutPage() {
             <div className="mt-8 flex flex-wrap items-center gap-4 pt-2">
               <Link
                 href="/contact"
-                className="inline-flex items-center justify-center rounded-2xl bg-[#15120F] px-7 py-3.5 text-sm font-semibold text-[#F7F2E4] shadow-[4px_4px_0px_0px_rgba(21,18,15,0.9)] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[2px_2px_0px_0px_rgba(21,18,15,0.9)] transition-all"
+                className="inline-flex items-center justify-center rounded-2xl bg-[#1D3F91] hover:bg-[#3358B8] px-7 py-3.5 text-sm font-semibold text-[#FFFFFF] shadow-[4px_4px_0px_0px_rgba(16,31,69,0.9)] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[2px_2px_0px_0px_rgba(16,31,69,0.9)] transition-all"
               >
                 Schedule hiring consultation
               </Link>
               <Link
                 href="/trained-employee-placement"
-                className="inline-flex items-center justify-center rounded-2xl border-2 border-[#15120F] bg-[#FFFFFF]/80 backdrop-blur-xs px-7 py-3.5 text-sm font-semibold text-[#141110] hover:bg-[#F0E9D5] transition-all"
+                className="inline-flex items-center justify-center rounded-2xl border-2 border-[#15120F] bg-[#FFFFFF]/80 backdrop-blur-xs px-7 py-3.5 text-sm font-semibold text-[#141110] hover:bg-[#F4EFE5] transition-all"
               >
                 Explore trained placement
               </Link>
@@ -115,18 +116,18 @@ export default function AboutPage() {
       </section>
 
       {/* Qualitative Operational Commitments — Dark Slab */}
-      <section className="py-16 bg-[#15120F] text-[#F7F2E4] border-b border-[#15120F]/10">
+      <section className="py-16 bg-[#101F45] text-[#FBF8F2] border-b border-[#15120F]/10">
         <div className="max-w-[1440px] mx-auto px-6 lg:px-10">
-          <RevealGroup className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4 divide-y sm:divide-y-0 sm:divide-x divide-[#F7F2E4]/10">
+          <RevealGroup className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4 divide-y sm:divide-y-0 sm:divide-x divide-[#FBF8F2]/10">
             {pillars.map((p) => (
               <div key={p.title} className="pt-6 sm:pt-0 sm:pl-6 space-y-2">
-                <span className="font-mono text-[9.5px] uppercase tracking-widest text-[#CD9534] block font-bold">
+                <Eyebrow variant="on-dark" className="block">
                   {p.tag}
-                </span>
-                <h3 className="text-lg font-serif font-bold text-[#F7F2E4]">
+                </Eyebrow>
+                <h3 className="text-lg font-serif font-bold text-[#FBF8F2]">
                   {p.title}
                 </h3>
-                <p className="text-xs text-[#F7F2E4]/70 leading-relaxed">
+                <p className="text-xs text-[#FBF8F2]/70 leading-relaxed">
                   {p.description}
                 </p>
               </div>
@@ -139,9 +140,9 @@ export default function AboutPage() {
       <section className="py-24 max-w-[1440px] mx-auto px-6 lg:px-10">
         <div className="grid gap-16 lg:grid-cols-[0.9fr_1.1fr]">
           <Reveal>
-            <span className="font-mono text-[11px] uppercase tracking-widest text-[#8A6420] font-bold">
-              · OUR OPERATING MODEL
-            </span>
+            <Eyebrow prefixDot>
+              OUR OPERATING MODEL
+            </Eyebrow>
             <h2 className="mt-4 text-3xl sm:text-4xl font-serif font-semibold tracking-tight leading-[1.05] text-[#141110]">
               Recruitment built for production standards.
             </h2>
@@ -155,7 +156,7 @@ export default function AboutPage() {
             </div>
             <Link
               href="/contact"
-              className="mt-8 inline-flex items-center gap-2 bg-[#15120F] text-[#F7F2E4] font-bold text-sm px-6 py-3.5 rounded-2xl border border-[#15120F]/20 hover:bg-[#2A2521] transition-all shadow-sm group"
+              className="mt-8 inline-flex items-center gap-2 bg-[#1D3F91] hover:bg-[#3358B8] text-[#FFFFFF] font-bold text-sm px-6 py-3.5 rounded-2xl border border-[#1D3F91] transition-all shadow-sm group"
             >
               Start a hiring discussion
             </Link>
@@ -166,9 +167,9 @@ export default function AboutPage() {
               {operationalModels.map((m) => (
                 <div
                   key={m.step}
-                  className="border border-[#15120F]/12 bg-[#F0E9D5]/40 rounded-3xl p-6 sm:p-8 hover:border-[#15120F]/30 transition-all shadow-xs"
+                  className="border border-[#15120F]/12 bg-[#F4EFE5]/40 rounded-3xl p-6 sm:p-8 hover:border-[#15120F]/30 transition-all shadow-xs"
                 >
-                  <div className="flex items-center gap-2 mb-2 font-mono text-xs font-bold text-[#8A6420]">
+                  <div className="flex items-center gap-2 mb-2 font-mono text-xs font-bold text-[#1D3F91]">
                     <span>STAGE {m.step}</span>
                   </div>
                   <h3 className="text-xl font-serif font-bold text-[#141110] mb-2">
@@ -185,7 +186,7 @@ export default function AboutPage() {
       </section>
 
       {/* In Practice + CTA */}
-      <section className="py-24 bg-[#F0E9D5]/40 border-t border-[#15120F]/10">
+      <section className="py-24 bg-[#F4EFE5]/40 border-t border-[#15120F]/10">
         <div className="max-w-[1440px] mx-auto px-6 lg:px-10">
           <div className="grid gap-12 lg:grid-cols-2 items-center">
             <Reveal className="border border-[#15120F]/12 bg-[#FFFFFF] rounded-3xl p-8 lg:p-10 shadow-sm">
@@ -193,7 +194,7 @@ export default function AboutPage() {
               <div className="space-y-4">
                 {practices.map((item) => (
                   <div key={item} className="flex items-start gap-3">
-                    <CheckCircle2 className="w-5 h-5 text-[#8A6420] flex-shrink-0 mt-0.5" />
+                    <CheckCircle2 className="w-5 h-5 text-[#1D3F91] flex-shrink-0 mt-0.5" />
                     <span className="text-[14.5px] text-[#5C5449] leading-relaxed">{item}</span>
                   </div>
                 ))}

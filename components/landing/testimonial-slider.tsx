@@ -3,6 +3,7 @@
 import { useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { ChevronLeft, ChevronRight, Quote, Star, Building2, CheckCircle2 } from "lucide-react"
+import { Eyebrow } from "@/components/ui/eyebrow"
 
 interface Testimonial {
   id: number
@@ -48,12 +49,12 @@ const TESTIMONIALS: Testimonial[] = [
   },
   {
     id: 4,
-    quote: "Talenty's consultation and tailored screening gave us top-tier engineering talent with calibrated compensation benchmarks. They truly understand modern engineering standards.",
-    name: "Sneha Roy",
-    role: "Director of Talent Acquisition",
-    company: "Merid Cloud",
-    location: "Mumbai",
-    outcomeStatement: "More than tripled engineering hiring velocity with role-calibrated standards and verified matching signals.",
+    quote: "Zero fluff, zero generic resume forwarding. Every profile came with verified code evidence, compensation alignment, and a structured scorecard from a recruiter who actually understood systems engineering.",
+    name: "Vikramaditya Roy",
+    role: "Chief Technology Officer",
+    company: "E-Commerce Infrastructure",
+    location: "Bengaluru",
+    outcomeStatement: "Replaced 3 non-performing recruitment agencies with Talenty as exclusive partner.",
     rating: 5
   }
 ]
@@ -61,12 +62,12 @@ const TESTIMONIALS: Testimonial[] = [
 export function TestimonialSlider() {
   const [currentIndex, setCurrentIndex] = useState(0)
 
-  const prev = () => {
-    setCurrentIndex((curr) => (curr === 0 ? TESTIMONIALS.length - 1 : curr - 1))
+  const next = () => {
+    setCurrentIndex((prev) => (prev + 1) % TESTIMONIALS.length)
   }
 
-  const next = () => {
-    setCurrentIndex((curr) => (curr === TESTIMONIALS.length - 1 ? 0 : curr + 1))
+  const prev = () => {
+    setCurrentIndex((prev) => (prev - 1 + TESTIMONIALS.length) % TESTIMONIALS.length)
   }
 
   const current = TESTIMONIALS[currentIndex]
@@ -74,14 +75,14 @@ export function TestimonialSlider() {
   return (
     <div className="w-full">
       {/* Top Header & Navigation */}
-      <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-12 border-b border-[#0D2D42]/10">
+      <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-12 border-b border-[#141110]/10">
         <div className="space-y-4 max-w-2xl">
-          <span className="font-mono text-[11px] uppercase tracking-widest text-[#C18A18] font-semibold">
-            · PROVEN TRACK RECORD
-          </span>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif font-semibold tracking-tight text-[#0D2D42]">
+          <Eyebrow>
+            PROVEN TRACK RECORD
+          </Eyebrow>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif font-semibold tracking-tight text-[#141110]">
             Trusted by teams that <br />
-            <span className="text-[#C18A18] italic font-normal">refuse to compromise.</span>
+            <span className="text-[#1D3F91]">refuse to compromise.</span>
           </h2>
         </div>
 
@@ -89,14 +90,14 @@ export function TestimonialSlider() {
         <div className="flex items-center gap-3">
           <button
             onClick={prev}
-            className="w-12 h-12 rounded-2xl border-2 border-[#0D2D42] bg-[#F7F2E4] hover:bg-[#F0E9D5] text-[#0D2D42] flex items-center justify-center transition-all cursor-pointer shadow-[3px_3px_0px_0px_rgba(13,45,66,1)] active:translate-x-0.5 active:translate-y-0.5"
+            className="w-12 h-12 rounded-2xl border-2 border-[#15120F] bg-[#FFFFFF] hover:bg-[#F0E9D5] text-[#141110] flex items-center justify-center transition-all cursor-pointer shadow-[3px_3px_0px_0px_rgba(21,18,15,1)] active:translate-x-0.5 active:translate-y-0.5"
             aria-label="Previous testimonial"
           >
             <ChevronLeft className="w-5 h-5" />
           </button>
           <button
             onClick={next}
-            className="w-12 h-12 rounded-2xl border-2 border-[#0D2D42] bg-[#0D2D42] hover:bg-[#153e5b] text-[#F7E9A7] flex items-center justify-center transition-all cursor-pointer shadow-[3px_3px_0px_0px_rgba(193,138,24,0.8)] active:translate-x-0.5 active:translate-y-0.5"
+            className="w-12 h-12 rounded-2xl border-2 border-[#15120F] bg-[#1D3F91] hover:bg-[#3358B8] text-[#FFFFFF] flex items-center justify-center transition-all cursor-pointer shadow-[3px_3px_0px_0px_rgba(16,31,69,1)] active:translate-x-0.5 active:translate-y-0.5"
             aria-label="Next testimonial"
           >
             <ChevronRight className="w-5 h-5" />
@@ -113,55 +114,55 @@ export function TestimonialSlider() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -15 }}
             transition={{ duration: 0.35, ease: "easeInOut" }}
-            className="rounded-3xl border-2 border-[#0D2D42] bg-[#F7F2E4] p-8 sm:p-12 shadow-[8px_8px_0px_0px_rgba(13,45,66,1)] relative overflow-hidden"
+            className="rounded-3xl border-2 border-[#15120F] bg-[#FFFFFF] p-8 sm:p-12 shadow-[8px_8px_0px_0px_rgba(21,18,15,1)] relative overflow-hidden"
           >
             <div className="grid gap-8 lg:grid-cols-[1.6fr_1fr] items-center">
               {/* Quote & Author */}
               <div className="space-y-6">
-                <div className="flex items-center gap-1 text-[#C18A18]">
+                <div className="flex items-center gap-1 text-[#1D3F91]">
                   {[...Array(current.rating)].map((_, i) => (
-                    <Star key={i} className="w-4 h-4 fill-[#C18A18]" />
+                    <Star key={i} className="w-4 h-4 fill-[#1D3F91]" />
                   ))}
                 </div>
 
-                <blockquote className="text-xl sm:text-2xl md:text-3xl font-serif text-[#0D2D42] leading-snug">
+                <blockquote className="text-xl sm:text-2xl md:text-3xl font-serif text-[#141110] leading-snug">
                   "{current.quote}"
                 </blockquote>
 
-                <div className="pt-4 border-t border-[#0D2D42]/10 flex items-center gap-4">
-                  <div className="w-12 h-12 rounded-2xl bg-[#0D2D42] text-[#F7E9A7] font-serif font-bold text-lg flex items-center justify-center flex-shrink-0 shadow-xs">
+                <div className="pt-4 border-t border-[#15120F]/10 flex items-center gap-4">
+                  <div className="w-12 h-12 rounded-2xl bg-[#1D3F91] text-[#FFFFFF] font-serif font-bold text-lg flex items-center justify-center flex-shrink-0 shadow-xs">
                     {current.name.charAt(0)}
                   </div>
                   <div>
-                    <h4 className="font-serif font-bold text-lg text-[#0D2D42]">
+                    <h4 className="font-serif font-bold text-lg text-[#141110]">
                       {current.name}
                     </h4>
-                    <p className="text-xs sm:text-sm text-[#3A5570]">
-                      {current.role} · <span className="text-[#0D2D42] font-semibold">{current.company}</span>
+                    <p className="text-xs sm:text-sm text-[#5C5449]">
+                      {current.role} · <span className="text-[#141110] font-semibold">{current.company}</span>
                     </p>
                   </div>
                 </div>
               </div>
 
               {/* Outcome Statement Card */}
-              <div className="rounded-2xl border-2 border-[#0D2D42] bg-[#F0E9D5]/70 p-6 sm:p-8 flex flex-col justify-between space-y-4">
+              <div className="rounded-2xl border-2 border-[#15120F] bg-[#F4EFE5] p-6 sm:p-8 flex flex-col justify-between space-y-4">
                 <div className="flex items-center justify-between">
-                  <span className="font-mono text-[10.5px] uppercase tracking-wider text-[#3A5570] font-semibold">
+                  <span className="font-mono text-[10.5px] uppercase tracking-wider text-[#5C5449] font-semibold">
                     Verified Outcome
                   </span>
-                  <div className="flex items-center gap-1.5 font-mono text-[10px] text-[#0D2D42] bg-[#C18A18] px-2.5 py-0.5 rounded-full border border-[#0D2D42] font-semibold">
-                    <CheckCircle2 className="w-3 h-3 text-[#0D2D42]" />
+                  <div className="flex items-center gap-1.5 font-mono text-[10px] text-[#FFFFFF] bg-[#1D3F91] px-2.5 py-0.5 rounded-full border border-[#1D3F91] font-semibold">
+                    <CheckCircle2 className="w-3 h-3 text-[#FFFFFF]" />
                     {current.location}
                   </div>
                 </div>
 
                 <div>
-                  <p className="text-base sm:text-lg font-serif text-[#0D2D42] leading-snug font-medium">
+                  <p className="text-base sm:text-lg font-serif text-[#141110] leading-snug font-medium">
                     "{current.outcomeStatement}"
                   </p>
                 </div>
 
-                <div className="font-mono text-[11px] text-[#3A5570] pt-3 border-t border-[#0D2D42]/10">
+                <div className="font-mono text-[11px] text-[#5C5449] pt-3 border-t border-[#15120F]/10">
                   Talenty Placement & Consulting Cohort
                 </div>
               </div>
@@ -177,8 +178,8 @@ export function TestimonialSlider() {
               onClick={() => setCurrentIndex(index)}
               className={`h-2.5 rounded-full transition-all duration-300 cursor-pointer ${
                 currentIndex === index
-                  ? "w-8 bg-[#0D2D42]"
-                  : "w-2.5 bg-[#0D2D42]/20 hover:bg-[#0D2D42]/50"
+                  ? "w-8 bg-[#1D3F91]"
+                  : "w-2.5 bg-[#15120F]/20 hover:bg-[#15120F]/50"
               }`}
               aria-label={`Go to slide ${index + 1}`}
             />

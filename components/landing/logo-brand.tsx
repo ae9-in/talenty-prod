@@ -45,7 +45,7 @@ export function LogoMonogram({
           width={100}
           height={100}
           priority
-          className="w-full h-full object-contain drop-shadow-[0_2px_6px_rgba(124,96,29,0.25)]"
+          className="w-full h-full object-contain drop-shadow-[0_2px_6px_rgba(16,31,69,0.2)]"
         />
         {animated && !prefersReducedMotion && (
           <motion.div
@@ -56,7 +56,7 @@ export function LogoMonogram({
               delay: 0.35,
               ease: "easeInOut",
             }}
-            className="absolute inset-0 bg-gradient-to-r from-transparent via-[#F7E9A7]/50 to-transparent pointer-events-none transform -skew-x-12"
+            className="absolute inset-0 bg-gradient-to-r from-transparent via-[#FFFFFF]/50 to-transparent pointer-events-none transform -skew-x-12"
           />
         )}
       </div>

@@ -7,6 +7,7 @@ import { EnquiryForm } from "@/components/public/enquiry-form"
 import { Reveal, RevealGroup } from "@/components/landing/scroll-reveal"
 import { ProcessTimeline } from "@/components/landing/process-timeline"
 import { CheckCircle2, Terminal, Brain, MessageSquare, ShieldCheck } from "lucide-react"
+import { Eyebrow } from "@/components/ui/eyebrow"
 
 const screeningStages = [
   {
@@ -35,20 +36,20 @@ const operatingStandards = [
 
 export default function TalentScreeningProcess() {
   return (
-    <main className="min-h-screen min-h-dvh bg-[#F7F2E4] text-[#141110] font-sans selection:bg-[#CD9534] selection:text-[#141110]">
+    <main className="min-h-screen min-h-dvh bg-[#F7F2E4] text-[#141110] font-sans selection:bg-[#1D3F91] selection:text-[#FFFFFF]">
       <Navbar />
 
       {/* Hero Section */}
       <section className="relative pt-32 pb-20 overflow-hidden">
-        <div className="absolute top-0 inset-x-0 h-[420px] bg-gradient-to-b from-[#CD9534]/10 via-transparent to-transparent pointer-events-none" />
-        <div className="absolute top-24 left-1/4 w-[380px] h-[380px] bg-[#CD9534]/10 rounded-full blur-3xl opacity-50 pointer-events-none" />
+        <div className="absolute top-0 inset-x-0 h-[420px] bg-gradient-to-b from-[#1D3F91]/10 via-transparent to-transparent pointer-events-none" />
+        <div className="absolute top-24 left-1/4 w-[380px] h-[380px] bg-[#1D3F91]/10 rounded-full blur-3xl opacity-50 pointer-events-none" />
         <div className="absolute inset-0 bg-grid-bg opacity-15 pointer-events-none" />
 
         <div className="max-w-[1440px] mx-auto px-6 lg:px-10 relative z-10">
           <div className="max-w-3xl mx-auto text-center">
-            <span className="font-mono text-[11px] uppercase tracking-widest text-[#8A6420] font-semibold block mb-4">
-              · CALIBRATED VETTING INFRASTRUCTURE
-            </span>
+            <Eyebrow prefixDot as="span" className="block mb-4">
+              CALIBRATED VETTING INFRASTRUCTURE
+            </Eyebrow>
             
             <h1 className="sr-only">How Talenty Screens and Vets Every Candidate</h1>
 
@@ -70,9 +71,9 @@ export default function TalentScreeningProcess() {
       {/* Multi-Stage Assessment Pillars */}
       <section className="py-24 max-w-[1440px] mx-auto px-6 lg:px-10">
         <Reveal className="text-center max-w-2xl mx-auto mb-16">
-          <span className="font-mono text-[11px] uppercase tracking-widest text-[#8A6420] font-semibold block mb-2">
-            · VETTING GATES
-          </span>
+          <Eyebrow prefixDot as="span" className="block mb-2">
+            VETTING GATES
+          </Eyebrow>
           <h2 className="text-3xl sm:text-4xl font-serif font-semibold text-[#141110]">
             Three-Dimensional Candidate Assessment
           </h2>
@@ -85,10 +86,10 @@ export default function TalentScreeningProcess() {
           {screeningStages.map((stage) => (
             <div
               key={stage.title}
-              className="border border-[#141110]/10 bg-[#F0E9D5]/40 rounded-3xl p-8 hover:border-[#141110]/30 transition-all flex flex-col justify-between"
+              className="border border-[#141110]/10 bg-[#F0E9D5]/40 rounded-3xl p-8 hover:border-[#1D3F91]/30 transition-all flex flex-col justify-between"
             >
               <div>
-                <div className="w-12 h-12 rounded-2xl bg-[#0D2D42] text-[#F7E9A7] flex items-center justify-center mb-6 shadow-xs">
+                <div className="w-12 h-12 rounded-2xl bg-[#1D3F91] text-[#FFFFFF] flex items-center justify-center mb-6 shadow-xs">
                   <stage.icon className="w-5 h-5" />
                 </div>
                 <h3 className="text-xl font-serif font-bold text-[#141110] mb-3">
@@ -107,11 +108,11 @@ export default function TalentScreeningProcess() {
       <section className="py-24 bg-[#F0E9D5]/40 border-y border-[#15120F]/10">
         <div className="max-w-[1440px] mx-auto px-6 lg:px-10">
           <div className="max-w-2xl space-y-4 mb-16">
-            <span className="font-mono text-[11px] uppercase tracking-widest text-[#CD9534] font-semibold block">
-              · CHRONOLOGICAL FLOW
-            </span>
+            <Eyebrow prefixDot as="span" className="block">
+              CHRONOLOGICAL FLOW
+            </Eyebrow>
             <h2 className="text-3xl md:text-4xl font-serif font-semibold tracking-tight text-[#141110]">
-              A day in <span className="text-[#CD9534] italic font-normal">Talenty.</span>
+              A day in <span className="text-[#1D3F91] italic font-normal">Talenty.</span>
             </h2>
             <p className="text-sm text-[#5C5449] leading-relaxed">
               How our integrated automation and consulting loop transforms daily recruiting overhead into structured candidate outcomes.
@@ -125,16 +126,16 @@ export default function TalentScreeningProcess() {
       {/* Operating Commitments */}
       <section className="py-24 max-w-[1440px] mx-auto px-6 lg:px-10">
         <Reveal className="max-w-3xl mx-auto bg-[#F0E9D5]/60 border border-[#141110]/10 rounded-3xl p-8 md:p-12">
-          <span className="font-mono text-[11px] uppercase tracking-widest text-[#8A6420] font-semibold block mb-2">
-            · OPERATING COMMITMENTS
-          </span>
+          <Eyebrow prefixDot as="span" className="block mb-2">
+            OPERATING COMMITMENTS
+          </Eyebrow>
           <h2 className="text-2xl sm:text-3xl font-serif font-bold text-[#141110] mb-6">
             Our Quality Assurances to Hiring Managers
           </h2>
           <div className="space-y-4">
             {operatingStandards.map((std, idx) => (
               <div key={idx} className="flex items-start gap-3">
-                <CheckCircle2 className="w-5 h-5 text-[#8A6420] flex-shrink-0 mt-0.5" />
+                <CheckCircle2 className="w-5 h-5 text-[#1D3F91] flex-shrink-0 mt-0.5" />
                 <span className="text-sm sm:text-base text-[#141110] font-medium">{std}</span>
               </div>
             ))}

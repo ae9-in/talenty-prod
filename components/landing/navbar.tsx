@@ -32,7 +32,7 @@ export function Navbar() {
       transition={{ duration: 0.45, ease: "easeOut" }}
       className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
         isScrolled || isMobileMenuOpen
-          ? "border-b border-[#0D2D42]/10 bg-[#F7F2E4]/90 backdrop-blur-xl shadow-xs"
+          ? "border-b border-[#141110]/10 bg-[#FBF8F2]/90 backdrop-blur-xl shadow-xs"
           : "bg-transparent"
       }`}
     >
@@ -46,10 +46,10 @@ export function Navbar() {
             <Link
               key={link.name}
               href={link.href}
-              className="text-[13.5px] font-medium text-[#3A5570] transition-all hover:text-[#0D2D42] relative py-1 group"
+              className="text-[13.5px] font-medium text-[#5C5449] transition-all hover:text-[#1D3F91] relative py-1 group"
             >
               {link.name}
-              <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-[#C18A18] scale-0 group-hover:scale-100 transition-transform duration-300 ease-out" />
+              <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-[#1D3F91] scale-0 group-hover:scale-100 transition-transform duration-300 ease-out" />
             </Link>
           ))}
         </div>
@@ -58,7 +58,7 @@ export function Navbar() {
         <div className="hidden lg:flex items-center gap-4">
           <Link
             href="/register"
-            className="bg-[#C18A18] hover:bg-[#F7E9A7] text-[#0D2D42] font-bold text-xs px-5 py-2.5 rounded-full border border-[#7C601D]/40 transition-all shadow-xs hover:shadow-md active:scale-95"
+            className="bg-[#1D3F91] hover:bg-[#3358B8] text-[#FFFFFF] font-bold text-xs px-5 py-2.5 rounded-full border border-[#1D3F91] transition-all shadow-xs hover:shadow-md active:scale-95 cursor-pointer"
           >
             Registration
           </Link>
@@ -66,7 +66,7 @@ export function Navbar() {
 
         {/* Mobile menu trigger */}
         <button
-          className="lg:hidden text-[#0D2D42] focus:outline-none cursor-pointer min-w-[44px] min-h-[44px] flex items-center justify-center p-2 rounded-xl hover:bg-[#F0E9D5] transition-colors"
+          className="lg:hidden text-[#141110] focus:outline-none cursor-pointer min-w-[44px] min-h-[44px] flex items-center justify-center p-2 rounded-xl hover:bg-[#F4EFE5] transition-colors"
           onClick={() => setIsMobileMenuOpen((current) => !current)}
           aria-label="Toggle menu"
           aria-expanded={isMobileMenuOpen}
@@ -82,24 +82,24 @@ export function Navbar() {
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
-            className="overflow-hidden lg:hidden border-t border-[#0D2D42]/10 bg-[#F7F2E4] shadow-inner"
+            className="overflow-hidden lg:hidden border-t border-[#141110]/10 bg-[#FBF8F2] shadow-inner"
           >
             <div className="px-6 py-6 space-y-2">
               {navLinks.map((link) => (
                 <Link
                   key={link.name}
                   href={link.href}
-                  className="flex items-center min-h-[44px] px-3 py-2.5 rounded-xl text-base font-semibold text-[#3A5570] hover:text-[#0D2D42] hover:bg-[#F0E9D5] transition-colors"
+                  className="flex items-center min-h-[44px] px-3 py-2.5 rounded-xl text-base font-semibold text-[#5C5449] hover:text-[#1D3F91] hover:bg-[#F4EFE5] transition-colors"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   {link.name}
                 </Link>
               ))}
               
-              <div className="pt-4 border-t border-[#0D2D42]/10 flex flex-col gap-3">
+              <div className="pt-4 border-t border-[#141110]/10 flex flex-col gap-3">
                 <Link
                   href="/register"
-                  className="text-center bg-[#C18A18] hover:bg-[#F7E9A7] text-[#0D2D42] py-3.5 min-h-[48px] flex items-center justify-center rounded-full font-bold text-sm border border-[#7C601D]/40 shadow-xs"
+                  className="text-center bg-[#1D3F91] hover:bg-[#3358B8] text-[#FFFFFF] py-3.5 min-h-[48px] flex items-center justify-center rounded-full font-bold text-sm shadow-xs"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   Registration

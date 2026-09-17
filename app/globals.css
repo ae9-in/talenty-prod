@@ -5,87 +5,81 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  /* Color System V3: Cream (60%) / Black (30%) / Gold (10%) */
+  /* Color System V4: Cream (65%) / Royal Blue (35%) / Sitewide Gold Retired */
   --paper: #FFFFFF;
-  --cream: #F7F2E4;
-  --cream-deep: #F0E9D5;
+  --cream: #FBF8F2;
+  --cream-deep: #F4EFE5;
   --cream-line: #E7DFD0;
 
-  /* 30% — Black (Structural dark) */
-  --black: #15120F;
-  --black-soft: #2A2521;
-  --black-deep: #0B0906;
-
-  /* 10% — Gold (Monogram #CD9534 / #C18A18) */
-  --gold: #CD9534;
-  --gold-bright: #E0A83F;
-  --gold-text: #8A6420;
-  --gold-wash: #F7EEDC;
+  /* Royal Blue family (Authoritative brand color) */
+  --royal: #1D3F91;        /* primary — section backgrounds, buttons, eyebrow labels, icons */
+  --royal-bright: #3358B8; /* hover states, active highlights */
+  --royal-deep: #101F45;   /* deepest sections — headers, hero dark zones */
 
   /* Ink */
   --ink: #141110;
   --ink-soft: #5C5449;
 
   /* Semantic mappings */
-  --background: #F7F2E4;
-  --foreground: #15120F;
+  --background: #FBF8F2;
+  --foreground: #141110;
   --card: #FFFFFF;
-  --card-foreground: #15120F;
+  --card-foreground: #141110;
   --popover: #FFFFFF;
-  --popover-foreground: #15120F;
-  --primary: #CD9534;
-  --primary-foreground: #15120F;
-  --secondary: #F0E9D5;
-  --secondary-foreground: #15120F;
-  --muted: #F0E9D5;
+  --popover-foreground: #141110;
+  --primary: #1D3F91;
+  --primary-foreground: #FFFFFF;
+  --secondary: #F4EFE5;
+  --secondary-foreground: #141110;
+  --muted: #F4EFE5;
   --muted-foreground: #5C5449;
-  --accent: #CD9534;
-  --accent-foreground: #15120F;
+  --accent: #1D3F91;
+  --accent-foreground: #FFFFFF;
   --destructive: #C53030;
   --destructive-foreground: #FFFFFF;
-  --border: rgba(21, 18, 15, 0.12);
-  --input: rgba(21, 18, 15, 0.08);
-  --ring: #CD9534;
+  --border: rgba(20, 17, 16, 0.12);
+  --input: rgba(20, 17, 16, 0.08);
+  --ring: #1D3F91;
   --radius: 0.75rem;
 
-  --color-cream: #F7F2E4;
-  --color-cream-alt: #F0E9D5;
-  --color-black: #15120F;
-  --color-black-soft: #2A2521;
-  --color-gold: #CD9534;
-  --color-gold-bright: #E0A83F;
-  --color-gold-text: #8A6420;
-  --color-navy: #15120F;
+  --color-cream: #FBF8F2;
+  --color-cream-deep: #F4EFE5;
+  --color-cream-line: #E7DFD0;
+  --color-royal: #1D3F91;
+  --color-royal-bright: #3358B8;
+  --color-royal-deep: #101F45;
+  --color-ink: #141110;
+  --color-ink-soft: #5C5449;
 }
 
 .dark {
-  --background: #0D2D42;
-  --foreground: #F7F2E4;
-  --card: #143852;
-  --card-foreground: #F7F2E4;
-  --popover: #143852;
-  --popover-foreground: #F7F2E4;
-  --primary: #C18A18;
-  --primary-foreground: #0D2D42;
-  --secondary: #1F4766;
-  --secondary-foreground: #F7F2E4;
-  --muted: #1F4766;
-  --muted-foreground: #94AEC6;
-  --accent: #F7E9A7;
-  --accent-foreground: #0D2D42;
+  --background: #0A1224;
+  --foreground: #FBF8F2;
+  --card: #101F45;
+  --card-foreground: #FBF8F2;
+  --popover: #101F45;
+  --popover-foreground: #FBF8F2;
+  --primary: #3358B8;
+  --primary-foreground: #FFFFFF;
+  --secondary: #1D3F91;
+  --secondary-foreground: #FBF8F2;
+  --muted: #101F45;
+  --muted-foreground: #93B4F8;
+  --accent: #3358B8;
+  --accent-foreground: #FFFFFF;
   --destructive: #E53E3E;
   --destructive-foreground: #FFFFFF;
   --border: rgba(247, 242, 228, 0.15);
   --input: rgba(247, 242, 228, 0.08);
-  --ring: #C18A18;
-  --sidebar: #143852;
-  --sidebar-foreground: #F7F2E4;
-  --sidebar-primary: #C18A18;
-  --sidebar-primary-foreground: #0D2D42;
-  --sidebar-accent: #1F4766;
-  --sidebar-accent-foreground: #F7F2E4;
+  --ring: #3358B8;
+  --sidebar: #101F45;
+  --sidebar-foreground: #FBF8F2;
+  --sidebar-primary: #3358B8;
+  --sidebar-primary-foreground: #FFFFFF;
+  --sidebar-accent: #1D3F91;
+  --sidebar-accent-foreground: #FBF8F2;
   --sidebar-border: rgba(247, 242, 228, 0.15);
-  --sidebar-ring: #C18A18;
+  --sidebar-ring: #3358B8;
 }
 
 @theme inline {
@@ -124,13 +118,15 @@
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
 
-  /* Specific Named Tokens */
-  --color-navy: #0D2D42;
-  --color-cream: #F7F2E4;
-  --color-cream-alt: #F0E9D5;
-  --color-gold: #C18A18;
-  --color-gold-shadow: #7C601D;
-  --color-gold-highlight: #F7E9A7;
+  /* Specific Named Tokens V4 */
+  --color-royal: #1D3F91;
+  --color-royal-bright: #3358B8;
+  --color-royal-deep: #101F45;
+  --color-cream: #FBF8F2;
+  --color-cream-deep: #F4EFE5;
+  --color-cream-line: #E7DFD0;
+  --color-ink: #141110;
+  --color-ink-soft: #5C5449;
 }
 
 @layer base {
@@ -138,7 +134,7 @@
     @apply border-border outline-ring/50;
   }
   body {
-    @apply bg-[#F7F2E4] text-[#0D2D42] relative;
+    @apply bg-[#FBF8F2] text-[#141110] relative selection:bg-[#1D3F91] selection:text-[#FFFFFF];
   }
   body::before {
     content: "";
@@ -178,39 +174,11 @@
   animation-play-state: paused;
 }
 
-/* Gold Shimmer Effect for Metallic Elements */
-@keyframes gold-shimmer {
-  0% { background-position: -200% 0; }
-  100% { background-position: 200% 0; }
-}
-
-.gold-metallic-text {
-  background: linear-gradient(135deg, #7C601D 0%, #F7E9A7 50%, #C18A18 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.gold-metallic-bg {
-  background: linear-gradient(135deg, #7C601D 0%, #F7E9A7 50%, #C18A18 100%);
-}
-
-.gold-button {
-  background: #C18A18;
-  color: #0D2D42;
-  border: 1px solid #7C601D;
-  transition: all 0.25s ease;
-}
-
-.gold-button:hover {
-  background: linear-gradient(135deg, #C18A18 0%, #F7E9A7 100%);
-  box-shadow: 0 4px 14px rgba(193, 138, 24, 0.35);
-}
-
-/* Grid background tuned to Navy/Cream */
+/* Grid background tuned to Royal Deep */
 .grid-bg {
   background-image: 
-    linear-gradient(rgba(13, 45, 66, 0.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(13, 45, 66, 0.05) 1px, transparent 1px);
+    linear-gradient(rgba(16, 31, 69, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(16, 31, 69, 0.05) 1px, transparent 1px);
   background-size: 48px 48px;
 }
 
@@ -222,3 +190,23 @@
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
+
+/* Eyebrow Label Standard Utility (Color System V4) */
+.eyebrow-label {
+  font-family: var(--font-mono, 'JetBrains Mono', monospace);
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--royal, #1D3F91);
+}
+
+.eyebrow-label--dark {
+  font-family: var(--font-mono, 'JetBrains Mono', monospace);
+  font-size: 10.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #93B4F8;
+}
+

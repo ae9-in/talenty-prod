@@ -7,6 +7,7 @@ import { gsap } from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 import { useGSAP } from "@gsap/react"
 import { CheckCircle2 } from "lucide-react"
+import { Eyebrow } from "@/components/ui/eyebrow"
 
 gsap.registerPlugin(ScrollTrigger, useGSAP)
 
@@ -164,7 +165,7 @@ export function VettingStages() {
       {/* ─── Desktop Pinned Side-by-Side (>= 1024px) ─── */}
       <div className="hidden lg:grid lg:grid-cols-[400px_1fr] gap-12 items-start relative">
         
-        {/* Sticky Left Column — Modest photo panel + small gold numeral */}
+        {/* Sticky Left Column — Modest photo panel + stage numeral */}
         <div className="gates-left-sticky space-y-4">
           <div className="relative w-full aspect-[4/3] rounded-3xl overflow-hidden border-2 border-[#15120F]/15 bg-[#15120F] shadow-[6px_6px_0px_0px_rgba(21,18,15,0.9)]">
             {VETTING_STAGES.map((s, idx) => {
@@ -198,11 +199,11 @@ export function VettingStages() {
             })}
           </div>
 
-          {/* Small Gold Stage Numeral & Title underneath photo */}
+          {/* Small Royal Stage Numeral & Title underneath photo */}
           <div className="flex items-center justify-between px-2 pt-1">
-            <span className="font-mono text-xs font-bold text-[#CD9534] tracking-widest uppercase">
+            <Eyebrow>
               STAGE {currentStage.step} OF 05
-            </span>
+            </Eyebrow>
             <span className="font-mono text-[11px] text-[#5C5449] font-medium">
               Verified Milestone
             </span>
@@ -223,9 +224,9 @@ export function VettingStages() {
                 }`}
               >
                 <div className="flex items-center justify-between pb-3.5 border-b border-[#15120F]/10 mb-4">
-                  <span className="font-mono text-xs font-bold text-[#CD9534] tracking-widest uppercase">
+                  <Eyebrow>
                     STAGE {stage.step}
-                  </span>
+                  </Eyebrow>
                   <div className="font-mono text-[10.5px] font-bold text-[#15120F] bg-[#F0E9D5] px-3 py-0.5 rounded-full border border-[#15120F]/10">
                     Gate 0{idx + 1}
                   </div>
@@ -246,7 +247,7 @@ export function VettingStages() {
                   </span>
                   {stage.criteria.map((c, cIdx) => (
                     <div key={cIdx} className="flex items-start gap-2.5">
-                      <CheckCircle2 className="w-4 h-4 text-[#CD9534] flex-shrink-0 mt-0.5" />
+                      <CheckCircle2 className="w-4 h-4 text-[#1D3F91] flex-shrink-0 mt-0.5" />
                       <span className="text-xs text-[#141110] font-medium font-sans">
                         {c}
                       </span>
@@ -278,9 +279,9 @@ export function VettingStages() {
             </div>
 
             <div className="flex items-center justify-between pb-2 border-b border-[#15120F]/10">
-              <span className="font-mono text-xs font-bold text-[#CD9534] tracking-widest uppercase">
+              <Eyebrow>
                 STAGE {stage.step}
-              </span>
+              </Eyebrow>
               <span className="font-mono text-[10px] font-bold text-[#15120F] bg-[#F0E9D5] px-2.5 py-0.5 rounded-full border border-[#15120F]/10">
                 Gate 0{parseInt(stage.step)}
               </span>
@@ -297,7 +298,7 @@ export function VettingStages() {
             <div className="space-y-2 pt-3 border-t border-[#15120F]/10">
               {stage.criteria.map((c, cIdx) => (
                 <div key={cIdx} className="flex items-start gap-2">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-[#CD9534] flex-shrink-0 mt-0.5" />
+                  <CheckCircle2 className="w-3.5 h-3.5 text-[#1D3F91] flex-shrink-0 mt-0.5" />
                   <span className="text-xs text-[#141110] font-medium font-sans">
                     {c}
                   </span>

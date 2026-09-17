@@ -10,7 +10,7 @@ import { HERO_SLIDES, HeroSlide } from "@/data/heroSlides"
 import { ChevronLeft, ChevronRight, Play, Pause } from "lucide-react"
 import { RollingHeadline } from "@/components/landing/rolling-headline"
 
-const DWELL_MS = 4000      // 4000ms = 4.0s per slide
+const DWELL_MS = 7500      // 7500ms = 7.5s per slide (slow, comfortable reading)
 const TEXT_TRANSITION_MS = 620   // 620ms text transition token
 const PHOTO_TRANSITION_MS = 700  // 700ms photo crossfade token (deliberate polish mismatch)
 
@@ -151,11 +151,11 @@ export function HeroCarousel() {
       onTouchStart={onTouchStart}
       onTouchMove={onTouchMove}
       onTouchEnd={onTouchEnd}
-      className="relative pt-32 pb-20 lg:pt-40 lg:pb-28 overflow-hidden min-h-[660px] select-none focus:outline-none focus-visible:ring-2 focus-visible:ring-[#CD9534] z-0"
+      className="relative pt-24 pb-8 lg:pt-28 lg:pb-12 overflow-hidden select-none focus:outline-none focus-visible:ring-2 focus-visible:ring-[#1D3F91] z-0"
     >
-      {/* 1. TOP SINGLE CONTINUOUS GOLD PROGRESS RAIL */}
+      {/* 1. TOP SINGLE CONTINUOUS ROYAL BLUE PROGRESS RAIL */}
       <div className="absolute top-0 left-0 right-0 h-1 bg-[#15120F]/10 z-30 overflow-hidden">
-        <div className="hero-progress-fill h-full bg-gradient-to-r from-[#8A6420] via-[#E0A83F] to-[#CD9534] shadow-[0_0_10px_rgba(205,149,52,0.6)] origin-left scale-x-0" />
+        <div className="hero-progress-fill h-full bg-gradient-to-r from-[#101F45] via-[#1D3F91] to-[#3358B8] shadow-[0_0_10px_rgba(29,63,145,0.6)] origin-left scale-x-0" />
       </div>
 
       {/* 2. BACKGROUND PHOTO LAYER WITH SMOOTH CROSSFADE & KEN BURNS */}
@@ -192,11 +192,11 @@ export function HeroCarousel() {
       {/* 3. CREAM/BLACK LEGIBILITY SCRIM */}
       <div className="absolute inset-0 z-[1] bg-gradient-to-r from-[#F7F2E4] via-[#F7F2E4]/85 to-[#F7F2E4]/25 pointer-events-none" />
       <div className="absolute top-0 inset-x-0 h-28 bg-gradient-to-b from-[#F7F2E4] to-transparent pointer-events-none z-[1]" />
-      <div className="absolute bottom-0 inset-x-0 h-24 bg-gradient-to-t from-[#F7F2E4] to-transparent pointer-events-none z-[1]" />
+      <div className="absolute bottom-0 inset-x-0 h-20 bg-gradient-to-t from-[#F7F2E4] to-transparent pointer-events-none z-[1]" />
 
       {/* 4. HERO CONTENT WRAPPER */}
       <div className="max-w-[1440px] mx-auto px-6 lg:px-10 relative z-10">
-        <div className="max-w-3xl min-h-[420px] flex flex-col justify-center">
+        <div className="max-w-3xl flex flex-col justify-center">
           <AnimatePresence mode="wait">
             <motion.div
               key={`text-${currentSlide.id}`}
@@ -204,10 +204,10 @@ export function HeroCarousel() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -8 }}
               transition={{ duration: TEXT_TRANSITION_MS / 1000, ease: [0.22, 1, 0.36, 1] }}
-              className="space-y-8"
+              className="space-y-4 sm:space-y-5 lg:space-y-6"
             >
-              {/* Sentence-case kicker label in --gold-text (#8A6420, 5.05:1 contrast, no pill/border) */}
-              <div className="font-sans text-sm font-medium text-[#8A6420] tracking-normal">
+              {/* Sentence-case kicker label in --royal (#1D3F91, 9.12:1 AAA contrast) */}
+              <div className="font-sans text-xs sm:text-sm font-semibold text-[#1D3F91] tracking-normal">
                 {currentSlide.pillar}
               </div>
 
@@ -221,25 +221,25 @@ export function HeroCarousel() {
                 accent={currentSlide.headlineAccent}
                 line2={currentSlide.headlineLine2}
                 accentClassName="italic font-normal"
-                className="text-4xl sm:text-6xl lg:text-7xl xl:text-8xl font-serif font-semibold tracking-tight text-[#141110] leading-[0.98] sm:leading-[0.92] break-words"
+                className="text-3xl sm:text-5xl lg:text-6xl xl:text-7xl font-serif font-semibold tracking-tight text-[#141110] leading-[1.0] sm:leading-[0.94] break-words"
               />
 
               {/* Subcopy */}
-              <p className="text-base sm:text-xl lg:text-2xl leading-relaxed text-[#5C5449] max-w-2xl font-sans">
+              <p className="text-sm sm:text-base lg:text-lg leading-relaxed text-[#5C5449] max-w-2xl font-sans">
                 {currentSlide.subcopy}
               </p>
 
-              {/* Action Buttons — Primary: Gold Fill with Black Text (7.06:1), Secondary: Black Outline */}
-              <div className="flex flex-col sm:flex-row sm:items-center gap-3.5 sm:gap-4 pt-2">
+              {/* Action Buttons — Primary: Royal Blue Fill with White Text (9.67:1), Secondary: Black Outline */}
+              <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4 pt-1 sm:pt-2">
                 <Link
                   href="/contact"
-                  className="inline-flex items-center justify-center gap-2 bg-[#CD9534] hover:bg-[#E0A83F] text-[#15120F] font-bold text-sm sm:text-base px-7 py-3.5 sm:py-4 min-h-[48px] rounded-full border border-[#8A6420]/40 transition-all shadow-[0_4px_14px_rgba(205,149,52,0.35)] group cursor-pointer active:scale-95 text-center"
+                  className="inline-flex items-center justify-center gap-2 bg-[#1D3F91] hover:bg-[#3358B8] text-[#FFFFFF] font-bold text-xs sm:text-sm px-6 py-3 min-h-[44px] rounded-full border border-[#1D3F91] transition-all shadow-[0_4px_14px_rgba(29,63,145,0.35)] group cursor-pointer active:scale-95 text-center"
                 >
                   Request a consultation
                 </Link>
                 <Link
                   href="/talent-screening-process"
-                  className="inline-flex items-center justify-center gap-2 bg-[#FFFFFF] hover:bg-[#F0E9D5] text-[#15120F] font-bold text-sm sm:text-base px-7 py-3.5 sm:py-4 min-h-[48px] rounded-full border-2 border-[#15120F] transition-all shadow-xs cursor-pointer active:scale-95 text-center"
+                  className="inline-flex items-center justify-center gap-2 bg-[#FFFFFF] hover:bg-[#F0E9D5] text-[#15120F] font-bold text-xs sm:text-sm px-6 py-3 min-h-[44px] rounded-full border-2 border-[#15120F] transition-all shadow-xs cursor-pointer active:scale-95 text-center"
                 >
                   Explore Vetting Process
                 </Link>
@@ -249,9 +249,9 @@ export function HeroCarousel() {
         </div>
 
         {/* 5. CAROUSEL CONTROLS & ACTIVE PILLAR PILLS */}
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 mt-12 sm:mt-16 pt-8 border-t border-[#15120F]/10">
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 mt-5 sm:mt-6 pt-3.5 sm:pt-4 border-t border-[#15120F]/10">
           
-          {/* Left: Interactive Pillar Pills with Single Gold Line Indicator */}
+          {/* Left: Interactive Pillar Pills */}
           <div className="flex items-center gap-2 overflow-x-auto scrollbar-none max-w-full pb-1">
             {HERO_SLIDES.map((slide, idx) => {
               const isActive = idx === activeIndex
@@ -261,7 +261,7 @@ export function HeroCarousel() {
                   onClick={() => selectTab(idx)}
                   className={`px-4 py-2.5 rounded-full font-mono text-[11px] font-medium transition-all flex items-center gap-2.5 min-h-[44px] cursor-pointer relative overflow-hidden flex-shrink-0 ${
                     isActive
-                      ? "bg-[#15120F] text-[#F7EEDC] shadow-sm"
+                      ? "bg-[#1D3F91] text-[#FFFFFF] shadow-sm"
                       : "bg-[#FFFFFF] border border-[#15120F]/10 text-[#5C5449] hover:text-[#15120F] hover:bg-[#F0E9D5]"
                   }`}
                   aria-label={`Select ${slide.pillar} tab`}
@@ -269,7 +269,7 @@ export function HeroCarousel() {
                 >
                   <span
                     className={`w-2 h-2 rounded-full transition-colors ${
-                      isActive ? "bg-[#CD9534]" : "bg-[#15120F]/30"
+                      isActive ? "bg-[#93B4F8]" : "bg-[#15120F]/30"
                     }`}
                   />
                   <span>{slide.pillar}</span>
@@ -289,7 +289,7 @@ export function HeroCarousel() {
             </button>
             <button
               onClick={nextSlide}
-              className="w-11 h-11 min-w-[44px] min-h-[44px] rounded-full border border-[#8A6420] bg-[#15120F] hover:bg-[#2A2521] text-[#F7EEDC] flex items-center justify-center transition-all cursor-pointer active:scale-95 shadow-xs"
+              className="w-11 h-11 min-w-[44px] min-h-[44px] rounded-full border border-[#1D3F91]/40 bg-[#101F45] hover:bg-[#1D3F91] text-[#FFFFFF] flex items-center justify-center transition-all cursor-pointer active:scale-95 shadow-xs"
               aria-label="Next slide"
             >
               <ChevronRight className="w-4 h-4" />

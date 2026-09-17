@@ -4,19 +4,19 @@
       <stop offset="0%" stopColor="#FBF8F2" />
       <stop offset="100%" stopColor="#F0E9D5" />
     </linearGradient>
-    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stopColor="#E0A83F" />
-      <stop offset="50%" stopColor="#CD9534" />
-      <stop offset="100%" stopColor="#8A6420" />
+    <linearGradient id="royalGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stopColor="#3358B8" />
+      <stop offset="50%" stopColor="#1D3F91" />
+      <stop offset="100%" stopColor="#101F45" />
     </linearGradient>
   </defs>
 
   <!-- Cream Brand Background Tile -->
   <rect width="512" height="512" rx="112" fill="url(#creamBg)" />
-  <rect x="16" y="16" width="480" height="480" rx="96" stroke="url(#goldGrad)" stroke-width="12" stroke-opacity="0.35" />
+  <rect x="16" y="16" width="480" height="480" rx="96" stroke="url(#royalGrad)" stroke-width="12" stroke-opacity="0.35" />
 
-  <!-- Gold Metallic Monogram Emblem -->
-  <g fill="url(#goldGrad)">
+  <!-- Royal Blue Monogram Emblem -->
+  <g fill="url(#royalGrad)">
     <!-- T Top Bar -->
     <rect x="100" y="128" width="312" height="52" rx="14" />
     

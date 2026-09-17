@@ -6,6 +6,7 @@ import { Footer } from "@/components/landing/footer"
 import { RollingHeadline } from "@/components/landing/rolling-headline"
 import { EnquiryForm } from "@/components/public/enquiry-form"
 import { Reveal } from "@/components/landing/scroll-reveal"
+import { Eyebrow } from "@/components/ui/eyebrow"
 
 const nextSteps = [
   {
@@ -27,18 +28,18 @@ const nextSteps = [
 
 export default function ContactPage() {
   return (
-    <main className="min-h-screen min-h-dvh bg-[#F7F2E4] text-[#141110] font-sans selection:bg-[#CD9534] selection:text-[#141110]">
+    <main className="min-h-screen min-h-dvh bg-[#FBF8F2] text-[#141110] font-sans selection:bg-[#1D3F91] selection:text-[#FFFFFF]">
       <Navbar />
 
       <section className="relative overflow-hidden pt-32 pb-16">
-        <div className="absolute top-0 inset-x-0 h-[380px] bg-gradient-to-b from-[#CD9534]/10 via-transparent to-transparent pointer-events-none" />
+        <div className="absolute top-0 inset-x-0 h-[380px] bg-gradient-to-b from-[#1D3F91]/10 via-transparent to-transparent pointer-events-none" />
         <div className="absolute inset-0 bg-grid-bg opacity-15 pointer-events-none" />
 
         <div className="max-w-[1440px] mx-auto px-6 lg:px-10 relative z-10">
           <div className="mx-auto max-w-3xl text-center">
-            <span className="font-mono text-[11px] uppercase tracking-widest text-[#CD9534] font-semibold block mb-4">
-              · HIRING CONSULTATION & INTAKE
-            </span>
+            <Eyebrow prefixDot className="block mb-4">
+              HIRING CONSULTATION & INTAKE
+            </Eyebrow>
             
             <RollingHeadline
               line1="Tell us what you're hiring."
@@ -57,21 +58,21 @@ export default function ContactPage() {
       <section className="pb-24 max-w-[1440px] mx-auto px-6 lg:px-10">
         <div className="grid gap-8 lg:grid-cols-[1.2fr_0.8fr] items-start max-w-5xl mx-auto">
           {/* Form Card */}
-          <Reveal className="bg-[#F7F2E4] border-2 border-[#15120F]/15 rounded-3xl shadow-[4px_4px_0px_0px_rgba(21,18,15,0.06)] overflow-hidden">
+          <Reveal className="bg-[#FFFFFF] border-2 border-[#15120F]/15 rounded-3xl shadow-[4px_4px_0px_0px_rgba(21,18,15,0.06)] overflow-hidden">
             <EnquiryForm buttonLabel="Submit hiring requirements" />
           </Reveal>
 
           {/* Right Info Cards */}
           <Reveal delay={0.1} className="space-y-6">
             {/* What Happens Next */}
-            <div className="bg-[#F7F2E4] border-2 border-[#15120F]/15 rounded-3xl p-6 sm:p-8 space-y-4 shadow-[4px_4px_0px_0px_rgba(21,18,15,0.06)]">
-              <span className="font-mono text-[10.5px] uppercase tracking-wider text-[#8A6420] font-bold block">
+            <div className="bg-[#FFFFFF] border-2 border-[#15120F]/15 rounded-3xl p-6 sm:p-8 space-y-4 shadow-[4px_4px_0px_0px_rgba(21,18,15,0.06)]">
+              <Eyebrow className="block mb-1">
                 What happens next
-              </span>
+              </Eyebrow>
               <div className="space-y-4">
                 {nextSteps.map((s) => (
                   <div key={s.step} className="flex gap-3 items-start">
-                    <span className="font-mono text-xs font-bold text-[#141110] bg-[#F0E9D5] px-2 py-0.5 rounded-md flex-shrink-0">
+                    <span className="font-mono text-xs font-bold text-[#141110] bg-[#F4EFE5] px-2 py-0.5 rounded-md flex-shrink-0">
                       {s.step}
                     </span>
                     <div>
@@ -88,7 +89,7 @@ export default function ContactPage() {
             </div>
 
             {/* Office & Direct Contact */}
-            <div className="bg-[#F7F2E4] border-2 border-[#15120F]/15 rounded-3xl p-6 sm:p-8 space-y-4 shadow-[4px_4px_0px_0px_rgba(21,18,15,0.06)]">
+            <div className="bg-[#FFFFFF] border-2 border-[#15120F]/15 rounded-3xl p-6 sm:p-8 space-y-4 shadow-[4px_4px_0px_0px_rgba(21,18,15,0.06)]">
               <h2 className="text-lg font-serif font-bold text-[#141110]">
                 Bengaluru Headquarters
               </h2>

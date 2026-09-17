@@ -2,6 +2,7 @@
 
 import { useState } from "react"
 import { CheckCircle2 } from "lucide-react"
+import { Eyebrow } from "@/components/ui/eyebrow"
 
 const requirementOptions = ["Counseling", "Consulting", "Hiring Support", "Staffing", "Training"]
 const industryOptions = ["IT & Software", "Banking & Finance", "Healthcare", "Manufacturing", "Retail", "Education", "Hospitality", "Other"]
@@ -79,11 +80,11 @@ export function EnquiryForm({ buttonLabel = "Request consultation call" }: { but
   if (isSubmitted) {
     return (
       <div className="p-8 md:p-12 text-center space-y-4">
-        <div className="w-16 h-16 rounded-3xl bg-[#F0E9D5] shadow-xs flex items-center justify-center mx-auto border border-[#CD9534]/30 mb-4">
-          <CheckCircle2 className="w-8 h-8 text-[#8A6420]" />
+        <div className="w-16 h-16 rounded-3xl bg-[#F4EFE5] shadow-xs flex items-center justify-center mx-auto border border-[#1D3F91]/30 mb-4">
+          <CheckCircle2 className="w-8 h-8 text-[#1D3F91]" />
         </div>
         <h3 className="text-2xl font-serif font-bold text-[#141110]">
-          Enquiry <span className="text-[#CD9534] italic font-normal">received.</span>
+          Enquiry <span className="text-[#1D3F91]">received.</span>
         </h3>
         <p className="text-sm text-[#5C5449] leading-relaxed max-w-sm mx-auto">
           Your request is with our consulting team. Expect a response with feasibility details within one business day.
@@ -102,9 +103,9 @@ export function EnquiryForm({ buttonLabel = "Request consultation call" }: { but
   return (
     <form onSubmit={handleSubmit} className="p-6 sm:p-8 space-y-5">
       <div className="border-b border-[#15120F]/10 pb-4">
-        <span className="font-mono text-[10.5px] uppercase tracking-widest text-[#CD9534] font-bold block mb-1">
-          · Book Counseling / Consulting
-        </span>
+        <Eyebrow prefixDot as="span" className="block mb-1">
+          Book Counseling / Consulting
+        </Eyebrow>
         <h3 className="text-xl font-serif font-bold text-[#141110]">
           Requirement Intake Form
         </h3>
@@ -118,7 +119,7 @@ export function EnquiryForm({ buttonLabel = "Request consultation call" }: { but
         <div className="space-y-1.5">
           <label className="font-mono text-[11px] font-semibold text-[#5C5449] block">Full name</label>
           <input
-            className="w-full h-12 rounded-xl border border-[#15120F]/15 bg-[#FFFFFF] px-3.5 text-base sm:text-sm text-[#141110] outline-none focus:border-[#CD9534] focus:ring-2 focus:ring-[#CD9534]/20 transition-all placeholder:text-[#5C5449]/40"
+            className="w-full h-12 rounded-xl border border-[#15120F]/15 bg-[#FFFFFF] px-3.5 text-base sm:text-sm text-[#141110] outline-none focus:border-[#1D3F91] focus:ring-2 focus:ring-[#1D3F91]/20 transition-all placeholder:text-[#5C5449]/40"
             name="fullName"
             value={formData.fullName}
             onChange={handleChange}
@@ -129,7 +130,7 @@ export function EnquiryForm({ buttonLabel = "Request consultation call" }: { but
         <div className="space-y-1.5">
           <label className="font-mono text-[11px] font-semibold text-[#5C5449] block">Company name</label>
           <input
-            className="w-full h-12 rounded-xl border border-[#15120F]/15 bg-[#FFFFFF] px-3.5 text-base sm:text-sm text-[#141110] outline-none focus:border-[#CD9534] focus:ring-2 focus:ring-[#CD9534]/20 transition-all placeholder:text-[#5C5449]/40"
+            className="w-full h-12 rounded-xl border border-[#15120F]/15 bg-[#FFFFFF] px-3.5 text-base sm:text-sm text-[#141110] outline-none focus:border-[#1D3F91] focus:ring-2 focus:ring-[#1D3F91]/20 transition-all placeholder:text-[#5C5449]/40"
             name="companyName"
             value={formData.companyName}
             onChange={handleChange}
@@ -144,7 +145,7 @@ export function EnquiryForm({ buttonLabel = "Request consultation call" }: { but
         <div className="space-y-1.5">
           <label className="font-mono text-[11px] font-semibold text-[#5C5449] block">Email address</label>
           <input
-            className="w-full h-12 rounded-xl border border-[#15120F]/15 bg-[#FFFFFF] px-3.5 text-base sm:text-sm text-[#141110] outline-none focus:border-[#CD9534] focus:ring-2 focus:ring-[#CD9534]/20 transition-all placeholder:text-[#5C5449]/40"
+            className="w-full h-12 rounded-xl border border-[#15120F]/15 bg-[#FFFFFF] px-3.5 text-base sm:text-sm text-[#141110] outline-none focus:border-[#1D3F91] focus:ring-2 focus:ring-[#1D3F91]/20 transition-all placeholder:text-[#5C5449]/40"
             name="email"
             type="email"
             inputMode="email"
@@ -158,7 +159,7 @@ export function EnquiryForm({ buttonLabel = "Request consultation call" }: { but
         <div className="space-y-1.5">
           <label className="font-mono text-[11px] font-semibold text-[#5C5449] block">Phone number</label>
           <input
-            className="w-full h-12 rounded-xl border border-[#15120F]/15 bg-[#FFFFFF] px-3.5 text-base sm:text-sm text-[#141110] outline-none focus:border-[#CD9534] focus:ring-2 focus:ring-[#CD9534]/20 transition-all placeholder:text-[#5C5449]/40"
+            className="w-full h-12 rounded-xl border border-[#15120F]/15 bg-[#FFFFFF] px-3.5 text-base sm:text-sm text-[#141110] outline-none focus:border-[#1D3F91] focus:ring-2 focus:ring-[#1D3F91]/20 transition-all placeholder:text-[#5C5449]/40"
             name="phone"
             type="tel"
             inputMode="tel"
@@ -179,7 +180,7 @@ export function EnquiryForm({ buttonLabel = "Request consultation call" }: { but
             name="requirementType"
             value={formData.requirementType}
             onChange={handleChange}
-            className="w-full h-12 rounded-xl border border-[#15120F]/15 bg-[#FFFFFF] px-3.5 text-base sm:text-sm text-[#141110] outline-none focus:border-[#CD9534] focus:ring-2 focus:ring-[#CD9534]/20 transition-all cursor-pointer"
+            className="w-full h-12 rounded-xl border border-[#15120F]/15 bg-[#FFFFFF] px-3.5 text-base sm:text-sm text-[#141110] outline-none focus:border-[#1D3F91] focus:ring-2 focus:ring-[#1D3F91]/20 transition-all cursor-pointer"
           >
             {requirementOptions.map((option) => (
               <option key={option} value={option}>{option}</option>
@@ -192,7 +193,7 @@ export function EnquiryForm({ buttonLabel = "Request consultation call" }: { but
             name="industry"
             value={formData.industry}
             onChange={handleChange}
-            className="w-full h-12 rounded-xl border border-[#15120F]/15 bg-[#FFFFFF] px-3.5 text-base sm:text-sm text-[#141110] outline-none focus:border-[#CD9534] focus:ring-2 focus:ring-[#CD9534]/20 transition-all cursor-pointer"
+            className="w-full h-12 rounded-xl border border-[#15120F]/15 bg-[#FFFFFF] px-3.5 text-base sm:text-sm text-[#141110] outline-none focus:border-[#1D3F91] focus:ring-2 focus:ring-[#1D3F91]/20 transition-all cursor-pointer"
           >
             {industryOptions.map((option) => (
               <option key={option} value={option}>{option}</option>
@@ -206,7 +207,7 @@ export function EnquiryForm({ buttonLabel = "Request consultation call" }: { but
         <div className="space-y-1.5">
           <label className="font-mono text-[11px] font-semibold text-[#5C5449] block">Roles required</label>
           <input
-            className="w-full h-12 rounded-xl border border-[#15120F]/15 bg-[#FFFFFF] px-3.5 text-base sm:text-sm text-[#141110] outline-none focus:border-[#CD9534] focus:ring-2 focus:ring-[#CD9534]/20 transition-all placeholder:text-[#5C5449]/40"
+            className="w-full h-12 rounded-xl border border-[#15120F]/15 bg-[#FFFFFF] px-3.5 text-base sm:text-sm text-[#141110] outline-none focus:border-[#1D3F91] focus:ring-2 focus:ring-[#1D3F91]/20 transition-all placeholder:text-[#5C5449]/40"
             name="rolesRequired"
             value={formData.rolesRequired}
             onChange={handleChange}
@@ -217,7 +218,7 @@ export function EnquiryForm({ buttonLabel = "Request consultation call" }: { but
         <div className="space-y-1.5">
           <label className="font-mono text-[11px] font-semibold text-[#5C5449] block">Headcount</label>
           <input
-            className="w-full h-12 rounded-xl border border-[#15120F]/15 bg-[#FFFFFF] px-3.5 text-base sm:text-sm text-[#141110] outline-none focus:border-[#CD9534] focus:ring-2 focus:ring-[#CD9534]/20 transition-all placeholder:text-[#5C5449]/40"
+            className="w-full h-12 rounded-xl border border-[#15120F]/15 bg-[#FFFFFF] px-3.5 text-base sm:text-sm text-[#141110] outline-none focus:border-[#1D3F91] focus:ring-2 focus:ring-[#1D3F91]/20 transition-all placeholder:text-[#5C5449]/40"
             name="employeesNeeded"
             type="number"
             inputMode="numeric"
@@ -237,19 +238,19 @@ export function EnquiryForm({ buttonLabel = "Request consultation call" }: { but
           value={formData.message}
           onChange={handleChange}
           rows={3}
-          className="w-full rounded-xl border border-[#15120F]/15 bg-[#FFFFFF] p-3.5 text-base sm:text-sm text-[#141110] outline-none focus:border-[#CD9534] focus:ring-2 focus:ring-[#CD9534]/20 transition-all placeholder:text-[#5C5449]/40 resize-none"
+          className="w-full rounded-xl border border-[#15120F]/15 bg-[#FFFFFF] p-3.5 text-base sm:text-sm text-[#141110] outline-none focus:border-[#1D3F91] focus:ring-2 focus:ring-[#1D3F91]/20 transition-all placeholder:text-[#5C5449]/40 resize-none"
           placeholder="Describe target technology stack, timeline constraints, and experience expectations..."
           required
         />
         {formData.message.trim().length > 0 && formData.message.trim().length < 10 && (
-          <p className="text-xs font-mono text-[#8A6420]">
+          <p className="text-xs font-mono text-[#1D3F91]">
             Still needs {10 - formData.message.trim().length} more characters.
           </p>
         )}
       </div>
 
       {errorMessage && (
-        <div className="text-xs font-mono text-[#141110] bg-[#F0E9D5] border border-[#CD9534]/40 px-3.5 py-2.5 rounded-xl">
+        <div className="text-xs font-mono text-[#141110] bg-[#F4EFE5] border border-[#1D3F91]/40 px-3.5 py-2.5 rounded-xl">
           {errorMessage}
         </div>
       )}
@@ -257,11 +258,11 @@ export function EnquiryForm({ buttonLabel = "Request consultation call" }: { but
       <button
         type="submit"
         disabled={isSubmitting}
-        className="w-full py-3.5 min-h-[48px] bg-[#CD9534] hover:bg-[#B37F26] text-[#15120F] font-bold text-sm tracking-wide rounded-2xl shadow-[4px_4px_0px_0px_rgba(21,18,15,0.9)] hover:translate-x-[1px] hover:translate-y-[1px] hover:shadow-[2px_2px_0px_0px_rgba(21,18,15,0.9)] transition-all flex items-center justify-center gap-2 cursor-pointer"
+        className="w-full py-3.5 min-h-[48px] bg-[#1D3F91] hover:bg-[#3358B8] text-[#FFFFFF] font-bold text-sm tracking-wide rounded-2xl shadow-[4px_4px_0px_0px_rgba(16,31,69,0.9)] hover:translate-x-[1px] hover:translate-y-[1px] hover:shadow-[2px_2px_0px_0px_rgba(16,31,69,0.9)] transition-all flex items-center justify-center gap-2 cursor-pointer"
       >
         {isSubmitting ? (
           <>
-            <span className="w-4 h-4 border-2 border-[#15120F]/30 border-t-[#15120F] rounded-full animate-spin" />
+            <span className="w-4 h-4 border-2 border-[#FFFFFF]/30 border-t-[#FFFFFF] rounded-full animate-spin" />
             <span>Submitting request...</span>
           </>
         ) : (

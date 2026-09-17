@@ -5,6 +5,7 @@ import Link from "next/link"
 import { motion } from "framer-motion"
 import { LogoBrand } from "@/components/landing/logo-brand"
 import { MapPin, Mail, Phone, Globe } from "lucide-react"
+import { Eyebrow } from "@/components/ui/eyebrow"
 
 const footerLinks = {
   solutions: [
@@ -67,7 +68,7 @@ export function Footer() {
   }, [])
 
   return (
-    <footer className="bg-[#0D2D42] text-[#F7F2E4] pt-24 pb-12 border-t-2 border-[#C18A18]/30 relative overflow-hidden">
+    <footer className="bg-[#101F45] text-[#FBF8F2] pt-24 pb-12 border-t-2 border-[#1D3F91]/40 relative overflow-hidden">
       <div className="max-w-[1440px] mx-auto px-6 lg:px-10 relative z-10">
         
         {/* Main Grid */}
@@ -83,22 +84,22 @@ export function Footer() {
             </div>
             
             <div className="space-y-3 max-w-md">
-              <h5 className="font-mono text-[11px] uppercase tracking-widest text-[#F7E9A7]">
+              <Eyebrow variant="on-dark" as="h5" className="block">
                 Get quarterly talent benchmarks
-              </h5>
+              </Eyebrow>
               <form 
                 onSubmit={(e: React.FormEvent) => { e.preventDefault(); setIsSubscribed(true) }}
-                className="flex border border-white/15 bg-[#143852] rounded-full overflow-hidden shadow-sm focus-within:ring-1 focus-within:ring-[#C18A18] focus-within:border-[#C18A18]"
+                className="flex border border-white/15 bg-[#1D3F91]/20 rounded-full overflow-hidden shadow-sm focus-within:ring-1 focus-within:ring-[#1D3F91] focus-within:border-[#1D3F91]"
               >
                 <input 
                   type="email" 
                   placeholder={newsletterPlaceholder} 
                   required
-                  className="flex-1 bg-transparent border-0 px-4 py-2.5 text-sm outline-none text-[#F7F2E4] placeholder-white/40"
+                  className="flex-1 bg-transparent border-0 px-4 py-2.5 text-sm outline-none text-[#FBF8F2] placeholder-white/40"
                 />
                 <button 
                   type="submit" 
-                  className="bg-[#C18A18] hover:bg-[#F7E9A7] text-[#0D2D42] font-bold text-xs uppercase px-5 py-2.5 tracking-wider transition-colors cursor-pointer"
+                  className="bg-[#1D3F91] hover:bg-[#3358B8] text-[#FFFFFF] font-bold text-xs uppercase px-5 py-2.5 tracking-wider transition-colors cursor-pointer"
                 >
                   {isSubscribed ? "Sent ✓" : "Subscribe"}
                 </button>
@@ -108,13 +109,13 @@ export function Footer() {
 
           {/* Link Columns */}
           <div>
-            <h5 className="font-mono text-[11px] uppercase tracking-widest text-[#F7E9A7] mb-5">
+            <Eyebrow variant="on-dark" as="h5" className="block mb-5">
               Solutions
-            </h5>
+            </Eyebrow>
             <ul className="space-y-3">
               {footerLinks.solutions.map((link) => (
                 <li key={link.name}>
-                  <Link href={link.href} className="text-[13.5px] text-[#94AEC6] hover:text-[#F7E9A7] transition-colors">
+                  <Link href={link.href} className="text-[13.5px] text-[#94AEC6] hover:text-[#FFFFFF] transition-colors">
                     {link.name}
                   </Link>
                 </li>
@@ -123,13 +124,13 @@ export function Footer() {
           </div>
 
           <div>
-            <h5 className="font-mono text-[11px] uppercase tracking-widest text-[#F7E9A7] mb-5">
+            <Eyebrow variant="on-dark" as="h5" className="block mb-5">
               Company
-            </h5>
+            </Eyebrow>
             <ul className="space-y-3">
               {footerLinks.company.map((link) => (
                 <li key={link.name}>
-                  <Link href={link.href} className="text-[13.5px] text-[#94AEC6] hover:text-[#F7E9A7] transition-colors">
+                  <Link href={link.href} className="text-[13.5px] text-[#94AEC6] hover:text-[#FFFFFF] transition-colors">
                     {link.name}
                   </Link>
                 </li>
@@ -139,28 +140,28 @@ export function Footer() {
 
           {/* Confirmed NAP / Contact Column */}
           <div>
-            <h5 className="font-mono text-[11px] uppercase tracking-widest text-[#F7E9A7] mb-5">
+            <Eyebrow variant="on-dark" as="h5" className="block mb-5">
               Bengaluru Hub
-            </h5>
+            </Eyebrow>
             <div className="space-y-3.5 text-xs text-[#94AEC6] font-sans">
               <div className="flex items-start gap-2.5">
-                <MapPin className="w-4 h-4 text-[#C18A18] flex-shrink-0 mt-0.5" />
+                <MapPin className="w-4 h-4 text-[#93B4F8] flex-shrink-0 mt-0.5" />
                 <span>BHIVE Platinum, Church Street, Bengaluru, Karnataka</span>
               </div>
               <div className="flex items-center gap-2.5">
-                <Mail className="w-4 h-4 text-[#C18A18] flex-shrink-0" />
-                <a href="mailto:connect@talentyconsulting.in" className="hover:text-[#F7E9A7] transition-colors">
+                <Mail className="w-4 h-4 text-[#93B4F8] flex-shrink-0" />
+                <a href="mailto:connect@talentyconsulting.in" className="hover:text-[#FFFFFF] transition-colors">
                   connect@talentyconsulting.in
                 </a>
               </div>
               <div className="flex items-center gap-2.5">
-                <Phone className="w-4 h-4 text-[#C18A18] flex-shrink-0" />
-                <a href="tel:8431119696" className="hover:text-[#F7E9A7] transition-colors font-mono">
+                <Phone className="w-4 h-4 text-[#93B4F8] flex-shrink-0" />
+                <a href="tel:8431119696" className="hover:text-[#FFFFFF] transition-colors font-mono">
                   8431119696
                 </a>
               </div>
               <div className="flex items-center gap-2.5">
-                <Globe className="w-4 h-4 text-[#C18A18] flex-shrink-0" />
+                <Globe className="w-4 h-4 text-[#93B4F8] flex-shrink-0" />
                 <span className="font-mono">talentyconsulting.in</span>
               </div>
             </div>
@@ -174,7 +175,7 @@ export function Footer() {
           </div>
           <div className="flex gap-6">
             <span>BHIVE Platinum · Church Street</span>
-            <span className="text-[#C18A18]">Bengaluru Hub · Pan-India Sourcing</span>
+            <span className="text-[#93B4F8]">Bengaluru Hub · Pan-India Sourcing</span>
           </div>
         </div>
       </div>

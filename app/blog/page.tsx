@@ -8,16 +8,7 @@ import { RollingHeadline } from "@/components/landing/rolling-headline"
 import { Reveal, RevealGroup } from "@/components/landing/scroll-reveal"
 import { Eyebrow } from "@/components/ui/eyebrow"
 
-const blogPosts = [
-  {
-    title: "How to Hire Trained Employees in India: The Complete Guide (2026)",
-    slug: "how-to-hire-trained-employees-india",
-    excerpt: "A practical guide to hiring, domain upskilling, and retaining technical talent across India. Why pre-trained placement models outperform traditional keyword matching.",
-    date: "June 01, 2026",
-    author: "Talenty Consulting",
-    readTime: "8 min read"
-  }
-]
+import { BLOG_POSTS } from "@/lib/blog-posts"
 
 export default function BlogIndex() {
   return (
@@ -52,7 +43,7 @@ export default function BlogIndex() {
       {/* Articles Grid */}
       <section className="pb-32 max-w-5xl mx-auto px-6 lg:px-10">
         <RevealGroup className="grid gap-8">
-          {blogPosts.map((post) => (
+          {BLOG_POSTS.map((post) => (
             <article
               key={post.slug}
               className="border border-[#0D2D42]/10 bg-[#F7F2E4] rounded-3xl p-8 hover:border-[#1D3F91]/30 transition-all flex flex-col md:flex-row gap-8 items-start shadow-xs"
@@ -65,7 +56,7 @@ export default function BlogIndex() {
                   </span>
                   <span className="flex items-center gap-1.5">
                     <User className="w-3.5 h-3.5 text-[#1D3F91]" />
-                    {post.author}
+                    Talenty Consulting
                   </span>
                   <span className="bg-[#1D3F91]/10 text-[#1D3F91] px-2.5 py-0.5 rounded-full font-semibold border border-[#1D3F91]/20">
                     {post.readTime}

@@ -34,7 +34,7 @@ const CANDIDATES_BY_ROLE: Record<string, Candidate[]> = {
     {
       id: "c-1",
       name: "Aarav Mehta",
-      role: "Distributed Systems & Go",
+      role: "Distributed Systems & Go — Example Case",
       avatar: "AM",
       matchScore: 96,
       stage: "Offer Ready",

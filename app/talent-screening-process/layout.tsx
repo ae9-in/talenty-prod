@@ -1,11 +1,38 @@
 import type { Metadata } from "next"
 import { BreadcrumbSchema, PageServiceSchema } from "@/components/landing/json-ld"
 
+const title = "Candidate Screening & Vetting Services in Bangalore | Talenty"
+const description =
+  "Multi-stage candidate screening and assessment — technical, cognitive and behavioural — before any candidate reaches your inbox."
+const url = "https://www.talentyconsulting.in/talent-screening-process"
+
 export const metadata: Metadata = {
-  title: "Candidate Screening & Vetting Services in Bangalore | Talenty",
-  description: "Multi-stage candidate screening and assessment — technical, cognitive and behavioural — before any candidate reaches your inbox.",
+  title,
+  description,
   alternates: {
-    canonical: "https://www.talentyconsulting.in/talent-screening-process",
+    canonical: url,
+  },
+  openGraph: {
+    title,
+    description,
+    url,
+    siteName: "Talenty Consulting",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Candidate Screening & Vetting — Talenty Consulting",
+      },
+    ],
+    locale: "en_IN",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title,
+    description,
+    images: ["/og-image.png"],
   },
 }
 

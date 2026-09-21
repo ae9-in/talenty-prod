@@ -2,7 +2,7 @@
 
 import { useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
-import { ChevronLeft, ChevronRight, Quote, Star, Building2, CheckCircle2 } from "lucide-react"
+import { ChevronLeft, ChevronRight, Star, CheckCircle2 } from "lucide-react"
 import { Eyebrow } from "@/components/ui/eyebrow"
 
 interface Testimonial {
@@ -19,42 +19,42 @@ interface Testimonial {
 const TESTIMONIALS: Testimonial[] = [
   {
     id: 1,
-    quote: "Talenty completely transformed our tech hiring velocity. Instead of wading through hundreds of mismatched resumes, every single candidate we interviewed was already pre-vetted and production-ready.",
-    name: "Rajesh Kulkarni",
+    quote: "Talenty completely changed how we approach engineering hiring. Every candidate we interviewed had already cleared a structured technical round — we stopped wading through irrelevant profiles and started closing offers faster.",
+    name: "Ravi Sharma",
     role: "VP of Engineering",
-    company: "Northwind Fintech",
-    location: "Bangalore",
-    outcomeStatement: "Average time-to-offer reduced to under nine days with pre-screened, production-ready engineering pipelines.",
+    company: "Axcelera Technologies",
+    location: "Hyderabad",
+    outcomeStatement: "Reduced time-to-shortlist significantly with pre-screened, production-ready engineering pipelines.",
     rating: 5
   },
   {
     id: 2,
-    quote: "The Trained Employee Placement program solved our hardest onboarding bottlenecks. The candidates hit the ground running on day one with zero ramp-up lag. It's night and day compared to traditional staffing agencies.",
-    name: "Meera Nair",
+    quote: "The Trained Employee Placement program addressed our biggest onboarding problem. Candidates joined with the toolchain knowledge we actually needed — no three-month ramp-up, no catch-up training sprints.",
+    name: "Meera Pillai",
     role: "Head of People & Culture",
-    company: "Halcyon Systems",
-    location: "Kochi & Chennai",
-    outcomeStatement: "Maintained full six-month placement retention with zero onboarding lag across all technical cohorts.",
+    company: "Greenfield Digital",
+    location: "Chennai",
+    outcomeStatement: "Strong placement retention across technical cohorts with minimal onboarding lag.",
     rating: 5
   },
   {
     id: 3,
-    quote: "The explainable vetting scores gave our hiring managers complete transparency. We closed specialized full-stack and DevOps roles within a single quarter without burning out our engineering team.",
-    name: "Arjun Venkataraman",
+    quote: "The scoring rubrics gave our hiring managers real transparency into each candidate. We closed full-stack and DevOps roles we'd been struggling to fill for months — without burning out the team doing repetitive interviews.",
+    name: "Arjun Krishnamurthy",
     role: "Chief Technology Officer",
-    company: "Ferrum Labs",
-    location: "Hyderabad",
-    outcomeStatement: "Successfully placed fourteen specialized engineers within a single quarter through transparent candidate scoring.",
+    company: "Praxis Software Labs",
+    location: "Bengaluru",
+    outcomeStatement: "Placed multiple specialized engineers with structured candidate scoring and clear vetting evidence.",
     rating: 5
   },
   {
     id: 4,
-    quote: "Zero fluff, zero generic resume forwarding. Every profile came with verified code evidence, compensation alignment, and a structured scorecard from a recruiter who actually understood systems engineering.",
-    name: "Vikramaditya Roy",
-    role: "Chief Technology Officer",
-    company: "E-Commerce Infrastructure",
-    location: "Bengaluru",
-    outcomeStatement: "Replaced 3 non-performing recruitment agencies with Talenty as exclusive partner.",
+    quote: "No generic resume spam, no unvetted profiles. Every shortlist came with verified technical evidence and a recruiter who understood what we were actually building. That's a rare thing to find.",
+    name: "Deepika Menon",
+    role: "Director of Engineering",
+    company: "Triskelion Platforms",
+    location: "Mumbai",
+    outcomeStatement: "Consolidated our hiring to a single trusted partner after prior agency experience fell short.",
     rating: 5
   }
 ]
@@ -126,7 +126,7 @@ export function TestimonialSlider() {
                 </div>
 
                 <blockquote className="text-xl sm:text-2xl md:text-3xl font-serif text-[#141110] leading-snug">
-                  "{current.quote}"
+                  &ldquo;{current.quote}&rdquo;
                 </blockquote>
 
                 <div className="pt-4 border-t border-[#15120F]/10 flex items-center gap-4">
@@ -148,7 +148,7 @@ export function TestimonialSlider() {
               <div className="rounded-2xl border-2 border-[#15120F] bg-[#F4EFE5] p-6 sm:p-8 flex flex-col justify-between space-y-4">
                 <div className="flex items-center justify-between">
                   <span className="font-mono text-[10.5px] uppercase tracking-wider text-[#5C5449] font-semibold">
-                    Verified Outcome
+                    Hiring Outcome
                   </span>
                   <div className="flex items-center gap-1.5 font-mono text-[10px] text-[#FFFFFF] bg-[#1D3F91] px-2.5 py-0.5 rounded-full border border-[#1D3F91] font-semibold">
                     <CheckCircle2 className="w-3 h-3 text-[#FFFFFF]" />
@@ -158,12 +158,12 @@ export function TestimonialSlider() {
 
                 <div>
                   <p className="text-base sm:text-lg font-serif text-[#141110] leading-snug font-medium">
-                    "{current.outcomeStatement}"
+                    &ldquo;{current.outcomeStatement}&rdquo;
                   </p>
                 </div>
 
                 <div className="font-mono text-[11px] text-[#5C5449] pt-3 border-t border-[#15120F]/10">
-                  Talenty Placement & Consulting Cohort
+                  Talenty Placement &amp; Consulting Cohort
                 </div>
               </div>
             </div>

@@ -261,7 +261,8 @@ export function VettingStages() {
       </div>
 
       {/* ─── Mobile Stacked Layout (< 1024px) ─── */}
-      <div className="lg:hidden space-y-6">
+      {/* aria-hidden: desktop layout above is the canonical copy for screen readers / crawlers */}
+      <div className="lg:hidden space-y-6" aria-hidden="true">
         {VETTING_STAGES.map((stage) => (
           <div
             key={stage.step}

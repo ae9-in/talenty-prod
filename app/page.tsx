@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react"
 import Link from "next/link"
 import { MapPin, CheckCircle2 } from "lucide-react"
+import { FAQPageSchema } from "@/components/landing/json-ld"
 
 import {
   Navbar,
@@ -40,13 +41,14 @@ const BANGALORE_AREAS = [
   },
   {
     area: "Pan-India Placement Network",
-    detail: "Active candidate placement across Chennai, Pune, Hyderabad, Mumbai, and Kochi."
+    detail: "Active candidate placement across Hyderabad, Chennai, Mumbai, and Pune, anchored from our Bengaluru office."
   }
 ]
 
 export default function Home() {
   return (
     <main className="min-h-screen min-h-dvh bg-[#FBF8F2] text-[#141110] font-sans selection:bg-[#1D3F91] selection:text-[#FFFFFF]">
+      <FAQPageSchema />
       <Navbar />
 
       {/* 1. HERO CAROUSEL SECTION */}
@@ -277,10 +279,9 @@ export default function Home() {
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                   {[
-                    { name: "Bangalore", label: "BHIVE Platinum, Church St" },
-                    { name: "Kochi", label: "Tech & Operations" },
-                    { name: "Chennai", label: "Enterprise Staffing" },
+                    { name: "Bengaluru", label: "BHIVE Platinum, Church St" },
                     { name: "Hyderabad", label: "IT & Software Hub" },
+                    { name: "Chennai", label: "Enterprise Staffing" },
                     { name: "Mumbai", label: "BFSI & Corporate" },
                   ].map((loc) => (
                     <div key={loc.name} className="border border-[#15120F]/10 bg-[#FFFFFF] rounded-2xl p-3 flex flex-col justify-between hover:border-[#1D3F91] transition-colors">

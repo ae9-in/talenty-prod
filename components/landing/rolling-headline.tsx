@@ -38,8 +38,7 @@ export function RollingHeadline({
   if (text) {
     const words = text.split(" ")
     return (
-      <h1 className={className}>
-        <span className="sr-only">{text}</span>
+      <h1 className={className} aria-label={text}>
         <span aria-hidden="true" className="inline-flex flex-wrap gap-x-[0.28em] gap-y-[0.05em]">
           {words.map((word, idx) => (
             <span key={idx} className="inline-block overflow-hidden py-1">
@@ -67,8 +66,7 @@ export function RollingHeadline({
   const Tag = as
 
   return (
-    <Tag className={className}>
-      <span className="sr-only">{fullAccessibleText}</span>
+    <Tag className={className} aria-label={fullAccessibleText}>
       <span aria-hidden="true" className="block">
         {line1 && (
           <span className="block overflow-hidden py-0.5">

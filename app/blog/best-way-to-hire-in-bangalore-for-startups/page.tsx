@@ -25,11 +25,11 @@ export default function Page() {
       <p className="text-lg font-medium text-foreground">
         There is no universal “best hiring agency” badge that Google should trust. The best way to hire
         in Bangalore for startups is a <strong className="text-foreground">repeatable process</strong>{" "}
-        matched to role type — portals for awareness,{" "}
-        <Link href="/recruitment-consulting-bangalore" className="text-primary hover:underline">
-          consulting
+        matched to role type — partnering with a specialized{" "}
+        <Link href="/recruitment-consulting-bangalore" className="text-primary hover:underline font-semibold">
+          recruitment agency for startups in Bangalore
         </Link>{" "}
-        for strategy,{" "}
+        for strategy, and leveraging{" "}
         <Link href="/trained-employee-placement" className="text-primary hover:underline">
           trained placement
         </Link>{" "}

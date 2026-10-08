@@ -43,11 +43,11 @@ export default function Page() {
       </p>
       <h2 className="mt-10 text-2xl font-bold text-foreground">Staffing firm</h2>
       <p>
-        Often covers contract, temporary, or permanent placement operations.{" "}
-        <Link href="/it-staffing-bangalore" className="text-primary hover:underline">
-          IT staffing
+        Often covers contract, temporary, or permanent placement operations. If you are seeking specialized technical talent in Karnataka, partnering with an{" "}
+        <Link href="/it-staffing-bangalore" className="text-primary hover:underline font-semibold">
+          IT recruitment agency in Bengaluru
         </Link>{" "}
-        is the tech-specialized form.
+        is the most effective approach.
       </p>
       <h2 className="mt-10 text-2xl font-bold text-foreground">Where Talenty sits</h2>
       <p>

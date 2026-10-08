@@ -94,7 +94,7 @@ export function RollingHeadline({
             </motion.span>
           </span>
         )}
-
+        {" "}
         {accent && (
           <span className="block overflow-hidden py-0.5 relative">
             <motion.span
@@ -118,7 +118,7 @@ export function RollingHeadline({
             </motion.span>
           </span>
         )}
-
+        {" "}
         {line2 && (
           <span className="block overflow-hidden py-0.5">
             <motion.span

@@ -1,6 +1,6 @@
 "use client"
 
-import { Code, Terminal, Database, Cloud, Monitor, Layers, CheckCircle2, Cpu, Server, Smartphone, ShieldCheck, Activity } from "lucide-react"
+import { Code, Terminal, Database, Cloud, Layers, Cpu, Server, Smartphone, ShieldCheck, Activity } from "lucide-react"
 import Link from "next/link"
 import { Navbar } from "@/components/landing/navbar"
 import { Footer } from "@/components/landing/footer"
@@ -105,14 +105,14 @@ export default function ItStaffingBangalore() {
 
             <RollingHeadline
               as="h2"
-              line1="IT Staffing Services"
-              accent="in Bangalore."
-              line2="Contract & Permanent Tech Talent."
+              line1="Contract & Permanent Tech Talent,"
+              accent="Screened"
+              line2="Before You See a CV."
               className="text-4xl sm:text-5xl md:text-6xl font-serif font-semibold tracking-tight leading-[1.02] text-[#141110]"
             />
 
             <p className="mt-5 text-lg md:text-xl text-[#5C5449] max-w-2xl mx-auto leading-relaxed">
-              Hire Java, Python, React, DevOps, and full-stack developers in Bangalore through Talenty&apos;s contract and permanent IT staffing services. Every engineer is pre-screened on live codebases before entering your hiring loop.
+              As an IT recruitment agency in Bengaluru, we place engineers on contract, contract-to-hire and permanent terms. Our technical recruitment process screens every candidate against live code and system-design review before shortlisting.
             </p>
             <Link
               href="#contact"
@@ -191,7 +191,7 @@ export default function ItStaffingBangalore() {
         </RevealGroup>
       </section>
 
-      {/* Flexible Engagement Models (B2 Gap Keywords) */}
+      {/* Flexible Engagement Models */}
       <section className="py-20 bg-[#F4EFE5]/50 border-t border-[#141110]/10">
         <div className="max-w-[1440px] mx-auto px-6 lg:px-10">
           <Reveal className="text-center max-w-3xl mx-auto mb-16">
@@ -236,14 +236,14 @@ export default function ItStaffingBangalore() {
                   Contract-to-Hire Staffing Bengaluru
                 </h3>
                 <p className="text-xs sm:text-sm text-[#5C5449] leading-relaxed mb-4">
-                  Evaluate an engineer&apos;s real-world code output, architectural discipline, and cultural fit in active production before making a permanent offer. Lowers permanent hiring risk to zero.
+                  Evaluate an engineer&apos;s real-world code output, architectural discipline, and cultural fit in active production before making a permanent offer. Lowers permanent hiring risk to zero with our <Link href="/trained-employee-placement" className="text-[#1D3F91] font-semibold underline underline-offset-2">trained employee placement</Link> track.
                 </p>
               </div>
               <Link
                 href="/trained-employee-placement"
                 className="text-xs font-mono font-bold text-[#1D3F91] hover:underline inline-flex items-center gap-1 mt-2"
               >
-                Learn about trained placement &rarr;
+                Explore trained employee placement &rarr;
               </Link>
             </div>
 

@@ -251,7 +251,7 @@ export default function TrainedEmployeePlacement() {
                   Pre-Vetted Candidates Bengaluru
                 </h3>
                 <p className="text-xs sm:text-sm text-[#5C5449] leading-relaxed mb-4">
-                  Every candidate in our Bengaluru talent network has cleared structured coding evaluations, live architecture defense, and cognitive problem-solving benchmarks before reaching client review.
+                  As a specialized <Link href="/it-staffing-bangalore" className="text-[#1D3F91] font-semibold underline underline-offset-2">technical recruitment agency in Bengaluru</Link>, every candidate in our talent network has cleared structured coding evaluations, live architecture defense, and cognitive problem-solving benchmarks before reaching client review.
                 </p>
               </div>
               <Link

@@ -33,11 +33,11 @@ export default function Page() {
     >
       <p className="text-lg font-medium text-foreground">
         Searching for the “best hiring agency in Bangalore” usually means you want a partner who reduces
-        hiring risk — not a page that crowns itself #1. Use this checklist when evaluating{" "}
-        <Link href="/recruitment-consulting-bangalore" className="text-primary hover:underline">
-          recruitment consulting
+        hiring risk — not a page that crowns itself #1. Use this checklist when evaluating a specialized{" "}
+        <Link href="/recruitment-consulting-bangalore" className="text-primary hover:underline font-semibold">
+          bulk hiring agency in Bangalore
         </Link>{" "}
-        and staffing firms in Bengaluru.
+        or recruitment consulting partner in Bengaluru.
       </p>
       <h2 className="mt-10 text-2xl font-bold text-foreground">Founder checklist</h2>
       <ol className="list-decimal space-y-3 pl-6">

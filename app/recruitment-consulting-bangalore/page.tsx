@@ -1,6 +1,6 @@
 "use client"
 
-import { Building2, ShieldCheck, Zap, CheckCircle2, Users, Rocket, Clock, Layers, TrendingUp } from "lucide-react"
+import { Building2, ShieldCheck, Zap, CheckCircle2, Users, Clock, Layers, TrendingUp } from "lucide-react"
 import Link from "next/link"
 import { Navbar } from "@/components/landing/navbar"
 import { Footer } from "@/components/landing/footer"
@@ -60,9 +60,9 @@ export default function RecruitmentConsultingBangalore() {
 
             <RollingHeadline
               as="h2"
-              line1="Recruitment Consulting Services"
-              accent="in Bangalore."
-              line2="End-to-End Talent Strategy."
+              line1="End-to-End Talent Strategy"
+              accent="for Startups, SMEs"
+              line2="& High-Growth Enterprises."
               className="text-4xl sm:text-5xl md:text-6xl font-serif font-semibold tracking-tight leading-[1.02] text-[#141110]"
             />
 
@@ -121,9 +121,9 @@ export default function RecruitmentConsultingBangalore() {
                 <div className="w-12 h-12 rounded-2xl bg-[#1D3F91] text-[#FFFFFF] flex items-center justify-center mb-6 shadow-xs">
                   <pillar.icon className="w-5 h-5" />
                 </div>
-                <h2 className="text-2xl font-serif font-bold text-[#141110] mb-3">
+                <h3 className="text-2xl font-serif font-bold text-[#141110] mb-3">
                   {pillar.title}
-                </h2>
+                </h3>
                 <p className="text-sm text-[#5C5449] leading-relaxed">
                   {pillar.desc}
                 </p>
@@ -133,7 +133,7 @@ export default function RecruitmentConsultingBangalore() {
         </RevealGroup>
       </section>
 
-      {/* Specialized Consulting Services & Hiring Models (B2 Gap Keywords) */}
+      {/* Specialized Consulting Services & Hiring Models */}
       <section className="py-20 bg-[#F4EFE5]/50 border-t border-[#141110]/10">
         <div className="max-w-[1440px] mx-auto px-6 lg:px-10">
           <Reveal className="text-center max-w-3xl mx-auto mb-16">
@@ -155,10 +155,10 @@ export default function RecruitmentConsultingBangalore() {
                   <Users className="w-5 h-5" />
                 </div>
                 <h3 className="text-xl font-serif font-bold text-[#141110] mb-2.5">
-                  Bulk Hiring Bangalore &amp; Volume Hiring Bengaluru
+                  Bulk and volume hiring in Bangalore
                 </h3>
                 <p className="text-xs sm:text-sm text-[#5C5449] leading-relaxed mb-4">
-                  For rapid team scaling and newly funded tech expansions, our bulk hiring engine executes calibrated multi-seat sourcing sprints across Bangalore, maintaining consistent technical vetting quality.
+                  Working as a bulk hiring agency in Bangalore, we run calibrated multi-seat sourcing sprints across Bangalore, maintaining consistent technical vetting quality.
                 </p>
               </div>
               <Link
@@ -175,10 +175,10 @@ export default function RecruitmentConsultingBangalore() {
                   <Building2 className="w-5 h-5" />
                 </div>
                 <h3 className="text-xl font-serif font-bold text-[#141110] mb-2.5">
-                  Recruitment Partner for SMEs India
+                  A recruitment partner for SMEs
                 </h3>
                 <p className="text-xs sm:text-sm text-[#5C5449] leading-relaxed mb-4">
-                  We serve as an external talent acquisition team for Indian SMEs and growth-stage companies, eliminating costly recruiter retainers with transparent, performance-aligned placement models.
+                  As a recruitment agency for startups in Bangalore, we structure hiring around runway and headcount plans rather than fixed annual cycles, eliminating costly recruiter retainers with transparent, performance-aligned placement models.
                 </p>
               </div>
               <Link
@@ -195,10 +195,10 @@ export default function RecruitmentConsultingBangalore() {
                   <Layers className="w-5 h-5" />
                 </div>
                 <h3 className="text-xl font-serif font-bold text-[#141110] mb-2.5">
-                  RPO Services Bangalore (Recruitment Process Outsourcing)
+                  Recruitment process outsourcing (RPO)
                 </h3>
                 <p className="text-xs sm:text-sm text-[#5C5449] leading-relaxed mb-4">
-                  Embed dedicated recruitment consultants directly into your hiring workflow. We manage end-to-end applicant sourcing, screening pipelines, interview scheduling, and offer closing under your employer brand.
+                  Embed dedicated recruitment consultants directly into your hiring workflow. We manage end-to-end applicant sourcing, screening pipelines, interview scheduling, and offer closing under your employer brand across Bengaluru and pan-India tech centers.
                 </p>
               </div>
               <Link
@@ -215,7 +215,7 @@ export default function RecruitmentConsultingBangalore() {
                   <TrendingUp className="w-5 h-5" />
                 </div>
                 <h3 className="text-xl font-serif font-bold text-[#141110] mb-2.5">
-                  Hiring Strategy Consulting Bangalore
+                  Hiring strategy consulting
                 </h3>
                 <p className="text-xs sm:text-sm text-[#5C5449] leading-relaxed mb-4">
                   Optimize your hiring pipeline with localized compensation benchmarking, technical assessment design, and interview rubric standardization crafted specifically for competitive Bangalore tech hiring.
@@ -226,26 +226,6 @@ export default function RecruitmentConsultingBangalore() {
                 className="text-xs font-mono font-bold text-[#1D3F91] hover:underline inline-flex items-center gap-1 mt-2"
               >
                 Trained vs in-house playbook &rarr;
-              </Link>
-            </div>
-
-            <div className="border border-[#141110]/10 bg-[#FFFFFF] rounded-3xl p-7 shadow-xs flex flex-col justify-between">
-              <div>
-                <div className="w-10 h-10 rounded-xl bg-[#1D3F91] text-[#FFFFFF] flex items-center justify-center mb-5 shadow-xs">
-                  <Rocket className="w-5 h-5" />
-                </div>
-                <h3 className="text-xl font-serif font-bold text-[#141110] mb-2.5">
-                  Recruitment Process Outsourcing India
-                </h3>
-                <p className="text-xs sm:text-sm text-[#5C5449] leading-relaxed mb-4">
-                  Enterprise-grade RPO solutions for multi-city hiring across Bengaluru, Chennai, and Pune, delivering scalable talent pipelines with real-time analytics and verified candidate quality metrics.
-                </p>
-              </div>
-              <Link
-                href="/about"
-                className="text-xs font-mono font-bold text-[#1D3F91] hover:underline inline-flex items-center gap-1 mt-2"
-              >
-                About Talenty Consulting &rarr;
               </Link>
             </div>
 

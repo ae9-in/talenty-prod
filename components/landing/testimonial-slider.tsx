@@ -19,16 +19,6 @@ interface Testimonial {
 const TESTIMONIALS: Testimonial[] = [
   {
     id: 1,
-    quote: "Talenty completely changed how we approach engineering hiring. Every candidate we interviewed had already cleared a structured technical round — we stopped wading through irrelevant profiles and started closing offers faster.",
-    name: "Ravi Sharma",
-    role: "VP of Engineering",
-    company: "Axcelera Technologies",
-    location: "Hyderabad",
-    outcomeStatement: "Reduced time-to-shortlist significantly with pre-screened, production-ready engineering pipelines.",
-    rating: 5
-  },
-  {
-    id: 2,
     quote: "The Trained Employee Placement program addressed our biggest onboarding problem. Candidates joined with the toolchain knowledge we actually needed — no three-month ramp-up, no catch-up training sprints.",
     name: "Meera Pillai",
     role: "Head of People & Culture",
@@ -38,7 +28,7 @@ const TESTIMONIALS: Testimonial[] = [
     rating: 5
   },
   {
-    id: 3,
+    id: 2,
     quote: "The scoring rubrics gave our hiring managers real transparency into each candidate. We closed full-stack and DevOps roles we'd been struggling to fill for months — without burning out the team doing repetitive interviews.",
     name: "Arjun Krishnamurthy",
     role: "Chief Technology Officer",
@@ -48,12 +38,12 @@ const TESTIMONIALS: Testimonial[] = [
     rating: 5
   },
   {
-    id: 4,
+    id: 3,
     quote: "No generic resume spam, no unvetted profiles. Every shortlist came with verified technical evidence and a recruiter who understood what we were actually building. That's a rare thing to find.",
     name: "Deepika Menon",
     role: "Director of Engineering",
     company: "Triskelion Platforms",
-    location: "Mumbai",
+    location: "Pune",
     outcomeStatement: "Consolidated our hiring to a single trusted partner after prior agency experience fell short.",
     rating: 5
   }

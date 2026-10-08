@@ -162,11 +162,10 @@ export function VettingStages() {
 
   return (
     <div ref={containerRef} className="five-gates-section w-full">
-      {/* ─── Desktop Pinned Side-by-Side (>= 1024px) ─── */}
-      <div className="hidden lg:grid lg:grid-cols-[400px_1fr] gap-12 items-start relative">
+      <div className="grid grid-cols-1 lg:grid-cols-[400px_1fr] gap-8 lg:gap-12 items-start relative">
         
-        {/* Sticky Left Column — Modest photo panel + stage numeral */}
-        <div className="gates-left-sticky space-y-4">
+        {/* Sticky Left Column — Desktop Pinned photo panel + stage numeral (>= 1024px) */}
+        <div className="hidden lg:block gates-left-sticky space-y-4">
           <div className="relative w-full aspect-[4/3] rounded-3xl overflow-hidden border-2 border-[#15120F]/15 bg-[#15120F] shadow-[6px_6px_0px_0px_rgba(21,18,15,0.9)]">
             {VETTING_STAGES.map((s, idx) => {
               const isActive = idx === activeStageIdx
@@ -210,19 +209,31 @@ export function VettingStages() {
           </div>
         </div>
 
-        {/* Scrolling Right Column — Stage Cards */}
-        <div ref={rightColumnRef} className="gates-right-column space-y-8 pb-16">
+        {/* Scrolling Column — Unified Single Set of Stage Cards (Mobile + Desktop) */}
+        <div ref={rightColumnRef} className="gates-right-column space-y-6 lg:space-y-8 pb-8 lg:pb-16">
           {VETTING_STAGES.map((stage, idx) => {
             const isActive = idx === activeStageIdx
             return (
               <div
                 key={stage.step}
-                className={`vetting-stage-card rounded-3xl border-2 p-8 transition-all duration-300 ${
+                className={`vetting-stage-card rounded-3xl border-2 p-6 sm:p-8 transition-all duration-300 ${
                   isActive
                     ? "border-[#15120F] bg-[#F7F2E4] shadow-[6px_6px_0px_0px_rgba(21,18,15,1)]"
                     : "border-[#15120F]/10 bg-[#F0E9D5]/50 hover:border-[#15120F]/30"
                 }`}
               >
+                {/* Mobile-Only Photo Banner (< 1024px) */}
+                <div className="lg:hidden relative w-full aspect-[4/3] rounded-2xl overflow-hidden mb-5 border border-[#15120F]/10">
+                  <Image
+                    src={stage.image}
+                    alt={stage.title}
+                    fill
+                    priority={idx === 0}
+                    sizes="(max-width: 1024px) 100vw, 400px"
+                    className="object-cover object-center"
+                  />
+                </div>
+
                 <div className="flex items-center justify-between pb-3.5 border-b border-[#15120F]/10 mb-4">
                   <Eyebrow>
                     STAGE {stage.step}
@@ -232,7 +243,7 @@ export function VettingStages() {
                   </div>
                 </div>
 
-                <h3 className="text-2xl font-serif font-bold text-[#141110] mb-3">
+                <h3 className="text-xl sm:text-2xl font-serif font-bold text-[#141110] mb-3">
                   {stage.title}
                 </h3>
 
@@ -248,7 +259,7 @@ export function VettingStages() {
                   {stage.criteria.map((c, cIdx) => (
                     <div key={cIdx} className="flex items-start gap-2.5">
                       <CheckCircle2 className="w-4 h-4 text-[#1D3F91] flex-shrink-0 mt-0.5" />
-                      <span className="text-xs text-[#141110] font-medium font-sans">
+                      <span className="text-xs sm:text-[13px] text-[#141110] font-medium font-sans">
                         {c}
                       </span>
                     </div>
@@ -259,56 +270,7 @@ export function VettingStages() {
           })}
         </div>
       </div>
-
-      {/* ─── Mobile Stacked Layout (< 1024px) ─── */}
-      {/* aria-hidden: desktop layout above is the canonical copy for screen readers / crawlers */}
-      <div className="lg:hidden space-y-6" aria-hidden="true">
-        {VETTING_STAGES.map((stage) => (
-          <div
-            key={stage.step}
-            className="rounded-3xl border-2 border-[#15120F]/15 bg-[#F7F2E4] p-6 shadow-sm space-y-5"
-          >
-            {/* Mobile Photo (4:3 modest size) */}
-            <div className="relative w-full aspect-[4/3] rounded-2xl overflow-hidden border border-[#15120F]/10">
-              <Image
-                src={stage.image}
-                alt={stage.title}
-                fill
-                sizes="(max-width: 1024px) 100vw, 400px"
-                className="object-cover object-center"
-              />
-            </div>
-
-            <div className="flex items-center justify-between pb-2 border-b border-[#15120F]/10">
-              <Eyebrow>
-                STAGE {stage.step}
-              </Eyebrow>
-              <span className="font-mono text-[10px] font-bold text-[#15120F] bg-[#F0E9D5] px-2.5 py-0.5 rounded-full border border-[#15120F]/10">
-                Gate 0{parseInt(stage.step)}
-              </span>
-            </div>
-
-            <h3 className="text-xl font-serif font-bold text-[#141110]">
-              {stage.title}
-            </h3>
-
-            <p className="text-sm text-[#5C5449] leading-relaxed font-sans">
-              {stage.desc}
-            </p>
-
-            <div className="space-y-2 pt-3 border-t border-[#15120F]/10">
-              {stage.criteria.map((c, cIdx) => (
-                <div key={cIdx} className="flex items-start gap-2">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-[#1D3F91] flex-shrink-0 mt-0.5" />
-                  <span className="text-xs text-[#141110] font-medium font-sans">
-                    {c}
-                  </span>
-                </div>
-              ))}
-            </div>
-          </div>
-        ))}
-      </div>
     </div>
   )
 }
+

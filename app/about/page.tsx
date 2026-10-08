@@ -13,7 +13,7 @@ const pillars = [
   {
     title: "Hub-Anchored, Pan-India Sourcing",
     tag: "GEOGRAPHIC REACH",
-    description: "Physical recruitment headquarters in Bengaluru and operational teams in Kochi, with active placement networks spanning Hyderabad, Chennai, Pune, Mumbai, and Delhi NCR.",
+    description: "Physical recruitment headquarters at BHIVE Platinum on Church Street in Bengaluru, with active placement networks across Chennai and Pune.",
   },
   {
     title: "Skills-Gap Trained Placement",

@@ -24,6 +24,7 @@ export interface HeroSlide {
   headlineLine2: string
   subcopy: string
   backgroundImage: string
+  imageAlt: string
   req: {
     seniority: string
     role: string
@@ -43,6 +44,7 @@ export const HERO_SLIDES: HeroSlide[] = [
     subcopy:
       "The recruitment consulting and placement system built for business teams that move. Calibrated technical vetting, production-ready talent screening, and direct candidate evaluation.",
     backgroundImage: "/images/hero-slide-1.jpg",
+    imageAlt: "Recruitment consultants reviewing candidate shortlists at Talenty Consulting's Bengaluru office",
     req: {
       seniority: "SR.",
       role: "DISTRIBUTED SYSTEMS LEAD",
@@ -139,6 +141,7 @@ export const HERO_SLIDES: HeroSlide[] = [
     subcopy:
       "Deploy pre-screened engineers and domain specialists upskilled directly for your production stack. Hands-on practical bootcamps eliminate ramp-up lag and ensure immediate output.",
     backgroundImage: "/images/hero-slide-2.jpg",
+    imageAlt: "Software engineers undergoing calibrated stack training and practical evaluation at Talenty Consulting",
     req: {
       seniority: "MID-SR.",
       role: "FULL-STACK CLOUD ASSOCIATE",
@@ -230,8 +233,9 @@ export const HERO_SLIDES: HeroSlide[] = [
     headlineAccent: "Every city.",
     headlineLine2: "All of India.",
     subcopy:
-      "Anchored by our Bengaluru headquarters and Kochi operations with high-velocity sourcing across Hyderabad, Chennai, Pune, Mumbai, Gurugram, and Noida. We discover top 1% talent nationwide.",
+      "Anchored by our Bengaluru headquarters with verified placement pipelines across Chennai and Pune. We discover top technical talent nationwide.",
     backgroundImage: "/images/hero-slide-3.jpg",
+    imageAlt: "Talenty Consulting placement network connecting engineering teams across Bengaluru, Chennai, and Pune",
     req: {
       seniority: "LEAD",
       role: "DEVOPS & INFRA ARCHITECT",
@@ -319,6 +323,7 @@ export const HERO_SLIDES: HeroSlide[] = [
     subcopy:
       "Talenty Consulting evaluates every candidate against role-calibrated benchmarks — multi-signal, transparent, and reviewed by people. No black boxes, no guesswork.",
     backgroundImage: "/images/hero-slide-4.jpg",
+    imageAlt: "Senior recruitment evaluators assessing technical rubrics and system design scores at Talenty Consulting",
     req: {
       seniority: "STAFF",
       role: "AI & ML RESEARCHER",
@@ -397,3 +402,4 @@ export const HERO_SLIDES: HeroSlide[] = [
     },
   },
 ]
+

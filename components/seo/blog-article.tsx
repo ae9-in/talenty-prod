@@ -36,17 +36,40 @@ export function BlogArticle({
   const articleSchema = {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
-    headline: title,
+    headline: title.length > 110 ? title.substring(0, 107) + "..." : title,
     description,
     datePublished,
     dateModified: datePublished,
-    author: { "@type": "Organization", name: "Talenty Consulting", url: SITE_URL },
-    publisher: {
-      "@type": "Organization",
-      name: "Talenty Consulting",
-      logo: { "@type": "ImageObject", url: `${SITE_URL}/images/talenty-logo-full.png` },
+    author: { "@id": `${SITE_URL}/#organization` },
+    publisher: { "@id": `${SITE_URL}/#organization` },
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": url,
     },
-    mainEntityOfPage: url,
+  }
+
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: SITE_URL,
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Blog",
+        item: `${SITE_URL}/blog`,
+      },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: title,
+      },
+    ],
   }
 
   const faqSchema = faqs?.length
@@ -65,6 +88,7 @@ export function BlogArticle({
     <main className="min-h-screen bg-background">
       <Navbar />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       {faqSchema ? (
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       ) : null}

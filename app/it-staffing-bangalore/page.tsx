@@ -1,6 +1,6 @@
 "use client"
 
-import { Code, Terminal, Database, Cloud, Monitor, Layers, CheckCircle2, Cpu } from "lucide-react"
+import { Code, Terminal, Database, Cloud, Monitor, Layers, CheckCircle2, Cpu, Server, Smartphone, ShieldCheck, Activity } from "lucide-react"
 import Link from "next/link"
 import { Navbar } from "@/components/landing/navbar"
 import { Footer } from "@/components/landing/footer"
@@ -17,34 +17,58 @@ const roleLongTails = [
     description: "Source vetted Java developers with deep experience in enterprise microservices, event-driven architectures, and high-throughput APIs. Our Java candidates clear hands-on concurrency and data persistence assessments before recommendation."
   },
   {
-    icon: Code,
-    roleTitle: "Hire React & Frontend Developers in Bangalore",
-    techs: ["React.js", "Next.js", "TypeScript", "Tailwind CSS", "Redux/Zustand"],
-    description: "Hire production-ready frontend engineers proficient in modern React, Next.js App Router, state management, and accessible UI engineering. Every candidate submits clean, componentized code that meets production design system standards."
-  },
-  {
     icon: Cpu,
-    roleTitle: "Hire Python & AI Engineers in Bangalore",
-    techs: ["Python", "FastAPI", "Django", "PyTorch", "LangChain", "LLMs"],
-    description: "Access specialized Python developers and Applied AI engineers skilled in scalable backend architectures, asynchronous workflows, machine learning model integration, and vector database retrieval pipelines."
+    roleTitle: "Hire Python Developers in Bangalore",
+    techs: ["Python", "FastAPI", "Django", "AsyncIO", "PostgreSQL", "Celery"],
+    description: "Access specialized Python developers skilled in high-concurrency backend services, asynchronous APIs, task queue architectures, and database query optimization for fast-scaling engineering teams."
   },
   {
-    icon: Cloud,
-    roleTitle: "Hire DevOps & Cloud SRE Specialists in Bangalore",
-    techs: ["AWS / GCP", "Kubernetes", "Docker", "Terraform", "CI/CD Sprints"],
-    description: "Deploy seasoned DevOps and Site Reliability Engineers capable of architecting resilient infrastructure as code, automated zero-downtime deployment pipelines, and proactive observability stacks."
+    icon: Code,
+    roleTitle: "Hire React Developers in Bangalore",
+    techs: ["React.js", "Next.js", "TypeScript", "Tailwind CSS", "Redux/Zustand"],
+    description: "Hire production-ready React developers proficient in modern React architecture, Next.js App Router, state management, and accessible UI engineering. Candidates submit clean component hierarchies matching production design systems."
   },
   {
     icon: Layers,
     roleTitle: "Hire Full-Stack Developers in Bangalore",
     techs: ["TypeScript", "Node.js", "React", "PostgreSQL", "REST & GraphQL"],
-    description: "Bridge frontend dynamism and backend stability with versatile full-stack engineers tested on database design, secure authentication patterns, and performant user interfaces."
+    description: "Bridge frontend dynamism and backend stability with versatile full-stack developers tested on end-to-end database design, secure authentication patterns, and performant user interface lifecycles."
   },
   {
-    icon: Monitor,
-    roleTitle: "Hire Mobile Engineers in Bangalore",
-    techs: ["React Native", "Flutter", "Swift (iOS)", "Kotlin (Android)"],
-    description: "Build seamless cross-platform or native mobile applications with mobile developers experienced in offline-first state synchronization, hardware integration, and app store deployment lifecycles."
+    icon: Cloud,
+    roleTitle: "Hire DevOps Engineers in Bangalore",
+    techs: ["AWS / GCP", "Kubernetes", "Docker", "Terraform", "CI/CD Pipelines"],
+    description: "Deploy seasoned DevOps and infrastructure engineers capable of architecting resilient infrastructure as code, automated zero-downtime deployment pipelines, and proactive cloud observability."
+  },
+  {
+    icon: Database,
+    roleTitle: "Hire Data Engineers in Bangalore",
+    techs: ["Spark", "Airflow", "Snowflake", "dbt", "Kafka", "SQL Optimization"],
+    description: "Hire data engineers who design reliable data lakehouses, real-time streaming ingestion pipelines, and orchestrated batch ETL workflows with rigorous data quality testing and schema governance."
+  },
+  {
+    icon: ShieldCheck,
+    roleTitle: "Hire QA Engineers in Bangalore",
+    techs: ["Selenium", "Playwright", "Cypress", "Postman", "Jest", "CI Automation"],
+    description: "Reinforce software reliability with automated and manual QA engineers experienced in end-to-end test suites, regression automation, API contract validation, and performance load testing."
+  },
+  {
+    icon: Server,
+    roleTitle: "Hire .NET Developers in Bangalore",
+    techs: [".NET 8/9", "C#", "ASP.NET Core", "Entity Framework", "Azure SQL"],
+    description: "Onboard enterprise .NET developers skilled in modern C# language features, ASP.NET Core web APIs, cloud microservices, and high-performance SQL query design for robust corporate systems."
+  },
+  {
+    icon: Cloud,
+    roleTitle: "Hire Cloud Engineers in Bangalore",
+    techs: ["AWS", "Google Cloud", "Microsoft Azure", "Terraform", "Security & IAM"],
+    description: "Engage certified cloud architects and engineers experienced in multi-region cloud design, IAM security postures, cost optimization, and serverless compute infrastructure."
+  },
+  {
+    icon: Smartphone,
+    roleTitle: "Hire Mobile App Developers in Bangalore",
+    techs: ["React Native", "Flutter", "Swift (iOS)", "Kotlin (Android)", "Offline-First"],
+    description: "Build high-performance cross-platform or native mobile applications with developers experienced in offline-first state synchronization, hardware integration, and App Store deployment pipelines."
   }
 ]
 

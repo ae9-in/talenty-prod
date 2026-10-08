@@ -41,7 +41,7 @@ const BANGALORE_AREAS = [
   },
   {
     area: "Pan-India Placement Network",
-    detail: "Active candidate placement across Hyderabad, Chennai, Mumbai, and Pune, anchored from our Bengaluru office."
+    detail: "Active candidate placement across Chennai and Pune, anchored from our Bengaluru headquarters on Church Street."
   }
 ]
 
@@ -277,12 +277,11 @@ export default function Home() {
                   Talenty Consulting delivers trained employee placement, recruitment consulting, and staffing solutions across major business hubs in India.
                 </p>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                   {[
-                    { name: "Bengaluru", label: "BHIVE Platinum, Church St" },
-                    { name: "Hyderabad", label: "IT & Software Hub" },
-                    { name: "Chennai", label: "Enterprise Staffing" },
-                    { name: "Mumbai", label: "BFSI & Corporate" },
+                    { name: "Bengaluru", label: "BHIVE Platinum, Church St (HQ)" },
+                    { name: "Chennai", label: "Enterprise & Tech Staffing" },
+                    { name: "Pune", label: "Product & Engineering Hub" },
                   ].map((loc) => (
                     <div key={loc.name} className="border border-[#15120F]/10 bg-[#FFFFFF] rounded-2xl p-3 flex flex-col justify-between hover:border-[#1D3F91] transition-colors">
                       <div className="flex items-center justify-between">

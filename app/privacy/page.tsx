@@ -1,6 +1,7 @@
 import type { Metadata } from "next"
 import { Navbar } from "@/components/landing/navbar"
 import { Footer } from "@/components/landing/footer"
+import { BreadcrumbSchema } from "@/components/landing/json-ld"
 import Link from "next/link"
 
 export const metadata: Metadata = {
@@ -14,6 +15,12 @@ export const metadata: Metadata = {
 export default function PrivacyPage() {
   return (
     <main className="min-h-screen bg-background">
+      <BreadcrumbSchema
+        paths={[
+          { name: "Home", url: "https://www.talentyconsulting.in" },
+          { name: "Privacy Policy", url: "https://www.talentyconsulting.in/privacy" },
+        ]}
+      />
       <Navbar />
       <article className="container mx-auto max-w-3xl px-4 pb-24 pt-32 lg:px-8">
         <p className="text-sm text-muted-foreground">Last updated: 7 August 2026</p>

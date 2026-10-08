@@ -1,6 +1,6 @@
 import type { Metadata } from "next"
 
-import { PersonSchema, BreadcrumbSchema } from "@/components/landing/json-ld"
+import { BreadcrumbSchema } from "@/components/landing/json-ld"
 
 const title = "About Talenty Consulting — Bengaluru's Staffing & Recruitment Partner"
 const description =
@@ -37,9 +37,9 @@ export default function AboutLayout({
 
   return (
     <>
-      <PersonSchema />
       <BreadcrumbSchema paths={breadcrumbPaths} />
       {children}
     </>
   )
 }
+

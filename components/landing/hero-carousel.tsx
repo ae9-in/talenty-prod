@@ -178,9 +178,9 @@ export function HeroCarousel() {
             >
               <Image
                 src={slide.backgroundImage}
-                alt=""
+                alt={slide.imageAlt || "Talenty Consulting recruitment and staffing in Bengaluru"}
                 fill
-                priority={true}
+                priority={idx === 0}
                 sizes="100vw"
                 className="object-cover object-center"
               />

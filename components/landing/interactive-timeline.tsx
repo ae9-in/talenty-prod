@@ -253,10 +253,13 @@ export function InteractiveTimeline() {
                 {currentStage.candidateAvatar}
               </div>
               <div>
-                <div className="flex items-center gap-2">
+                <div className="flex flex-wrap items-center gap-2">
                   <h4 className="font-serif font-bold text-base text-[#141110]">
                     {currentStage.candidateName}
                   </h4>
+                  <span className="font-mono text-[9px] text-[#5C5449] bg-[#F0E9D5] border border-[#15120F]/10 px-2 py-0.5 rounded-md">
+                    Illustrative Profile
+                  </span>
                   <span className="font-mono text-[9.5px] font-bold uppercase tracking-wider bg-[#F4EFE5] border border-[#1D3F91]/30 text-[#141110] px-2.5 py-0.5 rounded-full">
                     {currentStage.statusLabel}
                   </span>

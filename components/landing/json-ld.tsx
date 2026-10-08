@@ -14,21 +14,20 @@ import {
 export function OrganizationSchema() {
   const schema: Record<string, unknown> = {
     "@context": "https://schema.org",
-    "@type": ["Organization", "LocalBusiness", "ProfessionalService"],
+    "@type": "EmploymentAgency",
+    "@id": `${SITE_URL}/#organization`,
     name: "Talenty Consulting",
-    alternateName: "Talenty HR Consultancy",
+    alternateName: "Talenty Consulting Bengaluru",
     url: SITE_URL,
     logo: {
       "@type": "ImageObject",
       url: `${SITE_URL}/images/talenty-logo-full.png`,
-      width: 512,
-      height: 512,
     },
-    image: `${SITE_URL}/og-image.png`,
+    image: `${SITE_URL}/images/talenty-logo-full.png`,
     description:
-      "Talenty Consulting is a Bengaluru-based HR and recruitment consultancy providing recruitment, staffing, talent screening and workforce solutions.",
-    telephone: SITE_PHONE,
+      "Talenty Consulting is a Bengaluru-based HR and recruitment consultancy providing recruitment consulting, IT staffing, trained employee placement and talent screening for companies across India.",
     email: SITE_EMAIL,
+    telephone: SITE_PHONE,
     address: {
       "@type": "PostalAddress",
       streetAddress: SITE_STREET,
@@ -39,12 +38,21 @@ export function OrganizationSchema() {
     },
     geo: {
       "@type": "GeoCoordinates",
-      latitude: 12.9716,
-      longitude: 77.6099,
+      latitude: 12.9749,
+      longitude: 77.6083,
     },
     areaServed: [
       { "@type": "City", name: "Bengaluru" },
-      { "@type": "Country", name: "India" },
+      { "@type": "City", name: "Chennai" },
+      { "@type": "City", name: "Pune" },
+    ],
+    knowsAbout: [
+      "Recruitment consulting",
+      "IT staffing",
+      "Trained employee placement",
+      "Hire-train-deploy",
+      "Candidate screening",
+      "Technical vetting",
     ],
     openingHoursSpecification: {
       "@type": "OpeningHoursSpecification",
@@ -61,7 +69,6 @@ export function OrganizationSchema() {
     },
   }
 
-  // foundingDate only when NEXT_PUBLIC_FOUNDING_YEAR is set [HOLD gate]
   if (FOUNDING_YEAR) {
     schema.foundingDate = FOUNDING_YEAR
   }
@@ -75,12 +82,13 @@ export function OrganizationSchema() {
 }
 
 export function WebSiteSchema() {
-  // SearchAction removed — no /search route exists
   const schema = {
     "@context": "https://schema.org",
     "@type": "WebSite",
-    name: "Talenty Consulting",
+    "@id": `${SITE_URL}/#website`,
     url: SITE_URL,
+    name: "Talenty Consulting",
+    publisher: { "@id": `${SITE_URL}/#organization` },
   }
 
   return (
@@ -91,85 +99,6 @@ export function WebSiteSchema() {
   )
 }
 
-export function ServiceSchema() {
-  const services = [
-    {
-      name: "Trained Employee Placement",
-      description:
-        "Access pre-trained professionals ready to contribute from day one. Our candidates undergo rigorous training programs tailored to industry standards.",
-      url: `${SITE_URL}/trained-employee-placement`,
-    },
-    {
-      name: "Recruitment Consulting",
-      description:
-        "Strategic guidance on talent acquisition, employer branding, and building effective hiring processes that attract top talent.",
-      url: `${SITE_URL}/recruitment-consulting-bangalore`,
-    },
-    {
-      name: "Talent Screening",
-      description:
-        "Comprehensive candidate evaluation including skills assessment, background verification, and cultural fit analysis.",
-      url: `${SITE_URL}/talent-screening-process`,
-    },
-    {
-      name: "Workforce Support",
-      description:
-        "Ongoing support for placed employees and employers to ensure smooth onboarding and long-term retention success.",
-      url: `${SITE_URL}/trained-employee-placement`,
-    },
-    {
-      name: "Fast Hiring Solutions",
-      description:
-        "Accelerated recruitment processes for urgent hiring needs without compromising on candidate quality or fit.",
-      url: `${SITE_URL}/recruitment-consulting-bangalore`,
-    },
-    {
-      name: "Business Staffing Assistance",
-      description:
-        "End-to-end staffing solutions for scaling teams, managing seasonal demands, and building specialized departments.",
-      url: `${SITE_URL}/it-staffing-bangalore`,
-    },
-  ]
-
-  const schemas = services.map((s) => ({
-    "@context": "https://schema.org",
-    "@type": "Service",
-    name: s.name,
-    description: s.description,
-    provider: {
-      "@type": "LocalBusiness",
-      name: "Talenty Consulting",
-      url: SITE_URL,
-      address: {
-        "@type": "PostalAddress",
-        streetAddress: "Bhive Platinum, Church Street",
-        addressLocality: "Bengaluru",
-        addressRegion: "Karnataka",
-        postalCode: "560001",
-        addressCountry: "IN",
-      },
-    },
-    areaServed: [
-      { "@type": "City", name: "Bengaluru" },
-      { "@type": "Country", name: "India" },
-    ],
-    serviceType: "Recruitment and Staffing",
-    url: s.url,
-  }))
-
-  return (
-    <>
-      {schemas.map((schema, index) => (
-        <script
-          key={index}
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
-        />
-      ))}
-    </>
-  )
-}
-
 export function FAQPageSchema() {
   const schema = {
     "@context": "https://schema.org",
@@ -177,7 +106,7 @@ export function FAQPageSchema() {
     mainEntity: [
       {
         "@type": "Question",
-        name: "What is recruitment consulting?",
+        name: "What is recruitment consulting and how does Talenty help?",
         acceptedAnswer: {
           "@type": "Answer",
           text: "Recruitment consulting is a strategic partnership where experts guide organizations in talent acquisition, employer branding, and optimization of hiring processes. Talenty Consulting helps businesses structure their staffing workflows to attract and hire the best fits.",
@@ -185,42 +114,18 @@ export function FAQPageSchema() {
       },
       {
         "@type": "Question",
-        name: "How does Talenty's hiring process work?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "Our process is structured in four quick phases: understanding your specific business needs, sourcing and training candidates to match those criteria, conducting multi-stage screening, and delivering job-ready hires with onboarding support.",
-        },
-      },
-      {
-        "@type": "Question",
-        name: "What industries do you serve?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "Talenty Consulting supports hiring across multiple high-demand domains, including IT & Software, BFSI (Banking, Financial Services, and Insurance), Healthcare, Manufacturing, Retail, Education, and Hospitality.",
-        },
-      },
-      {
-        "@type": "Question",
-        name: "How quickly can you fill a role?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "For critical or pre-screened staffing requirements, we offer Fast Hiring Solutions that can place candidates in as little as 3 to 10 business days without compromising on quality.",
-        },
-      },
-      {
-        "@type": "Question",
-        name: "What is the difference between staffing and consulting?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "Staffing focuses on filling immediate open roles with temporary or permanent talent, while recruitment consulting involves strategic layout design, team planning, training solutions, and process optimization for long-term growth.",
-        },
-      },
-      {
-        "@type": "Question",
         name: "Do you provide trained employees or only recruitment?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "We offer both. Our core differentiator is Trained Employee Placement, where we source candidates and train them in specific tech, domain, or operational skills prior to deployment, ensuring day-one productivity.",
+          text: "We offer both! Our core differentiator is Trained Employee Placement, where we source candidates and upskill them in specific tech, domain, or operational skills prior to deployment, ensuring day-one productivity.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "How quickly can you fill an urgent role?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "For critical or pre-screened staffing requirements, we offer Fast Hiring Solutions that can place candidates in as little as 3 to 10 business days without compromising on candidate quality or cultural fit.",
         },
       },
       {
@@ -233,42 +138,10 @@ export function FAQPageSchema() {
       },
       {
         "@type": "Question",
-        name: "Do you serve companies outside Bengaluru?",
+        name: "What industries and locations do you serve?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Yes, while our primary physical office is located in Bengaluru (Bhive Platinum, Church Street), we provide recruitment consulting and trained employee placement services pan-India.",
-        },
-      },
-      {
-        "@type": "Question",
-        name: "What roles/levels can you hire for?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "We cater to junior, mid-level, and senior management roles across software engineering, business operations, sales, customer support, and financial analysts.",
-        },
-      },
-      {
-        "@type": "Question",
-        name: "How much does your service cost?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "Our pricing is structured based on the service model, candidate level, and volume of hires. Contact our advisory team directly at connect@talentyconsulting.in for a custom proposal.",
-        },
-      },
-      {
-        "@type": "Question",
-        name: "What makes Talenty different from large job portals?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "Unlike standard job boards that deliver thousands of unfiltered resumes, Talenty works as an extension of your HR team. We vet, interview, train, and deliver only a shortlist of highly qualified, job-ready candidates.",
-        },
-      },
-      {
-        "@type": "Question",
-        name: "How do I get started?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "Simply book a consultation session on our website contact page, email your requirements to connect@talentyconsulting.in, or call our Church Street office in Bengaluru at +91-8431119696.",
+          text: "Our primary office is located on Church Street in Bengaluru (Bhive Platinum), but we provide recruitment consulting and trained employee placement services pan-India across IT & Software, BFSI, Healthcare, Retail, and Manufacturing.",
         },
       },
     ],
@@ -286,12 +159,17 @@ export function BreadcrumbSchema({ paths }: { paths: { name: string; url: string
   const schema = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
-    itemListElement: paths.map((p, i) => ({
-      "@type": "ListItem",
-      position: i + 1,
-      name: p.name,
-      item: p.url,
-    })),
+    itemListElement: paths.map((p, i) => {
+      const item: { "@type": string; position: number; name: string; item?: string } = {
+        "@type": "ListItem",
+        position: i + 1,
+        name: p.name,
+      }
+      if (i < paths.length - 1 || p.url) {
+        item.item = p.url
+      }
+      return item
+    }),
   }
 
   return (
@@ -332,36 +210,28 @@ export function PageServiceSchema({
   name,
   description,
   url,
+  serviceType,
 }: {
   name: string
   description: string
   url: string
+  serviceType?: string
 }) {
   const schema = {
     "@context": "https://schema.org",
     "@type": "Service",
     name,
+    serviceType: serviceType || name,
     description,
     url,
     provider: {
-      "@type": "LocalBusiness",
-      name: "Talenty Consulting",
-      url: SITE_URL,
-      telephone: SITE_PHONE,
-      address: {
-        "@type": "PostalAddress",
-        streetAddress: SITE_STREET,
-        addressLocality: "Bengaluru",
-        addressRegion: SITE_REGION,
-        postalCode: SITE_POSTAL,
-        addressCountry: "IN",
-      },
+      "@id": `${SITE_URL}/#organization`,
     },
     areaServed: [
       { "@type": "City", name: "Bengaluru" },
-      { "@type": "Country", name: "India" },
+      { "@type": "City", name: "Chennai" },
+      { "@type": "City", name: "Pune" },
     ],
-    serviceType: "Recruitment and Staffing",
   }
 
   return (
@@ -372,44 +242,3 @@ export function PageServiceSchema({
   )
 }
 
-export function PersonSchema() {
-  const founders = [
-    {
-      name: "Rajesh Kumar",
-      jobTitle: "Co-Founder & Managing Director",
-      worksFor: "Talenty Consulting",
-      url: `${SITE_URL}/about`,
-    },
-    {
-      name: "Anita Deshmukh",
-      jobTitle: "Co-Founder & Head of Talent Acquisition",
-      worksFor: "Talenty Consulting",
-      url: `${SITE_URL}/about`,
-    },
-  ]
-
-  const schemas = founders.map((f) => ({
-    "@context": "https://schema.org",
-    "@type": "Person",
-    name: f.name,
-    jobTitle: f.jobTitle,
-    worksFor: {
-      "@type": "Organization",
-      name: f.worksFor,
-      url: SITE_URL,
-    },
-    url: f.url,
-  }))
-
-  return (
-    <>
-      {schemas.map((schema, index) => (
-        <script
-          key={index}
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
-        />
-      ))}
-    </>
-  )
-}

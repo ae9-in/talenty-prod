@@ -1,4 +1,5 @@
 import type { Metadata } from "next"
+import { BreadcrumbSchema } from "@/components/landing/json-ld"
 
 const title = "Talenty Consulting Blog — Sourcing, Training & Staffing Insights"
 const description =
@@ -40,5 +41,15 @@ export default function BlogLayout({
 }: {
   children: React.ReactNode
 }) {
-  return <>{children}</>
+  return (
+    <>
+      <BreadcrumbSchema
+        paths={[
+          { name: "Home", url: "https://www.talentyconsulting.in" },
+          { name: "Blog", url: "https://www.talentyconsulting.in/blog" },
+        ]}
+      />
+      {children}
+    </>
+  )
 }

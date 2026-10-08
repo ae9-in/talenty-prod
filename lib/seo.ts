@@ -2,7 +2,7 @@ export const SITE_URL = "https://www.talentyconsulting.in"
 export const SITE_NAME = "Talenty Consulting"
 export const SITE_PHONE = "+91-8431119696"
 export const SITE_EMAIL = "connect@talentyconsulting.in"
-export const SITE_STREET = "Bhive Platinum, Church Street"
+export const SITE_STREET = "BHIVE Platinum, Church Street"
 export const SITE_CITY = "Bengaluru"
 export const SITE_REGION = "Karnataka"
 export const SITE_POSTAL = "560001"
@@ -23,7 +23,7 @@ export const FOUNDING_YEAR = process.env.NEXT_PUBLIC_FOUNDING_YEAR?.trim() || ""
 export const GBP_URL = process.env.NEXT_PUBLIC_GBP_URL?.trim() || ""
 
 export const DEFAULT_DESCRIPTION =
-  "Talenty Consulting is a Bengaluru-based HR and recruitment consultancy providing recruitment, staffing, talent screening and workforce solutions."
+  "Talenty Consulting is a Bengaluru-based HR and recruitment consultancy providing recruitment consulting, IT staffing, trained employee placement and talent screening for companies across India."
 
 /** Facts already published on-site — safe for content & schema */
 export const VERIFIED_FACTS = {
@@ -82,7 +82,9 @@ export function absoluteUrl(path = "/") {
 }
 
 export function organizationSameAs(): string[] {
-  const links = [LINKEDIN_URL]
+  const links: string[] = []
+  if (LINKEDIN_URL) links.push(LINKEDIN_URL)
   if (GBP_URL) links.push(GBP_URL)
   return links
 }
+

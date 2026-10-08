@@ -226,6 +226,145 @@ export default function TrainedEmployeePlacement() {
         </RevealGroup>
       </section>
 
+      {/* Dedicated Placement Models & Assurances (B2 Gap Keywords) */}
+      <section className="py-20 bg-[#F4EFE5]/50 border-t border-[#141110]/10">
+        <div className="max-w-[1440px] mx-auto px-6 lg:px-10">
+          <Reveal className="text-center max-w-3xl mx-auto mb-16">
+            <Eyebrow prefixDot as="span" className="block mb-2">
+              SPECIALIZED PLACEMENT MODELS
+            </Eyebrow>
+            <h2 className="text-3xl sm:text-4xl font-serif font-semibold text-[#141110]">
+              Trained Placement Agency in Bengaluru &amp; Pan-India
+            </h2>
+            <p className="text-sm sm:text-base text-[#5C5449] mt-3">
+              Comprehensive hiring tracks designed to eliminate ramp-up friction for high-velocity engineering, product, and data teams.
+            </p>
+          </Reveal>
+
+          <RevealGroup className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="border border-[#141110]/10 bg-[#FFFFFF] rounded-3xl p-7 shadow-xs flex flex-col justify-between">
+              <div>
+                <div className="w-10 h-10 rounded-xl bg-[#1D3F91] text-[#FFFFFF] flex items-center justify-center mb-5 shadow-xs">
+                  <Terminal className="w-5 h-5" />
+                </div>
+                <h3 className="text-xl font-serif font-bold text-[#141110] mb-2.5">
+                  Pre-Vetted Candidates Bengaluru
+                </h3>
+                <p className="text-xs sm:text-sm text-[#5C5449] leading-relaxed mb-4">
+                  Every candidate in our Bengaluru talent network has cleared structured coding evaluations, live architecture defense, and cognitive problem-solving benchmarks before reaching client review.
+                </p>
+              </div>
+              <Link
+                href="/blog/job-ready-hires-vs-job-portal-resumes"
+                className="text-xs font-mono font-bold text-[#1D3F91] hover:underline inline-flex items-center gap-1 mt-2"
+              >
+                Why pre-vetted beats portal resumes &rarr;
+              </Link>
+            </div>
+
+            <div className="border border-[#141110]/10 bg-[#FFFFFF] rounded-3xl p-7 shadow-xs flex flex-col justify-between">
+              <div>
+                <div className="w-10 h-10 rounded-xl bg-[#1D3F91] text-[#FFFFFF] flex items-center justify-center mb-5 shadow-xs">
+                  <Award className="w-5 h-5" />
+                </div>
+                <h3 className="text-xl font-serif font-bold text-[#141110] mb-2.5">
+                  Trained Freshers Placement Bengaluru
+                </h3>
+                <p className="text-xs sm:text-sm text-[#5C5449] leading-relaxed mb-4">
+                  We take high-aptitude graduates and put them through rigorous 8-week production sandboxes—training on modern TypeScript, Python, cloud architectures, and Git workflows so they deliver on day one.
+                </p>
+              </div>
+              <Link
+                href="/blog/what-is-trained-employee-placement"
+                className="text-xs font-mono font-bold text-[#1D3F91] hover:underline inline-flex items-center gap-1 mt-2"
+              >
+                Explore trained placement architecture &rarr;
+              </Link>
+            </div>
+
+            <div className="border border-[#141110]/10 bg-[#FFFFFF] rounded-3xl p-7 shadow-xs flex flex-col justify-between">
+              <div>
+                <div className="w-10 h-10 rounded-xl bg-[#1D3F91] text-[#FFFFFF] flex items-center justify-center mb-5 shadow-xs">
+                  <Layers className="w-5 h-5" />
+                </div>
+                <h3 className="text-xl font-serif font-bold text-[#141110] mb-2.5">
+                  Upskilled Candidate Placement India
+                </h3>
+                <p className="text-xs sm:text-sm text-[#5C5449] leading-relaxed mb-4">
+                  For companies adopting new frameworks or migrating legacy monolithic stacks, we upskill mid-level engineers in microservices, cloud-native deployments, and distributed systems prior to onboarding.
+                </p>
+              </div>
+              <Link
+                href="/blog/how-to-hire-trained-employees-india"
+                className="text-xs font-mono font-bold text-[#1D3F91] hover:underline inline-flex items-center gap-1 mt-2"
+              >
+                Read our India hiring blueprint &rarr;
+              </Link>
+            </div>
+
+            <div className="border border-[#141110]/10 bg-[#FFFFFF] rounded-3xl p-7 shadow-xs flex flex-col justify-between">
+              <div>
+                <div className="w-10 h-10 rounded-xl bg-[#1D3F91] text-[#FFFFFF] flex items-center justify-center mb-5 shadow-xs">
+                  <Zap className="w-5 h-5" />
+                </div>
+                <h3 className="text-xl font-serif font-bold text-[#141110] mb-2.5">
+                  HTD Staffing India (Hire-Train-Deploy)
+                </h3>
+                <p className="text-xs sm:text-sm text-[#5C5449] leading-relaxed mb-4">
+                  Our Hire-Train-Deploy (HTD) model shields engineering leadership from hiring and training overhead. We source, instruct on your custom tech stack, and deploy engineers directly to active sprint workflows.
+                </p>
+              </div>
+              <Link
+                href="/blog/hire-train-deploy-india-startups-smes"
+                className="text-xs font-mono font-bold text-[#1D3F91] hover:underline inline-flex items-center gap-1 mt-2"
+              >
+                HTD guide for startups &amp; SMEs &rarr;
+              </Link>
+            </div>
+
+            <div className="border border-[#141110]/10 bg-[#FFFFFF] rounded-3xl p-7 shadow-xs flex flex-col justify-between">
+              <div>
+                <div className="w-10 h-10 rounded-xl bg-[#1D3F91] text-[#FFFFFF] flex items-center justify-center mb-5 shadow-xs">
+                  <Shield className="w-5 h-5" />
+                </div>
+                <h3 className="text-xl font-serif font-bold text-[#141110] mb-2.5">
+                  90-Day Replacement Guarantee Recruitment
+                </h3>
+                <p className="text-xs sm:text-sm text-[#5C5449] leading-relaxed mb-4">
+                  We stand behind our technical calibration. If a placed candidate does not meet agreed performance benchmarks within 90 days, Talenty provides an expedited replacement at zero additional service fee.
+                </p>
+              </div>
+              <Link
+                href="/blog/90-day-workforce-support-explained"
+                className="text-xs font-mono font-bold text-[#1D3F91] hover:underline inline-flex items-center gap-1 mt-2"
+              >
+                Learn about our 90-day support &rarr;
+              </Link>
+            </div>
+
+            <div className="border border-[#141110]/10 bg-[#FFFFFF] rounded-3xl p-7 shadow-xs flex flex-col justify-between">
+              <div>
+                <div className="w-10 h-10 rounded-xl bg-[#1D3F91] text-[#FFFFFF] flex items-center justify-center mb-5 shadow-xs">
+                  <CheckCircle2 className="w-5 h-5" />
+                </div>
+                <h3 className="text-xl font-serif font-bold text-[#141110] mb-2.5">
+                  Rapid Sourcing &amp; Deployment Sprints
+                </h3>
+                <p className="text-xs sm:text-sm text-[#5C5449] leading-relaxed mb-4">
+                  Fast-path placement pipelines deliver calibrated candidates in 3 to 10 business days for urgent roadmap requirements across Bangalore, Chennai, and Pune engineering hubs.
+                </p>
+              </div>
+              <Link
+                href="/blog/how-long-to-hire-trained-employee-india"
+                className="text-xs font-mono font-bold text-[#1D3F91] hover:underline inline-flex items-center gap-1 mt-2"
+              >
+                Hiring timeline breakdown &rarr;
+              </Link>
+            </div>
+          </RevealGroup>
+        </div>
+      </section>
+
       {/* Contact Section */}
       <section id="contact" className="py-24 bg-[#F0E9D5]/40 border-t border-[#141110]/10">
         <div className="max-w-3xl mx-auto px-6 lg:px-10">

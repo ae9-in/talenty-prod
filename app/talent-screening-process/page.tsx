@@ -1,5 +1,6 @@
 "use client"
 
+import Link from "next/link"
 import { Navbar } from "@/components/landing/navbar"
 import { Footer } from "@/components/landing/footer"
 import { RollingHeadline } from "@/components/landing/rolling-headline"
@@ -120,6 +121,105 @@ export default function TalentScreeningProcess() {
           </div>
 
           <ProcessTimeline />
+        </div>
+      </section>
+
+      {/* Specialized Screening Capabilities (B2 Gap Keywords) */}
+      <section className="py-20 bg-[#F4EFE5]/50 border-t border-[#141110]/10">
+        <div className="max-w-[1440px] mx-auto px-6 lg:px-10">
+          <Reveal className="text-center max-w-3xl mx-auto mb-16">
+            <Eyebrow prefixDot as="span" className="block mb-2">
+              ASSESSMENT SPECIALIZATION
+            </Eyebrow>
+            <h2 className="text-3xl sm:text-4xl font-serif font-semibold text-[#141110]">
+              Technical Screening Agency in Bengaluru &amp; India
+            </h2>
+            <p className="text-sm sm:text-base text-[#5C5449] mt-3">
+              Standardized, role-calibrated candidate evaluation frameworks designed to protect engineering bandwith and ensure long-term retention.
+            </p>
+          </Reveal>
+
+          <RevealGroup className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="border border-[#141110]/10 bg-[#FFFFFF] rounded-3xl p-7 shadow-xs flex flex-col justify-between">
+              <div>
+                <div className="w-10 h-10 rounded-xl bg-[#1D3F91] text-[#FFFFFF] flex items-center justify-center mb-5 shadow-xs">
+                  <Terminal className="w-5 h-5" />
+                </div>
+                <h3 className="text-xl font-serif font-bold text-[#141110] mb-2.5">
+                  Technical Screening Agency Bengaluru
+                </h3>
+                <p className="text-xs sm:text-sm text-[#5C5449] leading-relaxed mb-4">
+                  We administer live coding environments, framework tests, and system design challenges for Bengaluru software engineering teams, filtering out inflated resumes.
+                </p>
+              </div>
+              <Link
+                href="/it-staffing-bangalore"
+                className="text-xs font-mono font-bold text-[#1D3F91] hover:underline inline-flex items-center gap-1 mt-2"
+              >
+                Explore IT staffing roles &rarr;
+              </Link>
+            </div>
+
+            <div className="border border-[#141110]/10 bg-[#FFFFFF] rounded-3xl p-7 shadow-xs flex flex-col justify-between">
+              <div>
+                <div className="w-10 h-10 rounded-xl bg-[#1D3F91] text-[#FFFFFF] flex items-center justify-center mb-5 shadow-xs">
+                  <Brain className="w-5 h-5" />
+                </div>
+                <h3 className="text-xl font-serif font-bold text-[#141110] mb-2.5">
+                  Pre-Employment Screening India
+                </h3>
+                <p className="text-xs sm:text-sm text-[#5C5449] leading-relaxed mb-4">
+                  Comprehensive background evaluation, previous work verification, code commit analysis, and cognitive suitability checks across pan-India hiring pipelines.
+                </p>
+              </div>
+              <Link
+                href="/blog/cognitive-skill-behavioral-screening-explained"
+                className="text-xs font-mono font-bold text-[#1D3F91] hover:underline inline-flex items-center gap-1 mt-2"
+              >
+                Cognitive screening explained &rarr;
+              </Link>
+            </div>
+
+            <div className="border border-[#141110]/10 bg-[#FFFFFF] rounded-3xl p-7 shadow-xs flex flex-col justify-between">
+              <div>
+                <div className="w-10 h-10 rounded-xl bg-[#1D3F91] text-[#FFFFFF] flex items-center justify-center mb-5 shadow-xs">
+                  <ShieldCheck className="w-5 h-5" />
+                </div>
+                <h3 className="text-xl font-serif font-bold text-[#141110] mb-2.5">
+                  Candidate Assessment Services
+                </h3>
+                <p className="text-xs sm:text-sm text-[#5C5449] leading-relaxed mb-4">
+                  Customizable rubrics measuring algorithmic aptitude, API design standards, concurrency management, and asynchronous problem-solving calibrated for high-growth tech firms.
+                </p>
+              </div>
+              <Link
+                href="/blog/trained-placement-process-case-notes"
+                className="text-xs font-mono font-bold text-[#1D3F91] hover:underline inline-flex items-center gap-1 mt-2"
+              >
+                Screening case study notes &rarr;
+              </Link>
+            </div>
+
+            <div className="border border-[#141110]/10 bg-[#FFFFFF] rounded-3xl p-7 shadow-xs flex flex-col justify-between">
+              <div>
+                <div className="w-10 h-10 rounded-xl bg-[#1D3F91] text-[#FFFFFF] flex items-center justify-center mb-5 shadow-xs">
+                  <MessageSquare className="w-5 h-5" />
+                </div>
+                <h3 className="text-xl font-serif font-bold text-[#141110] mb-2.5">
+                  Multi-Stage Candidate Screening
+                </h3>
+                <p className="text-xs sm:text-sm text-[#5C5449] leading-relaxed mb-4">
+                  A calibrated 3-tier filtration funnel combining technical verification, cognitive assessment, and behavioral alignment interviews before any profile submission.
+                </p>
+              </div>
+              <Link
+                href="/trained-employee-placement"
+                className="text-xs font-mono font-bold text-[#1D3F91] hover:underline inline-flex items-center gap-1 mt-2"
+              >
+                Trained placement model &rarr;
+              </Link>
+            </div>
+          </RevealGroup>
         </div>
       </section>
 

@@ -34,12 +34,18 @@ export function RollingHeadline({
     return () => mediaQuery.removeEventListener("change", handler)
   }, [])
 
+  const Tag = as
+
   // If simple text is passed without lines
   if (text) {
     const words = text.split(" ")
     return (
-      <h1 className={className} aria-label={text}>
-        <span aria-hidden="true" className="inline-flex flex-wrap gap-x-[0.28em] gap-y-[0.05em]">
+      <Tag className={className}>
+        {/* The ONLY copy crawlers and screen readers consume */}
+        <span className="sr-only">{text}</span>
+
+        {/* Visual animation layer — hidden from a11y tree and from search bot text extraction */}
+        <span aria-hidden="true" className="inline-flex flex-wrap">
           {words.map((word, idx) => (
             <span key={idx} className="inline-block overflow-hidden py-1">
               <motion.span
@@ -54,19 +60,23 @@ export function RollingHeadline({
               >
                 {word}
               </motion.span>
+              {idx < words.length - 1 && "\u00A0"}
             </span>
           ))}
         </span>
-      </h1>
+      </Tag>
     )
   }
 
   // Multi-line signature headline (Line 1, Accent Line, Line 2)
-  const fullAccessibleText = `${line1 || ""} ${accent || ""} ${line2 || ""}`.trim()
-  const Tag = as
+  const fullAccessibleText = [line1, accent, line2].filter(Boolean).join(" ").trim()
 
   return (
-    <Tag className={className} aria-label={fullAccessibleText}>
+    <Tag className={className}>
+      {/* The ONLY copy crawlers and screen readers consume */}
+      <span className="sr-only">{fullAccessibleText}</span>
+
+      {/* Visual animation layer — hidden from a11y tree and from search bot text extraction */}
       <span aria-hidden="true" className="block">
         {line1 && (
           <span className="block overflow-hidden py-0.5">

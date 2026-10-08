@@ -191,6 +191,85 @@ export default function ItStaffingBangalore() {
         </RevealGroup>
       </section>
 
+      {/* Flexible Engagement Models (B2 Gap Keywords) */}
+      <section className="py-20 bg-[#F4EFE5]/50 border-t border-[#141110]/10">
+        <div className="max-w-[1440px] mx-auto px-6 lg:px-10">
+          <Reveal className="text-center max-w-3xl mx-auto mb-16">
+            <Eyebrow prefixDot className="block mb-2">
+              ENGAGEMENT ARCHITECTURE
+            </Eyebrow>
+            <h2 className="text-3xl sm:text-4xl font-serif font-semibold text-[#141110]">
+              Flexible IT Staffing &amp; Augmentation Models
+            </h2>
+            <p className="text-sm sm:text-base text-[#5C5449] mt-3">
+              Scale engineering capacity with contract models tailored to project horizons, budget cycles, and core product roadmaps.
+            </p>
+          </Reveal>
+
+          <RevealGroup className="grid md:grid-cols-3 gap-6">
+            <div className="border border-[#141110]/10 bg-[#FFFFFF] rounded-3xl p-7 shadow-xs flex flex-col justify-between">
+              <div>
+                <div className="w-10 h-10 rounded-xl bg-[#1D3F91] text-[#FFFFFF] flex items-center justify-center mb-5 shadow-xs">
+                  <Activity className="w-5 h-5" />
+                </div>
+                <h3 className="text-xl font-serif font-bold text-[#141110] mb-2.5">
+                  Contract Staffing Bangalore
+                </h3>
+                <p className="text-xs sm:text-sm text-[#5C5449] leading-relaxed mb-4">
+                  Deploy verified software developers on fixed-term contracts for 3, 6, or 12 months. We manage payroll, compliance, and onboarding while you retain full technical direction over daily sprint tasks.
+                </p>
+              </div>
+              <Link
+                href="/blog/hiring-agency-vs-recruitment-consultant-vs-staffing"
+                className="text-xs font-mono font-bold text-[#1D3F91] hover:underline inline-flex items-center gap-1 mt-2"
+              >
+                Compare contract vs permanent staffing &rarr;
+              </Link>
+            </div>
+
+            <div className="border border-[#141110]/10 bg-[#FFFFFF] rounded-3xl p-7 shadow-xs flex flex-col justify-between">
+              <div>
+                <div className="w-10 h-10 rounded-xl bg-[#1D3F91] text-[#FFFFFF] flex items-center justify-center mb-5 shadow-xs">
+                  <ShieldCheck className="w-5 h-5" />
+                </div>
+                <h3 className="text-xl font-serif font-bold text-[#141110] mb-2.5">
+                  Contract-to-Hire Staffing Bengaluru
+                </h3>
+                <p className="text-xs sm:text-sm text-[#5C5449] leading-relaxed mb-4">
+                  Evaluate an engineer&apos;s real-world code output, architectural discipline, and cultural fit in active production before making a permanent offer. Lowers permanent hiring risk to zero.
+                </p>
+              </div>
+              <Link
+                href="/trained-employee-placement"
+                className="text-xs font-mono font-bold text-[#1D3F91] hover:underline inline-flex items-center gap-1 mt-2"
+              >
+                Learn about trained placement &rarr;
+              </Link>
+            </div>
+
+            <div className="border border-[#141110]/10 bg-[#FFFFFF] rounded-3xl p-7 shadow-xs flex flex-col justify-between">
+              <div>
+                <div className="w-10 h-10 rounded-xl bg-[#1D3F91] text-[#FFFFFF] flex items-center justify-center mb-5 shadow-xs">
+                  <Layers className="w-5 h-5" />
+                </div>
+                <h3 className="text-xl font-serif font-bold text-[#141110] mb-2.5">
+                  Staff Augmentation Bangalore
+                </h3>
+                <p className="text-xs sm:text-sm text-[#5C5449] leading-relaxed mb-4">
+                  Seamlessly inject specialized engineering pods—such as cloud architects, mobile developers, or security specialists—directly into your active agile squads to hit aggressive roadmap deadlines.
+                </p>
+              </div>
+              <Link
+                href="/contact"
+                className="text-xs font-mono font-bold text-[#1D3F91] hover:underline inline-flex items-center gap-1 mt-2"
+              >
+                Request team augmentation &rarr;
+              </Link>
+            </div>
+          </RevealGroup>
+        </div>
+      </section>
+
       {/* 3-Step Vetting Sieve */}
       <section className="py-20 bg-[#F4EFE5]/40 border-t border-[#141110]/10">
         <div className="max-w-4xl mx-auto px-6 lg:px-10 text-center">

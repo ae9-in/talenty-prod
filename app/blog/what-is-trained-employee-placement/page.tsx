@@ -1,10 +1,13 @@
+import type { Metadata } from "next"
 import Link from "next/link"
-import { BlogArticle } from "@/components/seo/blog-article"
+import { BlogArticle, blogMetadata } from "@/components/seo/blog-article"
 
 const slug = "what-is-trained-employee-placement"
 const title = "What Is Trained Employee Placement?"
 const description =
   "Trained employee placement explained: how Talenty Consulting sources, trains, vets, and places job-ready employees in Bengaluru and across India."
+
+export const metadata: Metadata = blogMetadata({ title, description, slug })
 
 const faqs = [
   {

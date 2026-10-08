@@ -133,6 +133,145 @@ export default function RecruitmentConsultingBangalore() {
         </RevealGroup>
       </section>
 
+      {/* Specialized Consulting Services & Hiring Models (B2 Gap Keywords) */}
+      <section className="py-20 bg-[#F4EFE5]/50 border-t border-[#141110]/10">
+        <div className="max-w-[1440px] mx-auto px-6 lg:px-10">
+          <Reveal className="text-center max-w-3xl mx-auto mb-16">
+            <Eyebrow prefixDot className="block mb-2">
+              SPECIALIZED HIRING SOLUTIONS
+            </Eyebrow>
+            <h2 className="text-3xl sm:text-4xl font-serif font-semibold text-[#141110]">
+              Strategic Hiring Solutions for Startups, SMEs &amp; Enterprises
+            </h2>
+            <p className="text-sm sm:text-base text-[#5C5449] mt-3">
+              Tailored recruitment partnerships addressing the complete spectrum of hiring challenges in Bengaluru and pan-India.
+            </p>
+          </Reveal>
+
+          <RevealGroup className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="border border-[#141110]/10 bg-[#FFFFFF] rounded-3xl p-7 shadow-xs flex flex-col justify-between">
+              <div>
+                <div className="w-10 h-10 rounded-xl bg-[#1D3F91] text-[#FFFFFF] flex items-center justify-center mb-5 shadow-xs">
+                  <Users className="w-5 h-5" />
+                </div>
+                <h3 className="text-xl font-serif font-bold text-[#141110] mb-2.5">
+                  Bulk Hiring Bangalore &amp; Volume Hiring Bengaluru
+                </h3>
+                <p className="text-xs sm:text-sm text-[#5C5449] leading-relaxed mb-4">
+                  For rapid team scaling and newly funded tech expansions, our bulk hiring engine executes calibrated multi-seat sourcing sprints across Bangalore, maintaining consistent technical vetting quality.
+                </p>
+              </div>
+              <Link
+                href="/blog/best-way-to-hire-in-bangalore-for-startups"
+                className="text-xs font-mono font-bold text-[#1D3F91] hover:underline inline-flex items-center gap-1 mt-2"
+              >
+                Read our startup hiring guide &rarr;
+              </Link>
+            </div>
+
+            <div className="border border-[#141110]/10 bg-[#FFFFFF] rounded-3xl p-7 shadow-xs flex flex-col justify-between">
+              <div>
+                <div className="w-10 h-10 rounded-xl bg-[#1D3F91] text-[#FFFFFF] flex items-center justify-center mb-5 shadow-xs">
+                  <Building2 className="w-5 h-5" />
+                </div>
+                <h3 className="text-xl font-serif font-bold text-[#141110] mb-2.5">
+                  Recruitment Partner for SMEs India
+                </h3>
+                <p className="text-xs sm:text-sm text-[#5C5449] leading-relaxed mb-4">
+                  We serve as an external talent acquisition team for Indian SMEs and growth-stage companies, eliminating costly recruiter retainers with transparent, performance-aligned placement models.
+                </p>
+              </div>
+              <Link
+                href="/blog/how-to-choose-hiring-agency-bangalore"
+                className="text-xs font-mono font-bold text-[#1D3F91] hover:underline inline-flex items-center gap-1 mt-2"
+              >
+                Founder checklist for hiring agencies &rarr;
+              </Link>
+            </div>
+
+            <div className="border border-[#141110]/10 bg-[#FFFFFF] rounded-3xl p-7 shadow-xs flex flex-col justify-between">
+              <div>
+                <div className="w-10 h-10 rounded-xl bg-[#1D3F91] text-[#FFFFFF] flex items-center justify-center mb-5 shadow-xs">
+                  <Layers className="w-5 h-5" />
+                </div>
+                <h3 className="text-xl font-serif font-bold text-[#141110] mb-2.5">
+                  RPO Services Bangalore (Recruitment Process Outsourcing)
+                </h3>
+                <p className="text-xs sm:text-sm text-[#5C5449] leading-relaxed mb-4">
+                  Embed dedicated recruitment consultants directly into your hiring workflow. We manage end-to-end applicant sourcing, screening pipelines, interview scheduling, and offer closing under your employer brand.
+                </p>
+              </div>
+              <Link
+                href="/blog/hiring-agency-vs-recruitment-consultant-vs-staffing"
+                className="text-xs font-mono font-bold text-[#1D3F91] hover:underline inline-flex items-center gap-1 mt-2"
+              >
+                Staffing agency vs RPO consultant &rarr;
+              </Link>
+            </div>
+
+            <div className="border border-[#141110]/10 bg-[#FFFFFF] rounded-3xl p-7 shadow-xs flex flex-col justify-between">
+              <div>
+                <div className="w-10 h-10 rounded-xl bg-[#1D3F91] text-[#FFFFFF] flex items-center justify-center mb-5 shadow-xs">
+                  <TrendingUp className="w-5 h-5" />
+                </div>
+                <h3 className="text-xl font-serif font-bold text-[#141110] mb-2.5">
+                  Hiring Strategy Consulting Bangalore
+                </h3>
+                <p className="text-xs sm:text-sm text-[#5C5449] leading-relaxed mb-4">
+                  Optimize your hiring pipeline with localized compensation benchmarking, technical assessment design, and interview rubric standardization crafted specifically for competitive Bangalore tech hiring.
+                </p>
+              </div>
+              <Link
+                href="/blog/startup-hiring-playbook-trained-vs-inhouse"
+                className="text-xs font-mono font-bold text-[#1D3F91] hover:underline inline-flex items-center gap-1 mt-2"
+              >
+                Trained vs in-house playbook &rarr;
+              </Link>
+            </div>
+
+            <div className="border border-[#141110]/10 bg-[#FFFFFF] rounded-3xl p-7 shadow-xs flex flex-col justify-between">
+              <div>
+                <div className="w-10 h-10 rounded-xl bg-[#1D3F91] text-[#FFFFFF] flex items-center justify-center mb-5 shadow-xs">
+                  <Rocket className="w-5 h-5" />
+                </div>
+                <h3 className="text-xl font-serif font-bold text-[#141110] mb-2.5">
+                  Recruitment Process Outsourcing India
+                </h3>
+                <p className="text-xs sm:text-sm text-[#5C5449] leading-relaxed mb-4">
+                  Enterprise-grade RPO solutions for multi-city hiring across Bengaluru, Chennai, and Pune, delivering scalable talent pipelines with real-time analytics and verified candidate quality metrics.
+                </p>
+              </div>
+              <Link
+                href="/about"
+                className="text-xs font-mono font-bold text-[#1D3F91] hover:underline inline-flex items-center gap-1 mt-2"
+              >
+                About Talenty Consulting &rarr;
+              </Link>
+            </div>
+
+            <div className="border border-[#141110]/10 bg-[#FFFFFF] rounded-3xl p-7 shadow-xs flex flex-col justify-between">
+              <div>
+                <div className="w-10 h-10 rounded-xl bg-[#1D3F91] text-[#FFFFFF] flex items-center justify-center mb-5 shadow-xs">
+                  <ShieldCheck className="w-5 h-5" />
+                </div>
+                <h3 className="text-xl font-serif font-bold text-[#141110] mb-2.5">
+                  90-Day Placement Assurance
+                </h3>
+                <p className="text-xs sm:text-sm text-[#5C5449] leading-relaxed mb-4">
+                  Every permanent hire comes with a full 90-day placement replacement guarantee, ensuring total risk protection and long-term organizational alignment for your core team appointments.
+                </p>
+              </div>
+              <Link
+                href="/contact"
+                className="text-xs font-mono font-bold text-[#1D3F91] hover:underline inline-flex items-center gap-1 mt-2"
+              >
+                Request hiring consultation &rarr;
+              </Link>
+            </div>
+          </RevealGroup>
+        </div>
+      </section>
+
       {/* Cluster 6: Fast Hiring Solutions Section */}
       <section className="py-20 bg-[#FBF8F2] border-t border-[#141110]/10">
         <div className="max-w-[1440px] mx-auto px-6 lg:px-10">

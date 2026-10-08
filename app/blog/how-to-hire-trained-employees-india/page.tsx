@@ -1,10 +1,13 @@
+import type { Metadata } from "next"
 import Link from "next/link"
-import { BlogArticle } from "@/components/seo/blog-article"
+import { BlogArticle, blogMetadata } from "@/components/seo/blog-article"
 
 const slug = "how-to-hire-trained-employees-india"
 const title = "How to Hire Trained Employees in India: The Complete Guide (2026)"
 const description =
   "Learn the complete blueprint for sourcing, vetting, training, and deploying job-ready talent in India. Compare traditional staffing vs pre-trained placement."
+
+export const metadata: Metadata = blogMetadata({ title, description, slug })
 
 const faqs = [
   {

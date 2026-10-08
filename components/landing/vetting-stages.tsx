@@ -93,19 +93,19 @@ export function VettingStages() {
 
   // Desktop ScrollTrigger pinning & measured scroll detection (>= 1024px)
   useGSAP(() => {
-    if (prefersReducedMotion) return
-
-    // GSAP official utility for mobile scroll normalization across dynamic address bar changes
-    if (typeof window !== "undefined" && typeof ScrollTrigger.normalizeScroll === "function") {
+    if (typeof window !== "undefined") {
       try {
-        ScrollTrigger.normalizeScroll({ allowNestedScroll: true })
+        ScrollTrigger.config({ ignoreMobileResize: true })
       } catch {
-        // Fallback gracefully if already initialized
+        // Fallback gracefully
       }
     }
 
+    if (prefersReducedMotion) return
+
     const mm = gsap.matchMedia()
 
+    // DESKTOP ONLY — pinned stage sequence (>= 1024px)
     mm.add("(min-width: 1024px)", () => {
       const gates = gsap.utils.toArray<HTMLElement>(".vetting-stage-card")
       const rightColumn = rightColumnRef.current
@@ -153,6 +153,33 @@ export function VettingStages() {
         if (resizeObserver) resizeObserver.disconnect()
         st.kill()
       }
+    })
+
+    // MOBILE ONLY — unpinned lightweight vertical card reveal (< 1024px)
+    mm.add("(max-width: 1023px)", () => {
+      const cards = gsap.utils.toArray<HTMLElement>(".vetting-stage-card")
+      cards.forEach((card) => {
+        gsap.fromTo(
+          card,
+          { opacity: 0.85, y: 16 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.45,
+            ease: "power2.out",
+            scrollTrigger: {
+              trigger: card,
+              start: "top 90%",
+              once: true,
+            },
+          }
+        )
+      })
+    })
+
+    // REDUCED MOTION
+    mm.add("(prefers-reduced-motion: reduce)", () => {
+      gsap.set(".vetting-stage-card", { opacity: 1, y: 0, clearProps: "all" })
     })
 
     return () => mm.revert()

@@ -116,7 +116,7 @@ export function LogoBrand({
               width={160}
               height={55}
               priority
-              className="h-11 sm:h-12 w-auto object-contain drop-shadow-[0_2px_5px_rgba(124,96,29,0.2)]"
+              className="h-8 sm:h-11 md:h-12 w-auto object-contain drop-shadow-[0_2px_5px_rgba(124,96,29,0.2)]"
             />
           </div>
         </div>

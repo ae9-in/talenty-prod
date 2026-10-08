@@ -78,9 +78,9 @@ export function ProcessTimeline() {
     if (prefersReducedMotion) return
     if (!sectionRef.current || !trackFillRef.current || !markerRef.current || !trackBaseRef.current) return
 
-    if (typeof window !== "undefined" && typeof ScrollTrigger.normalizeScroll === "function") {
+    if (typeof window !== "undefined") {
       try {
-        ScrollTrigger.normalizeScroll({ allowNestedScroll: true })
+        ScrollTrigger.config({ ignoreMobileResize: true })
       } catch {
         // Fallback gracefully
       }

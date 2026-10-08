@@ -21,8 +21,8 @@ const footerLinks = {
     { name: 'Hiring Consultation', href: '/contact' },
   ],
   legal: [
-    { name: 'Privacy Policy', href: '/about' },
-    { name: 'Terms of Engagement', href: '/about' },
+    { name: 'Privacy Policy', href: '/privacy' },
+    { name: 'Terms of Engagement', href: '/terms' },
     { name: 'Replacement Guarantee', href: '/about' },
     { name: 'Candidate Portal', href: '/register' },
   ]
@@ -95,11 +95,11 @@ export function Footer() {
                   type="email" 
                   placeholder={newsletterPlaceholder} 
                   required
-                  className="flex-1 bg-transparent border-0 px-4 py-2.5 text-sm outline-none text-[#FBF8F2] placeholder-white/40"
+                  className="flex-1 bg-transparent border-0 px-4 py-2.5 text-base sm:text-sm outline-none text-[#FBF8F2] placeholder-white/40 min-h-[44px]"
                 />
                 <button 
                   type="submit" 
-                  className="bg-[#1D3F91] hover:bg-[#3358B8] text-[#FFFFFF] font-bold text-xs uppercase px-5 py-2.5 tracking-wider transition-colors cursor-pointer"
+                  className="bg-[#1D3F91] hover:bg-[#3358B8] text-[#FFFFFF] font-bold text-xs uppercase px-5 py-2.5 tracking-wider transition-colors cursor-pointer min-h-[44px] flex items-center justify-center"
                 >
                   {isSubscribed ? "Sent ✓" : "Subscribe"}
                 </button>

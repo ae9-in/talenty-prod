@@ -111,13 +111,33 @@ function ServicesDropdown({ group }: { group: NavGroup }) {
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
-  const [mobileServicesOpen, setMobileServicesOpen] = useState(false)
+  const menuRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    const handleScroll = () => setIsScrolled(window.scrollY > 40)
+    const handleScroll = () => setIsScrolled(window.scrollY > 30)
     window.addEventListener("scroll", handleScroll, { passive: true })
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
+
+  // Lock body scroll when mobile menu is open & listen for Escape key
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      const originalOverflow = document.body.style.overflow
+      document.body.style.overflow = "hidden"
+
+      const handleKeyDown = (e: KeyboardEvent) => {
+        if (e.key === "Escape") {
+          setIsMobileMenuOpen(false)
+        }
+      }
+      window.addEventListener("keydown", handleKeyDown)
+
+      return () => {
+        document.body.style.overflow = originalOverflow
+        window.removeEventListener("keydown", handleKeyDown)
+      }
+    }
+  }, [isMobileMenuOpen])
 
   return (
     <motion.header
@@ -126,11 +146,11 @@ export function Navbar() {
       transition={{ duration: 0.45, ease: "easeOut" }}
       className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
         isScrolled || isMobileMenuOpen
-          ? "border-b border-[#141110]/10 bg-[#FBF8F2]/90 backdrop-blur-xl shadow-xs"
+          ? "border-b border-[#141110]/10 bg-[#FBF8F2]/95 backdrop-blur-xl shadow-xs"
           : "bg-transparent"
       }`}
     >
-      <nav className="max-w-[1440px] mx-auto flex h-18 items-center justify-between px-6 lg:px-10">
+      <nav className="max-w-[1440px] mx-auto flex h-16 sm:h-18 items-center justify-between px-5 sm:px-6 lg:px-10">
         {/* Brand Lockup */}
         <LogoBrand />
 
@@ -166,99 +186,127 @@ export function Navbar() {
         <button
           className="lg:hidden text-[#141110] focus:outline-none cursor-pointer min-w-[44px] min-h-[44px] flex items-center justify-center p-2 rounded-xl hover:bg-[#F4EFE5] transition-colors"
           onClick={() => setIsMobileMenuOpen((current) => !current)}
-          aria-label="Toggle menu"
+          aria-label={isMobileMenuOpen ? "Close navigation menu" : "Open navigation menu"}
           aria-expanded={isMobileMenuOpen}
         >
           {isMobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
         </button>
       </nav>
 
-      {/* Mobile Menu Panel */}
+      {/* Mobile Menu Panel — Full-screen drawer with expanded services */}
       <AnimatePresence>
         {isMobileMenuOpen && (
-          <motion.div
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: "auto", opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            className="overflow-hidden lg:hidden border-t border-[#141110]/10 bg-[#FBF8F2] shadow-inner"
-          >
-            <div className="px-6 py-6 space-y-1">
-              {/* Home & About */}
-              {[mobileNavLinks[0], mobileNavLinks[1]].map((link) => (
-                <Link
-                  key={link.name}
-                  href={link.href}
-                  className="flex items-center min-h-[44px] px-3 py-2.5 rounded-xl text-base font-semibold text-[#5C5449] hover:text-[#1D3F91] hover:bg-[#F4EFE5] transition-colors"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  {link.name}
-                </Link>
-              ))}
+          <>
+            {/* Backdrop overlay */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="fixed inset-0 top-16 bg-[#141110]/40 backdrop-blur-xs z-40 lg:hidden"
+              aria-hidden="true"
+            />
 
-              {/* Services group */}
-              <div>
-                <button
-                  onClick={() => setMobileServicesOpen((v) => !v)}
-                  className="w-full flex items-center justify-between min-h-[44px] px-3 py-2.5 rounded-xl text-base font-semibold text-[#5C5449] hover:text-[#1D3F91] hover:bg-[#F4EFE5] transition-colors cursor-pointer"
-                >
-                  <span>Services</span>
-                  <ChevronDown
-                    className={`w-4 h-4 transition-transform duration-200 ${
-                      mobileServicesOpen ? "rotate-180" : ""
-                    }`}
-                  />
-                </button>
-                <AnimatePresence>
-                  {mobileServicesOpen && (
-                    <motion.div
-                      initial={{ height: 0, opacity: 0 }}
-                      animate={{ height: "auto", opacity: 1 }}
-                      exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.18 }}
-                      className="overflow-hidden ml-3 border-l-2 border-[#1D3F91]/20 pl-3 space-y-0.5"
+            {/* Menu Drawer */}
+            <motion.div
+              ref={menuRef}
+              initial={{ height: 0, opacity: 0 }}
+              animate={{ height: "calc(100svh - 4rem)", opacity: 1 }}
+              exit={{ height: 0, opacity: 0 }}
+              transition={{ duration: 0.25, ease: "easeInOut" }}
+              className="overflow-y-auto lg:hidden fixed inset-x-0 top-16 border-t border-[#141110]/10 bg-[#FBF8F2] shadow-xl z-50 px-6 py-6"
+            >
+              <div className="space-y-4 max-w-md mx-auto pb-10">
+                {/* Core Navigation Links */}
+                <div className="space-y-1">
+                  <Link
+                    href="/"
+                    className="flex items-center min-h-[44px] px-3 py-2 rounded-xl text-base font-semibold text-[#141110] hover:text-[#1D3F91] hover:bg-[#F4EFE5] transition-colors"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    Home
+                  </Link>
+                  <Link
+                    href="/about"
+                    className="flex items-center min-h-[44px] px-3 py-2 rounded-xl text-base font-semibold text-[#141110] hover:text-[#1D3F91] hover:bg-[#F4EFE5] transition-colors"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    About
+                  </Link>
+                </div>
+
+                {/* Services Section — EXPANDED directly so all pages are 1 tap away */}
+                <div className="pt-2 border-t border-[#141110]/10 space-y-2">
+                  <div className="px-3 font-mono text-[11px] font-bold uppercase tracking-wider text-[#1D3F91]">
+                    Services
+                  </div>
+                  <div className="space-y-1 pl-1">
+                    <Link
+                      href="/talent-screening-process"
+                      className="flex items-center min-h-[44px] px-3 py-2 rounded-xl text-sm font-medium text-[#5C5449] hover:text-[#1D3F91] hover:bg-[#F4EFE5] transition-colors"
+                      onClick={() => setIsMobileMenuOpen(false)}
                     >
-                      {mobileNavLinks.slice(2, 6).map((link) => (
-                        <Link
-                          key={link.name}
-                          href={link.href}
-                          className="flex items-center min-h-[44px] px-3 py-2 rounded-xl text-sm font-medium text-[#5C5449] hover:text-[#1D3F91] hover:bg-[#F4EFE5] transition-colors"
-                          onClick={() => {
-                            setIsMobileMenuOpen(false)
-                            setMobileServicesOpen(false)
-                          }}
-                        >
-                          <span className="w-1.5 h-1.5 rounded-full bg-[#1D3F91]/40 mr-2.5 flex-shrink-0" />
-                          {link.name}
-                        </Link>
-                      ))}
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </div>
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#1D3F91] mr-3 flex-shrink-0" />
+                      Vetting Process
+                    </Link>
+                    <Link
+                      href="/trained-employee-placement"
+                      className="flex items-center min-h-[44px] px-3 py-2 rounded-xl text-sm font-medium text-[#5C5449] hover:text-[#1D3F91] hover:bg-[#F4EFE5] transition-colors"
+                      onClick={() => setIsMobileMenuOpen(false)}
+                    >
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#1D3F91] mr-3 flex-shrink-0" />
+                      Trained Placement
+                    </Link>
+                    <Link
+                      href="/it-staffing-bangalore"
+                      className="flex items-center min-h-[44px] px-3 py-2 rounded-xl text-sm font-medium text-[#5C5449] hover:text-[#1D3F91] hover:bg-[#F4EFE5] transition-colors"
+                      onClick={() => setIsMobileMenuOpen(false)}
+                    >
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#1D3F91] mr-3 flex-shrink-0" />
+                      IT Staffing Bangalore
+                    </Link>
+                    <Link
+                      href="/recruitment-consulting-bangalore"
+                      className="flex items-center min-h-[44px] px-3 py-2 rounded-xl text-sm font-medium text-[#5C5449] hover:text-[#1D3F91] hover:bg-[#F4EFE5] transition-colors"
+                      onClick={() => setIsMobileMenuOpen(false)}
+                    >
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#1D3F91] mr-3 flex-shrink-0" />
+                      Recruitment Consulting
+                    </Link>
+                  </div>
+                </div>
 
-              {/* Blog & Contact */}
-              {mobileNavLinks.slice(6).map((link) => (
-                <Link
-                  key={link.name}
-                  href={link.href}
-                  className="flex items-center min-h-[44px] px-3 py-2.5 rounded-xl text-base font-semibold text-[#5C5449] hover:text-[#1D3F91] hover:bg-[#F4EFE5] transition-colors"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  {link.name}
-                </Link>
-              ))}
+                {/* Blog & Contact */}
+                <div className="pt-2 border-t border-[#141110]/10 space-y-1">
+                  <Link
+                    href="/blog"
+                    className="flex items-center min-h-[44px] px-3 py-2 rounded-xl text-base font-semibold text-[#141110] hover:text-[#1D3F91] hover:bg-[#F4EFE5] transition-colors"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    Field Notes &amp; Blog
+                  </Link>
+                  <Link
+                    href="/contact"
+                    className="flex items-center min-h-[44px] px-3 py-2 rounded-xl text-base font-semibold text-[#141110] hover:text-[#1D3F91] hover:bg-[#F4EFE5] transition-colors"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    Contact &amp; Intake
+                  </Link>
+                </div>
 
-              <div className="pt-4 border-t border-[#141110]/10 flex flex-col gap-3">
-                <Link
-                  href="/register"
-                  className="text-center bg-[#1D3F91] hover:bg-[#3358B8] text-[#FFFFFF] py-3.5 min-h-[48px] flex items-center justify-center rounded-full font-bold text-sm shadow-xs"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  Registration
-                </Link>
+                {/* Primary Action CTA */}
+                <div className="pt-4 border-t border-[#141110]/10 flex flex-col gap-3">
+                  <Link
+                    href="/register"
+                    className="text-center bg-[#1D3F91] hover:bg-[#3358B8] text-[#FFFFFF] py-3.5 min-h-[48px] flex items-center justify-center rounded-full font-bold text-sm shadow-[0_4px_14px_rgba(29,63,145,0.35)] cursor-pointer"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    Candidate Registration
+                  </Link>
+                </div>
               </div>
-            </div>
-          </motion.div>
+            </motion.div>
+          </>
         )}
       </AnimatePresence>
     </motion.header>

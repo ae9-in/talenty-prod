@@ -149,8 +149,20 @@ async function localQuery(sql: string, params: any[] = []): Promise<{ rows: any[
   }
 
   if (normalizedSql.includes("INSERT INTO registered_users")) {
-    const email = params[1]
-    const exists = data.registered_users.some((u: any) => u.email.toLowerCase() === email.toLowerCase())
+    const isNewFormat = params.length >= 7
+    const userType = isNewFormat ? params[0] || "recruiter" : "recruiter"
+    const fullName = isNewFormat ? params[1] : params[0]
+    const email = isNewFormat ? params[2] : params[1]
+    const phone = isNewFormat ? params[3] : params[2]
+    const recruitingType = isNewFormat ? params[4] : params[3]
+    const description = isNewFormat ? params[5] : null
+    const resumeUrl = isNewFormat ? params[6] : null
+    const resumeName = isNewFormat ? params[7] : null
+    const companyName = isNewFormat ? params[8] : params[4]
+    const interestedRole = isNewFormat ? params[9] || recruitingType : params[3]
+    const passwordHash = isNewFormat ? params[10] : params[5]
+
+    const exists = data.registered_users.some((u: any) => (u.email || "").toLowerCase() === (email || "").toLowerCase())
     if (exists) {
       const error: any = new Error("Unique constraint violation")
       error.code = "23505"
@@ -159,12 +171,17 @@ async function localQuery(sql: string, params: any[] = []): Promise<{ rows: any[
     const nextId = data.registered_users.reduce((max: number, u: any) => Math.max(max, u.id || 0), 0) + 1
     const newUser = {
       id: nextId,
-      full_name: params[0],
-      email: params[1],
-      phone: params[2],
-      interested_role: params[3],
-      company_name: params[4],
-      password_hash: params[5],
+      user_type: userType,
+      full_name: fullName,
+      email,
+      phone,
+      recruiting_type: recruitingType,
+      description,
+      resume_url: resumeUrl,
+      resume_name: resumeName,
+      company_name: companyName,
+      interested_role: interestedRole,
+      password_hash: passwordHash,
       created_at: new Date().toISOString()
     }
     data.registered_users.push(newUser)
@@ -310,12 +327,17 @@ async function localQuery(sql: string, params: any[] = []): Promise<{ rows: any[
     list.sort((a, b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime())
     const rows = list.map(u => ({
       id: u.id,
-      fullName: u.full_name,
+      userType: u.user_type || u.userType || "recruiter",
+      fullName: u.full_name || u.fullName,
       email: u.email,
       phone: u.phone,
-      interestedRole: u.interested_role,
-      companyName: u.company_name,
-      createdAt: u.created_at
+      recruitingType: u.recruiting_type || u.recruitingType || u.interested_role || u.interestedRole || null,
+      description: u.description || null,
+      resumeUrl: u.resume_url || u.resumeUrl || null,
+      resumeName: u.resume_name || u.resumeName || null,
+      companyName: u.company_name || u.companyName || null,
+      interestedRole: u.interested_role || u.interestedRole || u.recruiting_type || null,
+      createdAt: u.created_at || u.createdAt
     }))
     return { rows }
   }
@@ -393,7 +415,19 @@ async function mongoQuery(sql: string, params: any[] = []): Promise<{ rows: any[
   }
 
   if (normalizedSql.includes("INSERT INTO registered_users")) {
-    const email = params[1].toLowerCase()
+    const isNewFormat = params.length >= 7
+    const userType = isNewFormat ? params[0] || "recruiter" : "recruiter"
+    const fullName = isNewFormat ? params[1] : params[0]
+    const email = (isNewFormat ? params[2] : params[1]).toLowerCase()
+    const phone = isNewFormat ? params[3] : params[2]
+    const recruitingType = isNewFormat ? params[4] : params[3]
+    const description = isNewFormat ? params[5] : null
+    const resumeUrl = isNewFormat ? params[6] : null
+    const resumeName = isNewFormat ? params[7] : null
+    const companyName = isNewFormat ? params[8] : params[4]
+    const interestedRole = isNewFormat ? params[9] || recruitingType : params[3]
+    const passwordHash = isNewFormat ? params[10] : params[5]
+
     const exists = await mongoDb.collection("registered_users").findOne({ email })
     if (exists) {
       const error: any = new Error("Unique constraint violation")
@@ -402,12 +436,17 @@ async function mongoQuery(sql: string, params: any[] = []): Promise<{ rows: any[
     }
 
     const doc = {
-      full_name: params[0],
+      user_type: userType,
+      full_name: fullName,
       email,
-      phone: params[2],
-      interested_role: params[3],
-      company_name: params[4],
-      password_hash: params[5],
+      phone,
+      recruiting_type: recruitingType,
+      description,
+      resume_url: resumeUrl,
+      resume_name: resumeName,
+      company_name: companyName,
+      interested_role: interestedRole,
+      password_hash: passwordHash,
       created_at: new Date().toISOString()
     }
     const res = await mongoDb.collection("registered_users").insertOne(doc)
@@ -567,12 +606,17 @@ async function mongoQuery(sql: string, params: any[] = []): Promise<{ rows: any[
 
     const rows = list.map((u: any) => ({
       id: u._id.toString(),
-      fullName: u.full_name,
+      userType: u.user_type || u.userType || "recruiter",
+      fullName: u.full_name || u.fullName,
       email: u.email,
       phone: u.phone,
-      interestedRole: u.interested_role,
-      companyName: u.company_name,
-      createdAt: u.created_at
+      recruitingType: u.recruiting_type || u.recruitingType || u.interested_role || u.interestedRole || null,
+      description: u.description || null,
+      resumeUrl: u.resume_url || u.resumeUrl || null,
+      resumeName: u.resume_name || u.resumeName || null,
+      companyName: u.company_name || u.companyName || null,
+      interestedRole: u.interested_role || u.interestedRole || u.recruiting_type || null,
+      createdAt: u.created_at || u.createdAt
     }))
     return { rows }
   }
@@ -691,14 +735,26 @@ export async function initializeDatabase() {
       await pool.query(`
         CREATE TABLE IF NOT EXISTS registered_users (
           id SERIAL PRIMARY KEY,
+          user_type TEXT NOT NULL DEFAULT 'recruiter',
           full_name TEXT NOT NULL,
           email TEXT NOT NULL UNIQUE,
           phone TEXT NOT NULL,
-          interested_role TEXT NOT NULL,
+          recruiting_type TEXT,
+          description TEXT,
+          resume_url TEXT,
+          resume_name TEXT,
+          interested_role TEXT,
           company_name TEXT,
-          password_hash TEXT NOT NULL,
+          password_hash TEXT,
           created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
         );
+        ALTER TABLE registered_users ADD COLUMN IF NOT EXISTS user_type TEXT DEFAULT 'recruiter';
+        ALTER TABLE registered_users ADD COLUMN IF NOT EXISTS recruiting_type TEXT;
+        ALTER TABLE registered_users ADD COLUMN IF NOT EXISTS description TEXT;
+        ALTER TABLE registered_users ADD COLUMN IF NOT EXISTS resume_url TEXT;
+        ALTER TABLE registered_users ADD COLUMN IF NOT EXISTS resume_name TEXT;
+        ALTER TABLE registered_users ALTER COLUMN password_hash DROP NOT NULL;
+        ALTER TABLE registered_users ALTER COLUMN interested_role DROP NOT NULL;
       `)
 
       await pool.query(`

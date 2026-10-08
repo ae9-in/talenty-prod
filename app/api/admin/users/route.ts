@@ -1,4 +1,4 @@
-﻿import { cookies } from "next/headers"
+import { cookies } from "next/headers"
 import { NextResponse } from "next/server"
 
 import { ADMIN_SESSION_COOKIE, verifyAdminSessionToken } from "@/backend/auth"
@@ -18,9 +18,14 @@ export async function GET() {
     `
       SELECT
         id,
+        COALESCE(user_type, 'recruiter') AS "userType",
         full_name AS "fullName",
         email,
         phone,
+        COALESCE(recruiting_type, interested_role) AS "recruitingType",
+        description,
+        resume_url AS "resumeUrl",
+        resume_name AS "resumeName",
         interested_role AS "interestedRole",
         company_name AS "companyName",
         created_at AS "createdAt"

@@ -28,7 +28,7 @@ export default function RegisterPage() {
                 ON THE RECORD
               </Eyebrow>
               <blockquote className="text-2xl font-serif italic font-normal leading-relaxed text-[#5C5449]">
-                “The first recruitment ATS workflow that didn't feel like a punishment to use — our engineering panels close candidates in half the cycle time.”
+                “The fastest talent pipeline we’ve integrated — from verified candidate cohorts to zero-ramp deployments in days.”
               </blockquote>
               <div className="font-mono text-xs text-[#5C5449]">
                 <b className="text-[#141110] text-base font-serif block mb-0.5 font-bold">Sarah Klein</b>
@@ -46,7 +46,7 @@ export default function RegisterPage() {
               </div>
               <div className="space-y-1">
                 <div className="text-2xl font-serif font-extrabold tracking-tight text-[#141110]">Day-One</div>
-                <div className="font-mono text-[10px] text-[#5C5449] uppercase tracking-wider">production readiness</div>
+                <div className="font-mono text-[10px] text-[#5C5449] uppercase tracking-wider">production ready</div>
               </div>
               <div className="space-y-1">
                 <div className="text-2xl font-serif font-extrabold tracking-tight text-[#141110]">Pan-India</div>
@@ -62,52 +62,27 @@ export default function RegisterPage() {
         </section>
 
         {/* Right Side: Registration form */}
-        <section className="flex flex-col justify-center px-6 py-12 md:px-12 lg:px-20 bg-[#FBF8F2] relative overflow-hidden">
+        <section className="flex flex-col justify-center px-6 py-12 md:px-12 lg:px-16 bg-[#FBF8F2] relative overflow-hidden">
           {/* Header navigation bar */}
-          <div className="absolute top-8 left-6 right-6 md:left-12 md:right-12 lg:left-20 lg:right-20 flex justify-between items-center z-10 font-mono text-[10px] text-[#5C5449]">
-            <span className="uppercase tracking-wider">Start your free trial</span>
+          <div className="absolute top-8 left-6 right-6 md:left-12 md:right-12 lg:left-16 lg:right-16 flex justify-between items-center z-10 font-mono text-[10px] text-[#5C5449]">
+            <span className="uppercase tracking-wider">Talenty Portal Registration</span>
             <Link href="/" className="hover:text-[#141110] transition-colors font-semibold flex items-center gap-1">
               ← Back to site
             </Link>
           </div>
 
           {/* Form wrapper */}
-          <div className="max-w-[440px] mx-auto w-full space-y-8 mt-6">
+          <div className="max-w-[460px] mx-auto w-full space-y-6 mt-10">
             <div className="space-y-2">
               <h1 className="text-3xl font-serif font-semibold tracking-tight text-[#141110]">
-                Let's get you <span className="text-[#1D3F91]">hiring.</span>
+                Get started with <span className="text-[#1D3F91]">Talenty.</span>
               </h1>
-              <p className="text-[14.5px] leading-relaxed text-[#5C5449]">
-                Access pre-vetted candidate cohorts and trained employee placement for your technical organization.
+              <p className="text-[14px] leading-relaxed text-[#5C5449]">
+                Choose your registration profile below to connect with technical talent or discover top career opportunities.
               </p>
             </div>
 
-            {/* Social logins */}
-            <div className="grid grid-cols-2 gap-3">
-              <button 
-                type="button" 
-                onClick={() => alert("Google SSO is a mock. Please register below.")}
-                className="flex items-center justify-center gap-2 border border-[#141110]/10 hover:border-[#141110]/30 bg-[#F4EFE5] rounded-xl py-3 px-4 font-mono text-xs font-semibold text-[#141110] transition-colors hover:shadow-sm cursor-pointer"
-              >
-                <span>Google</span>
-              </button>
-              <button 
-                type="button" 
-                onClick={() => alert("Microsoft SSO is a mock. Please register below.")}
-                className="flex items-center justify-center gap-2 border border-[#141110]/10 hover:border-[#141110]/30 bg-[#F4EFE5] rounded-xl py-3 px-4 font-mono text-xs font-semibold text-[#141110] transition-colors hover:shadow-sm cursor-pointer"
-              >
-                <span>Microsoft</span>
-              </button>
-            </div>
-
-            {/* Divider */}
-            <div className="flex items-center gap-4 text-xs font-mono text-[#3A5570] uppercase tracking-widest select-none">
-              <hr className="flex-1 border-[#0D2D42]/10" />
-              <span>or</span>
-              <hr className="flex-1 border-[#0D2D42]/10" />
-            </div>
-
-            {/* Form */}
+            {/* Registration Form with Recruiter / Recruitee Tabs */}
             <RegisterForm />
           </div>
         </section>

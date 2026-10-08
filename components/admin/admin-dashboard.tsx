@@ -7,12 +7,14 @@ import {
   Briefcase,
   Building2,
   Download,
+  FileText,
   Filter,
   LogOut,
   Mail,
   Phone,
   Search,
   Shield,
+  UserCheck,
   UserRound,
   Users,
 } from "lucide-react"
@@ -48,7 +50,9 @@ export function AdminDashboard({ initialEnquiries, initialUsers }: DashboardProp
   const [search, setSearch] = useState("")
   const [statusFilter, setStatusFilter] = useState("all")
   const [industryFilter, setIndustryFilter] = useState("all")
+  const [userTypeFilter, setUserTypeFilter] = useState<"all" | "recruiter" | "recruitee">("all")
   const [selectedEnquiry, setSelectedEnquiry] = useState<EnquiryRecord | null>(null)
+  const [selectedUser, setSelectedUser] = useState<RegisteredUserRecord | null>(null)
   const [detailStatus, setDetailStatus] = useState<EnquiryRecord["status"]>("pending")
   const [detailNotes, setDetailNotes] = useState("")
   const [errorMessage, setErrorMessage] = useState("")
@@ -60,27 +64,37 @@ export function AdminDashboard({ initialEnquiries, initialUsers }: DashboardProp
     const totalEnquiries = enquiries.length
     const totalCounselingRequests = enquiries.filter((item) => /counsel/i.test(item.requirementType)).length
     const totalRegisteredUsers = users.length
+    const totalRecruiters = users.filter((u) => (u.userType || "recruiter") === "recruiter").length
+    const totalCandidates = users.filter((u) => u.userType === "recruitee").length
     const recentRequests = enquiries.filter((item) => Date.now() - new Date(item.createdAt).getTime() <= 1000 * 60 * 60 * 24 * 7).length
     const pendingRequests = enquiries.filter((item) => item.status === "pending").length
     const completedRequests = enquiries.filter((item) => item.status === "completed").length
 
-    return { totalEnquiries, totalCounselingRequests, totalRegisteredUsers, recentRequests, pendingRequests, completedRequests }
+    return { totalEnquiries, totalCounselingRequests, totalRegisteredUsers, totalRecruiters, totalCandidates, recentRequests, pendingRequests, completedRequests }
   }, [enquiries, users])
 
   const recentActivity = useMemo(() => enquiries.slice(0, 5), [enquiries])
 
-  // Filtered enquiries & users based on search
+  // Filtered users based on search & userTypeFilter
   const filteredUsers = useMemo(() => {
-    if (!search.trim()) return users
-    const query = search.toLowerCase().trim()
-    return users.filter(
-      (u) =>
+    return users.filter((u) => {
+      const actualType = u.userType || "recruiter"
+      if (userTypeFilter !== "all" && actualType !== userTypeFilter) {
+        return false
+      }
+      if (!search.trim()) return true
+      const query = search.toLowerCase().trim()
+      return (
         u.fullName.toLowerCase().includes(query) ||
         u.email.toLowerCase().includes(query) ||
+        u.phone.toLowerCase().includes(query) ||
         (u.companyName && u.companyName.toLowerCase().includes(query)) ||
-        u.interestedRole.toLowerCase().includes(query)
-    )
-  }, [users, search])
+        (u.recruitingType && u.recruitingType.toLowerCase().includes(query)) ||
+        (u.interestedRole && u.interestedRole.toLowerCase().includes(query)) ||
+        (u.description && u.description.toLowerCase().includes(query))
+      )
+    })
+  }, [users, search, userTypeFilter])
 
   // Initial and Filter-triggered fetch for enquiries
   useEffect(() => {
@@ -180,7 +194,7 @@ export function AdminDashboard({ initialEnquiries, initialUsers }: DashboardProp
     window.location.href = "/admin"
   }
 
-  const exportCsv = () => {
+  const exportEnquiriesCsv = () => {
     const header = ["ID", "Name", "Company Name", "Email", "Phone", "Requirement Type", "Industry", "Roles Required", "Employees Needed", "Message", "Status", "Date Submitted"]
     const rows = enquiries.map((item) => [item.id, item.fullName, item.companyName, item.email, item.phone, item.requirementType, item.industry, item.rolesRequired, item.employeesNeeded, item.message.replace(/\n/g, " "), item.status, new Date(item.createdAt).toLocaleString()])
     const csv = [header, ...rows].map((row) => row.map((value) => `"${String(value).replace(/"/g, '""')}"`).join(",")).join("\n")
@@ -189,6 +203,31 @@ export function AdminDashboard({ initialEnquiries, initialUsers }: DashboardProp
     const link = document.createElement("a")
     link.href = url
     link.download = "talenty-enquiries.csv"
+    link.click()
+    URL.revokeObjectURL(url)
+  }
+
+  const exportUsersCsv = () => {
+    const header = ["ID", "User Type", "Full Name", "Email", "Phone", "Recruiting Type / Target Role", "Company Name", "Description", "Has Resume", "Resume Name", "Registered At"]
+    const rows = filteredUsers.map((u) => [
+      u.id,
+      u.userType || "recruiter",
+      u.fullName,
+      u.email,
+      u.phone,
+      u.recruitingType || u.interestedRole || "",
+      u.companyName || "",
+      (u.description || "").replace(/\n/g, " "),
+      u.resumeUrl ? "Yes" : "No",
+      u.resumeName || "",
+      new Date(u.createdAt).toLocaleString()
+    ])
+    const csv = [header, ...rows].map((row) => row.map((value) => `"${String(value).replace(/"/g, '""')}"`).join(",")).join("\n")
+    const blob = new Blob([csv], { type: "text/csv;charset=utf-8;" })
+    const url = URL.createObjectURL(blob)
+    const link = document.createElement("a")
+    link.href = url
+    link.download = "talenty-registered-users.csv"
     link.click()
     URL.revokeObjectURL(url)
   }
@@ -228,6 +267,22 @@ export function AdminDashboard({ initialEnquiries, initialUsers }: DashboardProp
             </button>
           </nav>
 
+          <div className="mt-8 pt-6 border-t border-border/40 space-y-2">
+            <div className="text-xs font-mono uppercase tracking-wider text-muted-foreground px-2">Talent Pool Breakdown</div>
+            <div className="flex items-center justify-between text-xs px-2 py-1.5 rounded-lg bg-secondary/30">
+              <span className="flex items-center gap-1.5 text-sky-400 font-medium">
+                <Briefcase className="w-3.5 h-3.5" /> Recruiters
+              </span>
+              <span className="font-bold">{summary.totalRecruiters}</span>
+            </div>
+            <div className="flex items-center justify-between text-xs px-2 py-1.5 rounded-lg bg-secondary/30">
+              <span className="flex items-center gap-1.5 text-emerald-400 font-medium">
+                <UserCheck className="w-3.5 h-3.5" /> Candidates
+              </span>
+              <span className="font-bold">{summary.totalCandidates}</span>
+            </div>
+          </div>
+
           <Button asChild variant="outline" className="mt-6 w-full border-border/50">
             <a href="/">Back to Website</a>
           </Button>
@@ -243,7 +298,7 @@ export function AdminDashboard({ initialEnquiries, initialUsers }: DashboardProp
               <p className="text-xs uppercase tracking-[0.28em] text-muted-foreground">Admin Dashboard</p>
               <h2 className="mt-2 text-3xl font-bold">Counseling and Consulting Control Center</h2>
               <p className="mt-2 text-sm text-muted-foreground">
-                Monitor live enquiries, review user registrations, and track all requests in real time via Neon PostgreSQL.
+                Monitor live enquiries, review recruiter needs, candidate resumes, and track all requests in real time via database sync.
               </p>
             </div>
             <div className="flex items-center gap-3 text-sm text-muted-foreground">
@@ -258,9 +313,9 @@ export function AdminDashboard({ initialEnquiries, initialUsers }: DashboardProp
                 { label: "Total Enquiries", value: summary.totalEnquiries, icon: Briefcase },
                 { label: "Total Counseling Requests", value: summary.totalCounselingRequests, icon: BadgeCheck },
                 { label: "Total Registered Users", value: summary.totalRegisteredUsers, icon: Users },
-                { label: "Recent Requests", value: summary.recentRequests, icon: Activity },
-                { label: "Pending Requests", value: summary.pendingRequests, icon: Shield },
-                { label: "Completed Requests", value: summary.completedRequests, icon: BadgeCheck },
+                { label: "Active Recruiters", value: summary.totalRecruiters, icon: Briefcase },
+                { label: "Candidate Profiles", value: summary.totalCandidates, icon: UserCheck },
+                { label: "Pending Enquiries", value: summary.pendingRequests, icon: Shield },
               ].map((item) => (
                 <div key={item.label} className="rounded-3xl border border-border/50 bg-white/5 p-5 backdrop-blur-xl">
                   <div className="mb-4 flex items-center justify-between">
@@ -299,7 +354,7 @@ export function AdminDashboard({ initialEnquiries, initialUsers }: DashboardProp
                         <option value="all">All Industries</option>
                         {industries.map((industry) => <option key={industry} value={industry}>{industry}</option>)}
                       </select>
-                      <Button variant="outline" className="border-border/50" onClick={exportCsv}><Download className="mr-2 h-4 w-4" />Export CSV</Button>
+                      <Button variant="outline" className="border-border/50" onClick={exportEnquiriesCsv}><Download className="mr-2 h-4 w-4" />Export CSV</Button>
                     </div>
                   </div>
 
@@ -347,12 +402,24 @@ export function AdminDashboard({ initialEnquiries, initialUsers }: DashboardProp
                 <div className="rounded-3xl border border-border/50 bg-white/5 p-5 backdrop-blur-xl">
                   <div className="mb-5 flex flex-col gap-4 xl:flex-row xl:items-center xl:justify-between">
                     <div>
-                      <h2 className="text-2xl font-bold text-foreground">Registered Users</h2>
-                      <p className="text-sm text-muted-foreground">Live accounts registered on Talenty via Neon PostgreSQL.</p>
+                      <h2 className="text-2xl font-bold text-foreground">Registered Users & Talent Pool</h2>
+                      <p className="text-sm text-muted-foreground">Review recruiter hiring requirements and candidate job applications.</p>
                     </div>
-                    <div className="relative min-w-[240px]">
-                      <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
-                      <Input className="pl-10 bg-secondary/40 border-border/50" placeholder="Search by name, email, or company" value={search} onChange={(event) => setSearch(event.target.value)} />
+                    <div className="flex flex-col sm:flex-row gap-3">
+                      <select
+                        className="h-10 rounded-md border border-border/50 bg-secondary/40 px-3 text-sm text-foreground"
+                        value={userTypeFilter}
+                        onChange={(e) => setUserTypeFilter(e.target.value as "all" | "recruiter" | "recruitee")}
+                      >
+                        <option value="all">All Registration Types ({users.length})</option>
+                        <option value="recruiter">Recruiters Only ({summary.totalRecruiters})</option>
+                        <option value="recruitee">Candidates Only ({summary.totalCandidates})</option>
+                      </select>
+                      <div className="relative min-w-[220px]">
+                        <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
+                        <Input className="pl-10 bg-secondary/40 border-border/50" placeholder="Search name, role, details..." value={search} onChange={(event) => setSearch(event.target.value)} />
+                      </div>
+                      <Button variant="outline" className="border-border/50" onClick={exportUsersCsv}><Download className="mr-2 h-4 w-4" />Export CSV</Button>
                     </div>
                   </div>
 
@@ -360,26 +427,81 @@ export function AdminDashboard({ initialEnquiries, initialUsers }: DashboardProp
                     <table className="min-w-full text-sm">
                       <thead>
                         <tr className="border-b border-border/40 text-left text-muted-foreground">
-                          {["ID", "Full Name", "Email", "Phone", "Interested Role / Industry", "Company Name", "Registered Date"].map((header) => <th key={header} className="px-3 py-3 font-medium">{header}</th>)}
+                          {["ID", "Type", "Full Name", "Contact Details", "Recruiting Type / Role", "Description", "Resume", "Registered Date", "Action"].map((header) => <th key={header} className="px-3 py-3 font-medium">{header}</th>)}
                         </tr>
                       </thead>
                       <tbody>
-                        {filteredUsers.map((user) => (
-                          <tr key={user.id} className="border-b border-border/20 align-top text-foreground">
-                            <td className="px-3 py-4">#{user.id}</td>
-                            <td className="px-3 py-4 font-medium">{user.fullName}</td>
-                            <td className="px-3 py-4">{user.email}</td>
-                            <td className="px-3 py-4">{user.phone}</td>
-                            <td className="px-3 py-4">{user.interestedRole}</td>
-                            <td className="px-3 py-4">{user.companyName || "N/A"}</td>
-                            <td className="px-3 py-4 text-muted-foreground">{new Date(user.createdAt).toLocaleString()}</td>
-                          </tr>
-                        ))}
+                        {filteredUsers.map((user) => {
+                          const isRecruiter = (user.userType || "recruiter") === "recruiter"
+                          return (
+                            <tr key={user.id} className="border-b border-border/20 align-top text-foreground">
+                              <td className="px-3 py-4 text-xs font-mono text-muted-foreground">#{user.id}</td>
+                              <td className="px-3 py-4">
+                                {isRecruiter ? (
+                                  <Badge className="bg-sky-500/15 text-sky-400 border-sky-500/20 font-mono text-[11px] gap-1">
+                                    <Briefcase className="w-3 h-3" /> Recruiter
+                                  </Badge>
+                                ) : (
+                                  <Badge className="bg-emerald-500/15 text-emerald-400 border-emerald-500/20 font-mono text-[11px] gap-1">
+                                    <UserCheck className="w-3 h-3" /> Candidate
+                                  </Badge>
+                                )}
+                              </td>
+                              <td className="px-3 py-4">
+                                <div className="font-semibold">{user.fullName}</div>
+                                {user.companyName && (
+                                  <div className="text-xs text-muted-foreground">{user.companyName}</div>
+                                )}
+                              </td>
+                              <td className="px-3 py-4 text-xs space-y-0.5">
+                                <div><a href={`mailto:${user.email}`} className="text-primary hover:underline">{user.email}</a></div>
+                                <div className="text-muted-foreground">{user.phone}</div>
+                              </td>
+                              <td className="px-3 py-4">
+                                <span className="font-medium text-xs">
+                                  {user.recruitingType || user.interestedRole || "N/A"}
+                                </span>
+                              </td>
+                              <td className="px-3 py-4 max-w-[200px]">
+                                <p className="text-xs text-muted-foreground line-clamp-2">
+                                  {user.description || "—"}
+                                </p>
+                              </td>
+                              <td className="px-3 py-4">
+                                {user.resumeUrl ? (
+                                  <a
+                                    href={user.resumeUrl}
+                                    download={user.resumeName || `resume-${user.fullName.replace(/\s+/g, "_")}.pdf`}
+                                    className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-primary/15 text-primary text-xs font-medium hover:bg-primary/25 transition-colors"
+                                  >
+                                    <FileText className="w-3.5 h-3.5" />
+                                    <span className="max-w-[80px] truncate">{user.resumeName || "Resume"}</span>
+                                  </a>
+                                ) : (
+                                  <span className="text-xs text-muted-foreground">—</span>
+                                )}
+                              </td>
+                              <td className="px-3 py-4 text-xs text-muted-foreground whitespace-nowrap">
+                                {new Date(user.createdAt).toLocaleString()}
+                              </td>
+                              <td className="px-3 py-4">
+                                <Button
+                                  size="sm"
+                                  variant="outline"
+                                  className="border-border/50 text-xs"
+                                  onClick={() => setSelectedUser(user)}
+                                >
+                                  View Details
+                                </Button>
+                              </td>
+                            </tr>
+                          )
+                        })}
                       </tbody>
                     </table>
                   </div>
 
-                  {filteredUsers.length === 0 ? <div className="py-10 text-center text-sm text-muted-foreground">No registered users found.</div> : null}
+                  {filteredUsers.length === 0 ? <div className="py-10 text-center text-sm text-muted-foreground">No registered users found matching the filter.</div> : null}
                 </div>
               )}
 
@@ -408,7 +530,7 @@ export function AdminDashboard({ initialEnquiries, initialUsers }: DashboardProp
                     <div className="flex items-center gap-3"><Phone className="h-4 w-4 text-primary" /> Business Contact: 8431119696</div>
                     <div className="flex items-center gap-3"><Mail className="h-4 w-4 text-primary" /> Email: connect@talentyconsulting.in</div>
                     <div className="flex items-center gap-3"><Building2 className="h-4 w-4 text-primary" /> Office: Bhive Platinum, Church Street</div>
-                    <div className="flex items-center gap-3"><UserRound className="h-4 w-4 text-primary" /> Registered Users: {users.length}</div>
+                    <div className="flex items-center gap-3"><UserRound className="h-4 w-4 text-primary" /> Total Registrations: {users.length}</div>
                   </div>
                 </div>
               </div>
@@ -417,6 +539,7 @@ export function AdminDashboard({ initialEnquiries, initialUsers }: DashboardProp
         </main>
       </div>
 
+      {/* Enquiry Detail Dialog */}
       <Dialog open={Boolean(selectedEnquiry)} onOpenChange={(open) => !open && setSelectedEnquiry(null)}>
         <DialogContent className="max-w-3xl border-border/40 bg-white text-foreground shadow-2xl">
           {selectedEnquiry ? (
@@ -479,7 +602,85 @@ export function AdminDashboard({ initialEnquiries, initialUsers }: DashboardProp
           ) : null}
         </DialogContent>
       </Dialog>
+
+      {/* User Registration Detail Dialog */}
+      <Dialog open={Boolean(selectedUser)} onOpenChange={(open) => !open && setSelectedUser(null)}>
+        <DialogContent className="max-w-2xl border-border/40 bg-white text-foreground shadow-2xl">
+          {selectedUser ? (
+            <>
+              <DialogHeader>
+                <div className="flex items-center gap-2 mb-1">
+                  {(selectedUser.userType || "recruiter") === "recruiter" ? (
+                    <Badge className="bg-sky-500/15 text-sky-600 border-sky-500/20 font-mono text-xs">
+                      Recruiter Registration
+                    </Badge>
+                  ) : (
+                    <Badge className="bg-emerald-500/15 text-emerald-600 border-emerald-500/20 font-mono text-xs">
+                      Candidate Registration
+                    </Badge>
+                  )}
+                  <span className="text-xs text-muted-foreground font-mono">#{selectedUser.id}</span>
+                </div>
+                <DialogTitle className="text-2xl">{selectedUser.fullName}</DialogTitle>
+                <DialogDescription className="text-muted-foreground">
+                  Registered on {new Date(selectedUser.createdAt).toLocaleString()}
+                </DialogDescription>
+              </DialogHeader>
+
+              <div className="grid gap-4 md:grid-cols-2 mt-2">
+                <div className="rounded-2xl border border-border/30 bg-secondary/15 p-4 space-y-2 text-sm">
+                  <p className="text-xs uppercase tracking-[0.24em] text-muted-foreground font-semibold">Contact Information</p>
+                  <div><span className="text-muted-foreground">Email:</span> <a href={`mailto:${selectedUser.email}`} className="text-primary underline ml-1">{selectedUser.email}</a></div>
+                  <div><span className="text-muted-foreground">Phone:</span> <a href={`tel:${selectedUser.phone}`} className="text-foreground ml-1">{selectedUser.phone}</a></div>
+                  {selectedUser.companyName && (
+                    <div><span className="text-muted-foreground">Company:</span> <span className="font-medium ml-1">{selectedUser.companyName}</span></div>
+                  )}
+                </div>
+
+                <div className="rounded-2xl border border-border/30 bg-secondary/15 p-4 space-y-2 text-sm">
+                  <p className="text-xs uppercase tracking-[0.24em] text-muted-foreground font-semibold">
+                    {(selectedUser.userType || "recruiter") === "recruiter" ? "Recruiting Need" : "Target Domain"}
+                  </p>
+                  <div className="font-semibold text-primary">
+                    {selectedUser.recruitingType || selectedUser.interestedRole || "Not specified"}
+                  </div>
+                  {selectedUser.resumeUrl && (
+                    <div className="pt-2">
+                      <a
+                        href={selectedUser.resumeUrl}
+                        download={selectedUser.resumeName || `resume-${selectedUser.fullName.replace(/\s+/g, "_")}.pdf`}
+                        className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-primary text-primary-foreground text-xs font-semibold hover:bg-primary/90 transition-all shadow-sm"
+                      >
+                        <Download className="w-3.5 h-3.5" />
+                        Download Attached Resume ({selectedUser.resumeName || "Document"})
+                      </a>
+                    </div>
+                  )}
+                </div>
+              </div>
+
+              <div className="rounded-2xl border border-border/30 bg-secondary/15 p-4 mt-2">
+                <p className="text-xs uppercase tracking-[0.24em] text-muted-foreground font-semibold mb-2">
+                  {(selectedUser.userType || "recruiter") === "recruiter" ? "Hiring Requirements Description" : "Candidate Summary & Skills"}
+                </p>
+                <p className="whitespace-pre-wrap text-sm text-foreground leading-relaxed">
+                  {selectedUser.description || "No description provided."}
+                </p>
+              </div>
+
+              <DialogFooter className="mt-4">
+                <Button variant="outline" className="border-border/50" onClick={() => setSelectedUser(null)}>Close</Button>
+                <Button asChild className="bg-primary text-primary-foreground">
+                  <a href={`mailto:${selectedUser.email}?subject=Talenty%20Follow-up%20for%20${encodeURIComponent(selectedUser.fullName)}`}>
+                    <Mail className="mr-2 h-4 w-4" />
+                    Email {selectedUser.fullName.split(" ")[0]}
+                  </a>
+                </Button>
+              </DialogFooter>
+            </>
+          ) : null}
+        </DialogContent>
+      </Dialog>
     </div>
   )
 }
-
